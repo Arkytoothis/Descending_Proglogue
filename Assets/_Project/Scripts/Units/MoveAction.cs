@@ -1,0 +1,112 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Descending.Tiles;
+using UnityEngine;
+
+namespace Descending.Units
+{
+    public class MoveAction : BaseAction
+    {
+        public event EventHandler OnStartMoving;
+        public event EventHandler OnStopMoving;
+        
+        [SerializeField] private float _moveSpeed = 4f;
+        [SerializeField] private float _stoppingDistance = 0.1f;
+        [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private int _maxMoveDistance = 3;
+        
+        private List<Vector3> _pathList;
+        private int _currentPositionIndex; 
+        
+        public override string GetName()
+        {
+            return "Move";
+        }
+
+        private void Update()
+        {
+            if (_isActive == false) return;
+
+            
+            Vector3 targetPosition = _pathList[_currentPositionIndex];
+            Vector3 moveDirection = (targetPosition - transform.position).normalized;
+            
+            transform.forward = Vector3.Lerp(transform.forward, moveDirection, _rotationSpeed * Time.deltaTime);
+            
+            if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
+            {
+                transform.position += moveDirection * (_moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                _currentPositionIndex++;
+            
+                if (_currentPositionIndex >= _pathList.Count)
+                {
+                    OnStopMoving?.Invoke(this, EventArgs.Empty);
+                    ActionComplete();
+                }
+            }
+        }
+
+        public override void PerformAction(MapPosition targetMapPosition, Action onMoveComplete)
+        {
+            //Path path = _unit.Pathfinder.FindPath(_unit.transform.position, MapManager.Instance.GetWorldPosition(targetMapPosition));
+            List<MapPosition> mapPositions = PathfindingManager.Instance.FindPath(_unit.CurrentMapPosition, targetMapPosition, out int pathLength);
+            
+            _currentPositionIndex = 0;
+
+            _pathList = new List<Vector3>();
+            foreach (MapPosition mapPosition in mapPositions)
+            {
+                _pathList.Add(MapManager.Instance.GetWorldPosition(mapPosition));
+            }
+            
+            OnStartMoving?.Invoke(this, EventArgs.Empty);
+            ActionStart(onMoveComplete);
+        }
+
+        public override List<MapPosition> GetValidActionGridPositions()
+        {
+            List<MapPosition> validGridPositions = new List<MapPosition>();
+            for (int x = -_maxMoveDistance; x <= _maxMoveDistance; x++)
+            {
+                for (int y = -_maxMoveDistance; y <= _maxMoveDistance; y++)
+                {
+                    MapPosition offsetMapPosition = new MapPosition(x, y);
+                    MapPosition testMapPosition = _unit.CurrentMapPosition + offsetMapPosition;
+
+                    if (MapManager.Instance.IsValidGridPosition(testMapPosition) == false) continue;
+                    if (MapManager.Instance.HasAnyUnit(testMapPosition) == true) continue;
+                    if (_unit.CurrentMapPosition == testMapPosition) continue;
+                    if (!PathfindingManager.Instance.IsGridPositionWalkable(testMapPosition)) continue;
+                    if (!PathfindingManager.Instance.HasPath(_unit.CurrentMapPosition, testMapPosition)) continue;
+                    if (PathfindingManager.Instance.GetPathLength(_unit.CurrentMapPosition, testMapPosition) > _maxMoveDistance * 10) continue;
+                    if (MapManager.Instance.Linecast(_unit.CurrentMapPosition, testMapPosition)) continue;
+                        
+                    validGridPositions.Add(testMapPosition);
+                }
+            }
+
+            return validGridPositions;
+        }
+
+        public override int GetActionPointCost()
+        {
+            return 1;
+        }
+        
+
+        public override EnemyAction GetEnemyAction(MapPosition mapPosition)
+        {
+            int targetCount = _unit.GetAction<ShootAction>().GetTargetCountAtPosition(mapPosition);
+            
+            return new EnemyAction
+            {
+                _mapPosition = mapPosition,
+                ActionValue = targetCount * 10,
+            };
+        }
+    }
+}

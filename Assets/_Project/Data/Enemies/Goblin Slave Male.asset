@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c020484631e448846aa0a9eec1f3b3de, type: 3}
+  m_Name: Goblin Slave Male
+  m_EditorClassIdentifier: 
+  Name: Goblin Slave
+  Key: Goblin Slave Male
+  ExpValue: 0
+  Prefab: {fileID: 7336809418575615659, guid: 8ef5689d15ff6ea45bb38f6821df3776, type: 3}
+  Icon: {fileID: 0}
+  Group: 0
+  HitEffect: {fileID: 0}
+  StartingVitals:
+    keyData: []
+    valueData: []
+  StartingStatistic:
+    keyData: []
+    valueData: []
+  StartingSkills:
+    keyData: []
+    valueData: []
+  Resistances: []
+  CoinData:
+  - Chance: 50
+    Minimum: 1
+    Maximum: 4
+  - Chance: 25
+    Minimum: 1
+    Maximum: 1
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  GemData:
+  - Chance: 1
+    Minimum: 1
+    Maximum: 1
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  AttackSounds: []
+  HitSounds: []
+  WoundSounds: []

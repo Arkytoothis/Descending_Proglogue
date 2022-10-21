@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
+  m_Name: Chaos Bolts
+  m_EditorClassIdentifier: 
+  _details:
+    _icon: {fileID: 21300000, guid: e73b53acf9876574fa58c89c6d1f7cd6, type: 3}
+    _abilityType: 1
+    _name: Chaos Bolts
+    _key: Chaos Bolts
+    _description: 
+    _cooldown: 0
+    _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932,
+      type: 2}
+    _resourceAmount: 1
+    _skill: {fileID: 11400000, guid: 79d394fb165caa04ca40a01af963d762, type: 2}
+    _minimumSkill: 1
+    _actionsToUse: 1
+    _targetType: 2
+    _areaType: 0
+    _rangeType: 1
+    _projectile: {fileID: 11400000, guid: e1fc85fcb78a79e44ad5f84f10fec470, type: 2}
+  _effects:
+    rid: 6309569888065159185
+  references:
+    version: 2
+    RefIds:
+    - rid: 6309569888065159185
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _data: []

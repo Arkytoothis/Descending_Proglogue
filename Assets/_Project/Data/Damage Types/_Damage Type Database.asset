@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111d01a9664dafd41baa34110e160e66, type: 3}
+  m_Name: _Damage Type Database
+  m_EditorClassIdentifier: 
+  _damageTypes:
+    keyData:
+    - Cold
+    - Fire
+    - Holy
+    - Nature
+    - Physical
+    - Shock
+    - Unholy
+    valueData:
+    - {fileID: 11400000, guid: 39a3e1d977579ef419133cea40907022, type: 2}
+    - {fileID: 11400000, guid: 8ff2c276d8d17c242a2c7d9d56e56cac, type: 2}
+    - {fileID: 11400000, guid: 75052ef8a3a070445b578f9372a0a1ec, type: 2}
+    - {fileID: 11400000, guid: 9ea2f0c1ca23c2149ad1c35d459b38b1, type: 2}
+    - {fileID: 11400000, guid: e81cc1106fdbbb14ead08b0bbfa4f628, type: 2}
+    - {fileID: 11400000, guid: eac7c37ac8d59cd43a29e65df675c32a, type: 2}
+    - {fileID: 11400000, guid: e0f5fc9bb9f168e429dec03177c49a99, type: 2}

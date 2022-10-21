@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe2189a641c13047b462757ff0bd088, type: 3}
+  m_Name: Database
+  m_EditorClassIdentifier: 
+  _abilities: {fileID: 11400000, guid: b790a5f1813ea3443b2b4fb22409385b, type: 2}
+  _attributes: {fileID: 11400000, guid: 125edba2065e4984bb68f9e19fc8a43e, type: 2}
+  _skills: {fileID: 11400000, guid: 3aeb252a2204c034f93b77ca296f3aba, type: 2}
+  _races: {fileID: 11400000, guid: f0a802038de11f84a96d4ce8b7509481, type: 2}
+  _profession: {fileID: 11400000, guid: a4a96a1baf9d16942847dc7be98802cf, type: 2}
+  _damageTypes: {fileID: 0}
+  _items: {fileID: 11400000, guid: 388b918991e2b0d49a373b362e15ab03, type: 2}
+  _materials: {fileID: 11400000, guid: d368ccb480fca7a44813d8d465ac8554, type: 2}
+  _enchants: {fileID: 11400000, guid: 65be090f02167b047b661aa6d5714a44, type: 2}
+  _rarities: {fileID: 11400000, guid: cc0ff4420aa160f43b85c1b8563b62e6, type: 2}
+  _heroPrefab: {fileID: 1496511450220018615, guid: 7d9e0108182936d41839db846cc6851a,
+    type: 3}
+  _sceneLoadFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/scene_load_data.dat
+  _partyDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/party_data.dat
+  _resourceDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/resource_data.dat
+  _timeDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/time_data.dat
+  _worldDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/_world_data.dat
+  _overworldSpawnFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/overworld_spawn.dat
+  _stockpileFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/stockpile_data.dat
+  _blankSprite: {fileID: 0}

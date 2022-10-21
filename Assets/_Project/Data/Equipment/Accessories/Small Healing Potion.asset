@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
+  m_Name: Small Healing Potion
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 8aeeec9c32c194a4da40898c52b7e7f2, type: 3}
+  _name: Small Healing Potion
+  _key: Small Healing Potion
+  _description: 
+  _equipModel: {fileID: 0}
+  _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
+    type: 3}
+  _projectile: {fileID: 0}
+  _category: 0
+  _itemType: 21
+  _nameFormat: 0
+  _equipmentSlot: 11
+  _renderSlots: []
+  _materialAllowed: 10
+  _hands: 5
+  _bestQualityAllowed: 0
+  _enchantable: 1
+  _stackable: 0
+  _modelIndex: -1
+  _basePower: 1
+  _encumbrance: 1
+  _goldValue: 5
+  _gemValue: 0
+  _minimumMight: 0
+  _minimumFinesse: 0
+  _minimumMind: 0
+  _weaponData:
+    _hasData: 0
+    _weaponType: 4
+    _range: 0
+    _delay: 0
+    _knockbackStrength: 0
+    _damageType: {fileID: 0}
+    _minDamage: 0
+    _maxDamage: 0
+    _animatorOverride: {fileID: 0}
+    HitSounds: []
+    MissSounds: []
+  _wearableData:
+    _hasData: 0
+    _armor: 0
+    _block: 0
+    _spellDefense: 0
+    _perceptionModifier: 0
+    _walkSounds: []
+    _wearableType: 0
+    _headCoverType: 0
+  _accessoryData:
+    _hasData: 1
+    _accessoryType: 2
+  _usableData:
+    _hasData: 1
+    _maxUses: 1
+    _cooldown: 0
+  _ingredientData:
+    _hasData: 0
+    _type: 0
