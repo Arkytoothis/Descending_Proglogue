@@ -28,7 +28,7 @@ namespace Descending.Units
             }
             
             OnDamaged?.Invoke(this, EventArgs.Empty);
-            Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
+            //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
 
             if (_health <= 0)
             {

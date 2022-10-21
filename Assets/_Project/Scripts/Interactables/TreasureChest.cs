@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Descending.Interactables
 {
-    public class DestructibleCrate : MonoBehaviour, IDamagable
+    public class TreasureChest : MonoBehaviour, IDamagable, IInteractable
     {
         public static event EventHandler OnAnyInteractableDestroyed;
 
@@ -86,6 +86,11 @@ namespace Descending.Interactables
             {
                 TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType);
             }
+        }
+
+        public void Interact(Action onComplete)
+        {
+            Debug.Log("Interacting with Treasure Chest");
         }
     }
 }

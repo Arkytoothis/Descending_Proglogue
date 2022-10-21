@@ -65,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 5191877884724802366}
     - target: {fileID: 2001456721065693323, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 7947031557901881716}
+    - target: {fileID: 2001456721065693323, guid: 9973de32681c5ed45aeaf86622f1c2c1,
+        type: 3}
       propertyPath: _projectilePrefab
       value: 
       objectReference: {fileID: 3290401344529691309, guid: cf40fcffc7ef1ee4ba2c69233aad7970,
@@ -275,6 +280,12 @@ MonoBehaviour:
 --- !u!4 &6789478908188183674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1005085833136074703, guid: 9973de32681c5ed45aeaf86622f1c2c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6038160678190719925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7947031557901881716 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4432206404438569665, guid: 9973de32681c5ed45aeaf86622f1c2c1,
     type: 3}
   m_PrefabInstance: {fileID: 6038160678190719925}
   m_PrefabAsset: {fileID: 0}

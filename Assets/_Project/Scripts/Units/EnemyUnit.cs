@@ -9,63 +9,51 @@ namespace Descending.Units
     {
         [SerializeField] private EnemyDefinition _definition = null;
 
+        private bool _treasureDropped = false;
+        
         public void SetupEnemy(EnemyDefinition definition)
         {
             _isEnemy = true;
             _definition = definition;
+            _treasureDropped = false;
         }
         
         public void DropTreasure()
         {
-            DropData copperData = _definition.CoinData[(int) CoinTypes.Copper];
-            DropData silverData = _definition.CoinData[(int) CoinTypes.Silver];
-            DropData goldData = _definition.CoinData[(int) CoinTypes.Gold];
-            DropData mithrilData = _definition.CoinData[(int) CoinTypes.Mithril];
+            if (_treasureDropped == true) return;
             
-            DropData quartzData = _definition.GemData[(int) GemTypes.Sapphire];
-            DropData rubyData = _definition.GemData[(int) GemTypes.Ruby];
-            DropData emeraldData = _definition.GemData[(int) GemTypes.Emerald];
-            DropData diamondData = _definition.GemData[(int) GemTypes.Diamond];
+            _treasureDropped = true;
             
-            if (Random.Range(0, 100) < copperData.Chance)
-            {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(copperData.Minimum, copperData.Maximum), CoinTypes.Copper);
-            }
+            TryDropCoins(CoinTypes.Copper);
+            TryDropCoins(CoinTypes.Silver);
+            TryDropCoins(CoinTypes.Gold);
+            TryDropCoins(CoinTypes.Mithril);
 
-            if (Random.Range(0, 100) < silverData.Chance)
-            {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(silverData.Minimum, silverData.Maximum), CoinTypes.Silver);
-            }
+            TryDropGems(GemTypes.Sapphire);
+            TryDropGems(GemTypes.Ruby);
+            TryDropGems(GemTypes.Emerald);
+            TryDropGems(GemTypes.Diamond);
+        }
 
-            if (Random.Range(0, 100) < goldData.Chance)
+        private void TryDropCoins(CoinTypes coinType)
+        {
+            DropData dropData = _definition.CoinData[(int) coinType];
+            
+            if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(goldData.Minimum, goldData.Maximum), CoinTypes.Gold);
+                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType);
             }
+        }
 
-            if (Random.Range(0, 100) < mithrilData.Chance)
+        private void TryDropGems(GemTypes gemType)
+        {
+            DropData dropData = _definition.GemData[(int) gemType];
+            
+            if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(mithrilData.Minimum, mithrilData.Maximum), CoinTypes.Mithril);
+                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType);
             }
             
-            if (Random.Range(0, 100) < quartzData.Chance)
-            {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(quartzData.Minimum, quartzData.Maximum), GemTypes.Sapphire);
-            }
-            
-            if (Random.Range(0, 100) < rubyData.Chance)
-            {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(rubyData.Minimum, rubyData.Maximum), GemTypes.Ruby);
-            }
-            
-            if (Random.Range(0, 100) < emeraldData.Chance)
-            {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(emeraldData.Minimum, emeraldData.Maximum), GemTypes.Emerald);
-            }
-            
-            if (Random.Range(0, 100) < diamondData.Chance)
-            {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(diamondData.Minimum, diamondData.Maximum), GemTypes.Diamond);
-            }
         }
     }
 }

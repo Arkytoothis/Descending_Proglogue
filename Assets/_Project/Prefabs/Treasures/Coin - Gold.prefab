@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37849b2c5b2aa2e4484aa94037037aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocityThreshold: 0.01
+  _velocityThreshold: 0.002
   _coins: 5
 --- !u!64 &5967938828364081564
 MeshCollider:

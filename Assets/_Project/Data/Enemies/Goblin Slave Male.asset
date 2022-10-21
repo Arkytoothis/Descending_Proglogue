@@ -30,31 +30,31 @@ MonoBehaviour:
     valueData: []
   Resistances: []
   CoinData:
-  - Chance: 50
+  - Chance: 100
+    Minimum: 1
+    Maximum: 10
+  - Chance: 100
+    Minimum: 2
+    Maximum: 5
+  - Chance: 100
     Minimum: 1
     Maximum: 4
-  - Chance: 25
+  - Chance: 100
     Minimum: 1
-    Maximum: 1
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
+    Maximum: 2
   GemData:
-  - Chance: 1
+  - Chance: 100
     Minimum: 1
     Maximum: 1
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
+  - Chance: 100
+    Minimum: 1
+    Maximum: 1
+  - Chance: 100
+    Minimum: 1
+    Maximum: 1
+  - Chance: 100
+    Minimum: 1
+    Maximum: 1
   AttackSounds: []
   HitSounds: []
   WoundSounds: []

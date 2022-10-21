@@ -16,6 +16,9 @@ namespace Descending.Treasure
         [SerializeField] private Transform _coinsParent = null;
         [SerializeField] private Transform _gemsParent = null;
         [SerializeField] private float _torqueModifier = 10f;
+        [SerializeField] private float _horizontalSpawnRadius = 0.4f;
+        [SerializeField] private float _verticalSpawnMin = 0.5f;
+        [SerializeField] private float _verticalSpawnMax = 2f;
         
         private void Awake()
         {
@@ -31,48 +34,50 @@ namespace Descending.Treasure
 
         public void SpawnCoins(Vector3 spawnPosition, int amount, CoinTypes coinType)
         {
-            StartCoroutine(SpawnCoins_Coroutine(spawnPosition, amount, coinType));
+            for (int i = 0; i < amount; i++)
+            {
+                StartCoroutine(SpawnCoin_Coroutine(0.3f, spawnPosition, coinType));
+            }
         }
 
         public void SpawnGems(Vector3 spawnPosition, int amount, GemTypes gemType)
         {
-            StartCoroutine(SpawnGems_Coroutine(spawnPosition, amount, gemType));
-        }
-        
-        private IEnumerator SpawnCoins_Coroutine(Vector3 spawnPosition, int amount, CoinTypes coinType)
-        {
-            yield return new WaitForSeconds(0.2f);
-            
             for (int i = 0; i < amount; i++)
             {
-                float xOffset = Random.Range(-0.1f, 0.1f);
-                float yOffset = Random.Range(2f, 2.2f);
-                float zOffset = Random.Range(-0.1f, 0.1f);
-                GameObject clone = Instantiate(_coinPrefabs[(int) coinType], _coinsParent);
-                clone.transform.position = new Vector3(spawnPosition.x + xOffset, spawnPosition.y + yOffset, spawnPosition.z + zOffset);
-                
-                Rigidbody rigidbody = clone.GetComponent<Rigidbody>();
-                rigidbody.AddTorque(new Vector3(Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier)));
-                //rigidbody.AddExplosionForce(50f, transform.position, 10f, 5f);
+                StartCoroutine(SpawnGem_Coroutine(0.3f, spawnPosition, gemType));
             }
         }
         
-        private IEnumerator SpawnGems_Coroutine(Vector3 spawnPosition, int amount, GemTypes gemTypes)
+        private IEnumerator SpawnCoin_Coroutine(float delay, Vector3 spawnPosition, CoinTypes coinType)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            //Debug.Log("Spawning " + coinType.ToString());
+            float xOffset = Random.Range(-_horizontalSpawnRadius, _horizontalSpawnRadius);
+            float yOffset = Random.Range(_verticalSpawnMin, _verticalSpawnMax);
+            float zOffset = Random.Range(-_horizontalSpawnRadius, _horizontalSpawnRadius);
+            GameObject clone = Instantiate(_coinPrefabs[(int) coinType], _coinsParent);
+            clone.transform.position = new Vector3(spawnPosition.x + xOffset, spawnPosition.y + yOffset, spawnPosition.z + zOffset);
+            
+            Rigidbody rigidbody = clone.GetComponent<Rigidbody>();
+            rigidbody.AddTorque(new Vector3(Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier)));
+            //rigidbody.AddExplosionForce(50f, transform.position, 10f, 5f);
+        }
+        
+        private IEnumerator SpawnGem_Coroutine(float delay, Vector3 spawnPosition, GemTypes gemType)
         {
             yield return new WaitForSeconds(0.2f);
             
-            for (int i = 0; i < amount; i++)
-            {
-                float xOffset = Random.Range(-0.1f, 0.1f);
-                float yOffset = Random.Range(2f, 2.2f);
-                float zOffset = Random.Range(-0.1f, 0.1f);
-                GameObject clone = Instantiate(_gemPrefabs[(int) gemTypes], _coinsParent);
-                clone.transform.position = new Vector3(spawnPosition.x + xOffset, spawnPosition.y + yOffset, spawnPosition.z + zOffset);
-                
-                Rigidbody rigidbody = clone.GetComponent<Rigidbody>();
-                rigidbody.AddTorque(new Vector3(Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier)));
-                //rigidbody.AddExplosionForce(50f, transform.position, 10f, 5f);
-            }
+            //Debug.Log("Spawning " + gemType.ToString());
+            float xOffset = Random.Range(-0.1f, 0.1f);
+            float yOffset = Random.Range(2f, 2.2f);
+            float zOffset = Random.Range(-0.1f, 0.1f);
+            GameObject clone = Instantiate(_gemPrefabs[(int) gemType], _gemsParent);
+            clone.transform.position = new Vector3(spawnPosition.x + xOffset, spawnPosition.y + yOffset, spawnPosition.z + zOffset);
+            
+            Rigidbody rigidbody = clone.GetComponent<Rigidbody>();
+            rigidbody.AddTorque(new Vector3(Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier)));
+            //rigidbody.AddExplosionForce(50f, transform.position, 10f, 5f);
         }
     }
 }

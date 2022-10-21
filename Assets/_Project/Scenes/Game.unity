@@ -378,6 +378,9 @@ MonoBehaviour:
   _coinsParent: {fileID: 1658134400}
   _gemsParent: {fileID: 1977507596}
   _torqueModifier: 5
+  _horizontalSpawnRadius: 0.4
+  _verticalSpawnMin: 0.5
+  _verticalSpawnMax: 2
 --- !u!4 &140844161
 Transform:
   m_ObjectHideFlags: 0
@@ -972,7 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 16.99971, z: -6}
+  m_FollowOffset: {x: 0, y: 11, z: -6}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -3545,8 +3548,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676424590}
-  m_LocalRotation: {x: 0.57757026, y: -0.000000014046249, z: 0.0000000099378745, w: 0.816341}
-  m_LocalPosition: {x: 1000, y: 16.99971, z: 994}
+  m_LocalRotation: {x: 0.51046443, y: -0.0000000073978725, z: 0.0000000043916217,
+    w: 0.8598989}
+  m_LocalPosition: {x: 1000, y: 11, z: 994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

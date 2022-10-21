@@ -168,7 +168,7 @@ MonoBehaviour:
   _force: 500
   _moveSpeed: 15
   _minimumDistance: 0.1
-  _damageRadius: 4
+  _damageRadius: 2
   _minimumDamage: 50
   _maximumDamage: 60
 --- !u!1 &9022372738158112516

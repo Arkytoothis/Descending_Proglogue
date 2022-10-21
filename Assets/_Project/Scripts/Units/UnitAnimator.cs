@@ -10,9 +10,9 @@ namespace Descending.Units
         [SerializeField] private Transform _projectileSpawnPoint = null;
         [SerializeField] private GameObject _projectilePrefab = null;
         [SerializeField] private float _spawnProjectileDelay = 1f;
-
+        
+        [SerializeField] private Animator _animator = null;
         private Unit _unit;
-        private Animator _animator = null;
         
         private void Awake()
         {
