@@ -74,7 +74,7 @@ namespace Descending.Interactables
             
             if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType);
+                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType, 0.1f);
             }
         }
 
@@ -84,7 +84,7 @@ namespace Descending.Interactables
             
             if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType);
+                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType, 0.1f);
             }
         }
     }

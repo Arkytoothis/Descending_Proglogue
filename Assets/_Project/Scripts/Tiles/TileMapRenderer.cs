@@ -159,8 +159,8 @@ namespace Descending.Tiles
                     backgroundColor = TileColors.Black;
                     break;
                 case ShootAction shootAction:
-                    borderColor = TileColors.Green;
-                    backgroundColor = TileColors.Green;
+                    borderColor = TileColors.Red;
+                    backgroundColor = TileColors.Red;
                     ShowGridPositionRange(selectedUnit.CurrentMapPosition, shootAction.MaxShootDistance, TileColors.Black, TileColors.Black);
                     break;
                 case MeleeAction meleeAction:
@@ -169,8 +169,8 @@ namespace Descending.Tiles
                     ShowGridPositionRangeSquare(selectedUnit.CurrentMapPosition, meleeAction.MeleeRange, TileColors.Black, TileColors.Black);
                     break;
                 case InteractAction interactAction:
-                    borderColor = TileColors.Green;
-                    backgroundColor = TileColors.Green;
+                    borderColor = TileColors.Yellow;
+                    backgroundColor = TileColors.Yellow;
                     ShowGridPositionRangeSquare(selectedUnit.CurrentMapPosition, interactAction.InteractRange, TileColors.Black, TileColors.Black);
                     break;
             }

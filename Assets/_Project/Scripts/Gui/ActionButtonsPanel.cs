@@ -23,7 +23,7 @@ namespace Descending
             ActionManager.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
             ActionManager.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
             TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-            Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
+            //Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
             _actionButtons = new List<ActionButton>();
             //UpdateActionPoints();
             //CreateActionButtons();
@@ -73,7 +73,9 @@ namespace Descending
         private void UpdateActionPoints()
         {
             Unit unit = ActionManager.Instance.SelectedUnit;
-            _actionPointsLabel.SetText("Action Points: " + unit.ActionPoints);
+            if (unit == null) return;
+            
+            _actionPointsLabel.SetText("Action Points: " + unit.GetActionsCurrent());
         }
 
         private void TurnSystem_OnTurnChanged(object sender, EventArgs e)

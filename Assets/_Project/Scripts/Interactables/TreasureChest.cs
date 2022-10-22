@@ -3,52 +3,71 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Tiles;
 using Descending.Treasure;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Descending.Interactables
 {
-    public class TreasureChest : MonoBehaviour, IDamagable, IInteractable
+    public class TreasureChest : MonoBehaviour, IInteractable
     {
-        public static event EventHandler OnAnyInteractableDestroyed;
-
-        [SerializeField] private GameObject _debrisEffectPrefab = null;
-        [SerializeField] private GameObject _smokeEffectPrefab = null;
+        [SerializeField] private bool _isActive = false;
+        [SerializeField] private GameObject _gameObjectToHide = null;
+        [SerializeField] private Collider _collider = null;
+        [SerializeField] private Transform _lidTransform = null;
+        [SerializeField] private float _activateDuration = 1f;
+        [SerializeField] private float _activateAngle = 50f;
         [SerializeField] private List<DropData> _coinData;
         [SerializeField] private List<DropData> _gemData;
         
-        private MapPosition mapPosition;
-        private int _health = 10;
-        private int _maxHealth = 10;
         private bool _treasureDropped = false;
-
-        public MapPosition MapPosition => mapPosition;
-        public int Health => _health;
-
+        private MapPosition _mapPosition;
+        private float _timer;
+        private bool _isInteracting;
+        private Action onComplete;
+        
         private void Start()
         {
-            mapPosition = MapManager.Instance.GetGridPosition(transform.position);
-            _treasureDropped = false;
+            _mapPosition = MapManager.Instance.GetGridPosition(transform.position);
+            MapManager.Instance.SetInteractableAtGridPosition(_mapPosition, this);
+            PathfindingManager.Instance.SetIsGridPositionWalkable(_mapPosition, false);
+            _isInteracting = false;
         }
 
-        public void Damage(int damage)
+        private void Update()
         {
-            _health -= damage;
+            if (!_isInteracting) return;
+            
+            _timer -= Time.deltaTime;
 
-            //Debug.Log(name + " takes " + damage + " damage, " + _health + " health remaining");
-            if (_health <= 0)
+            if (_timer <= 0f)
             {
-                Destroy();
+                _isInteracting = false;
+                onComplete();
             }
         }
 
-        private void Destroy()
+        public void Interact(Action onInteractionComplete)
         {
-            Instantiate(_debrisEffectPrefab, transform.position, Quaternion.identity);
-            Instantiate(_smokeEffectPrefab, transform.position, Quaternion.identity);
-            DropTreasure();
-            OnAnyInteractableDestroyed?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject);
+            //Debug.Log("Interacting with Treasure Chest");
+            onComplete = onInteractionComplete;
+            _isInteracting = true;
+            _timer = 0.5f;
+            
+            if(_isActive == false)
+            {
+                Activate();
+            }
+        }
+
+        public void Activate()
+        {
+            _isActive = true;
+            MapManager.Instance.SetInteractableAtGridPosition(_mapPosition, null);
+            PathfindingManager.Instance.SetIsGridPositionWalkable(_mapPosition, true);
+            _lidTransform.DORotate(new Vector3(_activateAngle, 0f, 0f), _activateDuration, RotateMode.LocalAxisAdd);
+
+            StartCoroutine(HideAndDestroy_Coroutine(1f, 3f));
         }
         
         public void DropTreasure()
@@ -74,7 +93,7 @@ namespace Descending.Interactables
             
             if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType);
+                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType, 0f);
             }
         }
 
@@ -84,13 +103,18 @@ namespace Descending.Interactables
             
             if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType);
+                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType, 0f);
             }
         }
 
-        public void Interact(Action onComplete)
+        private IEnumerator HideAndDestroy_Coroutine(float delay, float destroyAfter)
         {
-            Debug.Log("Interacting with Treasure Chest");
+            yield return new WaitForSeconds(delay);
+            
+            DropTreasure();
+            _gameObjectToHide.SetActive(false);
+            _collider.enabled = false;
+            Destroy(gameObject, destroyAfter);
         }
     }
 }

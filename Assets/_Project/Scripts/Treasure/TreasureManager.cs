@@ -32,19 +32,19 @@ namespace Descending.Treasure
             Instance = this;
         }
 
-        public void SpawnCoins(Vector3 spawnPosition, int amount, CoinTypes coinType)
+        public void SpawnCoins(Vector3 spawnPosition, int amount, CoinTypes coinType, float delay)
         {
             for (int i = 0; i < amount; i++)
             {
-                StartCoroutine(SpawnCoin_Coroutine(0.3f, spawnPosition, coinType));
+                StartCoroutine(SpawnCoin_Coroutine(delay, spawnPosition, coinType));
             }
         }
 
-        public void SpawnGems(Vector3 spawnPosition, int amount, GemTypes gemType)
+        public void SpawnGems(Vector3 spawnPosition, int amount, GemTypes gemType, float delay)
         {
             for (int i = 0; i < amount; i++)
             {
-                StartCoroutine(SpawnGem_Coroutine(0.3f, spawnPosition, gemType));
+                StartCoroutine(SpawnGem_Coroutine(delay, spawnPosition, gemType));
             }
         }
         

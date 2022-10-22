@@ -102,8 +102,8 @@ MonoBehaviour:
       _minimumValue: 0
       _maximumValue: 0
     - _vital: {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
-      _minimumValue: 2
-      _maximumValue: 2
+      _minimumValue: 9
+      _maximumValue: 9
   _startingStatistics:
     keyData:
     - Aim
@@ -151,16 +151,6 @@ MonoBehaviour:
       _minimumValue: 1
       _maximumValue: 1
   _resistances: []
-  AttackSoundsMale:
-  - male_attack_1
-  - male_attack_2
-  - male_attack_3
-  AttackSoundsFemale:
-  - female_attack_1
-  - female_attack_2
-  - female_attack_3
-  HitSoundsMale: []
-  HitSoundsFemale: []
   WoundSoundsMale:
   - voice_male_c_hurt_pain_04
   - voice_male_c_hurt_pain_05

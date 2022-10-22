@@ -44,14 +44,11 @@ namespace Descending.Units
 
         public void Setup()
         {
-            Unit.OnAnyUnitSpawned += Unit_OnAnyUnitSpawned;
-            Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
+            
         }
 
-        private void Unit_OnAnyUnitSpawned(object sender, EventArgs e)
+        public void UnitSpawned(Unit unit)
         {
-            Unit unit = sender as Unit;
-
             if (unit.IsEnemy)
             {
                 _enemyUnits.Add(unit);
@@ -64,13 +61,11 @@ namespace Descending.Units
             _units.Add(unit);
         }
 
-        private void Unit_OnAnyUnitDead(object sender, EventArgs e)
+        public void UnitDead(Unit unit)
         {
-            Unit unit = sender as Unit;
-
             if (unit.IsEnemy)
             {
-                EnemyUnit enemyUnit = sender as EnemyUnit;
+                EnemyUnit enemyUnit = unit as EnemyUnit;
                 enemyUnit.DropTreasure();
                 _enemyUnits.Remove(unit);
             }

@@ -10,12 +10,16 @@ namespace Descending.Units
         [SerializeField] private EnemyDefinition _definition = null;
 
         private bool _treasureDropped = false;
-        
+
+
         public void SetupEnemy(EnemyDefinition definition)
         {
             _isEnemy = true;
             _definition = definition;
             _treasureDropped = false;
+            _healthSystem.Setup(100);
+            _worldPanel.Setup(this);
+            //Deactivate();
         }
         
         public void DropTreasure()
@@ -41,7 +45,7 @@ namespace Descending.Units
             
             if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType);
+                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType, 0.3f);
             }
         }
 
@@ -51,9 +55,20 @@ namespace Descending.Units
             
             if (Random.Range(0, 100) < dropData.Chance)
             {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType);
+                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType, 0.3f);
             }
-            
+        }
+
+        public void Activate()
+        {
+            _modelParent.gameObject.SetActive(false);
+            _isActive = true;
+        }
+        
+        public void Deactivate()
+        {
+            _modelParent.gameObject.SetActive(false);
+            _isActive = false;
         }
     }
 }

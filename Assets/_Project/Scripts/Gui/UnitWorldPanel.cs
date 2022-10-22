@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Descending.Units;
 using TMPro;
 using UnityEngine;
@@ -12,39 +13,25 @@ namespace Descending.Gui
     {
         [SerializeField] private TMP_Text _actionPointsLabel = null;
         [SerializeField] private Image _healthBarImage = null;
-        [SerializeField] private Unit _unit = null;
-        [SerializeField] private HealthSystem _healthSystem = null;
 
-        private void Start()
+        public void Setup(Unit unit)
         {
-            Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
-            _healthSystem.OnDamaged += HealthSystem_OnDamaged;
-            UpdateActionPoints();
-            UpdateHealth();
-        }
-
-        private void UpdateActionPoints()
-        {
-            if (_unit == null) return;
+            if (unit == null) return;
             
-            _actionPointsLabel.SetText(_unit.ActionPoints.ToString());
+            UpdateActionPoints(unit);
+            UpdateHealth(unit.HealthSystem);
         }
 
-        private void UpdateHealth()
+        public void UpdateActionPoints(Unit unit)
         {
-            if (_healthSystem == null) return;
+            _actionPointsLabel.SetText(unit.GetActionsCurrent().ToString());
+        }
+
+        public void UpdateHealth(HealthSystem healthSystem)
+        {
+            if (healthSystem == null) return;
             
-            _healthBarImage.fillAmount = _healthSystem.GetHealthNormalized();
-        }
-
-        private void Unit_OnAnyActionPointsChanged(object sender, EventArgs e)
-        {
-            UpdateActionPoints();
-        }
-
-        private void HealthSystem_OnDamaged(object sender, EventArgs e)
-        {
-            UpdateHealth();
+            _healthBarImage.fillAmount = healthSystem.GetHealthNormalized();
         }
     }
 }

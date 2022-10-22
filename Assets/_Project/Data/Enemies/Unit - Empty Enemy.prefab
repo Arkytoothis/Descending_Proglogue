@@ -616,13 +616,14 @@ MonoBehaviour:
   _cameraMount: {fileID: 0}
   _cameraTarget: {fileID: 0}
   _modelParent: {fileID: 0}
-  _maxActionPoints: 2
   _unitAnimator: {fileID: 0}
   _unitData: {fileID: 0}
   _attributes: {fileID: 0}
   _skills: {fileID: 0}
   _inventory: {fileID: 0}
   _abilities: {fileID: 0}
+  _ragdollSpawner: {fileID: 2879133665782977740}
+  _worldPanel: {fileID: 8075993028448169366}
   _definition: {fileID: 0}
 --- !u!65 &5427972190694817063
 BoxCollider:
@@ -700,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _healthMax: 100
+  _worldPanel: {fileID: 8075993028448169366}
 --- !u!114 &2879133665782977740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +734,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 3290401344529691309, guid: 8712077661bf0af449f87860d5bcbb62,
     type: 3}
   _spawnProjectileDelay: 0.7
+  _animator: {fileID: 0}
 --- !u!1 &4337020165909533996
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4339708508065902400
 Transform:
   m_ObjectHideFlags: 0
@@ -759,7 +762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337020165909533996}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.003, z: 0}
+  m_LocalPosition: {x: -0, y: 0.1, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -781,7 +784,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337020165909533996}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3642,8 +3645,14 @@ MonoBehaviour:
     keyData: []
     valueData: []
   _vitals:
-    keyData: []
-    valueData: []
+    keyData:
+    - Actions
+    valueData:
+    - _key: Actions
+      _current: 2
+      _maximum: 2
+      _modifier: 0
+      _spent: 0
   _statistics:
     keyData: []
     valueData: []
@@ -3961,8 +3970,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionPointsLabel: {fileID: 7165528544456904358}
   _healthBarImage: {fileID: 1150967702629636166}
-  _unit: {fileID: 0}
-  _healthSystem: {fileID: 2545336594047484761}
 --- !u!114 &6222995906105186719
 MonoBehaviour:
   m_ObjectHideFlags: 0

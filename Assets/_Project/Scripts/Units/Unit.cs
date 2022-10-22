@@ -6,6 +6,7 @@ using Descending.Attributes;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Gui;
 using Descending.Tiles;
 using UnityEngine;
 
@@ -13,31 +14,28 @@ namespace Descending.Units
 {
     public class Unit : MonoBehaviour
     {
-        public static event EventHandler OnAnyActionPointsChanged = null;
-        public static event EventHandler OnAnyUnitSpawned = null;
-        public static event EventHandler OnAnyUnitDead = null;
-
-        [SerializeField] private Transform _hitTransform = null;
-        [SerializeField] private Transform _cameraMount = null;
-        [SerializeField] private Transform _cameraTarget = null;
-        [SerializeField] private Transform _modelParent = null;
-        [SerializeField] private int _maxActionPoints = 2;
-        [SerializeField] private UnitAnimator _unitAnimator = null;
-        [SerializeField] private UnitData _unitData = null;
-        [SerializeField] private AttributesController _attributes = null;
-        [SerializeField] private SkillsController _skills = null;
-        [SerializeField] private InventoryController _inventory = null;
-        [SerializeField] private AbilityController _abilities = null;
-
+        [SerializeField] protected Transform _hitTransform = null;
+        [SerializeField] protected Transform _cameraMount = null;
+        [SerializeField] protected Transform _cameraTarget = null;
+        [SerializeField] protected Transform _modelParent = null;
+        [SerializeField] protected UnitAnimator _unitAnimator = null;
+        [SerializeField] protected UnitData _unitData = null;
+        [SerializeField] protected AttributesController _attributes = null;
+        [SerializeField] protected SkillsController _skills = null;
+        [SerializeField] protected InventoryController _inventory = null;
+        [SerializeField] protected AbilityController _abilities = null;
+        [SerializeField] protected RagdollSpawner _ragdollSpawner = null;
+        
+        [SerializeField] protected UnitWorldPanel _worldPanel = null;
+        
         protected bool _isEnemy = false;
-        private HealthSystem _healthSystem;
-        private MapPosition currentMapPosition;
-        private BaseAction[] _actions = null;
-        private int _actionPoints;
+        protected HealthSystem _healthSystem;
+        protected MapPosition currentMapPosition;
+        protected BaseAction[] _actions = null;
+        protected bool _isActive = false;
         
         public MapPosition CurrentMapPosition => currentMapPosition;
         public BaseAction[] Actions => _actions;
-        public int ActionPoints => _actionPoints;
         public bool IsEnemy => _isEnemy;
         public Transform HitTransform => _hitTransform;
         public Transform CameraMount => _cameraMount;
@@ -48,6 +46,10 @@ namespace Descending.Units
         public SkillsController Skills => _skills;
         public InventoryController Inventory => _inventory;
         public AbilityController Abilities => _abilities;
+
+        public HealthSystem HealthSystem => _healthSystem;
+
+        public bool IsActive => _isActive;
 
         private void Awake()
         {
@@ -60,9 +62,7 @@ namespace Descending.Units
             currentMapPosition = MapManager.Instance.GetGridPosition(transform.position);
             MapManager.Instance.AddUnitAtGridPosition(currentMapPosition, this);
             TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-            _healthSystem.OnDead += HealthSystem_OnDead;
-            OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
-            _actionPoints = _maxActionPoints;
+            UnitManager.Instance.UnitSpawned(this);
         }
 
         private void Update()
@@ -92,6 +92,15 @@ namespace Descending.Units
             _skills.Setup(_attributes, race, profession);
             _inventory.Setup(null, worldRenderer, gender, race, profession);
             _abilities.Setup(race, profession, _skills);
+            
+            _healthSystem.Setup(100);
+                
+            _worldPanel.Setup(this);
+        }
+
+        public int GetActionsCurrent()
+        {
+            return _attributes.GetVital("Actions").Current;
         }
         
         public bool TryPerformAction(BaseAction action)
@@ -108,7 +117,7 @@ namespace Descending.Units
         }
         public bool HasActionPoints(BaseAction action)
         {
-            if (_actionPoints >= action.GetActionPointCost())
+            if (GetActionsCurrent() >= action.GetActionPointCost())
             {
                 return true;
             }
@@ -118,10 +127,10 @@ namespace Descending.Units
             }
         }
 
-        private void SpendActionPoints(int actionPoints)
+        private void SpendActionPoints(int actionPointCost)
         {
-            _actionPoints -= actionPoints;
-            OnAnyActionPointsChanged.Invoke(this, EventArgs.Empty);
+            _attributes.ModifyVital("Actions", actionPointCost);
+            _worldPanel.UpdateActionPoints(this);
         }
 
         private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
@@ -129,20 +138,26 @@ namespace Descending.Units
             if((_isEnemy && !TurnManager.Instance.IsPlayerTurn) ||
                (!_isEnemy && TurnManager.Instance.IsPlayerTurn))
             {
-                _actionPoints = _maxActionPoints;
-                OnAnyActionPointsChanged.Invoke(this, EventArgs.Empty);
+                _attributes.RefreshActions();
+                _worldPanel.UpdateActionPoints(this);
             }
         }
 
         public void Damage(GameObject attacker, int damage)
         {
             _healthSystem.TakeDamage(attacker, damage);
+
+            if (GetHealth() <= 0)
+            {
+                Dead();
+            }
         }
 
-        private void HealthSystem_OnDead(object sender, EventArgs e)
+        private void Dead()
         {
             MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
-            OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
+            UnitManager.Instance.UnitDead(this);
+            _ragdollSpawner.Activate(_healthSystem);
             Destroy(gameObject);
         }
 

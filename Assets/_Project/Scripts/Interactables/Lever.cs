@@ -25,7 +25,7 @@ namespace Descending.Interactables
         {
             mapPosition = MapManager.Instance.GetGridPosition(transform.position);
             MapManager.Instance.SetInteractableAtGridPosition(mapPosition, this);
-            Tiles.PathfindingManager.Instance.SetIsGridPositionWalkable(mapPosition, false);
+            PathfindingManager.Instance.SetIsGridPositionWalkable(mapPosition, false);
             _isInteracting = false;
         }
 

@@ -82,6 +82,8 @@ namespace Descending.Enemies
 
         private bool TryPerformAction(Unit enemyUnit, Action onActionComplete)
         {
+            if (enemyUnit.IsActive == false) return false;
+            
             EnemyAction bestEnemyAction = null;
             BaseAction bestAction = null;
             

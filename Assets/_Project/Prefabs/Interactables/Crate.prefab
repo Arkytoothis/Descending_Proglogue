@@ -65,30 +65,30 @@ MonoBehaviour:
     type: 3}
   _coinData:
   - Chance: 100
-    Minimum: 10
-    Maximum: 20
-  - Chance: 100
     Minimum: 1
     Maximum: 10
   - Chance: 50
     Minimum: 1
-    Maximum: 6
-  - Chance: 25
-    Minimum: 1
     Maximum: 2
-  _gemData:
-  - Chance: 50
-    Minimum: 1
-    Maximum: 2
-  - Chance: 25
-    Minimum: 1
-    Maximum: 1
   - Chance: 10
     Minimum: 1
     Maximum: 1
-  - Chance: 1
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  _gemData:
+  - Chance: 50
     Minimum: 1
     Maximum: 1
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
+  - Chance: 0
+    Minimum: 0
+    Maximum: 0
 --- !u!1001 &4325470212257480469
 PrefabInstance:
   m_ObjectHideFlags: 0

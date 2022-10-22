@@ -1,22 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Gui;
 using UnityEngine;
 
 namespace Descending.Units
 {
     public class HealthSystem : MonoBehaviour
     {
-        public event EventHandler OnDead;
-        public event EventHandler OnDamaged;
-        
         [SerializeField] private int _health = 100;
         [SerializeField] private int _healthMax = 100;
+        [SerializeField] private UnitWorldPanel _worldPanel = null;
 
         private GameObject _attacker = null;
 
         public GameObject Attacker => _attacker;
 
+        public void Setup(int maxHealth)
+        {
+            _healthMax = maxHealth;
+            _health = _healthMax;
+        }
+        
         public void TakeDamage(GameObject attacker, int amount)
         {
             _attacker = attacker;
@@ -27,13 +32,8 @@ namespace Descending.Units
                 _health = 0;
             }
             
-            OnDamaged?.Invoke(this, EventArgs.Empty);
+            _worldPanel.UpdateHealth(this);
             //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
-
-            if (_health <= 0)
-            {
-                OnDead?.Invoke(this, EventArgs.Empty);
-            }
         }
 
         public float GetHealthNormalized()

@@ -113,6 +113,11 @@ namespace Descending.Attributes
         {
             GetVital("Actions").Refresh();
         }
+
+        public void ModifyVital(string key, int amount)
+        {
+            _vitals[key].Damage(amount);
+        }
     }
 
     // [System.Serializable]

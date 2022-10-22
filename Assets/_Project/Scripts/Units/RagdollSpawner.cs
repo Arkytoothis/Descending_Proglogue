@@ -14,12 +14,10 @@ namespace Descending.Units
         private void Awake()
         {
             _healthSystem = GetComponent<HealthSystem>();
-            _healthSystem.OnDead += HealthSystem_OnDead;
         }
 
-        private void HealthSystem_OnDead(object sender, EventArgs e)
+        public void Activate(HealthSystem healthSystem)
         {
-            HealthSystem healthSystem = sender as HealthSystem;
             GameObject clone = Instantiate(_ragdollPrefab, transform.position, transform.rotation);
             UnitRagdoll ragdoll = clone.GetComponent<UnitRagdoll>();
             ragdoll.Setup(healthSystem.Attacker, _unitRootBone);

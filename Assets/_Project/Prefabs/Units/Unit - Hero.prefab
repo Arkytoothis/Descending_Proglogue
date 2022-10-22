@@ -347,8 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionPointsLabel: {fileID: 3692045104563222795}
   _healthBarImage: {fileID: 2657936063361291214}
-  _unit: {fileID: 3898514663855011100}
-  _healthSystem: {fileID: 5804238717445374206}
 --- !u!114 &4007233793622059634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,7 +932,6 @@ MonoBehaviour:
   _hitTransform: {fileID: 6053116562630555999}
   _cameraMount: {fileID: 6530317191262489678}
   _cameraTarget: {fileID: 9011273435997155738}
-  _modelParent: {fileID: 7459510875305618239}
   _maxActionPoints: 6
   _unitAnimator: {fileID: 5809406156201576434}
   _unitData: {fileID: 1513240946158673670}
@@ -942,6 +939,9 @@ MonoBehaviour:
   _skills: {fileID: 8184905970156134190}
   _inventory: {fileID: 5208358111274881494}
   _abilities: {fileID: 8202135407810835260}
+  _modelParent: {fileID: 7459510875305618239}
+  _ragdollSpawner: {fileID: 1549989640505923971}
+  _worldPanel: {fileID: 2790532659437340537}
 --- !u!114 &5809406156201576434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +958,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 3290401344529691309, guid: 8712077661bf0af449f87860d5bcbb62,
     type: 3}
   _spawnProjectileDelay: 0.7
+  _animator: {fileID: 0}
 --- !u!114 &5804238717445374206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,6 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _healthMax: 100
+  _worldPanel: {fileID: 2790532659437340537}
 --- !u!114 &1549989640505923971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2932,7 +2934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337020165909533996}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.003, z: 0}
+  m_LocalPosition: {x: -0, y: 0.1, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
