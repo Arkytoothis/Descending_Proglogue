@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 1617240086994271737}
   - component: {fileID: 1513240946158673670}
   m_Layer: 0
-  m_Name: Unit Data
+  m_Name: Hero Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,7 +873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3898514663855011101}
-  - component: {fileID: 3898514663855011100}
+  - component: {fileID: 2553668057799865287}
   - component: {fileID: 5809406156201576434}
   - component: {fileID: 5804238717445374206}
   - component: {fileID: 1549989640505923971}
@@ -917,7 +917,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3898514663855011100
+--- !u!114 &2553668057799865287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -926,22 +926,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 3898514663855011102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 372a2c2b91b89644195ae3694d1f5ecd, type: 3}
+  m_Script: {fileID: 11500000, guid: 77e19e0e3e69cc34b904b9b78fa9e795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectionIndicator: {fileID: 4337020165909533996}
   _hitTransform: {fileID: 6053116562630555999}
   _cameraMount: {fileID: 6530317191262489678}
   _cameraTarget: {fileID: 9011273435997155738}
-  _maxActionPoints: 6
+  _modelParent: {fileID: 7459510875305618239}
   _unitAnimator: {fileID: 5809406156201576434}
-  _unitData: {fileID: 1513240946158673670}
   _attributes: {fileID: 7176480442097930349}
   _skills: {fileID: 8184905970156134190}
   _inventory: {fileID: 5208358111274881494}
   _abilities: {fileID: 8202135407810835260}
-  _modelParent: {fileID: 7459510875305618239}
   _ragdollSpawner: {fileID: 1549989640505923971}
   _worldPanel: {fileID: 2790532659437340537}
+  onSyncParty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: d1f065dd347c3694f80d58f8f0f16b11, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _heroData: {fileID: 1513240946158673670}
 --- !u!114 &5809406156201576434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,6 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitAnimator: {fileID: 5809406156201576434}
   _moveSpeed: 4
   _stoppingDistance: 0.1
   _rotationSpeed: 10
@@ -1018,6 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dd2a2720fff6c42a4f6b4cba2a8254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitAnimator: {fileID: 5809406156201576434}
   _meleeRange: 1
   _preHitTime: 0.7
   _postHitTime: 0.5
@@ -1034,6 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d100d2053409e641917026398875da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitAnimator: {fileID: 5809406156201576434}
   _maxShootDistance: 7
   _shootingStateTime: 2
   _cooldownStateTime: 0.5
@@ -2956,8 +2975,8 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337020165909533996}
-  m_Enabled: 0
-  m_CastShadows: 1
+  m_Enabled: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -3003,7 +3022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd888eb37dd28f41b64e22ad43378d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 3898514663855011100}
+  _rotateSpeed: 10
 --- !u!1 &4906541083736107417
 GameObject:
   m_ObjectHideFlags: 0

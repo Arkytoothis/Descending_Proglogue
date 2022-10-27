@@ -124,6 +124,12 @@ namespace Descending.Tiles
             tile.SetInteractable(interactable);
         }
 
+        public void SetDamageableAtGridPosition(MapPosition mapPosition, IDamageable damageable)
+        {
+            Tile tile = _tileMap.GetGridObject(mapPosition);
+            tile.SetDamageable(damageable);
+        }
+
         public bool Linecast(MapPosition startPosition, MapPosition targetPosition)
         {
             Vector3 startWorldPosition = GetWorldPosition(startPosition);

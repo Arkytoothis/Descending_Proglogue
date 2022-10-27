@@ -8,11 +8,15 @@ namespace Descending.Gui
     {
         [SerializeField] private ActionButtonsPanel _actionButtonsPanel = null;
         [SerializeField] private TurnSystemPanel _turnSystemPanel = null;
+        [SerializeField] private PartyPanel _partyPanel = null;
+        [SerializeField] private TilePanel _tilePanel = null;
         
         public void Setup()
         {
             _actionButtonsPanel.Setup();
             _turnSystemPanel.Setup();
+            _partyPanel.Setup();
+            _tilePanel.Setup();
         }
     }
 }

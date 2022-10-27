@@ -8,5 +8,6 @@ namespace Descending.Interactables
     public interface IInteractable
     {
         public void Interact(Action onComplete);
+        public string GetName();
     }
 }

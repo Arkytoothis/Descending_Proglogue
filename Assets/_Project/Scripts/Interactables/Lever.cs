@@ -59,6 +59,11 @@ namespace Descending.Interactables
             }
         }
 
+        public string GetName()
+        {
+            return "Lever";
+        }
+
         public void Activate()
         {
             _isActive = true;

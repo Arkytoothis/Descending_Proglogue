@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Descending.Interactables
 {
-    public class DestructibleCrate : MonoBehaviour, IDamagable
+    public class Crate : MonoBehaviour, IDamageable
     {
         public static event EventHandler OnAnyInteractableDestroyed;
 
@@ -17,17 +17,18 @@ namespace Descending.Interactables
         [SerializeField] private List<DropData> _coinData;
         [SerializeField] private List<DropData> _gemData;
         
-        private MapPosition mapPosition;
+        private MapPosition _mapPosition;
         private int _health = 10;
         private int _maxHealth = 10;
         private bool _treasureDropped = false;
 
-        public MapPosition MapPosition => mapPosition;
+        public MapPosition MapPosition => _mapPosition;
         public int Health => _health;
 
         private void Start()
         {
-            mapPosition = MapManager.Instance.GetGridPosition(transform.position);
+            _mapPosition = MapManager.Instance.GetGridPosition(transform.position);
+            MapManager.Instance.SetDamageableAtGridPosition(_mapPosition, this);
             _treasureDropped = false;
         }
 
@@ -42,11 +43,17 @@ namespace Descending.Interactables
             }
         }
 
+        public string GetName()
+        {
+            return "Crate";
+        }
+
         private void Destroy()
         {
             Instantiate(_debrisEffectPrefab, transform.position, Quaternion.identity);
             Instantiate(_smokeEffectPrefab, transform.position, Quaternion.identity);
             DropTreasure();
+            MapManager.Instance.SetDamageableAtGridPosition(_mapPosition, null);
             OnAnyInteractableDestroyed?.Invoke(this, EventArgs.Empty);
             Destroy(gameObject);
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Tiles;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,16 +14,13 @@ namespace Descending.Units
     {
         public static ActionManager Instance { get; private set; }
         
-        [SerializeField] private Unit _selectedUnit = null;
         [SerializeField] private LayerMask _playerUnitMask;
 
         private bool _isBusy = false;
         private BaseAction _selectedAction = null;
         
-        public Unit SelectedUnit => _selectedUnit;
         public BaseAction SelectedAction => _selectedAction;
 
-        public event EventHandler OnSelectedUnitChanged;
         public event EventHandler OnSelectedActionChanged;
         public event EventHandler OnActionStarted;
         public event EventHandler<bool> OnBusyChanged;
@@ -57,12 +55,14 @@ namespace Descending.Units
 
         private void HandleSelectedAction()
         {
+            if (UnitManager.Instance.SelectedHero == null || _selectedAction == null) return;
+            
             if (InputManager.Instance.GetRightMouseDown())
             {
-                MapPosition mouseMapPosition = MapManager.Instance.GetGridPosition(WorldRaycaster.GetWorldPosition());
+                MapPosition mouseMapPosition = MapManager.Instance.GetGridPosition(WorldRaycaster.GetMouseWorldPosition());
                 if (_selectedAction.IsValidActionGridPosition(mouseMapPosition))
                 {
-                    if (_selectedUnit.TryPerformAction(_selectedAction))
+                    if (UnitManager.Instance.SelectedHero.TryPerformAction(_selectedAction))
                     {
                         SetBusy();
                         _selectedAction.PerformAction(mouseMapPosition, ClearBusy);
@@ -82,7 +82,7 @@ namespace Descending.Units
                 {
                     if (hit.transform.TryGetComponent<Unit>(out Unit unit))
                     {
-                        if (unit == _selectedUnit)
+                        if (unit == UnitManager.Instance.SelectedHero)
                         {
                             return false;
                         }
@@ -92,7 +92,7 @@ namespace Descending.Units
                             return false;
                         }
                         
-                        SetSelectedUnit(unit);
+                        UnitManager.Instance.SelectHero(unit as HeroUnit);
                         return true;
                     }
                 }
@@ -101,20 +101,12 @@ namespace Descending.Units
             return false;
         }
 
-        private void SetSelectedUnit(Unit unit)
-        {
-            _selectedUnit = unit;
-            SetSelectedAction(_selectedUnit.GetAction<MoveAction>());
-            
-            OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
-        }
-
         public void SetSelectedAction(BaseAction action)
         {
             _selectedAction = action;
             UpdateSelectedVisual();
             
-            OnSelectedActionChanged?.Invoke(this, EventArgs.Empty);
+            OnSelectedActionChanged?.Invoke(_selectedAction, EventArgs.Empty);
         }
         
         private void SetBusy()

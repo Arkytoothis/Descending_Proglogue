@@ -58,6 +58,11 @@ namespace Descending.Interactables
             }
         }
 
+        public string GetName()
+        {
+            return "Door";
+        }
+
         private void Open()
         {
             _isOpen = true;

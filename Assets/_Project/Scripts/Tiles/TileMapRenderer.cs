@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Units;
-using Descending;
-using Descending.Core;
 using UnityEngine;
 
 namespace Descending.Tiles
@@ -139,7 +137,7 @@ namespace Descending.Tiles
         private void UpdateGridVisuals()
         {
             HideAllGridPositions();
-            Unit selectedUnit = ActionManager.Instance.SelectedUnit;
+            Unit selectedUnit = UnitManager.Instance.SelectedHero;
             BaseAction selectedAction = ActionManager.Instance.SelectedAction;
             TileColors borderColor = TileColors.Black;
             TileColors backgroundColor = TileColors.Black;

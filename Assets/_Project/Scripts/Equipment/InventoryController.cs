@@ -57,18 +57,26 @@ namespace Descending.Equipment
                     _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon]);
                 }
 
-                _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon]);
-                _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon]);
+                if (_worldBody != null)
+                {
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon]);
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon]);
+                }
+
                 _currentWeapon = _equipment[(int) EquipmentSlots.Melee_Weapon];
             }
             else
             {
+                if (_worldBody != null)
+                {
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon]);
+                }
+                
                 if (_portraitBody != null)
                 {
                     _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon]);
                 }
 
-                _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon]);
                 _currentWeapon = _equipment[(int) EquipmentSlots.Ranged_Weapon];
             }
         }
@@ -121,7 +129,10 @@ namespace Descending.Equipment
                     _portraitBody.EquipItem(item);
                 }
 
-                _worldBody.EquipItem(item);
+                if (_worldBody != null)
+                {
+                    _worldBody.EquipItem(item);
+                }
             }
             else
             {
@@ -131,7 +142,10 @@ namespace Descending.Equipment
                     _portraitBody.EquipItem(item);
                 }
 
-                _worldBody.EquipItem(item);
+                if (_worldBody != null)
+                {
+                    _worldBody.EquipItem(item);
+                }
             }
         }
 

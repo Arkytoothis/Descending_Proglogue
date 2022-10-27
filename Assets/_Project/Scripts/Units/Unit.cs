@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using Descending.Abilities;
 using Descending.Attributes;
 using Descending.Combat;
-using Descending.Core;
 using Descending.Equipment;
 using Descending.Gui;
 using Descending.Tiles;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Units
 {
-    public class Unit : MonoBehaviour
+    public abstract class Unit : MonoBehaviour
     {
+        [SerializeField] protected GameObject _selectionIndicator = null;
         [SerializeField] protected Transform _hitTransform = null;
         [SerializeField] protected Transform _cameraMount = null;
         [SerializeField] protected Transform _cameraTarget = null;
         [SerializeField] protected Transform _modelParent = null;
         [SerializeField] protected UnitAnimator _unitAnimator = null;
-        [SerializeField] protected UnitData _unitData = null;
         [SerializeField] protected AttributesController _attributes = null;
         [SerializeField] protected SkillsController _skills = null;
         [SerializeField] protected InventoryController _inventory = null;
@@ -27,6 +27,8 @@ namespace Descending.Units
         [SerializeField] protected RagdollSpawner _ragdollSpawner = null;
         
         [SerializeField] protected UnitWorldPanel _worldPanel = null;
+
+        [SerializeField] protected BoolEvent onSyncParty = null;
         
         protected bool _isEnemy = false;
         protected HealthSystem _healthSystem;
@@ -40,8 +42,6 @@ namespace Descending.Units
         public Transform HitTransform => _hitTransform;
         public Transform CameraMount => _cameraMount;
         public Transform CameraTarget => _cameraTarget;
-        
-        public UnitData UnitData => _unitData;
         public AttributesController Attributes => _attributes;
         public SkillsController Skills => _skills;
         public InventoryController Inventory => _inventory;
@@ -51,6 +51,9 @@ namespace Descending.Units
 
         public bool IsActive => _isActive;
 
+        public abstract string GetFullName();
+        public abstract string GetShortName();
+        
         private void Awake()
         {
             _healthSystem = GetComponent<HealthSystem>();
@@ -59,14 +62,24 @@ namespace Descending.Units
 
         private void Start()
         {
-            currentMapPosition = MapManager.Instance.GetGridPosition(transform.position);
-            MapManager.Instance.AddUnitAtGridPosition(currentMapPosition, this);
-            TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-            UnitManager.Instance.UnitSpawned(this);
+            if (MapManager.Instance != null)
+            {
+                currentMapPosition = MapManager.Instance.GetGridPosition(transform.position);
+                MapManager.Instance.AddUnitAtGridPosition(currentMapPosition, this);
+            }
+
+            if (TurnManager.Instance != null)
+            {
+                TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+            }
+
+            Deselect();
         }
 
         private void Update()
         {
+            if (MapManager.Instance == null) return;
+            
             MapPosition newMapPosition = MapManager.Instance.GetGridPosition(transform.position);
 
             if (newMapPosition != currentMapPosition)
@@ -75,27 +88,6 @@ namespace Descending.Units
                 currentMapPosition = newMapPosition;
                 MapManager.Instance.UnitMovedGridPosition(this, oldPosition, newMapPosition);
             }
-        }
-
-        public void SetupHero(Genders gender, RaceDefinition race, ProfessionDefinition profession, int listIndex)
-        {
-            _isEnemy = false;
-            _modelParent.ClearTransform();
-            GameObject clone = Instantiate(race.PrefabMale, _modelParent);
-            BodyRenderer worldRenderer = clone.GetComponent<BodyRenderer>();
-            worldRenderer.SetupBody(gender, race, profession);
-            _unitAnimator = GetComponent<UnitAnimator>();
-            _unitAnimator.Setup(clone.GetComponent<Animator>());
-            
-            ((HeroData)_unitData).Setup(gender, race, profession, worldRenderer, listIndex);
-            _attributes.Setup(race, profession);
-            _skills.Setup(_attributes, race, profession);
-            _inventory.Setup(null, worldRenderer, gender, race, profession);
-            _abilities.Setup(race, profession, _skills);
-            
-            _healthSystem.Setup(100);
-                
-            _worldPanel.Setup(this);
         }
 
         public int GetActionsCurrent()
@@ -131,6 +123,7 @@ namespace Descending.Units
         {
             _attributes.ModifyVital("Actions", actionPointCost);
             _worldPanel.UpdateActionPoints(this);
+            onSyncParty.Invoke(true);
         }
 
         private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
@@ -151,6 +144,8 @@ namespace Descending.Units
             {
                 Dead();
             }
+            
+            onSyncParty.Invoke(true);
         }
 
         private void Dead()
@@ -179,9 +174,14 @@ namespace Descending.Units
             return null;
         }
 
-        public string GetName()
+        public void Select()
         {
-            return gameObject.name;
+            _selectionIndicator.SetActive(true);
+        }
+
+        public void Deselect()
+        {
+            _selectionIndicator.SetActive(false);
         }
     }
 }

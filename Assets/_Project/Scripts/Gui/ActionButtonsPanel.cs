@@ -19,7 +19,7 @@ namespace Descending
         
         public void Setup()
         {
-            ActionManager.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
+            //ActionManager.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
             ActionManager.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
             ActionManager.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
             TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
@@ -35,7 +35,7 @@ namespace Descending
             _actionButtonsParent.ClearTransform();
             _actionButtons.Clear();
             
-            Unit selectedUnit = ActionManager.Instance.SelectedUnit;
+            Unit selectedUnit = UnitManager.Instance.SelectedHero;
             foreach (BaseAction action in selectedUnit.Actions)
             {
                 GameObject clone = Instantiate(_actionButtonPrefab, _actionButtonsParent);
@@ -45,7 +45,7 @@ namespace Descending
             }
         }
 
-        private void UnitActionSystem_OnSelectedUnitChanged(object sender, EventArgs e)
+        public void OnSelectHero(GameObject heroObject)
         {
             UpdateActionPoints();
             CreateActionButtons();
@@ -72,7 +72,7 @@ namespace Descending
 
         private void UpdateActionPoints()
         {
-            Unit unit = ActionManager.Instance.SelectedUnit;
+            Unit unit = UnitManager.Instance.SelectedHero;
             if (unit == null) return;
             
             _actionPointsLabel.SetText("Action Points: " + unit.GetActionsCurrent());

@@ -11,9 +11,7 @@ namespace Descending.Units
     {
         private enum States { Pre_Hit, Post_Hit }
 
-        public event EventHandler OnMeleeStarted;
-        public event EventHandler OnMeleeCompleted;
-        
+        [SerializeField] private UnitAnimator _unitAnimator = null;
         [SerializeField] private int _meleeRange = 1;
         [SerializeField] private float _preHitTime = 0.7f;
         [SerializeField] private float _postHitTime = 0.5f;
@@ -59,7 +57,7 @@ namespace Descending.Units
                     break;
                 case States.Post_Hit:
                     
-                    OnMeleeCompleted?.Invoke(this, EventArgs.Empty);
+                    _unitAnimator.MeleeCompleted();
                     ActionComplete();
                     break;
             }
@@ -77,7 +75,7 @@ namespace Descending.Units
             _state = States.Pre_Hit;
             _stateTimer = _preHitTime;
             
-            OnMeleeStarted?.Invoke(this, EventArgs.Empty);
+            _unitAnimator.MeleeStarted();
             ActionStart(onMeleeComplete);
         }
 

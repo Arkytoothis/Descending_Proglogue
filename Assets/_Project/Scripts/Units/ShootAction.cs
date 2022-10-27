@@ -16,15 +16,13 @@ namespace Descending.Units
             Cooldown
         };
 
-        public static event EventHandler<OnShootEventArgs> OnAnyShoot;
-        public event EventHandler<OnShootEventArgs> OnShoot;
-
         public class OnShootEventArgs : EventArgs
         {
             public Unit TargetUnit;
             public Unit ShootingUnit;
         }
-        
+
+        [SerializeField] private UnitAnimator _unitAnimator = null;
         [SerializeField] private int _maxShootDistance = 4;
         [SerializeField] private float _shootingStateTime = 0.1f;
         [SerializeField] private float _cooldownStateTime = 0.5f;
@@ -143,13 +141,7 @@ namespace Descending.Units
 
         private void Shoot()
         {
-            OnAnyShoot?.Invoke(this, new OnShootEventArgs()
-            {
-                TargetUnit = _targetUnit,
-                ShootingUnit = _unit
-            });
-            
-            OnShoot?.Invoke(this, new OnShootEventArgs()
+            _unitAnimator.Shoot(new OnShootEventArgs()
             {
                 TargetUnit = _targetUnit,
                 ShootingUnit = _unit

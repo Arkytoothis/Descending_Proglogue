@@ -17,8 +17,10 @@ namespace Descending.Tiles
         private MapPosition mapPosition;
         private List<Unit> _units = null;
         private IInteractable _interactable = null;
+        private IDamageable _damageable = null;
 
         public IInteractable Interactable => _interactable;
+        public IDamageable Damageable => _damageable;
         public MapPosition MapPosition => mapPosition;
 
         public Tile(TileMap<Tile> tileMap, MapPosition mapPosition)
@@ -28,6 +30,8 @@ namespace Descending.Tiles
             _units = new List<Unit>();
             _coins = new List<CoinDrop>();
             _gems = new List<GemDrop>();
+            _interactable = null;
+            _damageable = null;
         }
 
         public override string ToString()
@@ -59,7 +63,6 @@ namespace Descending.Tiles
             _coins.Add(coinDrop);
         }
 
-
         public void AddGemDrop(GemDrop gemDrop)
         {
             _gems.Add(gemDrop);
@@ -90,6 +93,11 @@ namespace Descending.Tiles
         public void SetInteractable(IInteractable interactable)
         {
             _interactable = interactable;
+        }
+
+        public void SetDamageable(IDamageable damageable)
+        {
+            _damageable = damageable;
         }
 
         public int GetCoinValue()

@@ -10,12 +10,12 @@ namespace Descending.Tiles
     {
         private void Start()
         {
-            DestructibleCrate.OnAnyInteractableDestroyed += DestructibleCrate_OnAnyInteractableDestroyed;
+            Crate.OnAnyInteractableDestroyed += DestructibleCrate_OnAnyInteractableDestroyed;
         }
 
         private void DestructibleCrate_OnAnyInteractableDestroyed(object sender, EventArgs e)
         {
-            DestructibleCrate crate = sender as DestructibleCrate;
+            Crate crate = sender as Crate;
             PathfindingManager.Instance.SetIsGridPositionWalkable(crate.MapPosition, true);
         }
     }

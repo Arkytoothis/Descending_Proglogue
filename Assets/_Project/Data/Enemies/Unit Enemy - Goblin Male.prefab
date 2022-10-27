@@ -79,6 +79,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3290401344529691309, guid: cf40fcffc7ef1ee4ba2c69233aad7970,
         type: 3}
+    - target: {fileID: 2545336594047484761, guid: 9973de32681c5ed45aeaf86622f1c2c1,
+        type: 3}
+      propertyPath: _health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545336594047484761, guid: 9973de32681c5ed45aeaf86622f1c2c1,
+        type: 3}
+      propertyPath: _healthMax
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3898514663855011101, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
       propertyPath: m_RootOrder

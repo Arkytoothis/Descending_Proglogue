@@ -612,18 +612,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03e0f341a435f54292608b5b634a2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectionIndicator: {fileID: 4337020165909533996}
   _hitTransform: {fileID: 0}
   _cameraMount: {fileID: 0}
   _cameraTarget: {fileID: 0}
   _modelParent: {fileID: 0}
   _unitAnimator: {fileID: 0}
-  _unitData: {fileID: 0}
   _attributes: {fileID: 0}
   _skills: {fileID: 0}
   _inventory: {fileID: 0}
   _abilities: {fileID: 0}
   _ragdollSpawner: {fileID: 2879133665782977740}
   _worldPanel: {fileID: 8075993028448169366}
+  onSyncParty:
+    m_PersistentCalls:
+      m_Calls: []
+  _unitData: {fileID: 0}
   _definition: {fileID: 0}
 --- !u!65 &5427972190694817063
 BoxCollider:
@@ -650,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitAnimator: {fileID: 2001456721065693323}
   _moveSpeed: 4
   _stoppingDistance: 0.1
   _rotationSpeed: 10
@@ -666,6 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dd2a2720fff6c42a4f6b4cba2a8254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitAnimator: {fileID: 2001456721065693323}
   _meleeRange: 1
   _preHitTime: 0.1
   _postHitTime: 0.5
@@ -682,6 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d100d2053409e641917026398875da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitAnimator: {fileID: 2001456721065693323}
   _maxShootDistance: 7
   _shootingStateTime: 2
   _cooldownStateTime: 0.5
@@ -831,7 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd888eb37dd28f41b64e22ad43378d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 0}
+  _rotateSpeed: 10
 --- !u!1 &4383006483587818227
 GameObject:
   m_ObjectHideFlags: 0

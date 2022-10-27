@@ -31,14 +31,12 @@ namespace Descending.Scene_Test
             _database.Setup();
             InputManager.Instance.Setup();
             TurnManager.Instance.Setup();
-            
             MapManager.Instance.Setup();
             _dungeon.Generate();
             UnitManager.Instance.Setup();
             _enemyAI.Setup();
             
             SpawnGui();
-            
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
         }
 

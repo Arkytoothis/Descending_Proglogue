@@ -8,9 +8,7 @@ namespace Descending.Units
 {
     public class MoveAction : BaseAction
     {
-        public event EventHandler OnStartMoving;
-        public event EventHandler OnStopMoving;
-        
+        [SerializeField] private UnitAnimator _unitAnimator = null;
         [SerializeField] private float _moveSpeed = 4f;
         [SerializeField] private float _stoppingDistance = 0.1f;
         [SerializeField] private float _rotationSpeed = 10f;
@@ -44,7 +42,7 @@ namespace Descending.Units
             
                 if (_currentPositionIndex >= _pathList.Count)
                 {
-                    OnStopMoving?.Invoke(this, EventArgs.Empty);
+                    _unitAnimator.StopMoving();
                     ActionComplete();
                 }
             }
@@ -63,7 +61,7 @@ namespace Descending.Units
                 _pathList.Add(MapManager.Instance.GetWorldPosition(mapPosition));
             }
             
-            OnStartMoving?.Invoke(this, EventArgs.Empty);
+            _unitAnimator.StartMoving();
             ActionStart(onMoveComplete);
         }
 

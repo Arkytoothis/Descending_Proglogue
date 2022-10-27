@@ -27,6 +27,8 @@ namespace Descending.Units
                 ApplyForce(_ragdollRootBone, throwableProjectile.Force, throwableProjectile.transform.position, 1f);
                 return;
             }
+
+            ApplyForce(_ragdollRootBone, 300f, source.transform.position, 1f);
         }
 
         private void MatchAllChildTransforms(Transform root, Transform clone)

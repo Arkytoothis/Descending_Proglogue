@@ -63,7 +63,6 @@ namespace Descending.Units
 
         public void RandomizeDetails(Genders gender, RaceDefinition race, ProfessionDefinition profession)
         {
-            
             _headIndex = Random.Range(0, _partsList[(int)BodyParts.Head].Count);
             _hairIndex = Random.Range(0, _partsList[(int)BodyParts.Hair].Count);
             _eyebrowIndex = Random.Range(0, _partsList[(int)BodyParts.Eyebrows].Count);
@@ -76,7 +75,6 @@ namespace Descending.Units
         
         public void SetDetails(BodyRenderer renderer)
         {
-            
             _headIndex = renderer.HeadIndex;
             _hairIndex = renderer.HairIndex;
             _eyebrowIndex = renderer.EyebrowIndex;
@@ -151,12 +149,12 @@ namespace Descending.Units
             }
         }
         
-        public void SetupBody(BodyRenderer renderer, RaceDefinition race, ProfessionDefinition profession)
+        public void SetupBody(BodyRenderer bodyRenderer, RaceDefinition race, ProfessionDefinition profession)
         {
             SetupParts();
             HideAll();
-            _gender = renderer.Gender;
-            SetDetails(renderer);
+            _gender = bodyRenderer.Gender;
+            SetDetails(bodyRenderer);
             
             SetPartEnabled(BodyParts.Head, _headIndex, true);
             

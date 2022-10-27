@@ -22,7 +22,7 @@ namespace Descending.Core
         public RenderTexture RtFar => _rtFar;
         public GameObject Model => _model;
 
-        public void Setup(Unit hero)
+        public void Setup(HeroUnit hero)
         {
             _rtClose = new RenderTexture(256, 256, 32);
             _camClose.targetTexture = _rtClose;
@@ -30,26 +30,26 @@ namespace Descending.Core
             _camFar.targetTexture = _rtFar;
             SetModel(hero);
 
-            //hero.PortraitRenderer.MountCloseCamera(_camClose);
-            //hero.PortraitRenderer.MountFarCamera(_camFar);
+            hero.PortraitRenderer.MountCloseCamera(_camClose);
+            hero.PortraitRenderer.MountFarCamera(_camFar);
             StartCoroutine(RefreshWithDelay());
             StartCoroutine(RefreshWithDelayFar());
         }
 
-        public void SetModel(Unit hero)
+        public void SetModel(HeroUnit hero)
         {
-            //if (hero != null && hero.PortraitModel != null)
-            //{
-                // _model = hero.PortraitModel;
-                //
-                // hero.SetPortrait(this);
-                // hero.PortraitModel.transform.SetParent(_modelMount, false);
-                // hero.PortraitRenderer.MountCloseCamera(_camClose);
-                // hero.PortraitRenderer.MountFarCamera(_camFar);
+            if (hero != null && hero.PortraitModel != null)
+            {
+                 _model = hero.PortraitModel;
+                
+                 hero.SetPortrait(this);
+                 hero.PortraitModel.transform.SetParent(_modelMount, false);
+                 hero.PortraitRenderer.MountCloseCamera(_camClose);
+                 hero.PortraitRenderer.MountFarCamera(_camFar);
                 
                 StartCoroutine(RefreshWithDelay());
                 StartCoroutine(RefreshWithDelayFar());
-            //}
+            }
         }
 
         public void DisableCloseCamera()

@@ -7,10 +7,12 @@ namespace Descending.Units
 {
     public class EnemyUnit : Unit
     {
+        [SerializeField] protected UnitData _unitData = null;
         [SerializeField] private EnemyDefinition _definition = null;
 
         private bool _treasureDropped = false;
 
+        public UnitData UnitData => _unitData;
 
         public void SetupEnemy(EnemyDefinition definition)
         {
@@ -19,6 +21,8 @@ namespace Descending.Units
             _treasureDropped = false;
             _healthSystem.Setup(100);
             _worldPanel.Setup(this);
+
+            UnitManager.Instance.UnitSpawned(this);
             //Deactivate();
         }
         
@@ -69,6 +73,16 @@ namespace Descending.Units
         {
             _modelParent.gameObject.SetActive(false);
             _isActive = false;
+        }
+
+        public override string GetFullName()
+        {
+            return _definition.Name;
+        }
+
+        public override string GetShortName()
+        {
+            return _definition.Name;
         }
     }
 }

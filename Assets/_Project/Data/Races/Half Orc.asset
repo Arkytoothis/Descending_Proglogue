@@ -100,8 +100,8 @@ MonoBehaviour:
       _minimumValue: 0
       _maximumValue: 0
     - _vital: {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
-      _minimumValue: 9
-      _maximumValue: 9
+      _minimumValue: 3
+      _maximumValue: 3
   _startingStatistics:
     keyData:
     - Aim

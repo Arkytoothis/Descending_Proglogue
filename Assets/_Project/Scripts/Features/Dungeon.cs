@@ -2,17 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Descending.Features
 {
-    public class Dungeon : MonoBehaviour
+    public class Dungeon : WorldFeature
     {
-        private void OnTriggerEnter(Collider other)
+        public override void Interact()
         {
-            if (other.CompareTag("Player"))
-            {
-                Debug.Log("Dungeon Triggered");
-            }
+            Debug.Log("Interacting with Dungeon");
+            SceneManager.LoadScene(1);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Tiles;
-using Pathfinding;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Units
@@ -20,12 +20,17 @@ namespace Descending.Units
         [SerializeField] private List<Unit> _playerUnits = null;
         [SerializeField] private List<Unit> _enemyUnits = null;
         [SerializeField] private List<EnemySpawner> _enemySpawners = null;
+        
+        [SerializeField] private BoolEvent onSyncParty = null;
+        [SerializeField] private GameObjectEvent onSelectHero = null;
 
         private PlayerSpawner _playerSpawner = null;
+        private HeroUnit _selectedHero = null;
         
         public List<Unit> Units => _units;
         public List<Unit> PlayerUnits => _playerUnits;
         public List<Unit> EnemyUnits => _enemyUnits;
+        public HeroUnit SelectedHero => _selectedHero;
 
         private void Awake()
         {
@@ -59,6 +64,8 @@ namespace Descending.Units
             }
             
             _units.Add(unit);
+            
+            onSyncParty.Invoke(true);
         }
 
         public void UnitDead(Unit unit)
@@ -75,6 +82,8 @@ namespace Descending.Units
             }
             
             _units.Remove(unit);
+            
+            onSyncParty.Invoke(true);
         }
 
         public void RegisterPlayerSpawner(PlayerSpawner spawner)
@@ -90,6 +99,8 @@ namespace Descending.Units
             SpawnHero(new MapPosition(spawnerPosition.X - 3, spawnerPosition.Y), 0);
             SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 1);
             SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 2);
+            
+            PortraitRoom.Instance.Setup();
         }
         
         private void SpawnHero(MapPosition mapPosition, int listIndex)
@@ -97,9 +108,12 @@ namespace Descending.Units
             //Debug.Log("Spawning Hero at " + mapPosition.ToString());
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);
             clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
-            Unit unit = clone.GetComponent<Unit>();
-            unit.SetupHero(Genders.Male, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetRandomProfession(), listIndex);
-            clone.name = "Hero: " + unit.UnitData.GetName();
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.SetupHero(Genders.Male, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetRandomProfession(), listIndex);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            UnitSpawned(heroUnit);
         }
 
         public void RegisterEnemySpawner(GameObject spawnerObject)
@@ -115,6 +129,31 @@ namespace Descending.Units
             // {
             //     enemySpawner.Spawn(_enemiesParent);
             // }
+        }
+
+        public HeroUnit GetHero(int index)
+        {
+            return _playerUnits[index] as HeroUnit;
+        }
+
+        public void SelectHero(HeroUnit hero)
+        {
+            _selectedHero = hero;
+            
+            for (int i = 0; i < _playerUnits.Count; i++)
+            {
+                if (hero.HeroData.ListIndex == i)
+                {
+                    _playerUnits[i].Select();
+                }
+                else
+                {
+                    _playerUnits[i].Deselect();
+                }
+            }
+            
+            ActionManager.Instance.SetSelectedAction(UnitManager.Instance.SelectedHero.GetAction<MoveAction>());
+            onSelectHero.Invoke(_selectedHero.gameObject);
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Tiles;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Core
@@ -12,6 +14,11 @@ namespace Descending.Core
         [SerializeField] private GameObject _cursor;
         [SerializeField] private LayerMask _groundMask;
 
+        [SerializeField] private MapPositionEvent onDisplayCurrentTile = null;
+
+        private MapPosition _lastMapPosition;
+        private MapPosition _currentMapPosition;
+        
         private void Awake()
         {
             instance = this;
@@ -19,10 +26,16 @@ namespace Descending.Core
 
         private void Update()
         {
-            _cursor.transform.position = GetWorldPosition();
+            if (MapManager.Instance.GetGridPosition(GetMouseWorldPosition()) != _lastMapPosition)
+            {
+                _currentMapPosition = MapManager.Instance.GetGridPosition(GetMouseWorldPosition());
+                onDisplayCurrentTile.Invoke(_currentMapPosition);
+                _cursor.transform.position = MapManager.Instance.GetWorldPosition(_currentMapPosition);
+                _lastMapPosition = _currentMapPosition;
+            }
         }
 
-        public static Vector3 GetWorldPosition()
+        public static Vector3 GetMouseWorldPosition()
         {
             Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMousePosition());
             Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, instance._groundMask);

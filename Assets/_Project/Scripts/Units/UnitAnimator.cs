@@ -25,43 +25,39 @@ namespace Descending.Units
             
             if (TryGetComponent<MoveAction>(out MoveAction moveAction))
             {
-                moveAction.OnStartMoving += MoveAction_OnStartMoving;
-                moveAction.OnStopMoving += MoveAction_OnStopMoving;
+                
             }
             
             if (TryGetComponent<ShootAction>(out ShootAction shootAction))
             {
-                shootAction.OnShoot += ShootAction_OnShoot;
             }
             
             if (TryGetComponent<MeleeAction>(out MeleeAction meleeAction))
             {
-                meleeAction.OnMeleeStarted += meleeAction_OnMeleeStarted;
-                meleeAction.OnMeleeCompleted += meleeAction_OnMeleeCompleted;
             }
         }
         
-        private void meleeAction_OnMeleeStarted(object sender, EventArgs e)
+        public void MeleeStarted()
         {
             _animator.SetTrigger("Melee");
         }
 
-        private void meleeAction_OnMeleeCompleted(object sender, EventArgs e)
+        public void MeleeCompleted()
         {
             
         }
 
-        private void MoveAction_OnStartMoving(object sender, EventArgs e)
+        public void StartMoving()
         {
             _animator.SetBool("isWalking", true);
         }
 
-        private void MoveAction_OnStopMoving(object sender, EventArgs e)
+        public void StopMoving()
         {
             _animator.SetBool("isWalking", false);
         }
 
-        private void ShootAction_OnShoot(object sender, ShootAction.OnShootEventArgs e)
+        public void Shoot(ShootAction.OnShootEventArgs e)
         {
             _animator.SetTrigger("Shoot");
 

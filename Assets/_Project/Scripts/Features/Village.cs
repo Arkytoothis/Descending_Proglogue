@@ -5,14 +5,11 @@ using UnityEngine;
 
 namespace Descending.Features
 {
-    public class Village : MonoBehaviour
+    public class Village : WorldFeature
     {
-        private void OnTriggerEnter(Collider other)
+        public override void Interact()
         {
-            if (other.CompareTag("Player"))
-            {
-                Debug.Log("Village Triggered");
-            }
+            Debug.Log("Interacting with Village");
         }
     }
 }

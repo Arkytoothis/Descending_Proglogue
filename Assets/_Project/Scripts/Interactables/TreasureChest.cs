@@ -60,6 +60,11 @@ namespace Descending.Interactables
             }
         }
 
+        public string GetName()
+        {
+            return "Treasure Chest";
+        }
+
         public void Activate()
         {
             _isActive = true;

@@ -27,6 +27,8 @@ namespace Descending.Scene_Test
             
             _cameraController.transform.position = UnitManager.Instance.PlayerUnits[0].transform.position;
             PathfindingManager.Instance.Scan();
+            
+            UnitManager.Instance.SelectHero(UnitManager.Instance.GetHero(0));
         }
     }
 }
