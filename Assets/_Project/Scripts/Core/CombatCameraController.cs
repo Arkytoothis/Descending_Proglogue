@@ -17,6 +17,7 @@ namespace Descending.Core
 
         private CinemachineTransposer _transposer = null;
         private Vector3 _targetFollowOffset = Vector3.zero;
+        private bool _controlsActive = true;
         
         private void Awake()
         {
@@ -26,6 +27,8 @@ namespace Descending.Core
 
         private void Update()
         {
+            if (_controlsActive == false) return;
+            
             Move();
             Rotate();
             Zoom();
@@ -50,6 +53,11 @@ namespace Descending.Core
             _targetFollowOffset.y += InputManager.Instance.GetCameraZoom();
             _targetFollowOffset.y = Mathf.Clamp(_targetFollowOffset.y, _minFollowYOffset, _maxFollowYOffset);
             _transposer.m_FollowOffset = Vector3.Lerp(_transposer.m_FollowOffset, _targetFollowOffset, Time.deltaTime * _zoomSpeed);
+        }
+
+        public void OnSetControlsActive(bool controlsActive)
+        {
+            _controlsActive = controlsActive;
         }
     }
 }

@@ -958,6 +958,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _heroData: {fileID: 1513240946158673670}
+  _worldModel: {fileID: 0}
+  _portraitModel: {fileID: 0}
 --- !u!114 &5809406156201576434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,7 +1023,7 @@ MonoBehaviour:
   _unitAnimator: {fileID: 5809406156201576434}
   _moveSpeed: 4
   _stoppingDistance: 0.1
-  _rotationSpeed: 10
+  _rotationSpeed: 20
   _maxMoveDistance: 3
 --- !u!114 &-9142283380165429523
 MonoBehaviour:

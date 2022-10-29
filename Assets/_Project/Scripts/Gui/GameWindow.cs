@@ -9,15 +9,15 @@ namespace Descending.Gui
     
     public abstract class GameWindow : MonoBehaviour
     {
-        [SerializeField] protected GameObject _container = null;
         [SerializeField, SoundGroup] protected string _openSound = "";
         [SerializeField, SoundGroup] protected string _closeSound = "";
-        
-        [SerializeField] protected bool _isOpen = false;
+
+        protected WindowManager _manager = null;
+        protected bool _isOpen = false;
 
         public bool IsOpen => _isOpen;
 
-        public abstract void Setup();
+        public abstract void Setup(WindowManager manager);
         public abstract void Open();
         public abstract void Close();
     }

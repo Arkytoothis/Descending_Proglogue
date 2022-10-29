@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Gui
@@ -10,6 +11,8 @@ namespace Descending.Gui
     {
         [SerializeField] private List<GameObject> _gameWindowPrefabs = null;
         [SerializeField] private Transform _gameWindowsParent = null;
+
+        [SerializeField] private BoolEvent onSetCameraControlsActive = null;
         
         private List<GameWindow> _windows = null;
 
@@ -24,7 +27,7 @@ namespace Descending.Gui
                 clone.name = _gameWindowPrefabs[i].name;
 
                 GameWindow window = clone.GetComponent<GameWindow>();
-                window.Setup();
+                window.Setup(this);
                 
                 _windows.Add(window);
             }
@@ -45,12 +48,25 @@ namespace Descending.Gui
                     OpenWindow((int)GameWindows.Menu);
                 }
             }
+            
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                if (IsAnyWindowOpen())
+                {
+                    CLoseAll();
+                }
+                else
+                {
+                    OpenWindow((int)GameWindows.Party);
+                }
+            }
         }
 
         public void OpenWindow(int windowIndex)
         {
             CLoseAll();
             _windows[windowIndex].Open();
+            onSetCameraControlsActive.Invoke(false);
         }
 
         public void CloseWindow(int windowIndex)
@@ -64,6 +80,8 @@ namespace Descending.Gui
             {
                 CloseWindow(i);
             }
+            
+            onSetCameraControlsActive.Invoke(true);
         }
         
         public bool IsWindowOpen(int windowIndex)

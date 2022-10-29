@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Descending.Core
 {
@@ -26,6 +27,8 @@ namespace Descending.Core
 
         private void Update()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             if (MapManager.Instance.GetGridPosition(GetMouseWorldPosition()) != _lastMapPosition)
             {
                 _currentMapPosition = MapManager.Instance.GetGridPosition(GetMouseWorldPosition());
