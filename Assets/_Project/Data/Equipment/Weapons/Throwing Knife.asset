@@ -20,7 +20,6 @@ MonoBehaviour:
     type: 3}
   _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
     type: 3}
-  _projectile: {fileID: 0}
   _category: 4
   _itemType: 12
   _nameFormat: 0
@@ -42,14 +41,16 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 1
-    _range: 50
-    _delay: 0.75
+    _range: 3
     _knockbackStrength: 0
+    _projectileDelay: 0.3
     _damageType: {fileID: 11400000, guid: e81cc1106fdbbb14ead08b0bbfa4f628, type: 2}
     _minDamage: 1
     _maxDamage: 6
-    _projectile: {fileID: 11400000, guid: 4b486ed7f2b51084b8380b33e8c29dc5, type: 2}
-    _animatorOverride: {fileID: 0}
+    _projectile: {fileID: 11400000, guid: 80f3b11859a95cb49bb493658815acd5, type: 2}
+    _attackEffectPrefab: {fileID: 0}
+    _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
+      type: 2}
     HitSounds: []
     MissSounds:
     - sword_swing_1
@@ -71,6 +72,13 @@ MonoBehaviour:
     _hasData: 0
     _maxUses: 0
     _cooldown: 0
+    _effects:
+      rid: -2
   _ingredientData:
     _hasData: 0
     _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

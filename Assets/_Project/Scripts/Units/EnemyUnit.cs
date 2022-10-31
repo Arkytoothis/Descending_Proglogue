@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
+using Descending.Equipment;
+using Descending.Tiles;
 using Descending.Treasure;
 using UnityEngine;
 
@@ -9,9 +12,13 @@ namespace Descending.Units
     {
         [SerializeField] protected UnitData _unitData = null;
         [SerializeField] private EnemyDefinition _definition = null;
+        [SerializeField] private Transform _rightHandMount = null;
+        [SerializeField] private Transform _leftHandMount = null;
 
         private bool _treasureDropped = false;
-
+        private Item _meleeWeapon = null;
+        private Item _rangedWeapon = null;
+        
         public UnitData UnitData => _unitData;
 
         public void SetupEnemy(EnemyDefinition definition)
@@ -19,11 +26,19 @@ namespace Descending.Units
             _isEnemy = true;
             _definition = definition;
             _treasureDropped = false;
-            _healthSystem.Setup(100);
+            
+            _attributes.Setup(_definition);
+            _meleeWeapon = ItemGenerator.GenerateItem(_definition.MeleeWeapon);
+            EquipWeapon(_meleeWeapon);
+            _rangedWeapon = ItemGenerator.GenerateItem(_definition.RangedWeapon);
+            EquipWeapon(_rangedWeapon);
+            
+            _healthSystem.Setup(_attributes);
             _worldPanel.Setup(this);
 
             UnitManager.Instance.UnitSpawned(this);
-            //Deactivate();
+            //Activate();
+            Deactivate();
         }
         
         public void DropTreasure()
@@ -65,7 +80,7 @@ namespace Descending.Units
 
         public void Activate()
         {
-            _modelParent.gameObject.SetActive(false);
+            _modelParent.gameObject.SetActive(true);
             _isActive = true;
         }
         
@@ -83,6 +98,56 @@ namespace Descending.Units
         public override string GetShortName()
         {
             return _definition.Name;
+        }
+
+        public override Item GetMeleeWeapon()
+        {
+            return _meleeWeapon;
+        }
+
+        public override Item GetRangedWeapon()
+        {
+            return _rangedWeapon;
+        }
+        
+        private void EquipWeapon(Item item)
+        {
+            if (item == null || item.Key == "" || item.GetWeaponData() == null) return;
+
+            if (item.ItemDefinition.Hands == Hands.Right)
+            {
+                _rightHandMount.ClearTransform();
+                GameObject clone = item.SpawnItemModel(_rightHandMount, 0);
+                //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
+                
+            }
+            else if (item.ItemDefinition.Hands == Hands.Left)
+            {
+                _leftHandMount.ClearTransform();
+                GameObject clone = item.SpawnItemModel(_leftHandMount, 0);
+                //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
+            }
+        }
+        
+        public override void Damage(GameObject attacker, int damage)
+        {
+            if (_isAlive == false) return;
+            
+            _healthSystem.TakeDamage(attacker, damage);
+
+            if (GetHealth() <= 0)
+            {
+                Dead();
+            }
+        }
+
+        protected override void Dead()
+        {
+            _isAlive = false;
+            MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
+            UnitManager.Instance.UnitDead(this);
+            _ragdollSpawner.Activate(_healthSystem);
+            Destroy(gameObject);
         }
     }
 }

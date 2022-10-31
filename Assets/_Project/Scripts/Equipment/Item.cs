@@ -512,5 +512,27 @@ namespace Descending.Equipment
             t.localScale = Vector3.one;
             t.SetParent(parent);
         }
+
+        public int GetMinimumDamage()
+        {
+            int damage = GetWeaponData().MinDamage;
+            if (GetWeaponData().Projectile != null)
+            {
+                damage += GetWeaponData().Projectile.MinDamage;
+            }
+
+            return damage;
+        }
+
+        public int GetMaximumDamage()
+        {
+            int damage = GetWeaponData().MaxDamage;
+            if (GetWeaponData().Projectile != null)
+            {
+                damage += GetWeaponData().Projectile.MaxDamage;
+            }
+
+            return damage;
+        }
     }
 }

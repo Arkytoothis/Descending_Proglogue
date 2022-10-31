@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DarkTonic.MasterAudio;
 using Descending.Attributes;
 using Descending.Core;
+using Descending.Equipment;
 using Descending.Treasure;
 using UnityEngine;
 
@@ -24,29 +25,32 @@ namespace Descending.Units
         public StartingStatisticDictionary StartingStatistic = null;
         public StartingSkillDictionary StartingSkills = null;
         public List<Resistance> Resistances = null;
-        //public List<EnemyDropData> ItemDrops = null;
+
+        public ItemShort MeleeWeapon;
+        public ItemShort RangedWeapon;
+        
         public List<DropData> CoinData;
         public List<DropData> GemData;
+        
+        // [SoundGroup] public List<string> AttackSounds;
+        // [SoundGroup] public List<string> HitSounds;
+        // [SoundGroup] public List<string> WoundSounds;
 
-        [SoundGroup] public List<string> AttackSounds;
-        [SoundGroup] public List<string> HitSounds;
-        [SoundGroup] public List<string> WoundSounds;
-        
         //public List<ItemShort> Equipment = null;
-        
-        public string GetAttackSound()
-        {
-            return AttackSounds[Random.Range(0, AttackSounds.Count)];
-        }
-        
-        public string GetHitSound()
-        {
-            return HitSounds[Random.Range(0, HitSounds.Count)];
-        }
-        
-        public string GetWoundSound()
-        {
-            return WoundSounds[Random.Range(0, WoundSounds.Count)];
-        }
+
+        // public string GetAttackSound()
+        // {
+        //     return AttackSounds[Random.Range(0, AttackSounds.Count)];
+        // }
+        //
+        // public string GetHitSound()
+        // {
+        //     return HitSounds[Random.Range(0, HitSounds.Count)];
+        // }
+        //
+        // public string GetWoundSound()
+        // {
+        //     return WoundSounds[Random.Range(0, WoundSounds.Count)];
+        // }
     }
 }

@@ -21,7 +21,6 @@ namespace Descending.Enemies
 
         public void Setup()
         {
-            TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         }
 
         private void Update()
@@ -58,8 +57,10 @@ namespace Descending.Enemies
             _currentState = AiStates.Acting;
         }
 
-        private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+        public void OnTurnChanged(bool b)
         {
+            DeselectAll();
+            
             if (!TurnManager.Instance.IsPlayerTurn)
             {
                 _currentState = AiStates.Acting;
@@ -67,10 +68,33 @@ namespace Descending.Enemies
             }
         }
 
+        private void DeselectAll()
+        {
+            foreach (Unit enemyUnit in UnitManager.Instance.EnemyUnits)
+            {
+                enemyUnit.Deselect();
+            } 
+        }
+        private void SelectEnemy(Unit enemy)
+        {
+            foreach (Unit enemyUnit in UnitManager.Instance.EnemyUnits)
+            {
+                if (enemy == enemyUnit)
+                {
+                    enemyUnit.Select();
+                }
+                else
+                {
+                    enemyUnit.Deselect();
+                }
+            }
+        }
         private bool TryPerformAction(Action onActionComplete)
         {
             foreach (Unit enemyUnit in UnitManager.Instance.EnemyUnits)
             {
+                SelectEnemy(enemyUnit);
+                
                 if (TryPerformAction(enemyUnit, onActionComplete))
                 {
                     return true;
@@ -82,17 +106,14 @@ namespace Descending.Enemies
 
         private bool TryPerformAction(Unit enemyUnit, Action onActionComplete)
         {
-            if (enemyUnit.IsActive == false) return false;
+            if (enemyUnit.IsActive == false || enemyUnit.IsAlive == false) return false;
             
             EnemyAction bestEnemyAction = null;
             BaseAction bestAction = null;
             
             foreach (BaseAction action in enemyUnit.Actions)
             {
-                if (!enemyUnit.HasActionPoints(action))
-                {
-                    continue;
-                }
+                if (!enemyUnit.HasActionPoints(action)) continue;
 
                 if (bestEnemyAction == null)
                 {

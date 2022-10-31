@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Units;
 using UnityEngine;
 
 namespace Descending.Gui
@@ -22,6 +23,14 @@ namespace Descending.Gui
         {
             gameObject.SetActive(false);
             _isOpen = false;
+        }
+
+        public void OnSyncParty(bool b)
+        {
+            for (int i = 0; i < UnitManager.Instance.PlayerUnits.Count; i++)
+            {
+                
+            }
         }
     }
 }

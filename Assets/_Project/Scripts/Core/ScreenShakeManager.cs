@@ -8,8 +8,8 @@ namespace Descending.Core
 {
     public class ScreenShakeManager : MonoBehaviour
     {
-        [SerializeField] private float _defaultIntensity = 1f;
-        [SerializeField] private float _hitIntensity = 1f;
+        //[SerializeField] private float _defaultIntensity = 1f;
+        //[SerializeField] private float _hitIntensity = 1f;
         [SerializeField] private float _bombIntensity = 5f;
         
         private void Start()

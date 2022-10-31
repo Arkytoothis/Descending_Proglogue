@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Attributes;
 using Descending.Core;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
@@ -96,21 +97,22 @@ namespace Descending.Units
         {
             MapPosition spawnerPosition = MapManager.Instance.GetGridPosition(_playerSpawner.transform.position);
             
-            SpawnHero(new MapPosition(spawnerPosition.X - 3, spawnerPosition.Y), 0);
-            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 1);
-            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 2);
+            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Soldier"));
+            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 1, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Scout"));
+            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), 2, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Acolyte"));
+            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), 3, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Apprentice"));
             
             PortraitRoom.Instance.Setup();
         }
         
-        private void SpawnHero(MapPosition mapPosition, int listIndex)
+        private void SpawnHero(MapPosition mapPosition, int listIndex, RaceDefinition race, ProfessionDefinition profession)
         {
             //Debug.Log("Spawning Hero at " + mapPosition.ToString());
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);
             clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetRandomProfession(), listIndex);
+            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
             clone.name = "Hero: " + heroUnit.GetFullName();
             
             UnitSpawned(heroUnit);

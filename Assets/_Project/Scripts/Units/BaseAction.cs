@@ -11,12 +11,15 @@ namespace Descending.Units
         public static event EventHandler OnActionStarted;
         public static event EventHandler OnActionCompleted;
         
+        [SerializeField] protected Sprite _icon = null;
+        
         protected Unit _unit = null;
         protected bool _isActive = false;
         protected Action onActionComplete;
         
         public Unit Unit => _unit;
-        
+        public Sprite Icon => _icon;
+
         protected  virtual void Awake()
         {
             _unit = GetComponent<Unit>();

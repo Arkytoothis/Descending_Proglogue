@@ -17,9 +17,9 @@ namespace Descending.Equipment
     {
         [SerializeField] private bool _hasData = true;
         [SerializeField] private WeaponType _weaponType = WeaponType.None;
-        [SerializeField] private float _range = 0;
-        [SerializeField] private float _delay = 0;
+        [SerializeField] private int _range = 0;
         [SerializeField] private float _knockbackStrength = 0;
+        [SerializeField] private float _projectileDelay = 1f;
         [SerializeField] private DamageTypeDefinition _damageType = null;
         [SerializeField] private int _minDamage = 0;
         [SerializeField] private int _maxDamage = 0;
@@ -33,8 +33,8 @@ namespace Descending.Equipment
         public bool HasData => _hasData;
         public ProjectileDefinition Projectile => _projectile;
         public WeaponType WeaponType => _weaponType;
-        public float Range => _range;
-        public float Delay => _delay;
+        public int Range => _range;
+        public float ProjectileDelay => _projectileDelay;
         public DamageTypeDefinition DamageType => _damageType;
         public int MinDamage => _minDamage;
         public int MaxDamage => _maxDamage;
@@ -45,7 +45,7 @@ namespace Descending.Equipment
         public WeaponData(WeaponData weaponData)
         {
             _hasData = weaponData._hasData;
-            _delay = weaponData._delay;
+            _projectileDelay = weaponData._projectileDelay;
             _range = weaponData._range;
             _weaponType = weaponData._weaponType;
             _animatorOverride = weaponData.AnimatorOverride;
@@ -60,7 +60,7 @@ namespace Descending.Equipment
             StringBuilder sb = new StringBuilder();
 
             sb.Append("Delay: ");
-            sb.Append(_delay);
+            sb.Append(_projectileDelay);
             sb.Append("\n");
 
             sb.Append("Range: ");

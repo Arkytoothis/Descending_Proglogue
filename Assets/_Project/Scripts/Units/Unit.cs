@@ -9,6 +9,7 @@ using Descending.Gui;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using Attribute = Descending.Attributes.Attribute;
 
 namespace Descending.Units
 {
@@ -35,6 +36,7 @@ namespace Descending.Units
         protected MapPosition currentMapPosition;
         protected BaseAction[] _actions = null;
         protected bool _isActive = false;
+        protected bool _isAlive = false;
         
         public MapPosition CurrentMapPosition => currentMapPosition;
         public BaseAction[] Actions => _actions;
@@ -50,14 +52,20 @@ namespace Descending.Units
         public HealthSystem HealthSystem => _healthSystem;
 
         public bool IsActive => _isActive;
+        public bool IsAlive => _isAlive;
 
         public abstract string GetFullName();
         public abstract string GetShortName();
+        public abstract Item GetMeleeWeapon();
+        public abstract Item GetRangedWeapon();
+        public abstract void Damage(GameObject attacker, int damage);
+        protected abstract void Dead();
         
         private void Awake()
         {
             _healthSystem = GetComponent<HealthSystem>();
             _actions = GetComponents<BaseAction>();
+            _isAlive = true;
         }
 
         private void Start()
@@ -66,11 +74,6 @@ namespace Descending.Units
             {
                 currentMapPosition = MapManager.Instance.GetGridPosition(transform.position);
                 MapManager.Instance.AddUnitAtGridPosition(currentMapPosition, this);
-            }
-
-            if (TurnManager.Instance != null)
-            {
-                TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
             }
 
             Deselect();
@@ -90,9 +93,9 @@ namespace Descending.Units
             }
         }
 
-        public int GetActionsCurrent()
+        public Attribute GetActions()
         {
-            return _attributes.GetVital("Actions").Current;
+            return _attributes.GetVital("Actions");
         }
         
         public bool TryPerformAction(BaseAction action)
@@ -109,7 +112,7 @@ namespace Descending.Units
         }
         public bool HasActionPoints(BaseAction action)
         {
-            if (GetActionsCurrent() >= action.GetActionPointCost())
+            if (GetActions().Current >= action.GetActionPointCost())
             {
                 return true;
             }
@@ -126,7 +129,7 @@ namespace Descending.Units
             onSyncParty.Invoke(true);
         }
 
-        private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+        public void OnTurnChanged(bool b)
         {
             if((_isEnemy && !TurnManager.Instance.IsPlayerTurn) ||
                (!_isEnemy && TurnManager.Instance.IsPlayerTurn))
@@ -136,29 +139,9 @@ namespace Descending.Units
             }
         }
 
-        public void Damage(GameObject attacker, int damage)
-        {
-            _healthSystem.TakeDamage(attacker, damage);
-
-            if (GetHealth() <= 0)
-            {
-                Dead();
-            }
-            
-            onSyncParty.Invoke(true);
-        }
-
-        private void Dead()
-        {
-            MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
-            UnitManager.Instance.UnitDead(this);
-            _ragdollSpawner.Activate(_healthSystem);
-            Destroy(gameObject);
-        }
-
         public float GetHealth()
         {
-            return _healthSystem.GetHealthNormalized();
+            return _attributes.GetVital("Life").Current;
         }
 
         public T GetAction<T>() where T : BaseAction
@@ -183,5 +166,7 @@ namespace Descending.Units
         {
             _selectionIndicator.SetActive(false);
         }
+        
+        
     }
 }

@@ -20,8 +20,28 @@ MonoBehaviour:
   Group: 0
   HitEffect: {fileID: 0}
   StartingVitals:
-    keyData: []
-    valueData: []
+    keyData:
+    - Life
+    - Actions
+    - Armor
+    - Stamina
+    - Magic
+    valueData:
+    - _vital: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+      _minimumValue: 8
+      _maximumValue: 12
+    - _vital: {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
+      _minimumValue: 2
+      _maximumValue: 2
+    - _vital: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
   StartingStatistic:
     keyData: []
     valueData: []
@@ -29,6 +49,18 @@ MonoBehaviour:
     keyData: []
     valueData: []
   Resistances: []
+  MeleeWeapon:
+    _item: {fileID: 11400000, guid: d429c90f446b7fe4689bfaea97a96450, type: 2}
+    _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  RangedWeapon:
+    _item: {fileID: 11400000, guid: 114719fa1993cc943b9581491322a95e, type: 2}
+    _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
   CoinData:
   - Chance: 100
     Minimum: 1
@@ -55,6 +87,3 @@ MonoBehaviour:
   - Chance: 0
     Minimum: 0
     Maximum: 0
-  AttackSounds: []
-  HitSounds: []
-  WoundSounds: []

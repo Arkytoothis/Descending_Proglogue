@@ -159,6 +159,7 @@ namespace Descending.Tiles
                 case ShootAction shootAction:
                     borderColor = TileColors.Red;
                     backgroundColor = TileColors.Red;
+                    shootAction.SetupData();
                     ShowGridPositionRange(selectedUnit.CurrentMapPosition, shootAction.MaxShootDistance, TileColors.Black, TileColors.Black);
                     break;
                 case MeleeAction meleeAction:

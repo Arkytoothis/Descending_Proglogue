@@ -14,7 +14,7 @@ namespace Descending.Units
         [SerializeField] private Genders _gender = Genders.None;
         [SerializeField] private string _raceKey = "";
         [SerializeField] private int _level = 0;
-        [SerializeField] private int _expValue = 0;
+        //[SerializeField] private int _expValue = 0;
         
         [SerializeField] private int _listIndex = -1;
         [SerializeField] private int _headIndex = -1;

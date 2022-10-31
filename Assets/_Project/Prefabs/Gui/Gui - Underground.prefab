@@ -102,8 +102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1893.8231, y: -2188.6287}
-  m_SizeDelta: {x: 1615.2458, y: 250.4125}
+  m_AnchoredPosition: {x: 1941.6715, y: -2212.3904}
+  m_SizeDelta: {x: 1806.6404, y: 297.3736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &330663317423162922
 GameObject:
@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &330663317423162921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -500,6 +500,7 @@ GameObject:
   - component: {fileID: 330663317649081217}
   - component: {fileID: 330663317649081222}
   - component: {fileID: 6624542228431619832}
+  - component: {fileID: 3236849405491033844}
   m_Layer: 5
   m_Name: Unit Actions Panel
   m_TagString: Untagged
@@ -523,7 +524,7 @@ RectTransform:
   - {fileID: 330663318069433163}
   - {fileID: 330663317543069590}
   m_Father: {fileID: 330663318723976911}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.336}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -579,6 +580,39 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: {fileID: 0}
+--- !u!114 &3236849405491033844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330663317649081218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 9016248c2189336479b5f92b57b7bed9, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 330663317649081222}
+        m_TargetAssemblyTypeName: Descending.ActionButtonsPanel, Reclamation
+        m_MethodName: OnTurnChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &330663317975445437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,11 +1240,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 704494707}
-  - {fileID: 330663319138123223}
   - {fileID: 6453937196716355426}
   - {fileID: 330663317649081217}
   - {fileID: 8322163141623765234}
   - {fileID: 5301911681433122783}
+  - {fileID: 330663319138123223}
   - {fileID: 886193561774074392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1346,6 +1380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330663319138123223}
   - component: {fileID: 330663319138123222}
+  - component: {fileID: 5770660456310344251}
   m_Layer: 5
   m_Name: Turn System Panel
   m_TagString: Untagged
@@ -1369,7 +1404,7 @@ RectTransform:
   - {fileID: 330663319183828032}
   - {fileID: 330663317358234946}
   m_Father: {fileID: 330663318723976911}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1391,6 +1426,39 @@ MonoBehaviour:
   _turnLabel: {fileID: 330663318621817058}
   _button: {fileID: 330663319183828039}
   _enemyTurnBlocker: {fileID: 330663317358234947}
+--- !u!114 &5770660456310344251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330663319138123216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 9016248c2189336479b5f92b57b7bed9, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 330663319138123222}
+        m_TargetAssemblyTypeName: Descending.Gui.TurnSystemPanel, Reclamation
+        m_MethodName: OnTurnChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &330663319183828033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,7 +1802,7 @@ RectTransform:
   - {fileID: 4385516943194471995}
   - {fileID: 5662293869075101927}
   m_Father: {fileID: 330663318723976911}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1831,7 +1899,7 @@ RectTransform:
   - {fileID: 6192534778690155322}
   - {fileID: 6183317627844411359}
   m_Father: {fileID: 330663318723976911}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2900,7 +2968,7 @@ RectTransform:
   m_Children:
   - {fileID: 674685629398397268}
   m_Father: {fileID: 330663318723976911}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

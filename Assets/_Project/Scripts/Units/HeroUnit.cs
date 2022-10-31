@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Attributes;
 using Descending.Core;
+using Descending.Equipment;
+using Descending.Tiles;
 using UnityEngine;
 
 namespace Descending.Units
@@ -44,8 +46,7 @@ namespace Descending.Units
             _inventory.Setup(_portraitRenderer, _worldRenderer, gender, race, profession);
             _abilities.Setup(race, profession, _skills);
             
-            _healthSystem.Setup(_attributes.GetVital("Life").Maximum);
-                
+            _healthSystem.Setup(_attributes);
             _worldPanel.Setup(this);
 
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
@@ -66,7 +67,38 @@ namespace Descending.Units
             return _heroData.Name.ShortName;
         }
 
+        public override Item GetMeleeWeapon()
+        {
+            return _inventory.GetMeleeWeapon();
+        }
+
+        public override Item GetRangedWeapon()
+        {
+            return _inventory.GetRangedWeapon();
+        }
         
+        public override void Damage(GameObject attacker, int damage)
+        {
+            if (_isAlive == false) return;
+            
+            _healthSystem.TakeDamage(attacker, damage);
+
+            if (GetHealth() <= 0)
+            {
+                Dead();
+            }
+            
+            onSyncParty.Invoke(true);
+        }
+
+        protected override void Dead()
+        {
+            _isAlive = false;
+            MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
+            UnitManager.Instance.UnitDead(this);
+            Destroy(gameObject);
+        }
+
         public void SetPortrait(PortraitMount portraitMount)
         {
             _portrait = portraitMount;

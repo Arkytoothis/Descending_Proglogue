@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Combat
@@ -9,7 +10,7 @@ namespace Descending.Combat
     {
         public static TurnManager Instance { get; private set; }
 
-        public event EventHandler OnTurnChanged = null;
+        [SerializeField] private BoolEvent onTurnChanged = null;
         
         private int _turnNumber = 0;
         private bool _isPlayerTurn = true;
@@ -39,7 +40,7 @@ namespace Descending.Combat
             _turnNumber++;
             _isPlayerTurn = !_isPlayerTurn;
             
-            OnTurnChanged?.Invoke(this, EventArgs.Empty);
+            onTurnChanged.Invoke(true);
         }
     }
 }

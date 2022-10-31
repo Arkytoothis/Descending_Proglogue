@@ -54,6 +54,20 @@ namespace Descending.Attributes
                 //_resistances.Add(new Resistance(resistance));
             //}
         }
+        
+        public void Setup(EnemyDefinition definition)
+        {
+            _characteristics.Clear();
+            _vitals.Clear();
+            _statistics.Clear();
+            
+            foreach (var startingVital in definition.StartingVitals)
+            {
+                int value = Random.Range(startingVital.Value.MinimumValue, startingVital.Value.MaximumValue + 1);
+                _vitals.Add(startingVital.Key, new Attribute(startingVital.Key));
+                _vitals[startingVital.Key].Setup(value);
+            }
+        }
 
         // public void LoadData(AttributesSaveData saveData)
         // {

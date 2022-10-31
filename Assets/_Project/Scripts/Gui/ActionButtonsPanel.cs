@@ -19,15 +19,9 @@ namespace Descending
         
         public void Setup()
         {
-            //ActionManager.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
             ActionManager.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
             ActionManager.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
-            TurnManager.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-            //Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
             _actionButtons = new List<ActionButton>();
-            //UpdateActionPoints();
-            //CreateActionButtons();
-            //UpdateSelectedVisual();
         }
 
         private void CreateActionButtons()
@@ -75,10 +69,10 @@ namespace Descending
             Unit unit = UnitManager.Instance.SelectedHero;
             if (unit == null) return;
             
-            _actionPointsLabel.SetText("Action Points: " + unit.GetActionsCurrent());
+            _actionPointsLabel.SetText("AP: " + unit.GetActions().Current + "/" + unit.GetActions().Maximum);
         }
 
-        private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+        public void OnTurnChanged(bool b)
         {
             UpdateActionPoints();
         }

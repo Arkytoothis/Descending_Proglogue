@@ -10,6 +10,7 @@ namespace Descending
     public class ActionButton : MonoBehaviour
     {
         [SerializeField] private Button _button = null;
+        [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _actionLabel = null;
         [SerializeField] private GameObject _border = null;
 
@@ -18,6 +19,7 @@ namespace Descending
         public void SetAction(BaseAction action)
         {
             _action = action;
+            _iconImage.sprite = action.Icon;
             _actionLabel.SetText(action.GetName().ToUpper());
             _button.onClick.AddListener(ActionButton_OnClick);
         }

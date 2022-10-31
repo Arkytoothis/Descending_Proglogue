@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Equipment;
 using Descending.Tiles;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,19 +17,15 @@ namespace Descending.Units
             Cooldown
         };
 
-        public class OnShootEventArgs : EventArgs
-        {
-            public Unit TargetUnit;
-            public Unit ShootingUnit;
-        }
-
         [SerializeField] private UnitAnimator _unitAnimator = null;
-        [SerializeField] private int _maxShootDistance = 4;
+        [SerializeField] private Transform _projectileSpawnPoint = null;
         [SerializeField] private float _shootingStateTime = 0.1f;
         [SerializeField] private float _cooldownStateTime = 0.5f;
         [SerializeField] private float _aimingStateTime = 1f;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private float _spawnProjectileDelay = 1f;
 
+        private int _maxShootDistance = 0;
         private State _state;
         private float _stateTimer;
         private Unit _targetUnit;
@@ -36,6 +33,7 @@ namespace Descending.Units
         
         public Unit TargetUnit => _targetUnit;
         public int MaxShootDistance => _maxShootDistance;
+
 
         private void Update()
         {
@@ -101,6 +99,11 @@ namespace Descending.Units
 
         public List<MapPosition> GetValidActionGridPositions(MapPosition unitPosition)
         {
+            if (_unit.IsEnemy == true)
+            {
+                SetupData();
+            }
+            
             List<MapPosition> validGridPositions = new List<MapPosition>();
             for (int x = -_maxShootDistance; x <= _maxShootDistance; x++)
             {
@@ -132,7 +135,15 @@ namespace Descending.Units
             
             return GetValidActionGridPositions(unitPosition);
         }
-        
+
+        public void SetupData()
+        {
+            Item item = _unit.GetRangedWeapon();
+            WeaponData weaponData = item.GetWeaponData();
+            _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
+            _spawnProjectileDelay = weaponData.ProjectileDelay;
+            _maxShootDistance = weaponData.Range;
+        }
 
         public override int GetActionPointCost()
         {
@@ -141,11 +152,8 @@ namespace Descending.Units
 
         private void Shoot()
         {
-            _unitAnimator.Shoot(new OnShootEventArgs()
-            {
-                TargetUnit = _targetUnit,
-                ShootingUnit = _unit
-            });
+            _unitAnimator.Shoot();
+            StartCoroutine(DelayedSpawnProjectile());
         }
         
 
@@ -162,6 +170,28 @@ namespace Descending.Units
         public int GetTargetCountAtPosition(MapPosition mapPosition)
         {
             return GetValidActionGridPositions(mapPosition).Count;
+        }
+        
+        private IEnumerator DelayedSpawnProjectile()
+        {
+            yield return new WaitForSeconds(_spawnProjectileDelay);
+
+            Item rangedWeapon = _unit.GetRangedWeapon();
+
+            if (rangedWeapon != null)
+            {
+                GameObject clone = Instantiate(rangedWeapon.GetWeaponData().Projectile.Prefab, _projectileSpawnPoint.position,
+                    _projectileSpawnPoint.rotation);
+
+                if (_targetUnit != null)
+                {
+                    Vector3 projectileTargetPosition = _targetUnit.transform.position;
+                    projectileTargetPosition.y = _projectileSpawnPoint.position.y;
+
+                    Projectile projectile = clone.GetComponent<Projectile>();
+                    projectile.Setup(_unit, _targetUnit, rangedWeapon);
+                }
+            }
         }
     }
 }

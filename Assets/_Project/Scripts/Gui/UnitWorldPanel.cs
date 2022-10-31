@@ -12,7 +12,8 @@ namespace Descending.Gui
     public class UnitWorldPanel : MonoBehaviour
     {
         [SerializeField] private TMP_Text _actionPointsLabel = null;
-        [SerializeField] private Image _healthBarImage = null;
+        [SerializeField] private Image _armorImage = null;
+        [SerializeField] private Image _lifeImage = null;
 
         public void Setup(Unit unit)
         {
@@ -24,14 +25,15 @@ namespace Descending.Gui
 
         public void UpdateActionPoints(Unit unit)
         {
-            _actionPointsLabel.SetText(unit.GetActionsCurrent().ToString());
+            _actionPointsLabel.SetText(unit.GetActions().Current + "/" + unit.GetActions().Maximum);
         }
 
         public void UpdateHealth(HealthSystem healthSystem)
         {
             if (healthSystem == null) return;
             
-            _healthBarImage.fillAmount = healthSystem.GetHealthNormalized();
+            _armorImage.fillAmount = healthSystem.GetVitalNormalized("Armor");
+            _lifeImage.fillAmount = healthSystem.GetVitalNormalized("Life");
         }
     }
 }

@@ -2155,7 +2155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6254169828690001040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6513402, y: 3.75, z: 0}
+  m_LocalPosition: {x: 7.01, y: 3.75, z: -1.889}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4708,6 +4708,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2747882073155894789, guid: 433a4b9a3a51db64c96e458ba989db99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433a4b9a3a51db64c96e458ba989db99, type: 3}
 --- !u!4 &6674237210367163656 stripped
@@ -5602,6 +5607,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner_02
       objectReference: {fileID: 0}
+    - target: {fileID: 2747882073155894789, guid: 433a4b9a3a51db64c96e458ba989db99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433a4b9a3a51db64c96e458ba989db99, type: 3}
 --- !u!4 &9106059834262141649 stripped
@@ -5856,6 +5866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Spawner_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747882073155894789, guid: 433a4b9a3a51db64c96e458ba989db99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433a4b9a3a51db64c96e458ba989db99, type: 3}

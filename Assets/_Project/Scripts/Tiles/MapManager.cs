@@ -14,8 +14,8 @@ namespace Descending.Tiles
 
         public event EventHandler OnAnyUnitMoved;
         
-        [SerializeField] private GameObject _tileDebugPrefab = null;
-        [SerializeField] private Transform _tilesParent = null;
+        //[SerializeField] private GameObject _tileDebugPrefab = null;
+        //[SerializeField] private Transform _tilesParent = null;
         
         [SerializeField] private int _width = 10;
         [SerializeField] private int _height = 10;

@@ -18,7 +18,7 @@ namespace Descending.Abilities
                 GameObject clone = GameObject.Instantiate(ability.Definition.Details.Projectile.Prefab, spawnPoint.position, spawnPoint.rotation);
                 //Projectile projectile = clone.GetComponent<Projectile>();
         
-                bool targetHit = true;
+                //bool targetHit = true;
                 //projectile.Setup(hero, targets[0].transform, GameEntityTypes.Hero, GameEntityTypes.Enemy, ability, targetHit);
                 //clone.GetComponent<Rigidbody>().velocity = (targets[0].ProjectileTarget.position - spawnPoint.position).normalized * ability.Definition.Details.Projectile.Speed;
             }

@@ -19,7 +19,7 @@ namespace Descending.Interactables
         
         private MapPosition _mapPosition;
         private int _health = 10;
-        private int _maxHealth = 10;
+        //private int _maxHealth = 10;
         private bool _treasureDropped = false;
 
         public MapPosition MapPosition => _mapPosition;
