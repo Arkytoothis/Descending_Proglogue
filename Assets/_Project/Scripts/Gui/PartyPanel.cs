@@ -22,7 +22,7 @@ namespace Descending.Gui
             {
                 if (UnitManager.Instance != null)
                 {
-                    if (i < UnitManager.Instance.PlayerUnits.Count)
+                    if (i < UnitManager.Instance.HeroUnits.Count)
                     {
                         _partyMemberWidgets[i].Setup(UnitManager.Instance.GetHero(i));
                     }

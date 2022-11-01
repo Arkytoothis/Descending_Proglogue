@@ -722,9 +722,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9138783543990333153}
   - component: {fileID: -1945327161988522657}
+  - component: {fileID: 1614687568044708840}
   m_Layer: 0
   m_Name: Crypt Vault Room 01
-  m_TagString: Untagged
+  m_TagString: Dungeon Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,6 +811,21 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 1}
   fileVersion: 1
+--- !u!114 &1614687568044708840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142940099286731306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f9e445edd0a2d44b5314079356d928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomLights: []
+  _roomIndex: -1
+  _heroesInRoom: []
 --- !u!1 &1310728021576707109
 GameObject:
   m_ObjectHideFlags: 0

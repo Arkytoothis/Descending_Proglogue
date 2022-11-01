@@ -23,12 +23,17 @@ namespace Descending.Interactables
         
         private void Start()
         {
+            InteractableManager.Instance.RegisterInteractable(this);
+        }
+
+        public void Setup()
+        {
             mapPosition = MapManager.Instance.GetGridPosition(transform.position);
             MapManager.Instance.SetInteractableAtGridPosition(mapPosition, this);
             PathfindingManager.Instance.SetIsGridPositionWalkable(mapPosition, false);
             _isInteracting = false;
         }
-
+        
         private void Update()
         {
             if (!_isInteracting) return;

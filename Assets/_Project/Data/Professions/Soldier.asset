@@ -25,7 +25,7 @@ MonoBehaviour:
     - Endurance
     - Intellect
     - Spirit
-    - Perception
+    - Senses
     valueData:
     - _attribute: {fileID: 11400000, guid: 47f340717fc369b418e69affd97fa097, type: 2}
       _minimumValue: 5

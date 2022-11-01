@@ -17,7 +17,7 @@ namespace Descending.Units
                 {
                     if (enemyUnit.IsActive == false)
                     {
-                        Debug.Log("Activating Enemy: " + enemyUnit.GetShortName());
+                        //Debug.Log("Activating Enemy: " + enemyUnit.GetShortName());
                         enemyUnit.Activate();
                     }
                 }

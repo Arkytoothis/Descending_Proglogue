@@ -19,7 +19,7 @@ MonoBehaviour:
     - Intellect
     - Might
     - Spirit
-    - Perception
+    - Senses
     valueData:
     - {fileID: 11400000, guid: 96489337614cb714b9d8b0ac17964abc, type: 2}
     - {fileID: 11400000, guid: 926deb2d4020fcf41a51d95d5743d485, type: 2}

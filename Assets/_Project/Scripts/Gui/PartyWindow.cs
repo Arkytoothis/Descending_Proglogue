@@ -7,9 +7,18 @@ namespace Descending.Gui
 {
     public class PartyWindow : GameWindow
     {
+        [SerializeField] private HeroListPanel _listPanel = null;
+        [SerializeField] private HeroDetailsPanel _detailsPanel = null;
+        [SerializeField] private HeroCharacteristicsPanel _characteristicsPanel = null;
+        
         public override void Setup(WindowManager manager)
         {
             _manager = manager;
+            _listPanel.Setup(this);
+            _detailsPanel.Setup();
+            _characteristicsPanel.Setup();
+            
+            SelectHero(UnitManager.Instance.GetHero(0));
             Close();
         }
 
@@ -25,12 +34,10 @@ namespace Descending.Gui
             _isOpen = false;
         }
 
-        public void OnSyncParty(bool b)
+        public void SelectHero(HeroUnit hero)
         {
-            for (int i = 0; i < UnitManager.Instance.PlayerUnits.Count; i++)
-            {
-                
-            }
+            _detailsPanel.DisplayHero(hero);
+            _characteristicsPanel.DisplayHero(hero);
         }
     }
 }

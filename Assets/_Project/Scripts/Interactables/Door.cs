@@ -20,8 +20,13 @@ namespace Descending.Interactables
         private Action onComplete;
         private float _timer;
         private bool _isInteracting;
-        
+
         private void Start()
+        {
+            InteractableManager.Instance.RegisterInteractable(this);
+        }
+
+        public void Setup()
         {
             mapPosition = MapManager.Instance.GetGridPosition(transform.position);
             MapManager.Instance.SetInteractableAtGridPosition(mapPosition, this);

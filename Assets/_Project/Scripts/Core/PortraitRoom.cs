@@ -35,14 +35,14 @@ namespace Descending.Core
              if (UnitManager.Instance != null)
              {
                  //Debug.Log("Loading UnitManager");
-                 for (int i = 0; i < UnitManager.Instance.PlayerUnits.Count; i++)
+                 for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
                  {
                      GameObject clone = Instantiate(_portraitMountPrefab, _portraitMountsParent);
                      //clone.transform.SetParent(_portraitMountsParent, false);
                      clone.transform.localPosition = new Vector3(i * 10f, 0, 0);
 
                      PortraitMount mount = clone.GetComponent<PortraitMount>();
-                     mount.Setup(UnitManager.Instance.PlayerUnits[i] as HeroUnit);
+                     mount.Setup(UnitManager.Instance.HeroUnits[i] as HeroUnit);
                      _portraits.Add(mount);
                  }
              }
@@ -65,7 +65,7 @@ namespace Descending.Core
          public void SyncParty()
          {
              //Debug.Log("Party Synced - Portrait Room");
-             for (int i = 0; i < UnitManager.Instance.PlayerUnits.Count; i++)
+             for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
              {
                  _portraits[i].Refresh();
              }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Interactables;
 using Descending.Tiles;
 using Descending.Units;
 using DunGen;
@@ -25,10 +26,10 @@ namespace Descending.Scene_Test
         {
             yield return 0;
             
-            _cameraController.transform.position = UnitManager.Instance.PlayerUnits[0].transform.position;
-            PathfindingManager.Instance.Scan();
-            
+            _cameraController.transform.position = UnitManager.Instance.HeroUnits[0].transform.position;
             UnitManager.Instance.SelectHero(UnitManager.Instance.GetHero(0));
+            PathfindingManager.Instance.Scan();
+            InteractableManager.Instance.Setup();
         }
     }
 }

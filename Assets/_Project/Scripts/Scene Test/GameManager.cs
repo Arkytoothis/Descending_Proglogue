@@ -5,6 +5,7 @@ using Descending.Combat;
 using Descending.Core;
 using Descending.Enemies;
 using Descending.Gui;
+using Descending.Interactables;
 using Descending.Tiles;
 using Descending.Units;
 using DunGen;
@@ -35,7 +36,6 @@ namespace Descending.Scene_Test
             _dungeon.Generate();
             UnitManager.Instance.Setup();
             _enemyAI.Setup();
-            
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
         }

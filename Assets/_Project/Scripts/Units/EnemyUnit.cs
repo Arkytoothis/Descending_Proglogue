@@ -81,12 +81,14 @@ namespace Descending.Units
         public void Activate()
         {
             _modelParent.gameObject.SetActive(true);
+            _worldPanel.gameObject.SetActive(true);
             _isActive = true;
         }
         
         public void Deactivate()
         {
             _modelParent.gameObject.SetActive(false);
+            _worldPanel.gameObject.SetActive(false);
             _isActive = false;
         }
 

@@ -88,19 +88,19 @@ namespace Descending.Attributes
             
             
             _statistics["Attack"].Setup(Random.Range(race.StartingStatistics["Attack"].MinimumValue, race.StartingStatistics["Attack"].MinimumValue + 1) + 
-                                        _characteristics["Might"].Maximum + _characteristics["Perception"].Maximum);
+                                        _characteristics["Might"].Maximum + _characteristics["Senses"].Maximum);
             _statistics["Aim"].Setup(Random.Range(race.StartingStatistics["Aim"].MinimumValue, race.StartingStatistics["Aim"].MinimumValue + 1) + 
-                                        _characteristics["Finesse"].Maximum + _characteristics["Perception"].Maximum);
+                                        _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             _statistics["Block"].Setup(Random.Range(race.StartingStatistics["Block"].MinimumValue, race.StartingStatistics["Block"].MinimumValue + 1) + 
                                      _characteristics["Might"].Maximum + _characteristics["Endurance"].Maximum);
             _statistics["Dodge"].Setup(Random.Range(race.StartingStatistics["Dodge"].MinimumValue, race.StartingStatistics["Dodge"].MinimumValue + 1) + 
-                                       _characteristics["Finesse"].Maximum + _characteristics["Perception"].Maximum);
+                                       _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             _statistics["Focus"].Setup(Random.Range(race.StartingStatistics["Focus"].MinimumValue, race.StartingStatistics["Focus"].MinimumValue + 1) + 
                                        _characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum);
             _statistics["Willpower"].Setup(Random.Range(race.StartingStatistics["Willpower"].MinimumValue, race.StartingStatistics["Willpower"].MinimumValue + 1) + 
                                        _characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum);
             _statistics["Speed"].Setup(Random.Range(race.StartingStatistics["Speed"].MinimumValue, race.StartingStatistics["Speed"].MinimumValue + 1) + 
-                                           _characteristics["Finesse"].Maximum + _characteristics["Perception"].Maximum);
+                                           _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
         }
         
         public bool IsAlive()

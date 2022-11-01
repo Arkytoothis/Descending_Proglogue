@@ -18,8 +18,8 @@ namespace Descending.Units
         [SerializeField] private Transform _enemiesParent = null;
         
         [SerializeField] private List<Unit> _units = null;
-        [SerializeField] private List<Unit> _playerUnits = null;
-        [SerializeField] private List<Unit> _enemyUnits = null;
+        [SerializeField] private List<HeroUnit> _heroUnits = null;
+        [SerializeField] private List<EnemyUnit> _enemyUnits = null;
         [SerializeField] private List<EnemySpawner> _enemySpawners = null;
         
         [SerializeField] private BoolEvent onSyncParty = null;
@@ -29,8 +29,8 @@ namespace Descending.Units
         private HeroUnit _selectedHero = null;
         
         public List<Unit> Units => _units;
-        public List<Unit> PlayerUnits => _playerUnits;
-        public List<Unit> EnemyUnits => _enemyUnits;
+        public List<HeroUnit> HeroUnits => _heroUnits;
+        public List<EnemyUnit> EnemyUnits => _enemyUnits;
         public HeroUnit SelectedHero => _selectedHero;
 
         private void Awake()
@@ -44,8 +44,8 @@ namespace Descending.Units
             
             Instance = this;
             _units = new List<Unit>();
-            _playerUnits = new List<Unit>();
-            _enemyUnits = new List<Unit>();
+            _heroUnits = new List<HeroUnit>();
+            _enemyUnits = new List<EnemyUnit>();
         }
 
         public void Setup()
@@ -57,11 +57,11 @@ namespace Descending.Units
         {
             if (unit.IsEnemy)
             {
-                _enemyUnits.Add(unit);
+                _enemyUnits.Add(unit as EnemyUnit);
             }
             else
             {
-                _playerUnits.Add(unit);
+                _heroUnits.Add(unit as HeroUnit);
             }
             
             _units.Add(unit);
@@ -75,11 +75,11 @@ namespace Descending.Units
             {
                 EnemyUnit enemyUnit = unit as EnemyUnit;
                 enemyUnit.DropTreasure();
-                _enemyUnits.Remove(unit);
+                _enemyUnits.Remove(enemyUnit);
             }
             else
             {
-                _playerUnits.Remove(unit);
+                _heroUnits.Remove(unit as HeroUnit);
             }
             
             _units.Remove(unit);
@@ -135,22 +135,22 @@ namespace Descending.Units
 
         public HeroUnit GetHero(int index)
         {
-            return _playerUnits[index] as HeroUnit;
+            return _heroUnits[index] as HeroUnit;
         }
 
         public void SelectHero(HeroUnit hero)
         {
             _selectedHero = hero;
             
-            for (int i = 0; i < _playerUnits.Count; i++)
+            for (int i = 0; i < _heroUnits.Count; i++)
             {
                 if (hero.HeroData.ListIndex == i)
                 {
-                    _playerUnits[i].Select();
+                    _heroUnits[i].Select();
                 }
                 else
                 {
-                    _playerUnits[i].Deselect();
+                    _heroUnits[i].Deselect();
                 }
             }
             

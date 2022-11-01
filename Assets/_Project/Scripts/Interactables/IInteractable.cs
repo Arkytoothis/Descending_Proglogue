@@ -9,5 +9,6 @@ namespace Descending.Interactables
     {
         public void Interact(Action onComplete);
         public string GetName();
+        public void Setup();
     }
 }
