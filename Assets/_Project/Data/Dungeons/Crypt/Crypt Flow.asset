@@ -26,8 +26,12 @@ MonoBehaviour:
   DoorwayConnectionChance: 0
   RestrictConnectionToSameSection: 0
   TileInjectionRules: []
-  TileTagConnectionMode: 0
-  TileConnectionTags: []
+  TileTagConnectionMode: 1
+  TileConnectionTags:
+  - TagA:
+      id: 1
+    TagB:
+      id: 1
   BranchTagPruneMode: 1
   BranchPruneTags: []
   Nodes:

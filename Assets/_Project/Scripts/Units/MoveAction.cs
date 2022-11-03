@@ -51,6 +51,7 @@ namespace Descending.Units
         public override void PerformAction(MapPosition targetMapPosition, Action onMoveComplete)
         {
             //Path path = _unit.Pathfinder.FindPath(_unit.transform.position, MapManager.Instance.GetWorldPosition(targetMapPosition));
+            _maxMoveDistance = _unit.Attributes.GetStatistic("Movement").Current;
             List<MapPosition> mapPositions = PathfindingManager.Instance.FindPath(_unit.CurrentMapPosition, targetMapPosition, out int pathLength);
             
             _currentPositionIndex = 0;
@@ -79,9 +80,9 @@ namespace Descending.Units
                     if (MapManager.Instance.HasAnyUnit(testMapPosition) == true) continue;
                     if (_unit.CurrentMapPosition == testMapPosition) continue;
                     if (!PathfindingManager.Instance.IsGridPositionWalkable(testMapPosition)) continue;
-                    if (!PathfindingManager.Instance.HasPath(_unit.CurrentMapPosition, testMapPosition)) continue;
+                    //if (!PathfindingManager.Instance.HasPath(_unit.CurrentMapPosition, testMapPosition)) continue;
                     if (PathfindingManager.Instance.GetPathLength(_unit.CurrentMapPosition, testMapPosition) > _maxMoveDistance * 10) continue;
-                    if (MapManager.Instance.Linecast(_unit.CurrentMapPosition, testMapPosition)) continue;
+                    //if (MapManager.Instance.Linecast(_unit.CurrentMapPosition, testMapPosition)) continue;
                         
                     validGridPositions.Add(testMapPosition);
                 }

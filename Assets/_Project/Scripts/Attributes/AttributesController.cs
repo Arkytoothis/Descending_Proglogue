@@ -101,6 +101,11 @@ namespace Descending.Attributes
                                        _characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum);
             _statistics["Speed"].Setup(Random.Range(race.StartingStatistics["Speed"].MinimumValue, race.StartingStatistics["Speed"].MinimumValue + 1) + 
                                            _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
+            
+            _statistics["Movement"].Setup(race.StartingStatistics["Movement"].MinimumValue);
+            _statistics["Critical Hit"].Setup(race.StartingStatistics["Critical Hit"].MinimumValue);
+            _statistics["Critical Damage"].Setup(race.StartingStatistics["Critical Damage"].MinimumValue);
+            _statistics["Fumble"].Setup(race.StartingStatistics["Fumble"].MinimumValue);
         }
         
         public bool IsAlive()

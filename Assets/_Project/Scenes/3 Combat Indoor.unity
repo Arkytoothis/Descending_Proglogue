@@ -2219,10 +2219,10 @@ MonoBehaviour:
     MaxPairingAttempts: 5
     IgnoreSpriteBounds: 0
     UpDirection: 2
-    OverrideRepeatMode: 0
-    RepeatMode: 0
-    OverrideAllowTileRotation: 0
-    AllowTileRotation: 0
+    OverrideRepeatMode: 1
+    RepeatMode: 1
+    OverrideAllowTileRotation: 1
+    AllowTileRotation: 1
     DebugRender: 0
     LengthMultiplier: 1
     PlaceTileTriggers: 1

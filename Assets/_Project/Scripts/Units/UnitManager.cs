@@ -97,10 +97,10 @@ namespace Descending.Units
         {
             MapPosition spawnerPosition = MapManager.Instance.GetGridPosition(_playerSpawner.transform.position);
             
-            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Soldier"));
-            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 1, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Scout"));
-            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), 2, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Acolyte"));
-            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), 3, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Apprentice"));
+            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
+            //SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 1, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Scout"));
+            //SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), 2, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Acolyte"));
+            //SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), 3, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Apprentice"));
             
             PortraitRoom.Instance.Setup();
         }

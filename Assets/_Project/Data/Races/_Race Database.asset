@@ -29,6 +29,7 @@ MonoBehaviour:
     - Giantkin
     - Faeling
     - Fiendling
+    - Godkin
     valueData:
     - {fileID: 11400000, guid: b6bb812d22f13fb41bdc77e5ac35deaa, type: 2}
     - {fileID: 11400000, guid: 9176883d29cd919438c77f01dae844b9, type: 2}
@@ -45,3 +46,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 54b7851d67bb2cb4e8d974bea0dcc534, type: 2}
     - {fileID: 11400000, guid: 3261b11bf0b01a04c8bad121c2ff5d5b, type: 2}
     - {fileID: 11400000, guid: 3c2b0432bda0df942a5052747f7c88d6, type: 2}
+    - {fileID: 11400000, guid: 26574c40d96cf7f468bfea9103d1ec4e, type: 2}

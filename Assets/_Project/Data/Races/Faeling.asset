@@ -113,6 +113,10 @@ MonoBehaviour:
     - Focus
     - Speed
     - Willpower
+    - Critical Damage
+    - Critical Hit
+    - Fumble
+    - Movement
     valueData:
     - _derived: {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
       _minimumValue: 0
@@ -135,6 +139,18 @@ MonoBehaviour:
     - _derived: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
       _minimumValue: 0
       _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 0cd740360ef66834aa82570a681c9014, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _derived: {fileID: 11400000, guid: f5735bbf4e524904dae2a76efc8373d5, type: 2}
+      _minimumValue: 95
+      _maximumValue: 95
+    - _derived: {fileID: 11400000, guid: 4551877c3b304c74db7296b3b75d83b9, type: 2}
+      _minimumValue: 5
+      _maximumValue: 5
+    - _derived: {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
+      _minimumValue: 3
+      _maximumValue: 3
   _startingSkills:
     keyData:
     - Air Magic

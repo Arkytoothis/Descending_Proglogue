@@ -511,7 +511,8 @@ MonoBehaviour:
   OverrideConnectionChance: 0
   ConnectionChance: 0
   Tags:
-    Tags: []
+    Tags:
+    - id: 0
   AllDoorways: []
   UsedDoorways: []
   UnusedDoorways: []
@@ -5264,7 +5265,7 @@ PrefabInstance:
     - target: {fileID: 2747882073155894789, guid: 433a4b9a3a51db64c96e458ba989db99,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433a4b9a3a51db64c96e458ba989db99, type: 3}
@@ -6255,7 +6256,7 @@ PrefabInstance:
     - target: {fileID: 2747882073155894789, guid: 433a4b9a3a51db64c96e458ba989db99,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433a4b9a3a51db64c96e458ba989db99, type: 3}
@@ -6515,7 +6516,7 @@ PrefabInstance:
     - target: {fileID: 2747882073155894789, guid: 433a4b9a3a51db64c96e458ba989db99,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433a4b9a3a51db64c96e458ba989db99, type: 3}

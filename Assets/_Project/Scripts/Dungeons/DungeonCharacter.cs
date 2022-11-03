@@ -2,19 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Units;
-using DunGen;
 using UnityEngine;
 
 namespace Descending.Dungeons
 {
     public class DungeonCharacter : MonoBehaviour
     {
-        private HeroUnit _hero = null;
-
-        private void Awake()
-        {
-            _hero = GetComponent<HeroUnit>();
-        }
+        [SerializeField] private HeroUnit _hero = null;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -26,6 +20,7 @@ namespace Descending.Dungeons
                 
                 if (room != null)
                 {
+                    //Debug.Log("Room Entered");
                     room.AddHeroToRoom(_hero);
                 }
             }
@@ -41,6 +36,7 @@ namespace Descending.Dungeons
                 
                 if (room != null)
                 {
+                    //Debug.Log("Room Exited");
                     room.RemoveHeroFromRoom(_hero);
                 }
             }

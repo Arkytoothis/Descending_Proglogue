@@ -269,8 +269,14 @@ namespace Descending.Tiles
 
         public int GetPathLength(MapPosition startPosition, MapPosition endPosition)
         {
-            FindPath(startPosition, endPosition, out int pathLength);
-            return pathLength;
+            if (FindPath(startPosition, endPosition, out int pathLength) != null)
+            {
+                return pathLength;
+            }
+            else
+            {
+                return int.MaxValue;
+            }
         }
     }
 }
