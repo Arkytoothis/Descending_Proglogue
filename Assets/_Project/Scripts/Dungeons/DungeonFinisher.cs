@@ -8,7 +8,7 @@ using DunGen;
 using DunGen.Adapters;
 using UnityEngine;
 
-namespace Descending.Scene_Test
+namespace Descending.Dungeons
 {
     public class DungeonFinisher : BaseAdapter
     {
@@ -19,6 +19,7 @@ namespace Descending.Scene_Test
             //Debug.Log("Finishing Dungeon");
             UnitManager.Instance.SpawnHeroes();
             UnitManager.Instance.SpawnEnemies();
+            
             StartCoroutine(Finish_Coroutine());
         }
 
@@ -30,6 +31,7 @@ namespace Descending.Scene_Test
             UnitManager.Instance.SelectHero(UnitManager.Instance.GetHero(0));
             PathfindingManager.Instance.Scan();
             InteractableManager.Instance.Setup();
+            UnitManager.Instance.SelectHeroDefault();
         }
     }
 }

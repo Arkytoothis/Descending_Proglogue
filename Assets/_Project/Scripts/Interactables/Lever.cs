@@ -49,7 +49,7 @@ namespace Descending.Interactables
 
         public void Interact(Action onInteractionComplete)
         {
-            Debug.Log("Interacting with Lever");
+            //Debug.Log("Interacting with Lever");
             onComplete = onInteractionComplete;
             _isInteracting = true;
             _timer = 0.5f;

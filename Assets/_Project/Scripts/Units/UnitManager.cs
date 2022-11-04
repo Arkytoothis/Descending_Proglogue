@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Attributes;
 using Descending.Core;
+using Descending.Party;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Descending.Units
         [SerializeField] private GameObject _heroPrefab = null;
         [SerializeField] private Transform _heroesParent = null;
         [SerializeField] private Transform _enemiesParent = null;
+        [SerializeField] private float _unitScaleFactor = 5f;
+        [SerializeField] private PartyController _partyController = null;
         
         [SerializeField] private List<Unit> _units = null;
         [SerializeField] private List<HeroUnit> _heroUnits = null;
@@ -53,6 +56,11 @@ namespace Descending.Units
             
         }
 
+        public void SyncHeroes()
+        {
+            onSyncParty.Invoke(true);
+        }
+        
         public void UnitSpawned(Unit unit)
         {
             if (unit.IsEnemy)
@@ -89,7 +97,7 @@ namespace Descending.Units
 
         public void RegisterPlayerSpawner(PlayerSpawner spawner)
         {
-            //Debug.Log("RegisterPlayerSpawner");
+            Debug.Log("RegisterPlayerSpawner");
             _playerSpawner = spawner;
         }
 
@@ -103,6 +111,7 @@ namespace Descending.Units
             //SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), 3, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Apprentice"));
             
             PortraitRoom.Instance.Setup();
+            onSyncParty.Invoke(true);
         }
         
         private void SpawnHero(MapPosition mapPosition, int listIndex, RaceDefinition race, ProfessionDefinition profession)
@@ -138,6 +147,20 @@ namespace Descending.Units
             return _heroUnits[index] as HeroUnit;
         }
 
+        public void SelectHeroDefault()
+        {
+            _selectedHero = _heroUnits[0];
+            
+            for (int i = 0; i < _heroUnits.Count; i++)
+            {
+                _heroUnits[i].Deselect();
+            }
+            
+            _selectedHero.Select();
+            ActionManager.Instance.SetSelectedAction(_selectedHero.GetAction<MoveAction>());
+            onSelectHero.Invoke(_selectedHero.gameObject);
+        }
+        
         public void SelectHero(HeroUnit hero)
         {
             _selectedHero = hero;
@@ -156,6 +179,45 @@ namespace Descending.Units
             
             ActionManager.Instance.SetSelectedAction(UnitManager.Instance.SelectedHero.GetAction<MoveAction>());
             onSelectHero.Invoke(_selectedHero.gameObject);
+        }
+        
+        public void SpawnHeroesOverworld()
+        {
+            _heroUnits = new List<HeroUnit>();
+            SpawnHero(0, Database.instance.Races.GetRace("Half Orc"), Database.instance.Profession.GetProfession("Soldier"));
+            SpawnHero(1, Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"));
+            SpawnHero(2, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
+            
+            PortraitRoom.Instance.Setup();
+            onSyncParty.Invoke(true);
+        }
+        
+        private void SpawnHero(int listIndex, RaceDefinition race, ProfessionDefinition profession)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
+            heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            _heroUnits.Add(heroUnit);
+        }
+
+        public void HideHeroes(Transform parent)
+        {
+            for (int i = 0; i < _heroUnits.Count; i++)
+            {
+                _heroUnits[i].WorldModel.transform.SetParent(parent, false);
+            }
+        }
+
+        public void SetPartyLeader(GameObject heroObject)
+        {
+            HeroUnit hero = heroObject.GetComponent<HeroUnit>();
+            _partyController.SetPartyLeader(hero.HeroData.ListIndex);
+            onSelectHero.Invoke(heroObject);
         }
     }
 }

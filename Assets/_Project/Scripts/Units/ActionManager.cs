@@ -7,6 +7,7 @@ using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 
 namespace Descending.Units
 {
@@ -123,7 +124,6 @@ namespace Descending.Units
 
         private void UpdateSelectedVisual()
         {
-            
         }
     }
 }

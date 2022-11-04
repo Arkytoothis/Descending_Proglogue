@@ -157,6 +157,8 @@ MonoBehaviour:
     type: 3}
   _heroesParent: {fileID: 1747828202}
   _enemiesParent: {fileID: 931143875}
+  _unitScaleFactor: 5
+  _partyController: {fileID: 0}
   _units: []
   _heroUnits: []
   _enemyUnits: []
@@ -1707,6 +1709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948147cb550960f4482db30e2c733b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tileDebugPrefab: {fileID: 0}
+  _tilesParent: {fileID: 0}
   _width: 100
   _height: 100
   _cellSize: 2
@@ -2843,7 +2847,7 @@ GameObject:
   - component: {fileID: 1203426962}
   - component: {fileID: 1203426963}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Indoor Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

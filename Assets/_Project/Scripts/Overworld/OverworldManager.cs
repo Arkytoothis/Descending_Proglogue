@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
-using Descending.Party;
 using Descending.Units;
 using UnityEngine;
 
@@ -25,14 +24,8 @@ namespace Descending.Overworld
             _database.Setup();
             SpawnGui();
             
-            PartyManager.Instance.Setup();
+            UnitManager.Instance.SpawnHeroesOverworld();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
-        }
-
-        public void OnRegisterPlayerSpawner(GameObject spawnerObject)
-        {
-            PlayerSpawner spawner = spawnerObject.GetComponent<PlayerSpawner>();
-            UnitManager.Instance.RegisterPlayerSpawner(spawner);
         }
 
         private void SpawnGui()

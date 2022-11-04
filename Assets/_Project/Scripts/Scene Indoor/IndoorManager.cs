@@ -11,9 +11,9 @@ using Descending.Units;
 using DunGen;
 using UnityEngine;
 
-namespace Descending.Scene_Test
+namespace Descending.Scene_Indoor
 {
-    public class GameManager : MonoBehaviour
+    public class IndoorManager : MonoBehaviour
     {
         [SerializeField] private Database _database = null;
         [SerializeField] private EnemyAI _enemyAI = null;
@@ -38,6 +38,8 @@ namespace Descending.Scene_Test
             _enemyAI.Setup();
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
+            
+            UnitManager.Instance.SyncHeroes();
         }
 
         public void OnRegisterPlayerSpawner(GameObject spawnerObject)

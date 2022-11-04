@@ -18,29 +18,16 @@ namespace Descending.Gui
         
         public void SyncParty(bool b)
         {
+            //Debug.Log("Syncing Party Data");
             for (int i = 0; i < _partyMemberWidgets.Count; i++)
             {
-                if (UnitManager.Instance != null)
+                if (i < UnitManager.Instance.HeroUnits.Count)
                 {
-                    if (i < UnitManager.Instance.HeroUnits.Count)
-                    {
-                        _partyMemberWidgets[i].Setup(UnitManager.Instance.GetHero(i));
-                    }
-                    else
-                    {
-                        _partyMemberWidgets[i].Clear();
-                    }
+                    _partyMemberWidgets[i].Setup(UnitManager.Instance.GetHero(i));
                 }
-                else if (PartyManager.Instance != null)
+                else
                 {
-                    if (i < PartyManager.Instance.Heroes.Count)
-                    {
-                        _partyMemberWidgets[i].Setup(PartyManager.Instance.Heroes[i]);
-                    }
-                    else
-                    {
-                        _partyMemberWidgets[i].Clear();
-                    }
+                    _partyMemberWidgets[i].Clear();
                 }
             }
         }

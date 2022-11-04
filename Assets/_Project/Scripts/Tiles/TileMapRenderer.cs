@@ -142,6 +142,7 @@ namespace Descending.Tiles
             TileColors borderColor = TileColors.Black;
             TileColors backgroundColor = TileColors.Black;
             
+            
             switch (selectedAction)
             {
                 case MoveAction moveAction:

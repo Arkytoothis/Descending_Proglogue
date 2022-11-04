@@ -15,9 +15,9 @@ namespace Descending.Party
         
         public void SetPartyLeader(int index)
         {
-            PartyManager.Instance.HideHeroes(_offScreenTransform);
+            UnitManager.Instance.HideHeroes(_offScreenTransform);
             
-            HeroUnit hero = PartyManager.Instance.Heroes[index];
+            HeroUnit hero = UnitManager.Instance.HeroUnits[index];
             _leaderHero = hero;
             _leaderTransform.ClearTransform();
             _leaderHero.WorldModel.transform.SetParent(_leaderTransform, false);

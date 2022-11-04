@@ -23,7 +23,7 @@ namespace Descending.Tiles
         private int _width;
         private int _height;
         private float _cellSize;
-        private TileMap<PathNode> tileMap;
+        private TileMap<PathNode> _tileMap;
         
         private void Awake()
         {
@@ -42,7 +42,7 @@ namespace Descending.Tiles
             _width = width;
             _height = height;
             _cellSize = cellSize;
-            tileMap = new TileMap<PathNode>(_width, _height, _cellSize, (TileMap<PathNode> g, MapPosition gridPosition) => new PathNode(gridPosition));
+            _tileMap = new TileMap<PathNode>(_width, _height, _cellSize, (TileMap<PathNode> g, MapPosition gridPosition) => new PathNode(gridPosition));
 
             for (int x = 0; x < _width; x++)
             {
@@ -76,7 +76,7 @@ namespace Descending.Tiles
 
             if (_showDebugTiles)
             {
-                tileMap.CreateDebugObjects(_tileDebugPrefab, _tilesParent);
+                _tileMap.CreateDebugObjects(_tileDebugPrefab, _tilesParent);
             }
         }
 
@@ -84,17 +84,17 @@ namespace Descending.Tiles
         {
             List<PathNode> openList = new List<PathNode>();
             List<PathNode> closedList = new List<PathNode>();
-            PathNode startNode = tileMap.GetGridObject(startMapPosition);
-            PathNode endNode = tileMap.GetGridObject(endMapPosition);
+            PathNode startNode = _tileMap.GetGridObject(startMapPosition);
+            PathNode endNode = _tileMap.GetGridObject(endMapPosition);
             
             openList.Add(startNode);
 
-            for (int x = 0; x < tileMap.Width; x++)
+            for (int x = 0; x < _tileMap.Width; x++)
             {
-                for (int y = 0; y < tileMap.Height; y++)
+                for (int y = 0; y < _tileMap.Height; y++)
                 {
                     MapPosition mapPosition = new MapPosition(x, y);
-                    PathNode pathNode = tileMap.GetGridObject(mapPosition);
+                    PathNode pathNode = _tileMap.GetGridObject(mapPosition);
                     pathNode.SetGCost(int.MaxValue);
                     pathNode.SetHCost(0);
                     pathNode.CalculateFCost();
@@ -190,13 +190,13 @@ namespace Descending.Tiles
                     neighborList.Add(GetNode(mapPosition.X - 1, mapPosition.Y - 1));
                 }
 
-                if (mapPosition.Y + 1 < tileMap.Height)
+                if (mapPosition.Y + 1 < _tileMap.Height)
                 {
                     neighborList.Add(GetNode(mapPosition.X - 1, mapPosition.Y + 1));
                 }
             }
 
-            if (mapPosition.X + 1 < tileMap.Width)
+            if (mapPosition.X + 1 < _tileMap.Width)
             {
                 neighborList.Add(GetNode(mapPosition.X + 1, mapPosition.Y));
                 
@@ -205,7 +205,7 @@ namespace Descending.Tiles
                     neighborList.Add(GetNode(mapPosition.X + 1, mapPosition.Y - 1));
                 }
 
-                if (mapPosition.Y + 1 < tileMap.Height)
+                if (mapPosition.Y + 1 < _tileMap.Height)
                 {
                     neighborList.Add(GetNode(mapPosition.X + 1, mapPosition.Y + 1));
                 }
@@ -216,7 +216,7 @@ namespace Descending.Tiles
                 neighborList.Add(GetNode(mapPosition.X, mapPosition.Y - 1));
             }
 
-            if (mapPosition.Y + 1 < tileMap.Height)
+            if (mapPosition.Y + 1 < _tileMap.Height)
             {
                 neighborList.Add(GetNode(mapPosition.X, mapPosition.Y + 1));
             }
@@ -226,7 +226,7 @@ namespace Descending.Tiles
 
         private PathNode GetNode(int x, int y)
         {
-            return tileMap.GetGridObject(new MapPosition(x, y));
+            return _tileMap.GetGridObject(new MapPosition(x, y));
         }
 
         private List<MapPosition> CalculatePath(PathNode endNode)
@@ -254,12 +254,12 @@ namespace Descending.Tiles
 
         public bool IsGridPositionWalkable(MapPosition mapPosition)
         {
-            return tileMap.GetGridObject(mapPosition).IsWalkable;
+            return _tileMap.GetGridObject(mapPosition).IsWalkable;
         }
 
         public void SetIsGridPositionWalkable(MapPosition mapPosition, bool isWalkable)
         {
-            tileMap.GetGridObject(mapPosition).SetIsWalkable(isWalkable);
+            _tileMap.GetGridObject(mapPosition).SetIsWalkable(isWalkable);
         }
 
         public bool HasPath(MapPosition startPosition, MapPosition endPosition)
@@ -269,14 +269,9 @@ namespace Descending.Tiles
 
         public int GetPathLength(MapPosition startPosition, MapPosition endPosition)
         {
-            if (FindPath(startPosition, endPosition, out int pathLength) != null)
-            {
-                return pathLength;
-            }
-            else
-            {
-                return int.MaxValue;
-            }
+            FindPath(startPosition, endPosition, out int pathLength);
+
+            return pathLength;
         }
     }
 }

@@ -71,14 +71,7 @@ namespace Descending.Gui
 
         public void OnClick()
         {
-            if (UnitManager.Instance != null)
-            {
-                UnitManager.Instance.SelectHero(_hero);
-            }
-            else if (PartyManager.Instance != null)
-            {
-                PartyManager.Instance.SetPartyLeader(_hero.gameObject);
-            }
+            UnitManager.Instance.SetPartyLeader(_hero.gameObject);
         }
     }
 }

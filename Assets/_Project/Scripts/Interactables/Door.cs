@@ -48,7 +48,7 @@ namespace Descending.Interactables
 
         public void Interact(Action onInteractionComplete)
         {
-            Debug.Log("Interacting with Door");
+            //Debug.Log("Interacting with Door");
             onComplete = onInteractionComplete;
             _isInteracting = true;
             _timer = 0.5f;

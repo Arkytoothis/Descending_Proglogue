@@ -14,8 +14,8 @@ namespace Descending.Tiles
 
         public event EventHandler OnAnyUnitMoved;
         
-        //[SerializeField] private GameObject _tileDebugPrefab = null;
-        //[SerializeField] private Transform _tilesParent = null;
+        [SerializeField] private GameObject _tileDebugPrefab = null;
+        [SerializeField] private Transform _tilesParent = null;
         
         [SerializeField] private int _width = 10;
         [SerializeField] private int _height = 10;
@@ -39,7 +39,7 @@ namespace Descending.Tiles
             Instance = this;
             
             _tileMap = new TileMap<Tile>(_width, _height, _cellSize, (TileMap<Tile> g, MapPosition gridPosition) => new Tile(g, gridPosition));
-            //tileMap.CreateDebugObjects(_tileDebugPrefab, _tilesParent);
+            //_tileMap.CreateDebugObjects(_tileDebugPrefab, _tilesParent);
         }
 
         public void Setup()
@@ -148,7 +148,14 @@ namespace Descending.Tiles
 
         public Tile GetTile(MapPosition mapPosition)
         {
-            return _tileMap.GetGridObject(mapPosition);
+            if (IsValidGridPosition(mapPosition))
+            {
+                return _tileMap.GetGridObject(mapPosition);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

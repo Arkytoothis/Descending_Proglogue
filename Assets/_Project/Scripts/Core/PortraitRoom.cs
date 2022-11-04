@@ -31,34 +31,16 @@ namespace Descending.Core
          public void Setup()
          {
              _portraits = new List<PortraitMount>();
-
-             if (UnitManager.Instance != null)
+             //Debug.Log("Loading PartyManager");
+             for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
              {
-                 //Debug.Log("Loading UnitManager");
-                 for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
-                 {
-                     GameObject clone = Instantiate(_portraitMountPrefab, _portraitMountsParent);
-                     //clone.transform.SetParent(_portraitMountsParent, false);
-                     clone.transform.localPosition = new Vector3(i * 10f, 0, 0);
+                 GameObject clone = Instantiate(_portraitMountPrefab, _portraitMountsParent);
+                 //clone.transform.SetParent(_portraitMountsParent, false);
+                 clone.transform.localPosition = new Vector3(i * 10f, 0, 0);
 
-                     PortraitMount mount = clone.GetComponent<PortraitMount>();
-                     mount.Setup(UnitManager.Instance.HeroUnits[i] as HeroUnit);
-                     _portraits.Add(mount);
-                 }
-             }
-             else if (PartyManager.Instance != null)
-             {
-                 //Debug.Log("Loading PartyManager");
-                 for (int i = 0; i < PartyManager.Instance.Heroes.Count; i++)
-                 {
-                     GameObject clone = Instantiate(_portraitMountPrefab, _portraitMountsParent);
-                     //clone.transform.SetParent(_portraitMountsParent, false);
-                     clone.transform.localPosition = new Vector3(i * 10f, 0, 0);
-
-                     PortraitMount mount = clone.GetComponent<PortraitMount>();
-                     mount.Setup(PartyManager.Instance.Heroes[i] as HeroUnit);
-                     _portraits.Add(mount);
-                 }
+                 PortraitMount mount = clone.GetComponent<PortraitMount>();
+                 mount.Setup(UnitManager.Instance.HeroUnits[i] as HeroUnit);
+                 _portraits.Add(mount);
              }
          }
 

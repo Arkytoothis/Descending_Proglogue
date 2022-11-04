@@ -22,6 +22,7 @@ namespace Descending.Gui
         
         public void OnSetTile(MapPosition mapPosition)
         {
+            _mapPositionLabel.SetText("Map Position   X: -1  Y: -1");
             Tile tile = MapManager.Instance.GetTile(mapPosition);
             if (tile == null) return;
             

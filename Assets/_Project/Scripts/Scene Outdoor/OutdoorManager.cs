@@ -16,7 +16,7 @@ namespace Descending.Scene_Outdoor
     {
         [SerializeField] private Database _database = null;
         [SerializeField] private EnemyAI _enemyAI = null;
-        [SerializeField] private MapBuilder _mapBuilder = null;
+        [SerializeField] private RuntimeDungeon _dungeon = null;
         [SerializeField] private GameObject _guiPrefab = null;
         [SerializeField] private Transform _guiParent = null;
 
@@ -32,11 +32,13 @@ namespace Descending.Scene_Outdoor
             InputManager.Instance.Setup();
             TurnManager.Instance.Setup();
             MapManager.Instance.Setup();
-            _mapBuilder.Generate(10, 10);
+            _dungeon.Generate();
             UnitManager.Instance.Setup();
             _enemyAI.Setup();
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
+            
+            UnitManager.Instance.SyncHeroes();
         }
 
         public void OnRegisterPlayerSpawner(GameObject spawnerObject)
