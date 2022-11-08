@@ -184,15 +184,16 @@ namespace Descending.Units
         public void SpawnHeroesOverworld()
         {
             _heroUnits = new List<HeroUnit>();
-            SpawnHero(0, Database.instance.Races.GetRace("Half Orc"), Database.instance.Profession.GetProfession("Soldier"));
-            SpawnHero(1, Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"));
-            SpawnHero(2, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
+            SpawnHeroOverworld(0, Database.instance.Races.GetRace("Half Orc"), Database.instance.Profession.GetProfession("Soldier"));
+            SpawnHeroOverworld(1, Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"));
+            SpawnHeroOverworld(2, Database.instance.Races.GetRace("Imperial"), Database.instance.Profession.GetProfession("Acolyte"));
+            SpawnHeroOverworld(3, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
             
             PortraitRoom.Instance.Setup();
             onSyncParty.Invoke(true);
         }
         
-        private void SpawnHero(int listIndex, RaceDefinition race, ProfessionDefinition profession)
+        private void SpawnHeroOverworld(int listIndex, RaceDefinition race, ProfessionDefinition profession)
         {
             //Debug.Log("Spawning Hero at " + mapPosition.ToString());
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);

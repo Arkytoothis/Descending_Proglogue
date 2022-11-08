@@ -21,12 +21,12 @@ namespace Descending.Combat
 
         private void ShowActionCamera()
         {
-            _actionCamera.SetActive(true);
+            //_actionCamera.SetActive(true);
         }
         
         private void HideActionCamera()
         {
-            _actionCamera.SetActive(false);
+           // _actionCamera.SetActive(false);
         }
 
         private void BaseAction_OnActionStarted(object sender, EventArgs e)

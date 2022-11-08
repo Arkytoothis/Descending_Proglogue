@@ -22,6 +22,7 @@ MonoBehaviour:
   _materials: {fileID: 11400000, guid: d368ccb480fca7a44813d8d465ac8554, type: 2}
   _enchants: {fileID: 11400000, guid: 65be090f02167b047b661aa6d5714a44, type: 2}
   _rarities: {fileID: 11400000, guid: cc0ff4420aa160f43b85c1b8563b62e6, type: 2}
+  _features: {fileID: 11400000, guid: 596d94504aab40548a29722c84be7fef, type: 2}
   _heroPrefab: {fileID: 1496511450220018615, guid: 7d9e0108182936d41839db846cc6851a,
     type: 3}
   _sceneLoadFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/scene_load_data.dat

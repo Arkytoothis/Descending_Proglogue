@@ -21,7 +21,7 @@ namespace Descending.Party
             _leaderHero = hero;
             _leaderTransform.ClearTransform();
             _leaderHero.WorldModel.transform.SetParent(_leaderTransform, false);
-            _leaderHero.WorldModel.transform.position = new Vector3(_leaderTransform.position.x, _leaderTransform.position.y + 1.6f, _leaderTransform.position.z);
+            _leaderHero.WorldModel.transform.position = _leaderTransform.position;
         }
     }
 }

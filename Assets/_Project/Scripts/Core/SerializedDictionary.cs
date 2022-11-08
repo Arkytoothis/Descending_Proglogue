@@ -4,9 +4,9 @@ using Descending.Abilities;
 using Descending.Attributes;
 using Descending.Equipment;
 using Descending.Equipment.Enchantments;
+using Descending.Features;
 using Descending.Units;
 using UnityEngine;
-using Attribute = Descending.Attributes.Attribute;
 
 namespace Descending.Core
 {
@@ -139,13 +139,13 @@ namespace Descending.Core
     {
     }
     
-    // [Serializable]
-    // public class FeatureDefinitionDictionary : SerializedDictionary<string, FeatureDefinition>
-    // {
-    // }
-    
     [Serializable]
     public class AbilityDefinitionDictionary : SerializedDictionary<string, AbilityDefinition>
+    {
+    }
+    
+    [Serializable]
+    public class FeatureDefinitionDictionary : SerializedDictionary<string, FeatureDefinition>
     {
     }
 }

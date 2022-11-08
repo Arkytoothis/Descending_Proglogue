@@ -3,6 +3,7 @@ using Descending.Attributes;
 using Descending.Enemies;
 using Descending.Equipment;
 using Descending.Equipment.Enchantments;
+using Descending.Features;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace Descending.Core
         [SerializeField] private MaterialDatabase _materials = null;
         [SerializeField] private EnchantmentDatabase _enchants = null;
         [SerializeField] private RarityDatabase _rarities = null;
-        //[SerializeField] private FeatureDatabase _features = null;
+        [SerializeField] private FeatureDatabase _features = null;
         //[SerializeField] private EnemyDatabase _enemies = null;
 
         [SerializeField] private GameObject _heroPrefab = null;
@@ -48,7 +49,7 @@ namespace Descending.Core
         public MaterialDatabase Materials => _materials;
         public EnchantmentDatabase Enchants => _enchants;
         public RarityDatabase Rarities => _rarities;
-        //public FeatureDatabase Features => _features;
+        public FeatureDatabase Features => _features;
         //public EnemyDatabase Enemies => _enemies;
         public GameObject HeroPrefab => _heroPrefab;
         public Sprite BlankSprite => _blankSprite;

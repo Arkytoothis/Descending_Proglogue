@@ -25,8 +25,8 @@ namespace Descending.Overworld
         {
             _database.Setup();
             SpawnGui();
-            _worldGenerator.BuildWorld();
             UnitManager.Instance.SpawnHeroesOverworld();
+            _worldGenerator.BuildWorld();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
         }
 

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5060875217264684858}
-  - component: {fileID: 5060875217264684856}
   - component: {fileID: -2914417861638047488}
   m_Layer: 0
   m_Name: Dungeon
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5060875217264684856
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5060875217264684859}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8.49
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2914417861638047488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a884c1e273ae24c99ec74a79b723c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionTransform: {fileID: 0}
 --- !u!1001 &1384211694589869566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,7 +113,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64728831080612052, guid: ea0c7071e67bf1c43940a8ab3ea121f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea0c7071e67bf1c43940a8ab3ea121f8, type: 3}
 --- !u!4 &1384211694590361330 stripped
 Transform:

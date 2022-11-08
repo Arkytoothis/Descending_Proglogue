@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Features;
+using Descending.Party;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 namespace Descending.Scene_Overworld
 {
     public class WorldGenerator : MonoBehaviour
     {
+        public const int MAX_THREAT_LEVEL = 10;
+        [SerializeField] private PartyController _partyController = null;
         [SerializeField] private int _sampleSize = 10;
         [SerializeField] private int _seed = 0;
         [SerializeField] private bool _randomizeSeed = true;
@@ -17,21 +22,22 @@ namespace Descending.Scene_Overworld
         [SerializeField] private float _moistureScale = 4f;
         [SerializeField] private float _tileOffsetX = 5f;
         [SerializeField] private float _tileOffsetY = 4.35f;
-        [SerializeField] private float _tileHeightModifier = 2f;
         [SerializeField] private RawImage _heightMapImage = null;
         [SerializeField] private RawImage _heatMapImage = null;
         [SerializeField] private RawImage _moistureMapImage = null;
         [SerializeField] private RawImage _falloffMapImage = null;
         [SerializeField] private RawImage _biomeMapImage = null;
-        [SerializeField] private AnimationCurve _heightCurve = null;
         [SerializeField] private BiomeBuilder _biomeBuilder = null;
+        [SerializeField] private FeaturePlacer _featurePlacer = null;
         [SerializeField] private GameObject[] _tilePrefabs = null;
         [SerializeField] private Transform _tilesParent = null;
+        [SerializeField] private float _threatModifier = 10f;
+        [SerializeField] private int _safeZoneSize = 2;
 
         [SerializeField] private Wave[] _heightWaves = null;
         [SerializeField] private Wave[] _heatWaves = null;
         [SerializeField] private Wave[] _moistureWaves = null;
-        
+
         [SerializeField] private TerrainType[] _heightTerrainTypes = null;
         [SerializeField] private TerrainType[] _heatTerrainTypes = null;
         [SerializeField] private TerrainType[] _moistureTerrainTypes = null;
@@ -42,6 +48,11 @@ namespace Descending.Scene_Overworld
         private float[,] _moistureMap = null;
         private float[,] _falloffMap = null;
         private TerrainData[,] _dataMap = null;
+        private WorldTile[,] _tiles = null;
+        private List<WorldTile> _spawnableTiles = null;
+        private List<WorldTile> _shoreTiles = null;
+        private WorldTile _startingTile = null;
+        private List<List<WorldTile>> _tilesByThreatLevel = null;
         
         public void BuildWorld()
         {
@@ -49,6 +60,8 @@ namespace Descending.Scene_Overworld
             ApplyFalloff();
             CreateHeatAndMoistureMaps();
             SpawnTiles();
+            StartCoroutine(FinalizeBuild());
+
         }
 
         private void CreateHeightMap()
@@ -57,10 +70,10 @@ namespace Descending.Scene_Overworld
             {
                 _seed = Random.Range(-100000, 100001);
             }
-            
+
             _heightMap = NoiseGenerator.GenerateNoiseMap(_seed, _sampleSize, _scale, _heightWaves);
         }
-        
+
         private void CreateHeatAndMoistureMaps()
         {
             _heatMap = GenerateHeatMap(_heightMap);
@@ -71,19 +84,24 @@ namespace Descending.Scene_Overworld
             CreateDataMap(heatTerrainMap, moistureTerrainMap);
             CreateTextures(heatTerrainMap, moistureTerrainMap);
         }
+
+        public enum HeightTypes { Sand, Grass, Hills, Mountains, Mountain_Peak }
         
         private void SpawnTiles()
         {
+            _tiles = new WorldTile[_sampleSize, _sampleSize];
+            _spawnableTiles = new List<WorldTile>();
+
             for (int x = 0; x < _sampleSize; x++)
             {
-                for (int y = 0; y <  _sampleSize; y++)
+                for (int y = 0; y < _sampleSize; y++)
                 {
-                    if(_heightMap[x,y] <= _heightTerrainTypes[1].Threshold) continue;
+                    if (_heightMap[x, y] <= _heightTerrainTypes[1].Threshold) continue;
 
                     float xPosition = 0;
-                    float yPosition = _heightMap[x, y] * _tileHeightModifier;
+                    float yPosition = 1f;
                     float zPosition = 0;
-                    
+
                     if (y % 2 == 0)
                     {
                         xPosition = x * _tileOffsetX;
@@ -95,49 +113,30 @@ namespace Descending.Scene_Overworld
                         zPosition = y * _tileOffsetY;
                     }
 
-                    int tileIndex = 0;
+                    int tileIndex = -1;
 
-                    if (_heightMap[x, y] >= _heightTerrainTypes[4].Threshold)
+                    if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Mountain_Peak].Threshold)
                     {
-                        tileIndex = 3;
+                        tileIndex = (int)HeightTypes.Mountains;
                     }
-                    else if (_heightMap[x, y] >= _heightTerrainTypes[3].Threshold)
+                    else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Mountains].Threshold)
                     {
-                        tileIndex = 3;
+                        tileIndex = (int)HeightTypes.Hills;
                     }
-                    else if (_heightMap[x, y] >= _heightTerrainTypes[2].Threshold)
+                    else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Hills].Threshold)
                     {
-                        tileIndex = 0;
+                        tileIndex = (int)HeightTypes.Grass;
                     }
                     else
                     {
-                        tileIndex = 1;
+                        tileIndex = (int)HeightTypes.Sand;
                     }
-                    
-                    if (_dataMap[x, y].Biome.Name == "grass")
-                    {
-                        SpawnTile(_tilePrefabs[tileIndex], xPosition, yPosition, zPosition);
-                    }
-                    else if (_dataMap[x, y].Biome.Name == "desert")
-                    {
-                        SpawnTile(_tilePrefabs[tileIndex], xPosition, yPosition, zPosition);
-                    }
-                    else if (_dataMap[x, y].Biome.Name == "forest")
-                    {
-                        SpawnTile(_tilePrefabs[tileIndex], xPosition, yPosition, zPosition);
-                    }
-                    else if (_dataMap[x, y].Biome.Name == "rainforest")
-                    {
-                        SpawnTile(_tilePrefabs[tileIndex], xPosition, yPosition, zPosition);
-                    }
-                    else if (_dataMap[x, y].Biome.Name == "tundra")
-                    {
-                        SpawnTile(_tilePrefabs[tileIndex], xPosition, yPosition, zPosition);
-                    }
+
+                    SpawnTile(_tilePrefabs[tileIndex], x, y, new Vector3(xPosition, yPosition, zPosition));
                 }
-            }    
+            }
         }
-        
+
         private void CreateTextures(TerrainType[,] heatTerrainMap, TerrainType[,] moistureTerrainMap)
         {
             if (_displayTextures == false)
@@ -149,7 +148,7 @@ namespace Descending.Scene_Overworld
                 _biomeMapImage.gameObject.SetActive(false);
                 return;
             }
-            
+
             Texture2D falloffMapTexture = TextureGenerator.BuildTexture(_falloffMap, _falloffMapTypes);
             _falloffMapImage.texture = falloffMapTexture;
             Texture2D heightMapTexture = TextureGenerator.BuildTexture(_heightMap, _heightTerrainTypes);
@@ -165,7 +164,7 @@ namespace Descending.Scene_Overworld
         private void ApplyFalloff()
         {
             _falloffMap = NoiseGenerator.GenerateFalloffMap(_sampleSize);
-            
+
             for (int x = 0; x < _sampleSize; x++)
             {
                 for (int y = 0; y < _sampleSize; y++)
@@ -175,11 +174,20 @@ namespace Descending.Scene_Overworld
                 }
             }
         }
-        
-        private void SpawnTile(GameObject prefab, float x, float y, float z)
+
+        private void SpawnTile(GameObject prefab, int tileX, int tileY, Vector3 spawnPosition)
         {
             GameObject clone = Instantiate(prefab, _tilesParent);
-            clone.transform.position = new Vector3(x, y, z);
+            clone.transform.position = spawnPosition;
+            
+            WorldTile tile = clone.GetComponent<WorldTile>();
+            tile.Setup( tileX, tileY);
+            _tiles[tileX, tileY] = tile;
+
+            if (tile.IsSpawnable)
+            {
+                _spawnableTiles.Add(tile);
+            }
         }
 
         private void CreateDataMap(TerrainType[,] heatTerrainMap, TerrainType[,] moistureTerrainMap)
@@ -199,8 +207,8 @@ namespace Descending.Scene_Overworld
                 }
             }
         }
-        
-        public float[,] GenerateHeatMap(float[,] heightmap)
+
+        private float[,] GenerateHeatMap(float[,] heightmap)
         {
             float[,] uniformMap = NoiseGenerator.GenerateUniformNoiseMap(_sampleSize, 1f);
             float[,] randomMap = NoiseGenerator.GenerateNoiseMap(_seed, _sampleSize, _heatScale, _heatWaves);
@@ -216,11 +224,11 @@ namespace Descending.Scene_Overworld
                     map[x, y] = Mathf.Clamp(map[x, y], 0.0f, 1f);
                 }
             }
-            
+
             return map;
         }
-        
-        public float[,] GenerateMoistureMap(float[,] heightmap)
+
+        private float[,] GenerateMoistureMap(float[,] heightmap)
         {
             float[,] randomMap = NoiseGenerator.GenerateNoiseMap(_seed, _sampleSize, _moistureScale, _moistureWaves);
 
@@ -231,8 +239,120 @@ namespace Descending.Scene_Overworld
                     randomMap[x, y] -= 0.5f * heightmap[x, y];
                 }
             }
-            
+
             return randomMap;
+        }
+
+        private IEnumerator FinalizeBuild()
+        {
+            yield return null;
+            _shoreTiles = new List<WorldTile>();
+            
+            for (int x = 0; x < _sampleSize; x++)
+            {
+                for (int y = 0; y < _sampleSize; y++)
+                {
+                    if (_tiles[x, y] != null)
+                    {
+                        _tiles[x,y].FindNeighbors();
+                    }
+                }
+            }
+            
+            for (int x = 0; x < _sampleSize; x++)
+            {
+                for (int y = 0; y < _sampleSize; y++)
+                {
+                    if (_tiles[x, y] != null)
+                    {
+                        if (_tiles[x, y].NeighborTiles.Count < 6 && _tiles[x,y].IsSpawnable)
+                        {
+                            _shoreTiles.Add(_tiles[x, y]);
+                        }
+                    }
+                }
+            }
+
+            ScanAstar();
+            SpawnStartingVillage();
+            CalculateThreatLevels();
+            SpawnVillages();
+            SpawnDungeons();
+            SpawnParty();
+        }
+
+        private void SpawnStartingVillage()
+        {
+            int tileIndex = Random.Range(0, _shoreTiles.Count);
+            _startingTile = _shoreTiles[tileIndex];
+            _shoreTiles.RemoveAt(tileIndex);
+            _featurePlacer.PlaceFeature(Database.instance.Features.GetFeature("Village"), _startingTile);
+        }
+        
+
+        private void SpawnVillages()
+        {
+            for (int i = 2; i < MAX_THREAT_LEVEL; i+=2)
+            {
+                int tileIndex = Random.Range(0, _tilesByThreatLevel[i].Count);
+                WorldTile tile = _tilesByThreatLevel[i][tileIndex];
+                _featurePlacer.PlaceFeature(Database.instance.Features.GetFeature("Village"), tile);
+            }
+        }
+
+        private void SpawnDungeons()
+        {
+            for (int i = 1; i < MAX_THREAT_LEVEL; i++)
+            {
+                int tileIndex = Random.Range(0, _tilesByThreatLevel[i].Count);
+                WorldTile tile = _tilesByThreatLevel[i][tileIndex];
+                _tilesByThreatLevel[i].RemoveAt(tileIndex);
+                _featurePlacer.PlaceFeature(Database.instance.Features.GetFeature("Dungeon"), tile);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                int tileIndex = Random.Range(0, _tilesByThreatLevel[MAX_THREAT_LEVEL].Count);
+                WorldTile tile = _tilesByThreatLevel[MAX_THREAT_LEVEL][tileIndex];
+                _tilesByThreatLevel[MAX_THREAT_LEVEL].RemoveAt(tileIndex);
+                _featurePlacer.PlaceFeature(Database.instance.Features.GetFeature("Dungeon"), tile);
+            }
+        }
+
+        private void ScanAstar()
+        {
+            AstarPath.active.Scan();
+        }
+        
+        private void CalculateThreatLevels()
+        {
+            _tilesByThreatLevel = new List<List<WorldTile>>();
+            for (int i = 0; i <= MAX_THREAT_LEVEL; i++)
+            {
+                _tilesByThreatLevel.Add(new List<WorldTile>());
+            }
+            
+            for (int x = 0; x < _sampleSize; x++)
+            {
+                for (int y = 0; y < _sampleSize; y++)
+                {
+                    if(_tiles[x,y] == null) continue;
+                    
+                    float distance = Vector3.Distance(_startingTile.transform.position, _tiles[x, y].transform.position);
+                    int threatLevel = Mathf.FloorToInt(distance / _threatModifier) - _safeZoneSize;
+                    if (threatLevel < 0) threatLevel = 0;
+                    else if (threatLevel > MAX_THREAT_LEVEL) threatLevel = MAX_THREAT_LEVEL;
+                    
+                    _tiles[x,y].SetThreatLevel(threatLevel);
+                    _tilesByThreatLevel[threatLevel].Add(_tiles[x,y]);
+                }
+            }
+        }
+
+        public void SpawnParty()
+        {
+            _partyController.transform.position = _startingTile.transform.position;
+            _partyController.SetPartyLeader(0);
         }
     }
 }

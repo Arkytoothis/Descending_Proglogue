@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Features;
+using Descending.Scene_Overworld;
 using Pathfinding;
 using UnityEngine;
 
@@ -12,24 +13,23 @@ namespace Descending.Party
         [SerializeField] private float _targetDistance = 3f;
         [SerializeField] private Seeker _seeker;
 
-        [SerializeField] private WorldFeature _targetFeature = null;
+        [SerializeField] private WorldTile _currentTile = null;
         
-        public void SetDestination(WorldFeature targetFeature, Vector3 destination)
+        public void MoveTo(Vector3 position)
         {
-            _targetFeature = targetFeature;
-            _seeker.StartPath(transform.position, destination);
+            _seeker.StartPath(transform.position, position);
         }
 
-        private void Update()
+        private void OnTriggerEnter(Collider other)
         {
-            if (_targetFeature == null) return;
-
-            float distance = Vector3.Distance(transform.position, _targetFeature.InteractionTransform.position);
-            
-            if (distance <= _targetDistance)
+            if (other.CompareTag("World Tile"))
             {
-                _targetFeature.Interact();
-                _targetFeature = null;
+                _currentTile = other.GetComponentInParent<WorldTile>();
+                
+                if (_currentTile.Feature != null)
+                {
+                    _currentTile.Feature.Interact();
+                }
             }
         }
     }

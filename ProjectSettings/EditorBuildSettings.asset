@@ -16,8 +16,11 @@ EditorBuildSettings:
     guid: a1f7f31b7b07fff4e890a9462d1694bd
   - enabled: 1
     path: Assets/_Project/Scenes/2 Combat Outdoor.unity
-    guid: 3bac3ed519716744bac9343d1faffa94
+    guid: bc5f994ec870ee34aaac14af515bc467
   - enabled: 1
     path: Assets/_Project/Scenes/3 Combat Indoor.unity
     guid: a687f2ad72940ba40a9136537ea26427
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
