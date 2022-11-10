@@ -371,41 +371,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BiomeRows:
   - Biomes:
-    - Name: desert
-      Color: {r: 0.8679245, g: 0.86674875, b: 0.4462442, a: 1}
-    - Name: desert
-      Color: {r: 0.86666673, g: 0.86666673, b: 0.44705886, a: 1}
-    - Name: tundra
-      Color: {r: 0.39279994, g: 0.8584906, b: 0.83522916, a: 1}
+    - Name: grass
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
+    - Name: forest
+      Color: {r: 0.121568635, g: 0.47058827, b: 0.03529412, a: 1}
+    - Name: forest
+      Color: {r: 0.121568635, g: 0.47058827, b: 0.03529412, a: 1}
     - Name: tundra
       Color: {r: 0.3921569, g: 0.8588236, b: 0.8352942, a: 1}
   - Biomes:
     - Name: grass
-      Color: {r: 0.5805799, g: 0.735849, b: 0.21173012, a: 1}
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
     - Name: grass
       Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
     - Name: forest
       Color: {r: 0.12281945, g: 0.4716981, b: 0.03337486, a: 1}
-    - Name: tundra
-      Color: {r: 0.3921569, g: 0.8588236, b: 0.8352942, a: 1}
-  - Biomes:
-    - Name: rainforest
-      Color: {r: 0.08216151, g: 0.2735849, b: 0.034843363, a: 1}
-    - Name: rainforest
-      Color: {r: 0.08235294, g: 0.27450982, b: 0.03529412, a: 1}
-    - Name: forest
-      Color: {r: 0.121568635, g: 0.47058827, b: 0.03529412, a: 1}
     - Name: forest
       Color: {r: 0.121568635, g: 0.47058827, b: 0.03529412, a: 1}
   - Biomes:
-    - Name: rainforest
-      Color: {r: 0.08235294, g: 0.27450982, b: 0.03529412, a: 1}
-    - Name: rainforest
-      Color: {r: 0.08235294, g: 0.27450982, b: 0.03529412, a: 1}
-    - Name: forest
-      Color: {r: 0.121568635, g: 0.47058827, b: 0.03529412, a: 1}
-    - Name: forest
-      Color: {r: 0.121568635, g: 0.47058827, b: 0.03529412, a: 1}
+    - Name: desert
+      Color: {r: 0.86666673, g: 0.86666673, b: 0.44705886, a: 1}
+    - Name: grass
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
+    - Name: grass
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
+    - Name: grass
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
+  - Biomes:
+    - Name: desert
+      Color: {r: 0.86666673, g: 0.86666673, b: 0.44705886, a: 1}
+    - Name: desert
+      Color: {r: 0.86666673, g: 0.86666673, b: 0.44705886, a: 1}
+    - Name: grass
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
+    - Name: grass
+      Color: {r: 0.5686275, g: 0.72156864, b: 0.20784315, a: 1}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &714850735
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 5736fd46cfa2c814bbb6cd21d34a4bf6, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
 --- !u!4 &1160234427
 Transform:
   m_ObjectHideFlags: 0
@@ -1903,7 +1903,7 @@ Transform:
   - {fileID: 733138084}
   - {fileID: 14563444}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337971117
 GameObject:
@@ -1938,9 +1938,163 @@ Transform:
   - {fileID: 1649929344}
   - {fileID: 2135711009}
   - {fileID: 984904965}
+  - {fileID: 1338239512}
+  - {fileID: 1421188307}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1338239512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2109006364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1347427147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1347427149}
+  - component: {fileID: 1347427148}
+  m_Layer: 0
+  m_Name: Fog of War Team
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1347427148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347427147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fec0d0c4161ac44b701192e743dde2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  mapResolution: {x: 128, y: 128}
+  mapSize: 512
+  mapOffset: {x: 0, y: 0}
+  plane: 2
+  physics: 2
+  pointFiltering: 0
+  blurAmount: 1
+  blurIterations: 2
+  blurType: 0
+  updateUnits: 1
+  updateAutomatically: 1
+  outputToTexture: 1
+  partialFogAmount: 0.5
+  fadeInDuration: 0.25
+  fadeOutDuration: 0.25
+  renderType: 0
+  multithreaded: 0
+  threads: 2
+  maxMillisecondsPerFrame: 5
+--- !u!4 &1347427149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347427147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1421188306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421188307}
+  - component: {fileID: 1421188308}
+  - component: {fileID: 1421188309}
+  m_Layer: 0
+  m_Name: World Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421188307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421188306}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1719657994}
+  m_Father: {fileID: 1337971118}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1421188308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421188306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbc475a778452b4a8fca5e0451d5e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDisplayWorldTile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c4f1275d3030a2042900232832b5c7a8, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[UnityEngine.GameObject,
+          UnityEngine
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &1421188309
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421188306}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ad1d361e8ef52d409d64d627304fcc1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1440122484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,12 +2147,15 @@ MonoBehaviour:
   _sampleSize: 30
   _seed: 0
   _randomizeSeed: 1
-  _displayTextures: 0
+  _displayTextures: 1
   _scale: 10
   _heatScale: 2
   _moistureScale: 4
   _tileOffsetX: 5
   _tileOffsetY: 4.35
+  _heatModifier: 0.2
+  _moistureModifier: 0.5
+  _falloffMultiplier: 0.75
   _heightMapImage: {fileID: 759748776}
   _heatMapImage: {fileID: 1094461449}
   _moistureMapImage: {fileID: 1449607558}
@@ -2011,12 +2168,17 @@ MonoBehaviour:
   - {fileID: 5383423722431901922, guid: 108b7d9f6af348a4e9a70d4bea64aa6e, type: 3}
   - {fileID: 5383423722431901922, guid: 1554c77c1ae07124eab07ffa4b4d3fd9, type: 3}
   - {fileID: 5383423722431901922, guid: a14a454b7becd3e4a972bab8d853cbdf, type: 3}
+  - {fileID: 5383423722431901922, guid: be7997b1af2ea3a449088562e9723642, type: 3}
+  - {fileID: 5383423722431901922, guid: e6530670071bd5d49803e1ae554424ce, type: 3}
+  - {fileID: 5383423722431901922, guid: 225def7e771007a47b434b4cb664728f, type: 3}
+  - {fileID: 5383423722431901922, guid: 4214d70dcb87400429ee35eb91c6e9fb, type: 3}
   _tilesParent: {fileID: 88010845}
   _threatModifier: 8
   _safeZoneSize: 1
+  _forestSpawnChance: 85
   _heightWaves:
   - Frequency: 2
-    Amplitude: 3
+    Amplitude: 1
   - Frequency: 0.5
     Amplitude: 1
   - Frequency: 4
@@ -2033,7 +2195,7 @@ MonoBehaviour:
     Amplitude: 1
   _heightTerrainTypes:
   - Index: 0
-    Threshold: 0.055
+    Threshold: 0
     ColorGradient:
       serializedVersion: 2
       key0: {r: 0.14072202, g: 0.13616946, b: 0.6415094, a: 1}
@@ -2064,7 +2226,7 @@ MonoBehaviour:
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
   - Index: 1
-    Threshold: 0.06
+    Threshold: 0.039
     ColorGradient:
       serializedVersion: 2
       key0: {r: 0.5283019, g: 0.5161273, b: 0.41117835, a: 1}
@@ -2095,7 +2257,7 @@ MonoBehaviour:
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
   - Index: 2
-    Threshold: 0.12
+    Threshold: 0.29
     ColorGradient:
       serializedVersion: 2
       key0: {r: 0.19946761, g: 0.4811321, b: 0.18382877, a: 1}
@@ -2126,7 +2288,7 @@ MonoBehaviour:
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
   - Index: 3
-    Threshold: 0.316
+    Threshold: 0.332
     ColorGradient:
       serializedVersion: 2
       key0: {r: 0.4245283, g: 0.4236987, b: 0.28235137, a: 1}
@@ -2157,7 +2319,7 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   - Index: 4
-    Threshold: 0.378
+    Threshold: 0.481
     ColorGradient:
       serializedVersion: 2
       key0: {r: 0.39607847, g: 0.28627452, b: 0.14901961, a: 1}
@@ -2618,6 +2780,7 @@ GameObject:
   - component: {fileID: 1451443516}
   - component: {fileID: 1451443518}
   - component: {fileID: 1451443519}
+  - component: {fileID: 1451443520}
   m_Layer: 8
   m_Name: Party
   m_TagString: Untagged
@@ -2755,6 +2918,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4.71, z: 1}
   m_Center: {x: 0, y: 1.37, z: 0}
+--- !u!114 &1451443520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451443509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b130f358dcb26548b2ff0923d496dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  brightness: 1
+  shapeType: 0
+  absoluteOffset: 0
+  offset: {x: 0, y: 0}
+  boxSize: {x: 5, y: 5}
+  circleRadius: 10
+  innerRadius: 1
+  angle: 180
+  texture: {fileID: 0}
+  rotateToForward: 0
+  mesh: {fileID: 0}
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 0
+  lineOfSightRaycastCount: 100
+  lineOfSightPenetration: 0
+  lineOfSightRaycastAngle: 360
+  lineOfSightRaycastOffset: 0
+  lineOfSightSeeOutsideRange: 0
+  multithreading: 0
+  cellBased: 0
+  snapToPixelCenter: 0
 --- !u!1 &1533723819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,6 +3263,86 @@ Transform:
   m_Father: {fileID: 1337971118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1719657993
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1421188307}
+    m_Modifications:
+    - target: {fileID: 1521014767528538, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_Name
+      value: SM_UI_Hex_Selection_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.258819
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23860410818513788, guid: f9f4f57f97c25674ab2e410e2f8d87b6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6560bd06f67350246b955bcceda4a957, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9f4f57f97c25674ab2e410e2f8d87b6, type: 3}
+--- !u!4 &1719657994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4945201742127410, guid: f9f4f57f97c25674ab2e410e2f8d87b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719657993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983780175
 GameObject:
   m_ObjectHideFlags: 3
@@ -3243,12 +3521,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1337971118}
     m_Modifications:
     - target: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
         type: 3}
@@ -3352,6 +3630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partyMover: {fileID: 1451443518}
+  _worldCursor: {fileID: 1421188308}
   _groundMask:
     serializedVersion: 2
     m_Bits: 4096

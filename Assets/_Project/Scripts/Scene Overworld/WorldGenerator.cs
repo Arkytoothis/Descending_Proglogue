@@ -22,6 +22,9 @@ namespace Descending.Scene_Overworld
         [SerializeField] private float _moistureScale = 4f;
         [SerializeField] private float _tileOffsetX = 5f;
         [SerializeField] private float _tileOffsetY = 4.35f;
+        [SerializeField] private float _heatModifier = 0.5f;
+        [SerializeField] private float _moistureModifier = 0.5f;
+        [SerializeField] private float _falloffMultiplier = 0.5f;
         [SerializeField] private RawImage _heightMapImage = null;
         [SerializeField] private RawImage _heatMapImage = null;
         [SerializeField] private RawImage _moistureMapImage = null;
@@ -33,6 +36,7 @@ namespace Descending.Scene_Overworld
         [SerializeField] private Transform _tilesParent = null;
         [SerializeField] private float _threatModifier = 10f;
         [SerializeField] private int _safeZoneSize = 2;
+        [SerializeField] private int _forestSpawnChance = 80;
 
         [SerializeField] private Wave[] _heightWaves = null;
         [SerializeField] private Wave[] _heatWaves = null;
@@ -51,6 +55,7 @@ namespace Descending.Scene_Overworld
         private WorldTile[,] _tiles = null;
         private List<WorldTile> _spawnableTiles = null;
         private List<WorldTile> _shoreTiles = null;
+        private List<WorldTile> _startingTiles = null;
         private WorldTile _startingTile = null;
         private List<List<WorldTile>> _tilesByThreatLevel = null;
         
@@ -85,19 +90,20 @@ namespace Descending.Scene_Overworld
             CreateTextures(heatTerrainMap, moistureTerrainMap);
         }
 
-        public enum HeightTypes { Sand, Grass, Hills, Mountains, Mountain_Peak }
+        public enum HeightTypes { Sand, Grass, Hills, Mountains, Mountain_Peak}
+        
+        public enum TileTypes { Sand, Grass, Hills, Mountains, Forest, Desert, Water_Shallow, Water_Deep}
         
         private void SpawnTiles()
         {
             _tiles = new WorldTile[_sampleSize, _sampleSize];
             _spawnableTiles = new List<WorldTile>();
+            _startingTiles = new List<WorldTile>();
 
             for (int x = 0; x < _sampleSize; x++)
             {
                 for (int y = 0; y < _sampleSize; y++)
                 {
-                    if (_heightMap[x, y] <= _heightTerrainTypes[1].Threshold) continue;
-
                     float xPosition = 0;
                     float yPosition = 1f;
                     float zPosition = 0;
@@ -114,22 +120,48 @@ namespace Descending.Scene_Overworld
                     }
 
                     int tileIndex = -1;
-
+                    
                     if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Mountain_Peak].Threshold)
                     {
-                        tileIndex = (int)HeightTypes.Mountains;
+                        tileIndex = (int)TileTypes.Mountains;
                     }
                     else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Mountains].Threshold)
                     {
-                        tileIndex = (int)HeightTypes.Hills;
+                        tileIndex = (int)TileTypes.Mountains;
                     }
                     else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Hills].Threshold)
                     {
-                        tileIndex = (int)HeightTypes.Grass;
+                        tileIndex = (int)TileTypes.Hills;
+                    }
+                    else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Grass].Threshold)
+                    {
+                        if (_dataMap[x, y].Biome.Name == "forest" || _dataMap[x, y].Biome.Name == "rainforest")
+                        {
+                            if (Random.Range(0, 100) < _forestSpawnChance)
+                            {
+                                tileIndex = (int)TileTypes.Forest;
+                            }
+                            else
+                            {
+                                tileIndex = (int)TileTypes.Grass;
+                            }
+                        }
+                        else if (_dataMap[x, y].Biome.Name == "desert")
+                        {
+                            tileIndex = (int)TileTypes.Desert;
+                        }
+                        else
+                        {
+                            tileIndex = (int)TileTypes.Grass;
+                        }
+                    }
+                    else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Sand].Threshold)
+                    {
+                        tileIndex = (int)TileTypes.Sand;
                     }
                     else
                     {
-                        tileIndex = (int)HeightTypes.Sand;
+                        tileIndex = (int)TileTypes.Water_Shallow;
                     }
 
                     SpawnTile(_tilePrefabs[tileIndex], x, y, new Vector3(xPosition, yPosition, zPosition));
@@ -169,7 +201,7 @@ namespace Descending.Scene_Overworld
             {
                 for (int y = 0; y < _sampleSize; y++)
                 {
-                    _heightMap[x, y] -= 0.5f * _falloffMap[x, y];
+                    _heightMap[x, y] -= _falloffMultiplier * _falloffMap[x, y];
                     //_heightMap[x, y] = Mathf.Clamp(_heightMap[x, y], 0.0f, 1f);
                 }
             }
@@ -219,7 +251,7 @@ namespace Descending.Scene_Overworld
                 for (int y = 0; y < _sampleSize; y++)
                 {
                     map[x, y] = (0.5f * randomMap[x, y]) * uniformMap[x, y];
-                    map[x, y] += 0.5f * heightmap[x, y];
+                    map[x, y] += _heatModifier * heightmap[x, y];
 
                     map[x, y] = Mathf.Clamp(map[x, y], 0.0f, 1f);
                 }
@@ -236,7 +268,7 @@ namespace Descending.Scene_Overworld
             {
                 for (int y = 0; y < _sampleSize; y++)
                 {
-                    randomMap[x, y] -= 0.5f * heightmap[x, y];
+                    randomMap[x, y] -= _moistureModifier * heightmap[x, y];
                 }
             }
 
@@ -252,9 +284,9 @@ namespace Descending.Scene_Overworld
             {
                 for (int y = 0; y < _sampleSize; y++)
                 {
-                    if (_tiles[x, y] != null)
+                    if (_tiles[x, y] != null && _tiles[x,y].IsWater == false)
                     {
-                        _tiles[x,y].FindNeighbors();
+                        _tiles[x,y].FindNeighbors(_tiles);
                     }
                 }
             }
@@ -268,6 +300,11 @@ namespace Descending.Scene_Overworld
                         if (_tiles[x, y].NeighborTiles.Count < 6 && _tiles[x,y].IsSpawnable)
                         {
                             _shoreTiles.Add(_tiles[x, y]);
+                            
+                            if (_tiles[x, y].Name == "Forest")
+                            {
+                                _startingTiles.Add(_tiles[x, y]);
+                            }
                         }
                     }
                 }
@@ -283,9 +320,9 @@ namespace Descending.Scene_Overworld
 
         private void SpawnStartingVillage()
         {
-            int tileIndex = Random.Range(0, _shoreTiles.Count);
-            _startingTile = _shoreTiles[tileIndex];
-            _shoreTiles.RemoveAt(tileIndex);
+            int tileIndex = Random.Range(0, _startingTiles.Count);
+            _startingTile = _startingTiles[tileIndex];
+            _startingTiles.RemoveAt(tileIndex);
             _featurePlacer.PlaceFeature(Database.instance.Features.GetFeature("Village"), _startingTile);
         }
         
@@ -336,7 +373,7 @@ namespace Descending.Scene_Overworld
             {
                 for (int y = 0; y < _sampleSize; y++)
                 {
-                    if(_tiles[x,y] == null) continue;
+                    if(_tiles[x,y] == null || _tiles[x,y].IsWater == true) continue;
                     
                     float distance = Vector3.Distance(_startingTile.transform.position, _tiles[x, y].transform.position);
                     int threatLevel = Mathf.FloorToInt(distance / _threatModifier) - _safeZoneSize;

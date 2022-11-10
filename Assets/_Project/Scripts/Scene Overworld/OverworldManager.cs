@@ -24,10 +24,12 @@ namespace Descending.Overworld
         private void Start()
         {
             _database.Setup();
-            SpawnGui();
             UnitManager.Instance.SpawnHeroesOverworld();
             _worldGenerator.BuildWorld();
+            
+            SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
+            UnitManager.Instance.SyncHeroes();
         }
 
         private void SpawnGui()

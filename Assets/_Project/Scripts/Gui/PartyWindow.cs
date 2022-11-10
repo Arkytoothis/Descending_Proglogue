@@ -22,7 +22,7 @@ namespace Descending.Gui
             _vitalsPanel.Setup();
             _statisticsPanel.Setup();
             
-            //SelectHero(UnitManager.Instance.GetHero(0));
+            SelectHero(UnitManager.Instance.GetHero(0));
             Close();
         }
 

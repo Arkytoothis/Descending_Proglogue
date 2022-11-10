@@ -10,6 +10,7 @@ namespace Descending.Overworld
     public class Raycaster : MonoBehaviour
     {
         [SerializeField] private PartyMover _partyMover = null;
+        [SerializeField] private WorldCursor _worldCursor = null;
         [SerializeField] private LayerMask _groundMask;
 
         private void Update()
@@ -18,16 +19,24 @@ namespace Descending.Overworld
             
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f, _groundMask))
             {
+                WorldTile tile = hit.collider.gameObject.GetComponentInParent<WorldTile>();
+
+                if (tile == null) return;
+                
+                _worldCursor.SetTile(tile);
+                
                 if (Input.GetMouseButtonDown(1))
                 {
-                    WorldTile tile = hit.collider.gameObject.GetComponentInParent<WorldTile>();
-
-                    if (tile != null && tile.IsMovable)
+                    if (tile.IsMovable)
                     {
                         _partyMover.MoveTo(tile.transform.position);
                         return;
                     }
                 }
+            }
+            else
+            {
+                _worldCursor.SetTile(null);
             }
         }
     }

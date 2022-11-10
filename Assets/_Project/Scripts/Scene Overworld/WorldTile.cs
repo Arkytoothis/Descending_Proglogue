@@ -15,6 +15,7 @@ namespace Descending.Scene_Overworld
         [SerializeField] private Transform _tileTransform = null;
         [SerializeField] private bool _isSpawnable = false;
         [SerializeField] private bool _isMovable = false;
+        [SerializeField] private bool _isWater = false;
         [SerializeField] private int _threatLevel = 0;
 
         [SerializeField] private WorldFeature _feature = null;
@@ -28,6 +29,7 @@ namespace Descending.Scene_Overworld
         public int Y => _y;
         public bool IsSpawnable => _isSpawnable;
         public bool IsMovable => _isMovable;
+        public bool IsWater => _isWater;
         public int ThreatLevel => _threatLevel;
         public List<WorldTile> NeighborTiles => _neighborTiles;
 
@@ -37,7 +39,7 @@ namespace Descending.Scene_Overworld
             _y = y;
         }
 
-        public void FindNeighbors()
+        public void FindNeighbors(WorldTile[,] tiles)
         {
             _neighborTiles = new List<WorldTile>();
 
@@ -48,14 +50,26 @@ namespace Descending.Scene_Overworld
                 if (hitCollider == _collider) continue;
             
                 WorldTile tile = _collider.GetComponentInParent<WorldTile>();
-                _neighborTiles.Add(tile);
+                if (tile._isWater == false)
+                {
+                    _neighborTiles.Add(tile);
+                }
             }
             // for (int i = 0; i < (int)WorldDirections.Number; i++)
             // {
             //     WorldDirections direction = (WorldDirections)i;
             //     Vector2Int neighbor = GetNeighbor(this, direction);
-            //     
+            //     Debug.Log(neighbor.x + " " + neighbor.y);
+            //     int neighborX = _x + neighbor.x, neighborY = _y + neighbor.y;
+            //     Debug.Log(neighborX + " " + neighborY);
+            //     if (neighborX >= 0 && neighborX < tiles.GetLength(0) && neighborY >= 0 && neighborY < tiles.GetLength(1))
+            //     {
+            //         WorldTile neighborTile = tiles[_x + neighbor.x, _y + neighbor.y];
+            //         _neighborTiles.Add(neighborTile);
+            //     }
             // }
+            
+            //Debug.Log("Tile " + name + " neighbor tiles: " + _neighborTiles.Count);
         }
 
         public void Clicked()
@@ -67,7 +81,6 @@ namespace Descending.Scene_Overworld
             }
 
             s += _threatLevel;
-            Debug.Log(s);
         }
 
         public void SetThreatLevel(int threatLevel)
@@ -102,7 +115,7 @@ namespace Descending.Scene_Overworld
         private Vector2Int GetNeighbor(WorldTile tile, WorldDirections direction)
         {
             int parity = tile.Y & 1;
-            var diff = _neighborsLookup[parity,(int)direction];
+            Vector2Int diff = _neighborsLookup[parity,(int)direction];
             return new Vector2Int(tile.X + diff.x, tile.Y + diff.y);
         }
     }

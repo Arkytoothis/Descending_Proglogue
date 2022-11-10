@@ -205,7 +205,8 @@ MonoBehaviour:
   - {fileID: -1664015629978680948}
   - {fileID: 3813736095834753664}
   - {fileID: 7865680975027439324}
-  m_RendererFeatureMap: adc0de57c6d2eee58aecc3c3529287968c416cd2993ae8e880ca50ebc51ced34dc060f312c83286d
+  - {fileID: 3007817074018518254}
+  m_RendererFeatureMap: adc0de57c6d2eee58aecc3c3529287968c416cd2993ae8e880ca50ebc51ced34dc060f312c83286dee843a56b1e9bd29
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -274,6 +275,19 @@ MonoBehaviour:
     m_CurrentCloudHeight: 0
     CloudSpeed: 0
     NormalY: 0
+--- !u!114 &3007817074018518254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532a94f929bb7484f9f133de19e76224, type: 3}
+  m_Name: FogOfWarURPFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
 --- !u!114 &3453722769763445334
 MonoBehaviour:
   m_ObjectHideFlags: 0

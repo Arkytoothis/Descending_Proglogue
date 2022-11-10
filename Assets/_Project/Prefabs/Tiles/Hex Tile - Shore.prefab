@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3819361209668567058}
-  - component: {fileID: -5799439932559112995}
+  - component: {fileID: 3738185851496622890}
   m_Layer: 0
-  m_Name: Hex Tile - Grass
+  m_Name: Hex Tile - Shore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,11 +30,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2682825752797986235}
-  - {fileID: 8852261696686838101}
+  - {fileID: 8543404799106521600}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5799439932559112995
+--- !u!114 &3738185851496622890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,21 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db67528e35f36b46b25769a6cfeeba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Grass
+  _name: Sand
   _tileLayerMask:
     serializedVersion: 2
     m_Bits: 4096
   _neighborRadius: 3
-  _collider: {fileID: 6111055361026273865}
-  _tileTransform: {fileID: 8852261696686838101}
-  _isSpawnable: 1
+  _collider: {fileID: 4442497445805923149}
+  _tileTransform: {fileID: 8543404799106521600}
+  _isSpawnable: 0
   _isMovable: 1
   _threatLevel: 0
   _feature: {fileID: 0}
   _x: -1
   _y: -1
   _neighborTiles: []
---- !u!1 &6297636181878946228
+--- !u!1 &7662396508727337796
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8852261696686838101}
+  - component: {fileID: 8543404799106521600}
   m_Layer: 0
   m_Name: Tile Center
   m_TagString: Untagged
@@ -76,14 +76,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8852261696686838101
+--- !u!4 &8543404799106521600
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6297636181878946228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7662396508727337796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -158,7 +158,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 06909ee7bd81c834b80869545b7e8f81, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ad1128b7bc7b3e42b6a7faf9f2db1ea, type: 2}
     m_RemovedComponents:
     - {fileID: 95957541911072200, guid: f610f1f30b970024b86dcc1a05308bc8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f610f1f30b970024b86dcc1a05308bc8, type: 3}
@@ -168,7 +168,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2678295350243705111}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &4257924896278853907
+--- !u!54 &8701861802238989223
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,7 +184,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6111055361026273865
+--- !u!64 &4442497445805923149
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,7 +198,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 1af34cea437b85f4fb64afebad6a0088, type: 3}
---- !u!114 &4536031625393870459
+--- !u!114 &7319497219024677113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

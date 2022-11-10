@@ -97,7 +97,6 @@ namespace Descending.Units
 
         public void RegisterPlayerSpawner(PlayerSpawner spawner)
         {
-            Debug.Log("RegisterPlayerSpawner");
             _playerSpawner = spawner;
         }
 
