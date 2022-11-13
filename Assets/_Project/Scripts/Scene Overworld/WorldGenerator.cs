@@ -37,6 +37,7 @@ namespace Descending.Scene_Overworld
         [SerializeField] private float _threatModifier = 10f;
         [SerializeField] private int _safeZoneSize = 2;
         [SerializeField] private int _forestSpawnChance = 80;
+        [SerializeField] private int _minStartingX = 20;
 
         [SerializeField] private Wave[] _heightWaves = null;
         [SerializeField] private Wave[] _heatWaves = null;
@@ -46,6 +47,16 @@ namespace Descending.Scene_Overworld
         [SerializeField] private TerrainType[] _heatTerrainTypes = null;
         [SerializeField] private TerrainType[] _moistureTerrainTypes = null;
         [SerializeField] private TerrainType[] _falloffMapTypes = null;
+        
+        
+        [SerializeField] private int _maxTries = 20;
+        [SerializeField] private int _groundTiles = 0;
+        [SerializeField] private int _mountainTiles = 0;
+        [SerializeField] private int _forestTiles = 0;
+        [SerializeField] private int _minGroundTiles = 300;
+        [SerializeField] private int _minMountainTiles = 50;
+        [SerializeField] private int _maxMountainTiles = 70;
+        [SerializeField] private int _minForestTiles = 50;
 
         private float[,] _heightMap = null;
         private float[,] _heatMap = null;
@@ -55,18 +66,31 @@ namespace Descending.Scene_Overworld
         private WorldTile[,] _tiles = null;
         private List<WorldTile> _spawnableTiles = null;
         private List<WorldTile> _shoreTiles = null;
-        private List<WorldTile> _startingTiles = null;
+        [SerializeField] private List<WorldTile> _startingTiles = null;
         private WorldTile _startingTile = null;
         private List<List<WorldTile>> _tilesByThreatLevel = null;
+        private int _highestThreatLevel = 0;
+        private int _tries = 0;
         
         public void BuildWorld()
         {
-            CreateHeightMap();
-            ApplyFalloff();
-            CreateHeatAndMoistureMaps();
-            SpawnTiles();
-            StartCoroutine(FinalizeBuild());
+            for (_tries = 1; _tries < _maxTries; _tries++)
+            {
+                CreateHeightMap();
+                ApplyFalloff();
+                CreateHeatAndMoistureMaps();
+                SpawnTiles();
 
+                if (_groundTiles >= _minGroundTiles && 
+                    //_forestTiles >= _minForestTiles && 
+                    _mountainTiles >= _minMountainTiles)// && _mountainTiles <= _maxMountainTiles)
+                {
+                    StartCoroutine(FinalizeBuild());
+                    break;
+                }
+            }
+            
+            Debug.Log("Tries: " + _tries);
         }
 
         private void CreateHeightMap()
@@ -99,7 +123,12 @@ namespace Descending.Scene_Overworld
             _tiles = new WorldTile[_sampleSize, _sampleSize];
             _spawnableTiles = new List<WorldTile>();
             _startingTiles = new List<WorldTile>();
-
+            _shoreTiles = new List<WorldTile>();
+            _tilesParent.ClearTransform();
+            _groundTiles = 0;
+            _mountainTiles = 0;
+            _forestTiles = 0;
+            
             for (int x = 0; x < _sampleSize; x++)
             {
                 for (int y = 0; y < _sampleSize; y++)
@@ -124,14 +153,17 @@ namespace Descending.Scene_Overworld
                     if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Mountain_Peak].Threshold)
                     {
                         tileIndex = (int)TileTypes.Mountains;
+                        _mountainTiles++;
                     }
                     else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Mountains].Threshold)
                     {
                         tileIndex = (int)TileTypes.Mountains;
+                        _mountainTiles++;
                     }
                     else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Hills].Threshold)
                     {
                         tileIndex = (int)TileTypes.Hills;
+                        _groundTiles++;
                     }
                     else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Grass].Threshold)
                     {
@@ -140,20 +172,26 @@ namespace Descending.Scene_Overworld
                             if (Random.Range(0, 100) < _forestSpawnChance)
                             {
                                 tileIndex = (int)TileTypes.Forest;
+                                _forestTiles++;
+                                _groundTiles++;
                             }
                             else
                             {
                                 tileIndex = (int)TileTypes.Grass;
+                                _groundTiles++;
                             }
                         }
                         else if (_dataMap[x, y].Biome.Name == "desert")
                         {
                             tileIndex = (int)TileTypes.Desert;
+                            _groundTiles++;
                         }
                         else
                         {
                             tileIndex = (int)TileTypes.Grass;
+                            _groundTiles++;
                         }
+                        
                     }
                     else if (_heightMap[x, y] >= _heightTerrainTypes[(int)HeightTypes.Sand].Threshold)
                     {
@@ -301,7 +339,7 @@ namespace Descending.Scene_Overworld
                         {
                             _shoreTiles.Add(_tiles[x, y]);
                             
-                            if (_tiles[x, y].Name == "Forest")
+                            if (_tiles[x, y].Name == "Forest" && x >= _minStartingX)
                             {
                                 _startingTiles.Add(_tiles[x, y]);
                             }
@@ -339,7 +377,7 @@ namespace Descending.Scene_Overworld
 
         private void SpawnDungeons()
         {
-            for (int i = 1; i < MAX_THREAT_LEVEL; i++)
+            for (int i = 1; i < _highestThreatLevel; i++)
             {
                 int tileIndex = Random.Range(0, _tilesByThreatLevel[i].Count);
                 WorldTile tile = _tilesByThreatLevel[i][tileIndex];
@@ -349,9 +387,11 @@ namespace Descending.Scene_Overworld
 
             for (int i = 0; i < 5; i++)
             {
-                int tileIndex = Random.Range(0, _tilesByThreatLevel[MAX_THREAT_LEVEL].Count);
-                WorldTile tile = _tilesByThreatLevel[MAX_THREAT_LEVEL][tileIndex];
-                _tilesByThreatLevel[MAX_THREAT_LEVEL].RemoveAt(tileIndex);
+                if (_tilesByThreatLevel[_highestThreatLevel].Count == 0) break;
+                
+                int tileIndex = Random.Range(0, _tilesByThreatLevel[_highestThreatLevel].Count);
+                WorldTile tile = _tilesByThreatLevel[_highestThreatLevel][tileIndex];
+                _tilesByThreatLevel[_highestThreatLevel].RemoveAt(tileIndex);
                 _featurePlacer.PlaceFeature(Database.instance.Features.GetFeature("Dungeon"), tile);
             }
         }
@@ -364,6 +404,8 @@ namespace Descending.Scene_Overworld
         private void CalculateThreatLevels()
         {
             _tilesByThreatLevel = new List<List<WorldTile>>();
+            _highestThreatLevel = 0;
+            
             for (int i = 0; i <= MAX_THREAT_LEVEL; i++)
             {
                 _tilesByThreatLevel.Add(new List<WorldTile>());
@@ -373,7 +415,7 @@ namespace Descending.Scene_Overworld
             {
                 for (int y = 0; y < _sampleSize; y++)
                 {
-                    if(_tiles[x,y] == null || _tiles[x,y].IsWater == true) continue;
+                    if(_tiles[x,y] == null || _tiles[x,y].IsWater == true || _tiles[x,y].IsSpawnable == false) continue;
                     
                     float distance = Vector3.Distance(_startingTile.transform.position, _tiles[x, y].transform.position);
                     int threatLevel = Mathf.FloorToInt(distance / _threatModifier) - _safeZoneSize;
@@ -382,6 +424,8 @@ namespace Descending.Scene_Overworld
                     
                     _tiles[x,y].SetThreatLevel(threatLevel);
                     _tilesByThreatLevel[threatLevel].Add(_tiles[x,y]);
+
+                    if (threatLevel > _highestThreatLevel) _highestThreatLevel = threatLevel;
                 }
             }
         }

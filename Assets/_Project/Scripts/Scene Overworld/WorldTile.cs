@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Features;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Descending.Scene_Overworld
 {
@@ -22,6 +23,10 @@ namespace Descending.Scene_Overworld
         [SerializeField] private int _x = -1;
         [SerializeField] private int _y = -1;
         [SerializeField] private List<WorldTile> _neighborTiles = null;
+        [SerializeField] private List<GameObject> _tileProps = null;
+        [SerializeField] private List<GameObject> _centerProps = null;
+        [SerializeField] private int _minPropSpawnChance = 50;
+        [SerializeField] private int _maxPropSpawnChance = 100;
 
         public string Name => _name;
         public WorldFeature Feature => _feature;
@@ -37,6 +42,7 @@ namespace Descending.Scene_Overworld
         {
             _x = x;
             _y = y;
+            Randomize();
         }
 
         public void FindNeighbors(WorldTile[,] tiles)
@@ -91,6 +97,10 @@ namespace Descending.Scene_Overworld
         public void SetFeature(WorldFeature feature)
         {
             _feature = feature;
+            if (_feature != null)
+            {
+                ClearCenterProps();
+            }
         }
 
         private Vector2Int[,] _neighborsLookup =
@@ -117,6 +127,33 @@ namespace Descending.Scene_Overworld
             int parity = tile.Y & 1;
             Vector2Int diff = _neighborsLookup[parity,(int)direction];
             return new Vector2Int(tile.X + diff.x, tile.Y + diff.y);
+        }
+
+        private void Randomize()
+        {
+            transform.Rotate(Vector3.up, Random.Range(0, 6) * 60);
+
+            int propSpawnChance = Random.Range(_minPropSpawnChance, _maxPropSpawnChance + 1);
+            
+            for (int i = 0; i < _tileProps.Count; i++)
+            {
+                if (Random.Range(0, 100) < propSpawnChance)
+                {
+                    _tileProps[i].SetActive(true);
+                }
+                else
+                {
+                    _tileProps[i].SetActive(false);
+                }
+            }
+        }
+
+        private void ClearCenterProps()
+        {
+            for (int i = 0; i < _centerProps.Count; i++)
+            {
+                _centerProps[i].SetActive(false);
+            }
         }
     }
 }

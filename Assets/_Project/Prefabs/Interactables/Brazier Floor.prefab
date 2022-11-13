@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 2189119227439276376, guid: c60357c46a159754eba03905357f7e16,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2421574060090945584, guid: c60357c46a159754eba03905357f7e16,
         type: 3}

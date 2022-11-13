@@ -26,7 +26,7 @@ namespace Descending.Core
         {
             _rtClose = new RenderTexture(256, 256, 32);
             _camClose.targetTexture = _rtClose;
-            _rtFar = new RenderTexture(680, 1000, 32);
+            _rtFar = new RenderTexture(2560, 3760, 32);
             _camFar.targetTexture = _rtFar;
             SetModel(hero);
 

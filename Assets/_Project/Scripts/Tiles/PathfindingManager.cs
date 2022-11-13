@@ -62,6 +62,9 @@ namespace Descending.Tiles
                 {
                     MapPosition mapPosition = new MapPosition(x, y);
                     Vector3 worldPosition = MapManager.Instance.GetWorldPosition(mapPosition);
+                    worldPosition.x += 0.5f;
+                    worldPosition.z += 0.5f;
+                    
                     if (Physics.Raycast(worldPosition + Vector3.up * _raycastLength, Vector3.down, _raycastLength * 2f, _groundLayerMask))
                     {
                         GetNode(x, y).SetIsWalkable(true);

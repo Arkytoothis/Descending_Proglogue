@@ -43,8 +43,12 @@ MonoBehaviour:
       _minimumValue: 0
       _maximumValue: 0
   StartingStatistic:
-    keyData: []
-    valueData: []
+    keyData:
+    - Movement
+    valueData:
+    - _derived: {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
+      _minimumValue: 2
+      _maximumValue: 2
   StartingSkills:
     keyData: []
     valueData: []

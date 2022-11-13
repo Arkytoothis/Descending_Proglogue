@@ -28,11 +28,19 @@ namespace Descending.Units
             _treasureDropped = false;
             
             _attributes.Setup(_definition);
-            _meleeWeapon = ItemGenerator.GenerateItem(_definition.MeleeWeapon);
-            EquipWeapon(_meleeWeapon);
-            _rangedWeapon = ItemGenerator.GenerateItem(_definition.RangedWeapon);
-            EquipWeapon(_rangedWeapon);
             
+            if(_meleeWeapon != null)
+            {
+                _meleeWeapon = ItemGenerator.GenerateItem(_definition.MeleeWeapon);
+                EquipWeapon(_meleeWeapon);
+            }
+
+            if (_rangedWeapon != null)
+            {
+                _rangedWeapon = ItemGenerator.GenerateItem(_definition.RangedWeapon);
+                EquipWeapon(_rangedWeapon);
+            }
+
             _healthSystem.Setup(_attributes);
             _worldPanel.Setup(this);
 

@@ -25,11 +25,11 @@ MonoBehaviour:
   _features: {fileID: 11400000, guid: 596d94504aab40548a29722c84be7fef, type: 2}
   _heroPrefab: {fileID: 1496511450220018615, guid: 7d9e0108182936d41839db846cc6851a,
     type: 3}
-  _sceneLoadFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/scene_load_data.dat
-  _partyDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/party_data.dat
-  _resourceDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/resource_data.dat
-  _timeDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/time_data.dat
-  _worldDataFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/_world_data.dat
-  _overworldSpawnFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/overworld_spawn.dat
-  _stockpileFilePath: D:/Projects/Reclamation/Assets/StreamingAssets/SaveData/stockpile_data.dat
-  _blankSprite: {fileID: 0}
+  _sceneLoadFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/scene_load_data.dat
+  _partyDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/party_data.dat
+  _resourceDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/resource_data.dat
+  _timeDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/time_data.dat
+  _worldDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/_world_data.dat
+  _overworldSpawnFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/overworld_spawn.dat
+  _stockpileFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/stockpile_data.dat
+  _blankSprite: {fileID: 21300000, guid: 672d62704098abf409b522c28d025530, type: 3}

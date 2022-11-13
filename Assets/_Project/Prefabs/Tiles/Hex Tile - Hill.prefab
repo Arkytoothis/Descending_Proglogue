@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db67528e35f36b46b25769a6cfeeba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Hills
   _tileLayerMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -86,6 +86,7 @@ MonoBehaviour:
   _tileTransform: {fileID: 9013083368474288102}
   _isSpawnable: 1
   _isMovable: 1
+  _isWater: 0
   _threatLevel: 0
   _feature: {fileID: 0}
   _x: -1

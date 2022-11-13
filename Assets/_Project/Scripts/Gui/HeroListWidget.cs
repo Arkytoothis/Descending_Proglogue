@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Descending.Units;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Descending.Gui
 {
     public class HeroListWidget : MonoBehaviour
     {
+        [SerializeField] private RawImage _portraitImage = null;
         [SerializeField] private TMP_Text _nameLabel = null;
         [SerializeField] private TMP_Text _detailsLabel = null;
 
@@ -17,6 +19,7 @@ namespace Descending.Gui
         public void Setup(PartyWindow partyWindow, HeroUnit hero)
         {
             _hero = hero;
+            _portraitImage.texture = hero.Portrait.RtClose;
             _partyWindow = partyWindow;
             _nameLabel.SetText(hero.GetShortName());
             _detailsLabel.SetText(hero.HeroData.Gender + " " + hero.HeroData.RaceKey + " " + hero.HeroData.ProfessionKey);

@@ -67,6 +67,13 @@ namespace Descending.Attributes
                 _vitals.Add(startingVital.Key, new Attribute(startingVital.Key));
                 _vitals[startingVital.Key].Setup(value);
             }
+
+            foreach (var startingStatistic in definition.StartingStatistic)
+            {
+                int value = Random.Range(startingStatistic.Value.MinimumValue, startingStatistic.Value.MaximumValue + 1);
+                _statistics.Add(startingStatistic.Key, new Attribute(startingStatistic.Key));
+                _statistics[startingStatistic.Key].Setup(value);
+            }
         }
 
         // public void LoadData(AttributesSaveData saveData)
