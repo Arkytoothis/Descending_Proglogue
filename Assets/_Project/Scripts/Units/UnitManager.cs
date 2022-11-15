@@ -225,5 +225,13 @@ namespace Descending.Units
             
             onSelectHero.Invoke(heroObject);
         }
+
+        public void AwardExperience(int experience)
+        {
+            foreach (HeroUnit heroUnit in _heroUnits)
+            {
+                heroUnit.AddExperience(experience);
+            }
+        }
     }
 }

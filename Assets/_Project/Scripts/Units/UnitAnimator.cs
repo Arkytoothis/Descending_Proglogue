@@ -58,6 +58,11 @@ namespace Descending.Units
             _animator.SetTrigger("Shoot");
         }
 
+        public void Cast()
+        {
+            _animator.SetTrigger("Cast");
+        }
+
         public void SetAnimatorOverride(AnimatorOverrideController overrideController)
         {
             _animator.runtimeAnimatorController = overrideController;

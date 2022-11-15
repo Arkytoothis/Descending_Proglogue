@@ -25,7 +25,7 @@ namespace Descending.Units
         [SerializeField] private float _rotationSpeed = 10f;
         [SerializeField] private float _spawnProjectileDelay = 1f;
 
-        private int _maxShootDistance = 0;
+        [SerializeField] private int _maxShootDistance = 0;
         private State _state;
         private float _stateTimer;
         private Unit _targetUnit;
@@ -139,10 +139,13 @@ namespace Descending.Units
         public void SetupData()
         {
             Item item = _unit.GetRangedWeapon();
-            WeaponData weaponData = item.GetWeaponData();
-            _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
-            _spawnProjectileDelay = weaponData.ProjectileDelay;
-            _maxShootDistance = weaponData.Range;
+            if (item != null)
+            {
+                WeaponData weaponData = item.GetWeaponData();
+                _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
+                _spawnProjectileDelay = weaponData.ProjectileDelay;
+                _maxShootDistance = weaponData.Range;
+            }
         }
 
         public override int GetActionPointCost()

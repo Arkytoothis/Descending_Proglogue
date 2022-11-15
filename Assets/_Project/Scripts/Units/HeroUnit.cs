@@ -45,6 +45,7 @@ namespace Descending.Units
             _skills.Setup(_attributes, race, profession);
             _inventory.Setup(_portraitRenderer, _worldRenderer, gender, race, profession);
             _abilities.Setup(race, profession, _skills);
+            _actionController.Setup(this);
             
             _healthSystem.Setup(_attributes);
             _worldPanel.Setup(this);
@@ -90,6 +91,22 @@ namespace Descending.Units
             
             onSyncParty.Invoke(true);
         }
+        
+        public override void RestoreVital(string vital, int amount)
+        {
+            if (_isAlive == false) return;
+            
+            _healthSystem.RestoreVital(vital, amount);
+            onSyncParty.Invoke(true);
+        }
+
+        public override void UseResource(string vital, int amount)
+        {
+            if (_isAlive == false) return;
+            
+            _healthSystem.UseResource(vital, amount);
+            onSyncParty.Invoke(true);
+        }
 
         protected override void Dead()
         {
@@ -102,6 +119,12 @@ namespace Descending.Units
         public void SetPortrait(PortraitMount portraitMount)
         {
             _portrait = portraitMount;
+        }
+
+        public void AddExperience(int experience)
+        {
+            _heroData.AddExperience(experience);
+            onSyncParty.Invoke(true);
         }
     }
 }

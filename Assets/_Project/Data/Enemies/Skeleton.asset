@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Skeleton
   Key: Skeleton
-  ExpValue: 0
+  ExpValue: 10
   Prefab: {fileID: 7336809418575615659, guid: aa5cdd107c856954f94aaf2ca1320773, type: 3}
   Icon: {fileID: 0}
   Group: 1

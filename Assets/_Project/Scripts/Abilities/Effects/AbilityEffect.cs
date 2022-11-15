@@ -9,7 +9,6 @@ namespace Descending.Abilities
     [System.Serializable]
     public abstract class AbilityEffect
     {
-        [SerializeField] protected AbilityDefinition _ability = null;
         [SerializeField] protected AbilityEffectType _effectType = AbilityEffectType.None;
         [SerializeField] protected AbilityEffectAffects _affects = AbilityEffectAffects.None;
 

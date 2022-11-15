@@ -17,6 +17,7 @@ namespace Descending.Equipment
     {
         [SerializeField] private bool _hasData = true;
         [SerializeField] private WeaponType _weaponType = WeaponType.None;
+        [SerializeField] private DamageClasses _damageClass = DamageClasses.None;
         [SerializeField] private int _range = 0;
         [SerializeField] private float _knockbackStrength = 0;
         [SerializeField] private float _projectileDelay = 1f;
@@ -33,6 +34,7 @@ namespace Descending.Equipment
         public bool HasData => _hasData;
         public ProjectileDefinition Projectile => _projectile;
         public WeaponType WeaponType => _weaponType;
+        public DamageClasses DamageClass => _damageClass;
         public int Range => _range;
         public float ProjectileDelay => _projectileDelay;
         public DamageTypeDefinition DamageType => _damageType;

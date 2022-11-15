@@ -29,6 +29,18 @@ namespace Descending.Units
             //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
         }
 
+        public void UseResource(string vital, int amount)
+        {
+            _attributes.GetVital(vital).Damage(amount);
+            _worldPanel.UpdateHealth(this);
+        }
+
+        public void RestoreVital(string vital, int amount)
+        {
+            _attributes.GetVital(vital).Restore(amount);
+            _worldPanel.UpdateHealth(this);
+        }
+
         public float GetVitalNormalized(string vitalKey)
         {
             return (float)_attributes.GetVital(vitalKey).Current / _attributes.GetVital(vitalKey).Maximum;

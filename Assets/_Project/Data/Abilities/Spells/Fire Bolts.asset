@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: ed82e1103d373974eb15cb9961ec3e25, type: 3}
     _abilityType: 1
+    _actionType: 4
     _name: Fire Bolts
     _key: Fire Bolts
     _description: 
@@ -24,11 +25,10 @@ MonoBehaviour:
     _resourceAmount: 1
     _skill: {fileID: 11400000, guid: 720b46637f1c9884b833b3bfd8cda44f, type: 2}
     _minimumSkill: 1
-    _actionsToUse: 1
-    _targetType: 2
-    _areaType: 0
-    _rangeType: 1
-    _projectile: {fileID: 11400000, guid: a3df06bc8848eb34a84d13c2fad2ba0a, type: 2}
+    _actionsToUse: 2
+    _targetType: 4
+    _area: 0
+    _range: 10
   _effects:
     rid: 6309569888065159179
   references:
@@ -37,4 +37,16 @@ MonoBehaviour:
     - rid: 6309569888065159179
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data: []
+        _data:
+        - rid: 6849115550700011534
+    - rid: 6849115550700011534
+      type: {class: ProjectileEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 11
+        _affects: 1
+        _projectileDefinition: {fileID: 11400000, guid: 687e842fc3e6ddc42b013d959da9077a,
+          type: 2}
+        _spawnProjectileDelay: 0.5
+        _delayBetweenProjectiles: 0.15
+        _numProjectiles: 3

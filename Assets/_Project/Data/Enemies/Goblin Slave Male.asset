@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Goblin Slave
   Key: Goblin Slave Male
-  ExpValue: 0
+  ExpValue: 10
   Prefab: {fileID: 7336809418575615659, guid: 8ef5689d15ff6ea45bb38f6821df3776, type: 3}
   Icon: {fileID: 0}
   Group: 0
@@ -60,9 +60,9 @@ MonoBehaviour:
     _prefix: {fileID: 0}
     _suffix: {fileID: 0}
   RangedWeapon:
-    _item: {fileID: 11400000, guid: 114719fa1993cc943b9581491322a95e, type: 2}
-    _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
-    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _item: {fileID: 0}
+    _material: {fileID: 0}
+    _quality: {fileID: 0}
     _prefix: {fileID: 0}
     _suffix: {fileID: 0}
   CoinData:

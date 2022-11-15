@@ -1770,7 +1770,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 126e48dbbd5d39d43a42b11c47c4c07f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2989,7 +2989,7 @@ PrefabInstance:
     - target: {fileID: 3898514663855011102, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
       propertyPath: m_Name
-      value: Goblin slave Male
+      value: Goblin Slave Male
       objectReference: {fileID: 0}
     - target: {fileID: 4432206404438569665, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
@@ -3052,8 +3052,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5250107052019147293}
     m_RemovedComponents:
-    - {fileID: 3539995887817499729, guid: 9973de32681c5ed45aeaf86622f1c2c1, type: 3}
-    - {fileID: 5090740683049199993, guid: 9973de32681c5ed45aeaf86622f1c2c1, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 153251313504167636, guid: 9973de32681c5ed45aeaf86622f1c2c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9973de32681c5ed45aeaf86622f1c2c1, type: 3}
 --- !u!114 &320923099257424253 stripped
 MonoBehaviour:

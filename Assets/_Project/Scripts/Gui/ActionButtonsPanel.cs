@@ -30,11 +30,17 @@ namespace Descending
             _actionButtons.Clear();
             
             Unit selectedUnit = UnitManager.Instance.SelectedHero;
-            foreach (BaseAction action in selectedUnit.Actions)
+            foreach (BaseAction action in selectedUnit.ActionController.Actions)
             {
                 GameObject clone = Instantiate(_actionButtonPrefab, _actionButtonsParent);
                 ActionButton actionButton = clone.GetComponent<ActionButton>();
                 actionButton.SetAction(action);
+
+                if (action.GetType() == typeof(AbilityAction))
+                {
+                    actionButton.SetAbility(((AbilityAction)action).Ability);
+                }
+                
                 _actionButtons.Add(actionButton);
             }
         }

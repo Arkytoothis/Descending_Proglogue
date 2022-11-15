@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace Descending.Units
 {
+    public enum ActionTypes { Move, Interact, Melee_Attack, Ranged_Attack, Use_Ability, Use_Item, Number, None }
+    
     public abstract class BaseAction : MonoBehaviour
     {
         public static event EventHandler OnActionStarted;
@@ -22,7 +24,7 @@ namespace Descending.Units
 
         protected  virtual void Awake()
         {
-            _unit = GetComponent<Unit>();
+            _unit = GetComponentInParent<Unit>();
         }
 
         public abstract string GetName();

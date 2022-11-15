@@ -20,6 +20,7 @@ namespace Descending.Units
         private Item _rangedWeapon = null;
         
         public UnitData UnitData => _unitData;
+        public EnemyDefinition Definition => _definition;
 
         public void SetupEnemy(EnemyDefinition definition)
         {
@@ -28,14 +29,15 @@ namespace Descending.Units
             _treasureDropped = false;
             
             _attributes.Setup(_definition);
+            _actionController.Setup(this);
             
-            if(_meleeWeapon != null)
+            if(_definition.MeleeWeapon.Item != null)
             {
                 _meleeWeapon = ItemGenerator.GenerateItem(_definition.MeleeWeapon);
                 EquipWeapon(_meleeWeapon);
             }
 
-            if (_rangedWeapon != null)
+            if (_definition.RangedWeapon.Item != null)
             {
                 _rangedWeapon = ItemGenerator.GenerateItem(_definition.RangedWeapon);
                 EquipWeapon(_rangedWeapon);
@@ -45,7 +47,6 @@ namespace Descending.Units
             _worldPanel.Setup(this);
 
             UnitManager.Instance.UnitSpawned(this);
-            //Activate();
             Deactivate();
         }
         
@@ -151,12 +152,23 @@ namespace Descending.Units
             }
         }
 
+        public override void RestoreVital(string vital, int amount)
+        {
+            _healthSystem.RestoreVital(vital, amount);
+        }
+
+        public override void UseResource(string vital, int amount)
+        {
+            _healthSystem.UseResource(vital, amount);
+        }
+
         protected override void Dead()
         {
             _isAlive = false;
             MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
             UnitManager.Instance.UnitDead(this);
             _ragdollSpawner.Activate(_healthSystem);
+            UnitManager.Instance.AwardExperience(_definition.ExpValue);
             Destroy(gameObject);
         }
     }

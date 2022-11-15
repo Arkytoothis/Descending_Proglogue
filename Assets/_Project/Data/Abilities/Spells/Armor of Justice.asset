@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: 58bac37f0d7391f4ca6d341174276884, type: 3}
     _abilityType: 1
+    _actionType: 4
     _name: Armor of Justice
     _key: Armor of Justice
     _description: 
@@ -25,9 +26,9 @@ MonoBehaviour:
     _skill: {fileID: 11400000, guid: 8d6d705755f371841b401a1cf14789c6, type: 2}
     _minimumSkill: 1
     _actionsToUse: 1
-    _targetType: 1
-    _areaType: 0
-    _rangeType: 2
+    _targetType: 3
+    _area: 0
+    _range: 1
     _projectile: {fileID: 0}
   _effects:
     rid: 6309569888065159184
@@ -37,4 +38,14 @@ MonoBehaviour:
     - rid: 6309569888065159184
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data: []
+        _data:
+        - rid: 6849115550700011522
+    - rid: 6849115550700011522
+      type: {class: RestoreEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 6
+        _affects: 1
+        _attribute: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+        _minimumValue: 10
+        _maximumValue: 10

@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: a71b2c9214d807e48a4656f28db3df99, type: 3}
     _abilityType: 1
+    _actionType: 4
     _name: Bless
     _key: Bless
     _description: 
@@ -25,9 +26,9 @@ MonoBehaviour:
     _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
     _minimumSkill: 1
     _actionsToUse: 1
-    _targetType: 0
-    _areaType: 1
-    _rangeType: 0
+    _targetType: 1
+    _area: 2
+    _range: 1
     _projectile: {fileID: 0}
   _effects:
     rid: 6309569888065159178
@@ -37,4 +38,34 @@ MonoBehaviour:
     - rid: 6309569888065159178
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data: []
+        _data:
+        - rid: 6849115550700011523
+        - rid: 6849115550700011524
+        - rid: 6849115550700011525
+    - rid: 6849115550700011523
+      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 0
+        _affects: 2
+        _attribute: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
+        _minimumValue: 5
+        _maximumValue: 5
+    - rid: 6849115550700011524
+      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 0
+        _affects: 2
+        _attribute: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
+        _minimumValue: 5
+        _maximumValue: 5
+    - rid: 6849115550700011525
+      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 0
+        _affects: 2
+        _attribute: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
+        _minimumValue: 5
+        _maximumValue: 5

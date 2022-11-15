@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
-using JetBrains.Annotations;
+using ScriptableObjectArchitecture;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class EquippedItemWidget : MonoBehaviour
+    public class EquippedItemWidget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _stackSizeLabel = null;
 
+        [SerializeField] private ItemEvent onDisplayItemTooltip = null;
+        
         private Item _item = null;
         
         public void SetItem(Item item)
@@ -35,6 +38,17 @@ namespace Descending.Gui
         {
             _iconImage.sprite = Database.instance.BlankSprite;
             _stackSizeLabel.SetText("");
+        }
+
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            onDisplayItemTooltip.Invoke(_item);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            onDisplayItemTooltip.Invoke(null);
         }
     }
 }

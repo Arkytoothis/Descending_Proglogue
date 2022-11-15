@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: 9db3b5ac7df06664e954be6af38f82a0, type: 3}
     _abilityType: 1
+    _actionType: 4
     _name: Earthen Skin
     _key: Earthen Skin
     _description: 
@@ -25,9 +26,9 @@ MonoBehaviour:
     _skill: {fileID: 11400000, guid: 171985a2023a2bf468ff803a316df6f0, type: 2}
     _minimumSkill: 1
     _actionsToUse: 1
-    _targetType: 1
-    _areaType: 0
-    _rangeType: 2
+    _targetType: 3
+    _area: 0
+    _range: 1
     _projectile: {fileID: 0}
   _effects:
     rid: 6309569888065159181
@@ -37,4 +38,14 @@ MonoBehaviour:
     - rid: 6309569888065159181
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data: []
+        _data:
+        - rid: 6849115550700011527
+    - rid: 6849115550700011527
+      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 4
+        _affects: 1
+        _attribute: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+        _minimumValue: 10
+        _maximumValue: 15

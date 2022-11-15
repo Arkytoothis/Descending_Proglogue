@@ -13,6 +13,7 @@ namespace Descending.Gui
         [SerializeField] private HeroVitalsPanel _vitalsPanel = null;
         [SerializeField] private HeroStatisticsPanel _statisticsPanel = null;
         [SerializeField] private HeroEquipmentPanel _equipmentPanel = null;
+        [SerializeField] private HeroAbilitiesPanel _abilitiesPanel = null;
         
         public override void Setup(WindowManager manager)
         {
@@ -23,6 +24,7 @@ namespace Descending.Gui
             _vitalsPanel.Setup();
             _statisticsPanel.Setup();
             _equipmentPanel.Setup();
+            _abilitiesPanel.Setup();
             
             SelectHero(UnitManager.Instance.GetHero(0));
             Close();
@@ -47,6 +49,7 @@ namespace Descending.Gui
             _vitalsPanel.DisplayHero(hero);
             _statisticsPanel.DisplayHero(hero);
             _equipmentPanel.DisplayHero(hero);
+            _abilitiesPanel.DisplayHero(hero);
         }
     }
 }

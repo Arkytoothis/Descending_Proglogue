@@ -41,9 +41,10 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 0
+    _damageClass: 1
     _range: 2
-    _delay: 0.75
     _knockbackStrength: 0
+    _projectileDelay: 0
     _damageType: {fileID: 11400000, guid: e81cc1106fdbbb14ead08b0bbfa4f628, type: 2}
     _minDamage: 1
     _maxDamage: 6
@@ -72,6 +73,13 @@ MonoBehaviour:
     _hasData: 0
     _maxUses: 0
     _cooldown: 0
+    _effects:
+      rid: -2
   _ingredientData:
     _hasData: 0
     _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

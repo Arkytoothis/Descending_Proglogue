@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: fd1a92a2780902d46a302767a98dd42d, type: 3}
     _abilityType: 0
+    _actionType: 4
     _name: Eagle Eye
     _key: Eagle Eye
     _description: 
@@ -28,6 +29,7 @@ MonoBehaviour:
     _targetType: 1
     _areaType: 0
     _rangeType: 2
+    _range: 1
     _projectile: {fileID: 0}
   _effects:
     rid: 6309569888065159176
@@ -37,4 +39,14 @@ MonoBehaviour:
     - rid: 6309569888065159176
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data: []
+        _data:
+        - rid: 6849115550700011533
+    - rid: 6849115550700011533
+      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 0
+        _affects: 1
+        _attribute: {fileID: 11400000, guid: 8d5628aeed8e08d41b9e426b938b559b, type: 2}
+        _minimumValue: 10
+        _maximumValue: 10

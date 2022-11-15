@@ -281,6 +281,110 @@ Transform:
   m_Father: {fileID: 3898514663855011101}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3168420355645489046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5559942322629889417}
+  - component: {fileID: 4683604259709003716}
+  - component: {fileID: 7080881914673741521}
+  - component: {fileID: 7553874206984077896}
+  - component: {fileID: 8180195011683919826}
+  m_Layer: 0
+  m_Name: Action Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5559942322629889417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168420355645489046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3898514663855011101}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4683604259709003716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168420355645489046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc038e650d8869c4c95f7aee3a9b1775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7080881914673741521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168420355645489046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 0}
+  _unitAnimator: {fileID: 2001456721065693323}
+  _moveSpeed: 4
+  _stoppingDistance: 0.1
+  _rotationSpeed: 10
+  _maxMoveDistance: 3
+--- !u!114 &7553874206984077896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168420355645489046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02dd2a2720fff6c42a4f6b4cba2a8254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 0}
+  _unitAnimator: {fileID: 2001456721065693323}
+  _meleeRange: 1
+  _preHitTime: 0.1
+  _postHitTime: 0.5
+  _rotationSpeed: 10
+--- !u!114 &8180195011683919826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168420355645489046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d100d2053409e641917026398875da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 0}
+  _unitAnimator: {fileID: 2001456721065693323}
+  _projectileSpawnPoint: {fileID: 6902248868682092988}
+  _shootingStateTime: 2
+  _cooldownStateTime: 0.5
+  _aimingStateTime: 0.2
+  _rotationSpeed: 10
+  _spawnProjectileDelay: 1
+  _maxShootDistance: 0
 --- !u!1 &3413874286529072975
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,9 +562,6 @@ GameObject:
   - component: {fileID: 3898514663855011101}
   - component: {fileID: 1952305667227632040}
   - component: {fileID: 5427972190694817063}
-  - component: {fileID: 3264691248040644341}
-  - component: {fileID: 1116796196051566903}
-  - component: {fileID: 153251313504167636}
   - component: {fileID: 2545336594047484761}
   - component: {fileID: 2879133665782977740}
   - component: {fileID: 2001456721065693323}
@@ -497,6 +598,7 @@ Transform:
   - {fileID: 8931376080781352462}
   - {fileID: 6174042893293779676}
   - {fileID: 7614389853694677169}
+  - {fileID: 5559942322629889417}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -523,6 +625,7 @@ MonoBehaviour:
   _inventory: {fileID: 0}
   _abilities: {fileID: 0}
   _ragdollSpawner: {fileID: 2879133665782977740}
+  _actionController: {fileID: 4683604259709003716}
   _worldPanel: {fileID: 4130638580815317546}
   onSyncParty:
     m_PersistentCalls:
@@ -544,62 +647,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5303569, y: 1.8751848, z: 0.4099108}
   m_Center: {x: -0.0039137006, y: 0.9102446, z: 0.0053120553}
---- !u!114 &3264691248040644341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898514663855011102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _unitAnimator: {fileID: 2001456721065693323}
-  _moveSpeed: 4
-  _stoppingDistance: 0.1
-  _rotationSpeed: 10
-  _maxMoveDistance: 3
---- !u!114 &1116796196051566903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898514663855011102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02dd2a2720fff6c42a4f6b4cba2a8254, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _unitAnimator: {fileID: 2001456721065693323}
-  _meleeRange: 1
-  _preHitTime: 0.1
-  _postHitTime: 0.5
-  _rotationSpeed: 10
---- !u!114 &153251313504167636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898514663855011102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d100d2053409e641917026398875da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _unitAnimator: {fileID: 2001456721065693323}
-  _projectileSpawnPoint: {fileID: 6902248868682092988}
-  _shootingStateTime: 2
-  _cooldownStateTime: 0.5
-  _aimingStateTime: 0.2
-  _rotationSpeed: 10
-  _spawnProjectileDelay: 1
 --- !u!114 &2545336594047484761
 MonoBehaviour:
   m_ObjectHideFlags: 0

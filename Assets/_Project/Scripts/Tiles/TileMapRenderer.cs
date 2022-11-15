@@ -173,6 +173,12 @@ namespace Descending.Tiles
                     backgroundColor = TileColors.Yellow;
                     ShowGridPositionRangeSquare(selectedUnit.CurrentMapPosition, interactAction.InteractRange, TileColors.Black, TileColors.Black);
                     break;
+                case AbilityAction abilityAction:
+                    borderColor = TileColors.Yellow;
+                    backgroundColor = TileColors.Yellow;
+                    abilityAction.SetupData();
+                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, abilityAction.Range, TileColors.Black, TileColors.Black);
+                    break;
             }
             
             ShowGridPositionList(selectedAction.GetValidActionGridPositions(), borderColor, backgroundColor);

@@ -6,6 +6,7 @@ using System.Text;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Units;
 
 namespace Descending.Abilities
 {
@@ -17,6 +18,7 @@ namespace Descending.Abilities
         private Sprite _icon = null;
 
         [SerializeField] private AbilityType _abilityType = AbilityType.None;
+        [SerializeField] private ActionTypes _actionType = ActionTypes.Use_Ability;
         [SerializeField] private string _name = "";
         [SerializeField] private string _key = "";
         [SerializeField] private string _description = "";
@@ -27,9 +29,8 @@ namespace Descending.Abilities
         [SerializeField] private int _minimumSkill = 0;
         [SerializeField] private int _actionsToUse = 1;
         [SerializeField] private TargetTypes _targetType = TargetTypes.None;
-        [SerializeField] private AreaTypes _areaType = AreaTypes.None;
-        [SerializeField] private RangeTypes _rangeType = RangeTypes.None;
-        [SerializeField] private ProjectileDefinition _projectile = null;
+        [SerializeField] private int _area = 0;
+        [SerializeField] private int _range = 0;
         
         public string Name => _name;
         public string Key => _key;
@@ -37,15 +38,15 @@ namespace Descending.Abilities
         public Sprite Icon => _icon;
         public int Cooldown => _cooldown;
         public AbilityType AbilityType => _abilityType;
+        public ActionTypes ActionType => _actionType;
         public AttributeDefinition ResourceAttribute => _resourceAttribute;
         public int ResourceAmount => _resourceAmount;
         public SkillDefinition Skill => _skill;
         public int MinimumSkill => _minimumSkill;
         public int ActionsToUse => _actionsToUse;
         public TargetTypes TargetType => _targetType;
-        public AreaTypes AreaType => _areaType;
-        public RangeTypes RangeType => _rangeType;
-        public ProjectileDefinition Projectile => _projectile;
+        public int Range => _range;
+        public int Area => _area;
 
         public string GetTooltipText()
         {
@@ -57,9 +58,9 @@ namespace Descending.Abilities
             sb.Append("Resource ").Append(_resourceAttribute.Name).Append(" ").Append(_resourceAmount).Append("\n");
             sb.Append("Skill ").Append(_skill.Name).Append(" ").Append(_minimumSkill).Append("\n");
             sb.Append("Actions ").Append(_actionsToUse).Append("\n");
-            sb.Append("Range ").Append(_rangeType).Append("\n");
-            sb.Append("Area ").Append(_areaType).Append("\n");
             sb.Append("Target Type ").Append(_targetType).Append("\n");
+            sb.Append("Area ").Append(_area).Append("\n");
+            sb.Append("Range ").Append(_range).Append("\n");
 
             return sb.ToString();
         }

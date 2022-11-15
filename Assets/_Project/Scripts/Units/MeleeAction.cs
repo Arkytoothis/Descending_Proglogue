@@ -45,7 +45,19 @@ namespace Descending.Units
                 NextState();
             }
         }
-
+        
+        public void SetupData()
+        {
+            Item item = _unit.GetMeleeWeapon();
+            if (item != null)
+            {
+                WeaponData weaponData = item.GetWeaponData();
+                _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
+                //_spawnProjectileDelay = weaponData.ProjectileDelay;
+                _meleeRange = weaponData.Range;
+            }
+        }
+        
         private void NextState()
         {
             switch (_state)
@@ -83,7 +95,17 @@ namespace Descending.Units
             ActionStart(onMeleeComplete);
         }
 
+        public int GetTargetCountAtPosition(MapPosition mapPosition)
+        {
+            return GetValidActionGridPositions(mapPosition).Count;
+        }
+
         public override List<MapPosition> GetValidActionGridPositions()
+        {
+            return GetValidActionGridPositions(_unit.CurrentMapPosition);
+        }
+        
+        public List<MapPosition> GetValidActionGridPositions(MapPosition mapPosition)
         {
             List<MapPosition> validGridPositions = new List<MapPosition>();
             
@@ -92,7 +114,7 @@ namespace Descending.Units
                 for (int y = -_meleeRange; y <= _meleeRange; y++)
                 {
                     MapPosition offsetMapPosition = new MapPosition(x, y);
-                    MapPosition testMapPosition = _unit.CurrentMapPosition + offsetMapPosition;
+                    MapPosition testMapPosition = mapPosition + offsetMapPosition;
                     
                     if (MapManager.Instance.IsValidGridPosition(testMapPosition) == false) continue;
                     
@@ -106,6 +128,7 @@ namespace Descending.Units
 
             return validGridPositions;
         }
+
 
         public override int GetActionPointCost()
         {

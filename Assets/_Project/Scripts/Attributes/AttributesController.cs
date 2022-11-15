@@ -92,27 +92,24 @@ namespace Descending.Attributes
             _vitals["Magic"].Setup(Random.Range(race.StartingVitals["Magic"].MinimumValue, race.StartingVitals["Magic"].MinimumValue + 1) + 
                                   (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
             _vitals["Actions"].Setup(Random.Range(race.StartingVitals["Actions"].MinimumValue, race.StartingVitals["Actions"].MinimumValue + 1));
+
+            int mightDamage = (_characteristics["Might"].Maximum - 10) / 10;
+            int finesseDamage = (_characteristics["Finesse"].Maximum - 10) / 10;
+            int magicDamage = ((_characteristics["Intellect"].Maximum - 10) + (_characteristics["Spirit"].Maximum - 10)) / 10;
             
+            _statistics["Might Damage"].Setup(mightDamage + Random.Range(race.StartingStatistics["Might Damage"].MinimumValue, race.StartingStatistics["Might Damage"].MinimumValue + 1));
+            _statistics["Finesse Damage"].Setup(finesseDamage + Random.Range(race.StartingStatistics["Finesse Damage"].MinimumValue, race.StartingStatistics["Finesse Damage"].MinimumValue + 1));
+            _statistics["Magic Damage"].Setup(magicDamage + Random.Range(race.StartingStatistics["Magic Damage"].MinimumValue, race.StartingStatistics["Magic Damage"].MinimumValue + 1));
             
-            _statistics["Attack"].Setup(Random.Range(race.StartingStatistics["Attack"].MinimumValue, race.StartingStatistics["Attack"].MinimumValue + 1) + 
-                                        _characteristics["Might"].Maximum + _characteristics["Senses"].Maximum);
-            _statistics["Aim"].Setup(Random.Range(race.StartingStatistics["Aim"].MinimumValue, race.StartingStatistics["Aim"].MinimumValue + 1) + 
-                                        _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             _statistics["Block"].Setup(Random.Range(race.StartingStatistics["Block"].MinimumValue, race.StartingStatistics["Block"].MinimumValue + 1) + 
                                      _characteristics["Might"].Maximum + _characteristics["Endurance"].Maximum);
             _statistics["Dodge"].Setup(Random.Range(race.StartingStatistics["Dodge"].MinimumValue, race.StartingStatistics["Dodge"].MinimumValue + 1) + 
                                        _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
-            _statistics["Focus"].Setup(Random.Range(race.StartingStatistics["Focus"].MinimumValue, race.StartingStatistics["Focus"].MinimumValue + 1) + 
-                                       _characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum);
             _statistics["Willpower"].Setup(Random.Range(race.StartingStatistics["Willpower"].MinimumValue, race.StartingStatistics["Willpower"].MinimumValue + 1) + 
                                        _characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum);
-            _statistics["Speed"].Setup(Random.Range(race.StartingStatistics["Speed"].MinimumValue, race.StartingStatistics["Speed"].MinimumValue + 1) + 
-                                           _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             
             _statistics["Movement"].Setup(race.StartingStatistics["Movement"].MinimumValue);
-            _statistics["Critical Hit"].Setup(race.StartingStatistics["Critical Hit"].MinimumValue);
             _statistics["Critical Damage"].Setup(race.StartingStatistics["Critical Damage"].MinimumValue);
-            _statistics["Fumble"].Setup(race.StartingStatistics["Fumble"].MinimumValue);
         }
         
         public bool IsAlive()

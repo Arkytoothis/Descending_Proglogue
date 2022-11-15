@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using Descending.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,9 +11,9 @@ namespace Descending.Equipment
     public class ProjectileDefinition : ScriptableObject
     {
         public GameObject Prefab = null;
-        public float Speed = 30f;
-        public int MinDamage = 1;
-        public int MaxDamage = 10;
         public DamageTypeDefinition DamageType = null;
+        public DamageClasses DamageClass = DamageClasses.None;
+        public float Speed = 30f;
+
     }
 }

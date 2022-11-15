@@ -30,11 +30,11 @@ namespace Descending.Units
             Vector3 targetPosition = _pathList[_currentPositionIndex];
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
             
-            transform.forward = Vector3.Lerp(transform.forward, moveDirection, _rotationSpeed * Time.deltaTime);
+            _unit.transform.forward = Vector3.Lerp(_unit.transform.forward, moveDirection, _rotationSpeed * Time.deltaTime);
             
-            if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
+            if (Vector3.Distance(_unit.transform.position, targetPosition) > _stoppingDistance)
             {
-                transform.position += moveDirection * (_moveSpeed * Time.deltaTime);
+                _unit.transform.position += moveDirection * (_moveSpeed * Time.deltaTime);
             }
             else
             {

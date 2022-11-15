@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using Descending.Equipment;
-using Descending.Tiles;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,10 +13,9 @@ namespace Descending.Units
         [SerializeField] private AnimationCurve _arcCurve;
         [SerializeField] private TrailRenderer _trailRenderer = null;
         [SerializeField] private GameObject _hitEffectPrefab = null;
-        [SerializeField] private int _minimumDamage = 0;
-        [SerializeField] private int _maximumDamage = 0;
         [SerializeField] private float _force = 300f;
         [SerializeField] private float _minimumDistance = 0.2f;
+        [SerializeField] private AbilityEffects _hitEffects = null;
 
         private Unit _sourceUnit;
         private Unit _targetUnit;
@@ -40,8 +39,16 @@ namespace Descending.Units
                 _moveSpeed = weapon.GetWeaponData().Projectile.Speed;
             }
             
-            _minimumDamage = sourceUnit.GetRangedWeapon().GetMinimumDamage();
-            _maximumDamage = sourceUnit.GetRangedWeapon().GetMaximumDamage();
+            _targetPosition = _targetUnit.HitTransform.position;
+            _positionXZ = new Vector3(transform.position.x, 0, transform.position.z);
+            _totalDistance = Vector3.Distance(_positionXZ, _targetPosition);
+        }
+        
+        public void Setup(Unit sourceUnit, Unit targetUnit, ProjectileDefinition projectileDefinition)
+        {
+            _sourceUnit = sourceUnit;
+            _targetUnit = targetUnit;
+            _moveSpeed = projectileDefinition.Speed;
             _targetPosition = _targetUnit.HitTransform.position;
             _positionXZ = new Vector3(transform.position.x, 0, transform.position.z);
             _totalDistance = Vector3.Distance(_positionXZ, _targetPosition);
@@ -50,7 +57,12 @@ namespace Descending.Units
 
         private void Update()
         {
-            if (_targetUnit == null || gameObject == null) return;
+            if (gameObject == null) return;
+            if (_targetUnit == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
             
             Vector3 moveDirection = (_targetPosition - _positionXZ).normalized;
             _positionXZ += moveDirection * _moveSpeed * Time.deltaTime;
@@ -63,8 +75,12 @@ namespace Descending.Units
             
             if (distanceAfterMoving < _minimumDistance)
             {
-                int damage = Random.Range(_minimumDamage, _maximumDamage + 1);
-                _targetUnit.Damage(gameObject, damage);
+                //int damage = Random.Range(_minimumDamage, _maximumDamage + 1);
+                //_targetUnit.Damage(gameObject, damage);
+                foreach (AbilityEffect hitEffect in _hitEffects.Data)
+                {
+                    hitEffect.Process(_sourceUnit, new List<Unit>{ _targetUnit });
+                }
                 
                 _trailRenderer.transform.SetParent(null);
                 transform.position = _targetPosition;

@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Descending.Gui
 {
     public class HeroStatisticsPanel : MonoBehaviour
     {
-        [SerializeField] private StatisticWidget _attackWidget = null;
-        [SerializeField] private StatisticWidget _aimWidget = null;
-        [SerializeField] private StatisticWidget _focusWidget = null;
+        [SerializeField] private StatisticWidget _mightDamageWidget = null;
+        [SerializeField] private StatisticWidget _finesseDamageWidget = null;
+        [SerializeField] private StatisticWidget _magicDamageWidget = null;
         [SerializeField] private StatisticWidget _blockWidget = null;
         [SerializeField] private StatisticWidget _dodgeWidget = null;
         [SerializeField] private StatisticWidget _willpowerWidget = null;
+        [SerializeField] private StatisticWidget _movementWidget = null;
 
         public void Setup()
         {
@@ -21,12 +23,13 @@ namespace Descending.Gui
         
         public void DisplayHero(HeroUnit hero)
         {
-            _attackWidget.SetAttribute(hero.Attributes.GetStatistic("Attack"));
-            _aimWidget.SetAttribute(hero.Attributes.GetStatistic("Aim"));
-            _focusWidget.SetAttribute(hero.Attributes.GetStatistic("Focus"));
-            _blockWidget.SetAttribute(hero.Attributes.GetStatistic("Block"));
-            _dodgeWidget.SetAttribute(hero.Attributes.GetStatistic("Dodge"));
-            _willpowerWidget.SetAttribute(hero.Attributes.GetStatistic("Willpower"));
+            _mightDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Might Damage").Current);
+            _finesseDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Finesse Damage").Current);
+            _magicDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Magic Damage").Current);
+            _blockWidget.SetAttribute(hero.Attributes.GetStatistic("Block").Current + "%");
+            _dodgeWidget.SetAttribute(hero.Attributes.GetStatistic("Dodge").Current + "%");
+            _willpowerWidget.SetAttribute(hero.Attributes.GetStatistic("Willpower").Current + "%");
+            _movementWidget.SetAttribute(hero.Attributes.GetStatistic("Movement").Current.ToString());
         }
     }
 }

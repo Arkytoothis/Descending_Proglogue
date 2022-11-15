@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Descending.Core;
 using Descending.Units;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Abilities
@@ -75,6 +76,8 @@ namespace Descending.Abilities
             bool success = false;
             AbilityDefinition definition = Database.instance.Abilities.GetAbility(_key);
         
+            Debug.Log("Using Ability: " + definition.Details.Name);
+            
             if (definition.Effects != null)
             {
                 for (int i = 0; i < definition.Effects.Data.Count; i++)
@@ -83,6 +86,8 @@ namespace Descending.Abilities
                 }
             }
         
+            user.UseResource(definition.Details.ResourceAttribute.Key, definition.Details.ResourceAmount);
+            
             return success;
         }
     }

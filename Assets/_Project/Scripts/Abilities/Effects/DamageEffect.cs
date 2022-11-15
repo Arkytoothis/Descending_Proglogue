@@ -3,8 +3,6 @@ using System.Text;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Units;
-using Descending.Enemies;
-using Descending.Gui;
 using UnityEngine;
 
 namespace Descending.Abilities
@@ -35,14 +33,14 @@ namespace Descending.Abilities
         {
             if (_affects == AbilityEffectAffects.User)
             {
-                // if (user.GetType() == typeof(PlayerCharacter))
+                // if (user.GetType() == typeof(HeroUnit))
                 // {
-                //     PlayerCharacter pc = (PlayerCharacter)user;
+                //     HeroUnit hero = user as HeroUnit;
                 //
-                //     if (pc != null)
+                //     if (hero != null)
                 //     {
                 //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                //         pc.TakeDamage(_attribute, _damageType, amount, false);
+                //         hero.Damage(_attribute, _damageType, amount, false);
                 //     }
                 // }
                 // else if (user.GetType() == typeof(Enemy))
@@ -58,10 +56,10 @@ namespace Descending.Abilities
             }
             else if (_affects == AbilityEffectAffects.Target)
             {
-                foreach (Unit entity in targets)
+                foreach (Unit unit in targets)
                 {
                     int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                    //entity.Damage(amount);
+                    unit.Damage(user.gameObject, amount);
                 }
             }
         }

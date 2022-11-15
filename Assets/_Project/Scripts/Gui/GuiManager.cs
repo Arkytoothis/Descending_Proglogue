@@ -11,6 +11,10 @@ namespace Descending.Gui
         [SerializeField] private TurnSystemPanel _turnSystemPanel = null;
         [SerializeField] private PartyPanel _partyPanel = null;
         [SerializeField] private TilePanel _tilePanel = null;
+        [SerializeField] private GameObject _tooltipPrefab = null;
+        [SerializeField] private Transform _guiParent = null;
+
+        private Tooltip _tooltip = null;
         
         public void Setup()
         {
@@ -19,6 +23,16 @@ namespace Descending.Gui
             _turnSystemPanel.Setup();
             _partyPanel.Setup();
             _tilePanel.Setup();
+            SpawnTooltip();
+        }
+
+        private void SpawnTooltip()
+        {
+            GameObject clone = Instantiate(_tooltipPrefab, _guiParent);
+            clone.transform.SetAsLastSibling();
+            
+            _tooltip = clone.GetComponentInChildren<Tooltip>();
+            _tooltip.Setup();
         }
     }
 }

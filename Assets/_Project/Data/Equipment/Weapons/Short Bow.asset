@@ -41,6 +41,7 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 1
+    _damageClass: 1
     _range: 6
     _knockbackStrength: 0
     _projectileDelay: 0.75

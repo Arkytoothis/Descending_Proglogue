@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: d86fe9134751bd54d88669cb4e58a096, type: 3}
     _abilityType: 0
+    _actionType: 4
     _name: Rally
     _key: Rally
     _description: 

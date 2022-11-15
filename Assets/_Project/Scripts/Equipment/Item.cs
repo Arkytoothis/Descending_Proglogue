@@ -518,7 +518,7 @@ namespace Descending.Equipment
             int damage = GetWeaponData().MinDamage;
             if (GetWeaponData().Projectile != null)
             {
-                damage += GetWeaponData().Projectile.MinDamage;
+                //damage += GetWeaponData().Projectile.MinDamage;
             }
 
             return damage;
@@ -529,7 +529,7 @@ namespace Descending.Equipment
             int damage = GetWeaponData().MaxDamage;
             if (GetWeaponData().Projectile != null)
             {
-                damage += GetWeaponData().Projectile.MaxDamage;
+                //damage += GetWeaponData().Projectile.MaxDamage;
             }
 
             return damage;

@@ -12,10 +12,24 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _currentLabel = null;
         [SerializeField] private TMP_Text _maximumLabel = null;
 
-        public void SetAttribute(Attribute attribute)
+        public void SetAttribute(int value)
         {
-            _currentLabel.SetText(attribute.Current.ToString());
-            _maximumLabel.SetText(attribute.Maximum.ToString());
+            if (value < 0)
+            {
+                _currentLabel.SetText("-" + value);
+            }
+            else
+            {
+                _currentLabel.SetText("+" + value);
+            }
+            
+            _maximumLabel.SetText("");
+        }
+        
+        public void SetAttribute(string value)
+        {
+            _currentLabel.SetText(value);
+            _maximumLabel.SetText("");
         }
     }
 }

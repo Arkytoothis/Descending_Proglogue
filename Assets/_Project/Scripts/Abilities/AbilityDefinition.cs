@@ -17,5 +17,7 @@ namespace Descending.Abilities
 
         public AbilityDetails Details => _details;
         public AbilityEffects Effects => _effects;
+        
+        
     }
 }

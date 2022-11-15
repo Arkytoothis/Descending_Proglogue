@@ -15,6 +15,7 @@ MonoBehaviour:
   _details:
     _icon: {fileID: 21300000, guid: cb831a381bf7e5544be5839e6b67595d, type: 3}
     _abilityType: 1
+    _actionType: 4
     _name: Shock Bolts
     _key: Shock Bolts
     _description: 
@@ -25,10 +26,9 @@ MonoBehaviour:
     _skill: {fileID: 11400000, guid: 401a02a497ba5c24eb512ebe7ffedcb5, type: 2}
     _minimumSkill: 1
     _actionsToUse: 1
-    _targetType: 2
-    _areaType: 0
-    _rangeType: 1
-    _projectile: {fileID: 11400000, guid: 8a5414f53b42ae14b8eedc718e147ac1, type: 2}
+    _targetType: 4
+    _area: 0
+    _range: 8
   _effects:
     rid: 6309569888065159183
   references:
@@ -37,4 +37,16 @@ MonoBehaviour:
     - rid: 6309569888065159183
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data: []
+        _data:
+        - rid: 6849115550700011535
+    - rid: 6849115550700011535
+      type: {class: ProjectileEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _ability: {fileID: 11400000}
+        _effectType: 11
+        _affects: 1
+        _projectileDefinition: {fileID: 11400000, guid: b7d42a9158c95a24a943610c5b66e6ef,
+          type: 2}
+        _spawnProjectileDelay: 0.5
+        _delayBetweenProjectiles: 0
+        _numProjectiles: 1

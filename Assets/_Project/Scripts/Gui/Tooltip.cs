@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Descending.Abilities;
-using Descending.Core;
-using Descending.Equipment;
 using UnityEngine;
 using TMPro;
+using Descending.Equipment;
+using DG.Tweening;
 using UnityEngine.UI;
+using Descending.Core;
 
 namespace Descending.Gui
 {
     public class Tooltip : MonoBehaviour
     {
-        //[SerializeField] private CanvasGroup _canvasGroup = null;
+        [SerializeField] private CanvasGroup _canvasGroup = null;
         [SerializeField] private RectTransform _rect = null;
         [SerializeField] private Image _icon = null;
         [SerializeField] private TMP_Text _title = null;
@@ -25,8 +26,8 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _gemsLabel = null;
         [SerializeField] private GameObject _header = null;
         [SerializeField] private float _openDelay = 0.15f;
-        //[SerializeField] private float _openSpeed = 0.1f;
-        //[SerializeField] private float _closeSpeed = 0.1f;
+        [SerializeField] private float _openSpeed = 0.1f;
+        [SerializeField] private float _closeSpeed = 0.1f;
 
         //[SerializeField] private Vector3 _offset = Vector3.zero;
         //[SerializeField] private float _padding = 25f;
@@ -159,12 +160,6 @@ namespace Descending.Gui
             }
         }
 
-        public void DisplayText(string text)
-        {
-            SetupSimple();
-            _details.text = text;
-        }
-        
         // public void SetData(PlayerController pc)
         // {
         //     if (pc != null)
@@ -249,21 +244,21 @@ namespace Descending.Gui
         {
             //_isShown = true;
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
-            //_canvasGroup.DOFade(1f, _openSpeed);
+            _canvasGroup.DOFade(1f, _openSpeed);
         }
 
         public void Hide()
         {
             //_isShown = false;
             CancelInvoke("DelayedOpen");
-            //_canvasGroup.DOFade(0f, _closeSpeed);
+            _canvasGroup.DOFade(0f, _closeSpeed);
         }
 
         public void Close()
         {
             //_isShown = false;
             CancelInvoke("DelayedOpen");
-            //_canvasGroup.DOFade(0f, 0f);
+            _canvasGroup.DOFade(0f, 0f);
         }
 
         public void ShowHeader()

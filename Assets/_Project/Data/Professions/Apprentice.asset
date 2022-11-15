@@ -79,11 +79,19 @@ MonoBehaviour:
     keyData:
     - Air Magic
     - Fire Magic
+    - Shadow Magic
+    - Arcane Magic
     valueData:
     - _skill: {fileID: 11400000, guid: 401a02a497ba5c24eb512ebe7ffedcb5, type: 2}
       _minimumValue: 1
       _maximumValue: 1
     - _skill: {fileID: 11400000, guid: 720b46637f1c9884b833b3bfd8cda44f, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _skill: {fileID: 11400000, guid: 79d394fb165caa04ca40a01af963d762, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _skill: {fileID: 11400000, guid: 8d6d705755f371841b401a1cf14789c6, type: 2}
       _minimumValue: 1
       _maximumValue: 1
   _startingItems:

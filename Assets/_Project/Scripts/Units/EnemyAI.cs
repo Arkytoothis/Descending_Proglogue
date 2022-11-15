@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Combat;
 using Descending.Units;
-using Descending.Core;
 using Descending.Tiles;
 using UnityEngine;
 
@@ -91,7 +90,7 @@ namespace Descending.Enemies
         }
         private bool TryPerformAction(Action onActionComplete)
         {
-            foreach (Unit enemyUnit in UnitManager.Instance.EnemyUnits)
+            foreach (EnemyUnit enemyUnit in UnitManager.Instance.EnemyUnits)
             {
                 SelectEnemy(enemyUnit);
                 
@@ -103,43 +102,125 @@ namespace Descending.Enemies
 
             return false;
         }
-
-        private bool TryPerformAction(Unit enemyUnit, Action onActionComplete)
+        
+        private bool TryPerformAction(EnemyUnit enemyUnit, Action onActionComplete)
         {
             if (enemyUnit.IsActive == false || enemyUnit.IsAlive == false) return false;
             
-            EnemyAction bestEnemyAction = null;
+            //EnemyAction bestEnemyAction = null;
             BaseAction bestAction = null;
+            MapPosition targetPosition = new MapPosition();
             
-            foreach (BaseAction action in enemyUnit.Actions)
+            if (enemyUnit.Definition.MeleeWeapon.Item != null)
             {
-                if (!enemyUnit.HasActionPoints(action)) continue;
+                bestAction = ProcessMeleeAction(enemyUnit, ref targetPosition);
+            }
+            else if (enemyUnit.Definition.RangedWeapon.Item != null)
+            {
+                bestAction = ProcessRangedAction(enemyUnit, ref targetPosition);
+            }
+            else
+            {
+                Debug.Log("No Weapon Equipped");
+            }
+            
+            // foreach (BaseAction action in enemyUnit.Actions)
+            // {
+            //     if (!enemyUnit.HasActionPoints(action)) continue;
+            //
+            //     if (bestEnemyAction == null)
+            //     {
+            //         bestEnemyAction = action.GetBestEnemyAction();
+            //         bestAction = action;
+            //     }
+            //     else
+            //     {
+            //         EnemyAction testEnemyAction = action.GetBestEnemyAction();
+            //         if (testEnemyAction != null && testEnemyAction.ActionValue > bestEnemyAction.ActionValue)
+            //         {
+            //             bestEnemyAction = testEnemyAction;
+            //             bestAction = action;
+            //         }
+            //     }
+            // }
 
-                if (bestEnemyAction == null)
+            if(bestAction == null)
+            {
+                Debug.Log("bestAcion == null");
+                return false;
+            }
+            else 
+            {
+                if (enemyUnit.TryPerformAction(bestAction))
                 {
-                    bestEnemyAction = action.GetBestEnemyAction();
-                    bestAction = action;
+                    bestAction.PerformAction(targetPosition, onActionComplete);
+                    return true;
                 }
                 else
                 {
-                    EnemyAction testEnemyAction = action.GetBestEnemyAction();
-                    if (testEnemyAction != null && testEnemyAction.ActionValue > bestEnemyAction.ActionValue)
+                    return false;
+                }
+            }
+        }
+
+        private BaseAction ProcessMeleeAction(EnemyUnit enemyUnit, ref MapPosition targetPosition)
+        {
+            BaseAction bestAction;
+            List<MapPosition> targetPositions = enemyUnit.GetAction<MeleeAction>().GetValidActionGridPositions();
+
+            if (targetPositions.Count > 0)
+            {
+                bestAction = enemyUnit.GetAction<MeleeAction>();
+                targetPosition = targetPositions[0];
+            }
+            else
+            {
+                bestAction = enemyUnit.GetAction<MoveAction>();
+                targetPositions = enemyUnit.GetAction<MoveAction>().GetValidActionGridPositions();
+                int highestTargetCount = 0;
+                foreach (MapPosition mapPosition in targetPositions)
+                {
+                    int targetCount = enemyUnit.GetAction<MeleeAction>().GetTargetCountAtPosition(mapPosition);
+
+                    if (targetCount > highestTargetCount)
                     {
-                        bestEnemyAction = testEnemyAction;
-                        bestAction = action;
+                        highestTargetCount = targetCount;
+                        targetPosition = mapPosition;
                     }
                 }
             }
 
-            if (bestEnemyAction != null && enemyUnit.TryPerformAction(bestAction))
+            return bestAction;
+        }
+
+        private BaseAction ProcessRangedAction(EnemyUnit enemyUnit, ref MapPosition targetPosition)
+        {
+            BaseAction bestAction;
+            List<MapPosition> targetPositions = enemyUnit.GetAction<ShootAction>().GetValidActionGridPositions();
+
+            if (targetPositions.Count > 0)
             {
-                bestAction.PerformAction(bestEnemyAction._mapPosition, onActionComplete);
-                return true;
+                bestAction = enemyUnit.GetAction<ShootAction>();
+                targetPosition = targetPositions[0];
             }
             else
             {
-                return false;
+                bestAction = enemyUnit.GetAction<MoveAction>();
+                targetPositions = enemyUnit.GetAction<MoveAction>().GetValidActionGridPositions();
+                int highestTargetCount = 0;
+                foreach (MapPosition mapPosition in targetPositions)
+                {
+                    int targetCount = enemyUnit.GetAction<ShootAction>().GetTargetCountAtPosition(mapPosition);
+
+                    if (targetCount > highestTargetCount)
+                    {
+                        highestTargetCount = targetCount;
+                        targetPosition = mapPosition;
+                    }
+                }
             }
+
+            return bestAction;
         }
     }
 }

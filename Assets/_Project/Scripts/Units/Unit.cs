@@ -17,6 +17,7 @@ namespace Descending.Units
     {
         [SerializeField] protected GameObject _selectionIndicator = null;
         [SerializeField] protected Transform _hitTransform = null;
+        [SerializeField] protected Transform _projectileSpawnPoint = null;
         [SerializeField] protected Transform _cameraMount = null;
         [SerializeField] protected Transform _cameraTarget = null;
         [SerializeField] protected Transform _modelParent = null;
@@ -26,6 +27,7 @@ namespace Descending.Units
         [SerializeField] protected InventoryController _inventory = null;
         [SerializeField] protected AbilityController _abilities = null;
         [SerializeField] protected RagdollSpawner _ragdollSpawner = null;
+        [SerializeField] protected ActionController _actionController = null;
         
         [SerializeField] protected UnitWorldPanel _worldPanel = null;
 
@@ -34,12 +36,10 @@ namespace Descending.Units
         protected bool _isEnemy = false;
         protected HealthSystem _healthSystem;
         protected MapPosition currentMapPosition;
-        protected BaseAction[] _actions = null;
         protected bool _isActive = false;
         protected bool _isAlive = false;
         
         public MapPosition CurrentMapPosition => currentMapPosition;
-        public BaseAction[] Actions => _actions;
         public bool IsEnemy => _isEnemy;
         public Transform HitTransform => _hitTransform;
         public Transform CameraMount => _cameraMount;
@@ -48,8 +48,10 @@ namespace Descending.Units
         public SkillsController Skills => _skills;
         public InventoryController Inventory => _inventory;
         public AbilityController Abilities => _abilities;
-
+        public ActionController ActionController => _actionController;
         public HealthSystem HealthSystem => _healthSystem;
+        public UnitAnimator UnitAnimator => _unitAnimator;
+        public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
 
         public bool IsActive => _isActive;
         public bool IsAlive => _isAlive;
@@ -59,12 +61,13 @@ namespace Descending.Units
         public abstract Item GetMeleeWeapon();
         public abstract Item GetRangedWeapon();
         public abstract void Damage(GameObject attacker, int damage);
+        public abstract void RestoreVital(string vital, int damage);
+        public abstract void UseResource(string vital, int damage);
         protected abstract void Dead();
         
         private void Awake()
         {
             _healthSystem = GetComponent<HealthSystem>();
-            _actions = GetComponents<BaseAction>();
             _isAlive = true;
         }
 
@@ -144,19 +147,6 @@ namespace Descending.Units
             return _attributes.GetVital("Life").Current;
         }
 
-        public T GetAction<T>() where T : BaseAction
-        {
-            foreach (BaseAction action in _actions)
-            {
-                if (action is T)
-                {
-                    return (T)action;
-                }
-            }
-
-            return null;
-        }
-
         public void Select()
         {
             _selectionIndicator.SetActive(true);
@@ -166,7 +156,10 @@ namespace Descending.Units
         {
             _selectionIndicator.SetActive(false);
         }
-        
-        
+
+        public T GetAction<T>() where T : BaseAction
+        {
+            return _actionController.GetAction<T>();
+        }
     }
 }

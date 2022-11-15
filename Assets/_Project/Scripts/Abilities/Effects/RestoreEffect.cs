@@ -27,7 +27,7 @@ namespace Descending.Abilities
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("Restores ").Append(_minimumValue).Append(" - ").Append(_maximumValue).Append(" ").Append(_attribute).Append("\n");
+            sb.Append("Restores ").Append(_minimumValue).Append(" - ").Append(_maximumValue).Append(" ").Append(_attribute.Name).Append("\n");
 
             return sb.ToString();
         }
@@ -38,7 +38,7 @@ namespace Descending.Abilities
             if (_affects == AbilityEffectAffects.User)
             {
                 int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                //user.Restore(_attribute.Key, amount);
+                user.RestoreVital(_attribute.Key, amount);
                 //MessageHandler.Instance.DisplayMessage(new GameMessage(user.GetName() + " gains " + amount + " " + _attribute.Name));
             }
             else if (_affects == AbilityEffectAffects.Target)
@@ -46,7 +46,7 @@ namespace Descending.Abilities
                 foreach (Unit entity in targets)
                 {
                     int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                    //entity.Restore(_attribute.Key, amount);
+                    entity.RestoreVital(_attribute.Key, amount);
                     //MessageHandler.Instance.DisplayMessage(new GameMessage(user.GetName() + " gains " + amount + " " + _attribute.Name));
                 }
             }
