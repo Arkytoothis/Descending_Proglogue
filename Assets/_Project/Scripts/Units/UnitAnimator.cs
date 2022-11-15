@@ -24,11 +24,11 @@ namespace Descending.Units
                 
             }
             
-            if (TryGetComponent<ShootAction>(out ShootAction shootAction))
+            if (TryGetComponent<RangedAttackAction>(out RangedAttackAction shootAction))
             {
             }
             
-            if (TryGetComponent<MeleeAction>(out MeleeAction meleeAction))
+            if (TryGetComponent<MeleeAttackAction>(out MeleeAttackAction meleeAction))
             {
             }
         }

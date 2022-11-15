@@ -42,9 +42,9 @@ namespace Descending.Units
         public void SetAbility(Ability ability, Transform projectileSpawnPoint)
         {
             _ability = ability;
-            _icon = _ability.Definition.Details.Icon;
+            _icon = _ability.Definition.Icon;
             _unitAnimator = _unit.UnitAnimator;
-            _range = _ability.Definition.Details.Range;
+            _range = _ability.Definition.Range;
             _projectileSpawnPoint = projectileSpawnPoint;
         }
         
@@ -132,11 +132,11 @@ namespace Descending.Units
                     
                     Unit targetUnit = MapManager.Instance.GetUnitAtGridPosition(testMapPosition);
 
-                    if (_ability.Definition.Details.TargetType == TargetTypes.Friend)
+                    if (_ability.Definition.TargetType == TargetTypes.Friend)
                     {
                         if (targetUnit.IsEnemy == true) continue;
                     }
-                    else if (_ability.Definition.Details.TargetType == TargetTypes.Enemy)
+                    else if (_ability.Definition.TargetType == TargetTypes.Enemy)
                     {
                         if (targetUnit.IsEnemy == false) continue;
                     }
@@ -177,12 +177,24 @@ namespace Descending.Units
         private void UseAbility()
         {
             _unitAnimator.Cast();
-            _ability.Use(_unit, new List<Unit> { _targetUnit });
 
-            // if (_ability.Definition.Details.Projectile != null)
-            // {
-            //     StartCoroutine(DelayedSpawnProjectile());
-            // }
+            if (_ability.Definition.TargetType == TargetTypes.Friend || _ability.Definition.TargetType == TargetTypes.Enemy)
+            {
+                _ability.Use(_unit, new List<Unit> { _targetUnit });
+            }
+            else if (_ability.Definition.TargetType == TargetTypes.Party)
+            {
+                List<Unit> targets = new List<Unit>();
+                for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
+                {
+                    if (Vector3.Distance(_unit.transform.position, UnitManager.Instance.HeroUnits[i].transform.position) <= _ability.Definition.Area)
+                    {
+                        targets.Add(UnitManager.Instance.HeroUnits[i]);
+                    }
+                }
+                
+                _ability.Use(_unit, targets);
+            }
         }
         
 
@@ -200,22 +212,5 @@ namespace Descending.Units
         {
             return GetValidActionGridPositions(mapPosition).Count;
         }
-        
-        // private IEnumerator DelayedSpawnProjectile()
-        // {
-        //     yield return new WaitForSeconds(_spawnProjectileDelay);
-        //
-        //
-        //         GameObject clone = Instantiate(_ability.Definition.Details.Projectile.Prefab, _projectileSpawnPoint.position, _projectileSpawnPoint.rotation);
-        //
-        //         if (_targetUnit != null)
-        //         {
-        //             Vector3 projectileTargetPosition = _targetUnit.transform.position;
-        //             projectileTargetPosition.y = _projectileSpawnPoint.position.y;
-        //
-        //             Projectile projectile = clone.GetComponent<Projectile>();
-        //             projectile.Setup(_unit, _targetUnit, _ability);
-        //         }
-        // }
     }
 }

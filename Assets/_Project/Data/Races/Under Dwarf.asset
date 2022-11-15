@@ -111,6 +111,7 @@ MonoBehaviour:
     - Willpower
     - Critical Damage
     - Movement
+    - Perception
     valueData:
     - _derived: {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
       _minimumValue: 0
@@ -136,6 +137,9 @@ MonoBehaviour:
     - _derived: {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
       _minimumValue: 3
       _maximumValue: 3
+    - _derived: {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
   _startingSkills:
     keyData:
     - Crafting

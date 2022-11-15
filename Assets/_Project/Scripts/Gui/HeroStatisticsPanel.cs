@@ -15,6 +15,7 @@ namespace Descending.Gui
         [SerializeField] private StatisticWidget _dodgeWidget = null;
         [SerializeField] private StatisticWidget _willpowerWidget = null;
         [SerializeField] private StatisticWidget _movementWidget = null;
+        [SerializeField] private StatisticWidget _perceptionWidget = null;
 
         public void Setup()
         {
@@ -29,6 +30,7 @@ namespace Descending.Gui
             _blockWidget.SetAttribute(hero.Attributes.GetStatistic("Block").Current + "%");
             _dodgeWidget.SetAttribute(hero.Attributes.GetStatistic("Dodge").Current + "%");
             _willpowerWidget.SetAttribute(hero.Attributes.GetStatistic("Willpower").Current + "%");
+            _perceptionWidget.SetAttribute(hero.Attributes.GetStatistic("Perception").Current + "%");
             _movementWidget.SetAttribute(hero.Attributes.GetStatistic("Movement").Current.ToString());
         }
     }

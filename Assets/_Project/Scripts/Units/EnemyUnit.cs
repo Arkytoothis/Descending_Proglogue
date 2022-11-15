@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Gui;
 using Descending.Tiles;
 using Descending.Treasure;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Descending.Units
     {
         [SerializeField] protected UnitData _unitData = null;
         [SerializeField] private EnemyDefinition _definition = null;
+        [SerializeField] private EnemyBehavior _behavior = null;
         [SerializeField] private Transform _rightHandMount = null;
         [SerializeField] private Transform _leftHandMount = null;
 
@@ -21,6 +23,7 @@ namespace Descending.Units
         
         public UnitData UnitData => _unitData;
         public EnemyDefinition Definition => _definition;
+        public EnemyBehavior Behavior => _behavior;
 
         public void SetupEnemy(EnemyDefinition definition)
         {
@@ -145,7 +148,8 @@ namespace Descending.Units
             if (_isAlive == false) return;
             
             _healthSystem.TakeDamage(attacker, damage);
-
+            onDisplayCombatText.Invoke(new CombatText(_combatTextTransform, damage.ToString(), "default"));
+            
             if (GetHealth() <= 0)
             {
                 Dead();
@@ -170,6 +174,12 @@ namespace Descending.Units
             _ragdollSpawner.Activate(_healthSystem);
             UnitManager.Instance.AwardExperience(_definition.ExpValue);
             Destroy(gameObject);
+        }
+
+        public override void SpendActionPoints(int actionPointCost)
+        {
+            _attributes.ModifyVital("Actions", actionPointCost);
+            _worldPanel.UpdateActionPoints(this);
         }
     }
 }

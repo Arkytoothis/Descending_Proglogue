@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Combat_Events;
 using Descending.Tiles;
 using DG.Tweening;
 using UnityEngine;
@@ -15,8 +16,11 @@ namespace Descending.Interactables
         [SerializeField] private float _deactivateDuration = 0.5f;
         [SerializeField] private float _activateAngle = 50f;
         [SerializeField] private float _deactivateAngle = -50f;
+
+        [SerializeReference] private CombatEventParameters _turnOnEvent = null;
+        [SerializeReference] private CombatEventParameters _turnOffEvent = null;
         
-        private MapPosition mapPosition;
+        private MapPosition _mapPosition;
         private Action onComplete;
         private float _timer;
         private bool _isInteracting;
@@ -28,9 +32,9 @@ namespace Descending.Interactables
 
         public void Setup()
         {
-            mapPosition = MapManager.Instance.GetGridPosition(transform.position);
-            MapManager.Instance.SetInteractableAtGridPosition(mapPosition, this);
-            PathfindingManager.Instance.SetIsGridPositionWalkable(mapPosition, false);
+            _mapPosition = MapManager.Instance.GetGridPosition(transform.position);
+            MapManager.Instance.SetInteractableAtGridPosition(_mapPosition, this);
+            PathfindingManager.Instance.SetIsGridPositionWalkable(_mapPosition, false);
             _isInteracting = false;
         }
         
@@ -73,12 +77,24 @@ namespace Descending.Interactables
         {
             _isActive = true;
             _leverTransform.DORotate(new Vector3(_activateAngle, 0f, 0f), _activateDuration, RotateMode.LocalAxisAdd);
+
+            if (_turnOnEvent != null)
+            {
+                MapPosition spawnPosition = _mapPosition + _turnOnEvent.OffsetPosition;
+                _turnOnEvent.CombatEvent.TriggerEvent(spawnPosition);
+            }
         }
 
         public void Deactivate()
         {
             _isActive = false;
             _leverTransform.DORotate(new Vector3(_deactivateAngle, 0f, 0f), _deactivateDuration, RotateMode.LocalAxisAdd); 
+            
+            if (_turnOffEvent != null)
+            {
+                MapPosition spawnPosition = _mapPosition + _turnOffEvent.OffsetPosition;
+                _turnOffEvent.CombatEvent.TriggerEvent(spawnPosition);
+            }
         }
     }
 }

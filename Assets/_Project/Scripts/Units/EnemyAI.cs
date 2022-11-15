@@ -105,48 +105,15 @@ namespace Descending.Enemies
         
         private bool TryPerformAction(EnemyUnit enemyUnit, Action onActionComplete)
         {
-            if (enemyUnit.IsActive == false || enemyUnit.IsAlive == false) return false;
+            if (enemyUnit.IsActive == false || enemyUnit.IsAlive == false || enemyUnit.Behavior == null) return false;
             
-            //EnemyAction bestEnemyAction = null;
             BaseAction bestAction = null;
             MapPosition targetPosition = new MapPosition();
+            bestAction = enemyUnit.Behavior.ProcessAction(enemyUnit, ref targetPosition);
             
-            if (enemyUnit.Definition.MeleeWeapon.Item != null)
-            {
-                bestAction = ProcessMeleeAction(enemyUnit, ref targetPosition);
-            }
-            else if (enemyUnit.Definition.RangedWeapon.Item != null)
-            {
-                bestAction = ProcessRangedAction(enemyUnit, ref targetPosition);
-            }
-            else
-            {
-                Debug.Log("No Weapon Equipped");
-            }
-            
-            // foreach (BaseAction action in enemyUnit.Actions)
-            // {
-            //     if (!enemyUnit.HasActionPoints(action)) continue;
-            //
-            //     if (bestEnemyAction == null)
-            //     {
-            //         bestEnemyAction = action.GetBestEnemyAction();
-            //         bestAction = action;
-            //     }
-            //     else
-            //     {
-            //         EnemyAction testEnemyAction = action.GetBestEnemyAction();
-            //         if (testEnemyAction != null && testEnemyAction.ActionValue > bestEnemyAction.ActionValue)
-            //         {
-            //             bestEnemyAction = testEnemyAction;
-            //             bestAction = action;
-            //         }
-            //     }
-            // }
-
             if(bestAction == null)
             {
-                Debug.Log("bestAcion == null");
+                Debug.Log("bestAction == null");
                 return false;
             }
             else 
@@ -161,66 +128,6 @@ namespace Descending.Enemies
                     return false;
                 }
             }
-        }
-
-        private BaseAction ProcessMeleeAction(EnemyUnit enemyUnit, ref MapPosition targetPosition)
-        {
-            BaseAction bestAction;
-            List<MapPosition> targetPositions = enemyUnit.GetAction<MeleeAction>().GetValidActionGridPositions();
-
-            if (targetPositions.Count > 0)
-            {
-                bestAction = enemyUnit.GetAction<MeleeAction>();
-                targetPosition = targetPositions[0];
-            }
-            else
-            {
-                bestAction = enemyUnit.GetAction<MoveAction>();
-                targetPositions = enemyUnit.GetAction<MoveAction>().GetValidActionGridPositions();
-                int highestTargetCount = 0;
-                foreach (MapPosition mapPosition in targetPositions)
-                {
-                    int targetCount = enemyUnit.GetAction<MeleeAction>().GetTargetCountAtPosition(mapPosition);
-
-                    if (targetCount > highestTargetCount)
-                    {
-                        highestTargetCount = targetCount;
-                        targetPosition = mapPosition;
-                    }
-                }
-            }
-
-            return bestAction;
-        }
-
-        private BaseAction ProcessRangedAction(EnemyUnit enemyUnit, ref MapPosition targetPosition)
-        {
-            BaseAction bestAction;
-            List<MapPosition> targetPositions = enemyUnit.GetAction<ShootAction>().GetValidActionGridPositions();
-
-            if (targetPositions.Count > 0)
-            {
-                bestAction = enemyUnit.GetAction<ShootAction>();
-                targetPosition = targetPositions[0];
-            }
-            else
-            {
-                bestAction = enemyUnit.GetAction<MoveAction>();
-                targetPositions = enemyUnit.GetAction<MoveAction>().GetValidActionGridPositions();
-                int highestTargetCount = 0;
-                foreach (MapPosition mapPosition in targetPositions)
-                {
-                    int targetCount = enemyUnit.GetAction<ShootAction>().GetTargetCountAtPosition(mapPosition);
-
-                    if (targetCount > highestTargetCount)
-                    {
-                        highestTargetCount = targetCount;
-                        targetPosition = mapPosition;
-                    }
-                }
-            }
-
-            return bestAction;
         }
     }
 }

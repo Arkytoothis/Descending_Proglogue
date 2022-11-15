@@ -41,6 +41,7 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 0
+    _damageClass: 0
     _range: 1
     _knockbackStrength: 0
     _projectileDelay: 0
@@ -49,7 +50,8 @@ MonoBehaviour:
     _maxDamage: 4
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 0}
-    _animatorOverride: {fileID: 0}
+    _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
+      type: 2}
     HitSounds: []
     MissSounds:
     - sword_swing_1

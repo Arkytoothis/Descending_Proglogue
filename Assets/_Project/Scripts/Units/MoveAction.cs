@@ -110,7 +110,7 @@ namespace Descending.Units
 
         public override EnemyAction GetEnemyAction(MapPosition mapPosition)
         {
-            int targetCount = _unit.GetAction<ShootAction>().GetTargetCountAtPosition(mapPosition);
+            int targetCount = _unit.GetAction<RangedAttackAction>().GetTargetCountAtPosition(mapPosition);
             
             return new EnemyAction
             {

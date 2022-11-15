@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Abilities;
 using Descending.Equipment;
+using DG.Tweening;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Descending.Units
 {
@@ -24,6 +24,7 @@ namespace Descending.Units
         private Vector3 _positionXZ;
         private float _totalDistance;
         private Rigidbody _rigidbody;
+        private bool _destroyed = false;
         
         public Unit SourceUnit => _sourceUnit;
         public Unit TargetUnit => _targetUnit;
@@ -31,6 +32,7 @@ namespace Descending.Units
 
         public void Setup(Unit sourceUnit, Unit targetUnit, Item weapon)
         {
+            _destroyed = false;
             _sourceUnit = sourceUnit;
             _targetUnit = targetUnit;
 
@@ -46,24 +48,27 @@ namespace Descending.Units
         
         public void Setup(Unit sourceUnit, Unit targetUnit, ProjectileDefinition projectileDefinition)
         {
+            _destroyed = false;
             _sourceUnit = sourceUnit;
             _targetUnit = targetUnit;
             _moveSpeed = projectileDefinition.Speed;
             _targetPosition = _targetUnit.HitTransform.position;
             _positionXZ = new Vector3(transform.position.x, 0, transform.position.z);
             _totalDistance = Vector3.Distance(_positionXZ, _targetPosition);
-
         }
 
         private void Update()
         {
             if (gameObject == null) return;
-            if (_targetUnit == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
             
+            if (_targetUnit == null && _destroyed == false)
+            {
+                _destroyed = true;
+                //transform.DOScale(0f, 0.5f);
+                Destroy(gameObject, 0.51f);
+                Destroy(_trailRenderer.gameObject, 0.51f);
+            }
+
             Vector3 moveDirection = (_targetPosition - _positionXZ).normalized;
             _positionXZ += moveDirection * _moveSpeed * Time.deltaTime;
             float distanceBeforeMoving = Vector3.Distance(_positionXZ, _targetPosition);
@@ -73,10 +78,8 @@ namespace Descending.Units
             transform.forward = _targetPosition - transform.position;
             float distanceAfterMoving = Vector3.Distance(_positionXZ, _targetPosition);
             
-            if (distanceAfterMoving < _minimumDistance)
+            if (distanceAfterMoving < _minimumDistance && _destroyed == false)
             {
-                //int damage = Random.Range(_minimumDamage, _maximumDamage + 1);
-                //_targetUnit.Damage(gameObject, damage);
                 foreach (AbilityEffect hitEffect in _hitEffects.Data)
                 {
                     hitEffect.Process(_sourceUnit, new List<Unit>{ _targetUnit });

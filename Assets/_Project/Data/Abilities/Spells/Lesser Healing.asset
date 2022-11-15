@@ -12,24 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
   m_Name: Lesser Healing
   m_EditorClassIdentifier: 
-  _details:
-    _icon: {fileID: 21300000, guid: 317dd6ebe5c13684a95e8fe6aeb21935, type: 3}
-    _abilityType: 1
-    _actionType: 4
-    _name: Lesser Healing
-    _key: Lesser Healing
-    _description: 
-    _cooldown: 0
-    _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932,
-      type: 2}
-    _resourceAmount: 5
-    _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
-    _minimumSkill: 1
-    _actionsToUse: 1
-    _targetType: 3
-    _area: 0
-    _range: 2
-    _projectile: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 0a1afdcc43c88064d996b32448b6be97, type: 3}
+  _abilityType: 1
+  _actionType: 4
+  _name: Lesser Healing
+  _key: Lesser Healing
+  _description: 
+  _cooldown: 0
+  _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+  _resourceAmount: 1
+  _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
+  _minimumSkill: 1
+  _actionsToUse: 1
+  _targetType: 3
+  _area: 0
+  _range: 1
   _effects:
     rid: 6309569888065159180
   references:
@@ -40,12 +37,17 @@ MonoBehaviour:
       data:
         _data:
         - rid: 6849115550700011521
+        - rid: 6849115550700011555
     - rid: 6849115550700011521
       type: {class: RestoreEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _ability: {fileID: 11400000}
-        _effectType: 6
         _affects: 1
         _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
         _minimumValue: 5
         _maximumValue: 10
+    - rid: 6849115550700011555
+      type: {class: VisualEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _affects: 1
+        _effectPrefab: {fileID: 1041383898900682, guid: 6415f946f87d42f408f61c846221beb6,
+          type: 3}

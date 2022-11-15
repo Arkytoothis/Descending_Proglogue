@@ -25,7 +25,7 @@ namespace Descending.Gui
 
             if (_ability != null)
             {
-                _iconImage.sprite = _ability.Definition.Details.Icon;
+                _iconImage.sprite = _ability.Definition.Icon;
                 _stackSizeLabel.SetText("");
             }
             else

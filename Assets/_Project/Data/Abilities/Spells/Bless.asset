@@ -12,24 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
   m_Name: Bless
   m_EditorClassIdentifier: 
-  _details:
-    _icon: {fileID: 21300000, guid: a71b2c9214d807e48a4656f28db3df99, type: 3}
-    _abilityType: 1
-    _actionType: 4
-    _name: Bless
-    _key: Bless
-    _description: 
-    _cooldown: 0
-    _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932,
-      type: 2}
-    _resourceAmount: 0
-    _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
-    _minimumSkill: 1
-    _actionsToUse: 1
-    _targetType: 1
-    _area: 2
-    _range: 1
-    _projectile: {fileID: 0}
+  _icon: {fileID: 21300000, guid: fb231a5980604ff4b993100bd06ff22d, type: 3}
+  _abilityType: 1
+  _actionType: 4
+  _name: Bless
+  _key: Bless
+  _description: 
+  _cooldown: 0
+  _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+  _resourceAmount: 1
+  _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
+  _minimumSkill: 1
+  _actionsToUse: 1
+  _targetType: 1
+  _area: 3
+  _range: 1
   _effects:
     rid: 6309569888065159178
   references:
@@ -45,27 +42,21 @@ MonoBehaviour:
     - rid: 6849115550700011523
       type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _ability: {fileID: 11400000}
-        _effectType: 0
-        _affects: 2
+        _affects: 1
         _attribute: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
         _minimumValue: 5
         _maximumValue: 5
     - rid: 6849115550700011524
       type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _ability: {fileID: 11400000}
-        _effectType: 0
-        _affects: 2
+        _affects: 1
         _attribute: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
         _minimumValue: 5
         _maximumValue: 5
     - rid: 6849115550700011525
       type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _ability: {fileID: 11400000}
-        _effectType: 0
-        _affects: 2
+        _affects: 1
         _attribute: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
         _minimumValue: 5
         _maximumValue: 5

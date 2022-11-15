@@ -12,24 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
   m_Name: Rally
   m_EditorClassIdentifier: 
-  _details:
-    _icon: {fileID: 21300000, guid: d86fe9134751bd54d88669cb4e58a096, type: 3}
-    _abilityType: 0
-    _actionType: 4
-    _name: Rally
-    _key: Rally
-    _description: 
-    _cooldown: 0
-    _resourceAttribute: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725,
-      type: 2}
-    _resourceAmount: 0
-    _skill: {fileID: 11400000, guid: eb690f4ba96a3f64c9f333667f42f63d, type: 2}
-    _minimumSkill: 1
-    _actionsToUse: 1
-    _targetType: 0
-    _areaType: 1
-    _rangeType: 0
-    _projectile: {fileID: 0}
+  _icon: {fileID: 21300000, guid: fe388e03a933dd04f87d369d6c2e67ac, type: 3}
+  _abilityType: 0
+  _actionType: 4
+  _name: Rally
+  _key: Rally
+  _description: 
+  _cooldown: 0
+  _resourceAttribute: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
+  _resourceAmount: 1
+  _skill: {fileID: 11400000, guid: eb690f4ba96a3f64c9f333667f42f63d, type: 2}
+  _minimumSkill: 1
+  _actionsToUse: 1
+  _targetType: 3
+  _area: 0
+  _range: 1
   _effects:
     rid: 6309569888065159168
   references:

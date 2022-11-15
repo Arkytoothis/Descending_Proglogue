@@ -14,6 +14,5 @@ namespace Descending.Equipment
         public DamageTypeDefinition DamageType = null;
         public DamageClasses DamageClass = DamageClasses.None;
         public float Speed = 30f;
-
     }
 }

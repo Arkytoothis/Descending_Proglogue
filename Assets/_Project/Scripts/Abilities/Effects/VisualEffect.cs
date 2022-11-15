@@ -39,13 +39,6 @@ namespace Descending.Abilities
                     clone.transform.position = target.transform.position;
                 }
             }
-            
-           //user.SyncData();
-            
-            for (int i = 0; i < targets.Count; i++)
-            {
-                //targets[i].SyncData();
-            }
         }
     }
 }

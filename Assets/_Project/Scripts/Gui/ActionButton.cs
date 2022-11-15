@@ -37,7 +37,7 @@ namespace Descending
         public void SetAbility(Ability ability)
         {
             _ability = ability;
-            _iconImage.sprite = ability.Definition.Details.Icon;
+            _iconImage.sprite = ability.Definition.Icon;
             
             if(ability.AbilityType == AbilityType.Power)
                 _actionLabel.SetText("USE");

@@ -79,11 +79,15 @@ MonoBehaviour:
     keyData:
     - Life Magic
     - Death Magic
+    - Earth Magic
     valueData:
     - _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
       _minimumValue: 3
       _maximumValue: 3
     - _skill: {fileID: 11400000, guid: c9dd48da59cab004b9e7f0d1317f20a3, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _skill: {fileID: 11400000, guid: 171985a2023a2bf468ff803a316df6f0, type: 2}
       _minimumValue: 1
       _maximumValue: 1
   _startingItems:

@@ -136,10 +136,10 @@ namespace Descending.Gui
             if (ability != null && ability.Empty == false)
             {
                 SetupFull();
-                _icon.sprite = ability.Definition.Details.Icon;
+                _icon.sprite = ability.Definition.Icon;
                 _title.text = ability.DisplayName();
                 _title.color = GetTitleColor(ability);
-                _description.text = ability.Definition.Details.Description;  
+                _description.text = ability.Definition.Description;  
                 _details.text = ability.GetTooltipText();
         
                 _encumbranceIcon.enabled = false;

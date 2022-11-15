@@ -52,6 +52,7 @@ MonoBehaviour:
     - Willpower
     - Movement
     - Critical Damage
+    - Perception
     valueData:
     - {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
     - {fileID: 11400000, guid: 296303d97cde9fa4f9a5045c006e427d, type: 2}
@@ -61,3 +62,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
     - {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
     - {fileID: 11400000, guid: 0cd740360ef66834aa82570a681c9014, type: 2}
+    - {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}

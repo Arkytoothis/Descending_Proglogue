@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Descending.Units
 {
-    public class MeleeAction : BaseAction
+    public class MeleeAttackAction : BaseAction
     {
         private enum States { Pre_Hit, Post_Hit }
 
@@ -53,7 +53,6 @@ namespace Descending.Units
             {
                 WeaponData weaponData = item.GetWeaponData();
                 _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
-                //_spawnProjectileDelay = weaponData.ProjectileDelay;
                 _meleeRange = weaponData.Range;
             }
         }
@@ -107,6 +106,11 @@ namespace Descending.Units
         
         public List<MapPosition> GetValidActionGridPositions(MapPosition mapPosition)
         {
+            if (_unit.IsEnemy == true)
+            {
+                SetupData();
+            }
+            
             List<MapPosition> validGridPositions = new List<MapPosition>();
             
             for (int x = -_meleeRange; x <= _meleeRange; x++)

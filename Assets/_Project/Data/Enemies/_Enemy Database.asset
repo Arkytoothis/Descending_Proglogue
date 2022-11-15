@@ -15,5 +15,9 @@ MonoBehaviour:
   _data:
     keyData:
     - Goblin Slave Male
+    - Goblin Archer Male
+    - Skeleton
     valueData:
     - {fileID: 11400000, guid: cc0f2016285159642ae4d235f1595121, type: 2}
+    - {fileID: 11400000, guid: 1a54b26917801ff44841ce3c26f3b44c, type: 2}
+    - {fileID: 11400000, guid: 0cc23e88a5560fc478301e8a26d0fd0e, type: 2}

@@ -8,12 +8,12 @@ using Random = UnityEngine.Random;
 
 namespace Descending.Units
 {
-    public class ShootAction : BaseAction
+    public class RangedAttackAction : BaseAction
     {
         public enum State
         {
             Aiming,
-            Shooting,
+            Attacking,
             Cooldown
         };
 
@@ -47,11 +47,11 @@ namespace Descending.Units
                     Vector3 aimDirection = (_targetUnit.transform.position - _unit.transform.position).normalized;
                     transform.forward = Vector3.Lerp(transform.forward, aimDirection, _rotationSpeed * Time.deltaTime);
                     break;
-                case State.Shooting:
+                case State.Attacking:
                     if (_canShoot)
                     {
                         _canShoot = false;
-                        Shoot();
+                        PerformRangedAttack();
                     }
                     break;
                 case State.Cooldown:
@@ -69,10 +69,10 @@ namespace Descending.Units
             switch (_state)
             {
                 case State.Aiming:
-                    _state = State.Shooting;
+                    _state = State.Attacking;
                     _stateTimer = _shootingStateTime;
                     break;
-                case State.Shooting:
+                case State.Attacking:
                     _state = State.Cooldown;
                     _stateTimer = _cooldownStateTime;
                     break;
@@ -94,7 +94,7 @@ namespace Descending.Units
 
         public override string GetName()
         {
-            return "Shoot";
+            return "Ranged";
         }
 
         public List<MapPosition> GetValidActionGridPositions(MapPosition unitPosition)
@@ -153,7 +153,7 @@ namespace Descending.Units
             return 1;
         }
 
-        private void Shoot()
+        private void PerformRangedAttack()
         {
             _unitAnimator.Shoot();
             StartCoroutine(DelayedSpawnProjectile());

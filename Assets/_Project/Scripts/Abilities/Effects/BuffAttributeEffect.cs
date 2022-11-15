@@ -1,6 +1,8 @@
-﻿using Descending.Core;
+﻿using System.Collections.Generic;
+using Descending.Core;
 using System.Text;
 using Descending.Attributes;
+using Descending.Units;
 using UnityEngine;
 
 namespace Descending.Abilities
@@ -11,11 +13,7 @@ namespace Descending.Abilities
         [SerializeField] private AttributeDefinition _attribute = null;
         [SerializeField] private int _minimumValue = 0;
         [SerializeField] private int _maximumValue = 0;
-
-        public AttributeDefinition Attribute { get => _attribute; }
-        public int MinimumValue { get => _minimumValue; }
-        public int MaximumValue { get => _maximumValue; }
-
+        
         public override string GetTooltipText()
         {
             StringBuilder sb = new StringBuilder();
@@ -28,6 +26,20 @@ namespace Descending.Abilities
                 sb.Append("\n");
 
             return sb.ToString();
+        }
+
+        public override void Process(Unit user, List<Unit> targets)
+        {
+            if (_affects == AbilityEffectAffects.User)
+            {
+            }
+            else if (_affects == AbilityEffectAffects.Target)
+            {
+                foreach (Unit target in targets)
+                {
+                    Debug.Log("Buffing " + _attribute.Name + " " + target.name);
+                }
+            }
         }
     }
 }

@@ -233,5 +233,16 @@ namespace Descending.Units
                 heroUnit.AddExperience(experience);
             }
         }
+
+        public void SpawnEnemy(MapPosition mapPosition, EnemyDefinition enemyDefinition)
+        {
+            Debug.Log("Spawning: " + enemyDefinition.Name + " at Map Position " + mapPosition.ToString());
+            GameObject clone = Instantiate(enemyDefinition.Prefab, _enemiesParent);
+            clone.name = enemyDefinition.Name;
+            clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
+
+            EnemyUnit unit = clone.GetComponent<EnemyUnit>();
+            unit.SetupEnemy(enemyDefinition);
+        }
     }
 }

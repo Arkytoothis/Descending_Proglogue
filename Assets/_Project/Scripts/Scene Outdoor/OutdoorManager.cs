@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Combat;
+using Descending.Combat_Events;
 using Descending.Core;
 using Descending.Enemies;
 using Descending.Gui;
@@ -32,6 +33,7 @@ namespace Descending.Scene_Outdoor
             InputManager.Instance.Setup();
             TurnManager.Instance.Setup();
             MapManager.Instance.Setup();
+            CombatEventManager.Instance.Setup();
             _dungeon.Generate();
             UnitManager.Instance.Setup();
             _enemyAI.Setup();

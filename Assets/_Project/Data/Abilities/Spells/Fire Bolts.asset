@@ -12,23 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
   m_Name: Fire Bolts
   m_EditorClassIdentifier: 
-  _details:
-    _icon: {fileID: 21300000, guid: ed82e1103d373974eb15cb9961ec3e25, type: 3}
-    _abilityType: 1
-    _actionType: 4
-    _name: Fire Bolts
-    _key: Fire Bolts
-    _description: 
-    _cooldown: 0
-    _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932,
-      type: 2}
-    _resourceAmount: 1
-    _skill: {fileID: 11400000, guid: 720b46637f1c9884b833b3bfd8cda44f, type: 2}
-    _minimumSkill: 1
-    _actionsToUse: 2
-    _targetType: 4
-    _area: 0
-    _range: 10
+  _icon: {fileID: 21300000, guid: 1fec945518c9dab42b6ddfd4b03431b0, type: 3}
+  _abilityType: 1
+  _actionType: 4
+  _name: Fire Bolts
+  _key: Fire Bolts
+  _description: 
+  _cooldown: 0
+  _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+  _resourceAmount: 1
+  _skill: {fileID: 11400000, guid: 720b46637f1c9884b833b3bfd8cda44f, type: 2}
+  _minimumSkill: 1
+  _actionsToUse: 1
+  _targetType: 4
+  _area: 0
+  _range: 10
   _effects:
     rid: 6309569888065159179
   references:
@@ -42,8 +40,6 @@ MonoBehaviour:
     - rid: 6849115550700011534
       type: {class: ProjectileEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _ability: {fileID: 11400000}
-        _effectType: 11
         _affects: 1
         _projectileDefinition: {fileID: 11400000, guid: 687e842fc3e6ddc42b013d959da9077a,
           type: 2}

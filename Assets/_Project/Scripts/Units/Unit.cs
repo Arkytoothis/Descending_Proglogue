@@ -17,6 +17,7 @@ namespace Descending.Units
     {
         [SerializeField] protected GameObject _selectionIndicator = null;
         [SerializeField] protected Transform _hitTransform = null;
+        [SerializeField] protected Transform _combatTextTransform = null;
         [SerializeField] protected Transform _projectileSpawnPoint = null;
         [SerializeField] protected Transform _cameraMount = null;
         [SerializeField] protected Transform _cameraTarget = null;
@@ -28,10 +29,11 @@ namespace Descending.Units
         [SerializeField] protected AbilityController _abilities = null;
         [SerializeField] protected RagdollSpawner _ragdollSpawner = null;
         [SerializeField] protected ActionController _actionController = null;
-        
         [SerializeField] protected UnitWorldPanel _worldPanel = null;
 
-        [SerializeField] protected BoolEvent onSyncParty = null;
+        [SerializeField] protected CombatTextEvent onDisplayCombatText = null;
+        
+        public abstract void SpendActionPoints(int actionPointCost);
         
         protected bool _isEnemy = false;
         protected HealthSystem _healthSystem;
@@ -42,6 +44,7 @@ namespace Descending.Units
         public MapPosition CurrentMapPosition => currentMapPosition;
         public bool IsEnemy => _isEnemy;
         public Transform HitTransform => _hitTransform;
+        public Transform CombatTextTransform => _combatTextTransform;
         public Transform CameraMount => _cameraMount;
         public Transform CameraTarget => _cameraTarget;
         public AttributesController Attributes => _attributes;
@@ -123,13 +126,6 @@ namespace Descending.Units
             {
                 return false;
             }
-        }
-
-        private void SpendActionPoints(int actionPointCost)
-        {
-            _attributes.ModifyVital("Actions", actionPointCost);
-            _worldPanel.UpdateActionPoints(this);
-            onSyncParty.Invoke(true);
         }
 
         public void OnTurnChanged(bool b)

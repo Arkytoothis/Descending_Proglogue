@@ -47,13 +47,13 @@ namespace Descending.Abilities
         public Ability(AbilityDefinition definition)
         {
             _empty = false;
-            _abilityType = definition.Details.AbilityType;
-            _key = definition.Details.Key;
+            _abilityType = definition.AbilityType;
+            _key = definition.Key;
         }
 
         public string DisplayName()
         {
-            return Definition.Details.Name;
+            return Definition.Name;
         }
 
         public string GetTooltipText()
@@ -61,7 +61,7 @@ namespace Descending.Abilities
             StringBuilder sb = new StringBuilder();
             AbilityDefinition definition = Database.instance.Abilities.GetAbility(_key);
 
-            sb.Append(definition.Details.GetTooltipText());
+            sb.Append(definition.GetTooltipText());
 
             if (definition.Effects != null)
             {
@@ -75,8 +75,6 @@ namespace Descending.Abilities
         {
             bool success = false;
             AbilityDefinition definition = Database.instance.Abilities.GetAbility(_key);
-        
-            Debug.Log("Using Ability: " + definition.Details.Name);
             
             if (definition.Effects != null)
             {
@@ -86,7 +84,7 @@ namespace Descending.Abilities
                 }
             }
         
-            user.UseResource(definition.Details.ResourceAttribute.Key, definition.Details.ResourceAmount);
+            user.UseResource(definition.ResourceAttribute.Key, definition.ResourceAmount);
             
             return success;
         }

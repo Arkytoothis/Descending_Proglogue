@@ -31,13 +31,13 @@ namespace Descending.Abilities
         {
             foreach (var abilityKvp in Database.instance.Abilities.Abilities)
             {
-                if (skills.ContainsSkills(abilityKvp.Value.Details.Skill) && skills.GetSkill(abilityKvp.Value.Details.Skill.Key).Current >= abilityKvp.Value.Details.MinimumSkill)
+                if (skills.ContainsSkills(abilityKvp.Value.Skill) && skills.GetSkill(abilityKvp.Value.Skill.Key).Current >= abilityKvp.Value.MinimumSkill)
                 {
-                    if (abilityKvp.Value.Details.AbilityType == AbilityType.Power)
+                    if (abilityKvp.Value.AbilityType == AbilityType.Power)
                     {
                         _memorizedPowers.Add(new Ability(abilityKvp.Value));
                     }
-                    else if (abilityKvp.Value.Details.AbilityType == AbilityType.Spell)
+                    else if (abilityKvp.Value.AbilityType == AbilityType.Spell)
                     {
                         _memorizedSpells.Add(new Ability(abilityKvp.Value));
                     }

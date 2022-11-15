@@ -2085,6 +2085,11 @@ PrefabInstance:
       objectReference: {fileID: 864620056674712982}
     - target: {fileID: 1952305667227632040, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
+      propertyPath: _behavior
+      value: 
+      objectReference: {fileID: 8436369570582895316}
+    - target: {fileID: 1952305667227632040, guid: 9973de32681c5ed45aeaf86622f1c2c1,
+        type: 3}
       propertyPath: _unitData
       value: 
       objectReference: {fileID: 320923099257424253}
@@ -2353,7 +2358,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6038160678190719925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7336809418575615659}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 019e91699cde87b4abdcad779fb60441, type: 3}
@@ -2365,7 +2370,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6038160678190719925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7336809418575615659}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b03e0f341a435f54292608b5b634a2ef, type: 3}
@@ -2389,6 +2394,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6038160678190719925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7336809418575615659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3898514663855011102, guid: 9973de32681c5ed45aeaf86622f1c2c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6038160678190719925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8436369570582895316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336809418575615659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588e41849bc9bd34582dc7236ff83842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7681208857306032543 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4130638580815317546, guid: 9973de32681c5ed45aeaf86622f1c2c1,

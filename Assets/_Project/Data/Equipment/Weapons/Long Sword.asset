@@ -41,16 +41,18 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 0
-    _range: 4
-    _delay: 1.5
+    _damageClass: 0
+    _range: 2
     _knockbackStrength: 0
+    _projectileDelay: 0
     _damageType: {fileID: 11400000, guid: e81cc1106fdbbb14ead08b0bbfa4f628, type: 2}
     _minDamage: 4
     _maxDamage: 16
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 8792079695798041162, guid: dda8190cc7e43bf49b13394dc4ef22b4,
       type: 3}
-    _animatorOverride: {fileID: 0}
+    _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
+      type: 2}
     HitSounds: []
     MissSounds:
     - sword_swing_1
@@ -72,6 +74,13 @@ MonoBehaviour:
     _hasData: 0
     _maxUses: 0
     _cooldown: 0
+    _effects:
+      rid: -2
   _ingredientData:
     _hasData: 0
     _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

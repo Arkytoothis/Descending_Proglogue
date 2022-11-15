@@ -107,6 +107,8 @@ namespace Descending.Attributes
                                        _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             _statistics["Willpower"].Setup(Random.Range(race.StartingStatistics["Willpower"].MinimumValue, race.StartingStatistics["Willpower"].MinimumValue + 1) + 
                                        _characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum);
+            _statistics["Perception"].Setup(Random.Range(race.StartingStatistics["Perception"].MinimumValue, race.StartingStatistics["Perception"].MinimumValue + 1) + 
+                                            _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             
             _statistics["Movement"].Setup(race.StartingStatistics["Movement"].MinimumValue);
             _statistics["Critical Damage"].Setup(race.StartingStatistics["Critical Damage"].MinimumValue);

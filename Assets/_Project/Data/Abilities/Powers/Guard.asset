@@ -12,25 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
   m_Name: Guard
   m_EditorClassIdentifier: 
-  _details:
-    _icon: {fileID: 21300000, guid: f35a7fab8b3a6e247a17c256610f98ac, type: 3}
-    _abilityType: 0
-    _actionType: 4
-    _name: Guard
-    _key: Guard
-    _description: 
-    _cooldown: 0
-    _resourceAttribute: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725,
-      type: 2}
-    _resourceAmount: 0
-    _skill: {fileID: 11400000, guid: 73b130836c9e08e4b9a08a07f9cd6382, type: 2}
-    _minimumSkill: 1
-    _actionsToUse: 1
-    _targetType: 1
-    _areaType: 0
-    _rangeType: 2
-    _range: 1
-    _projectile: {fileID: 0}
+  _icon: {fileID: 21300000, guid: f35a7fab8b3a6e247a17c256610f98ac, type: 3}
+  _abilityType: 0
+  _actionType: 4
+  _name: Guard
+  _key: Guard
+  _description: 
+  _cooldown: 0
+  _resourceAttribute: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
+  _resourceAmount: 1
+  _skill: {fileID: 11400000, guid: 73b130836c9e08e4b9a08a07f9cd6382, type: 2}
+  _minimumSkill: 1
+  _actionsToUse: 1
+  _targetType: 2
+  _area: 0
+  _range: 0
   _effects:
     rid: 6309569888065159177
   references:
@@ -44,8 +40,6 @@ MonoBehaviour:
     - rid: 6849115550700011532
       type: {class: RestoreEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _ability: {fileID: 11400000}
-        _effectType: 6
         _affects: 1
         _attribute: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
         _minimumValue: 10

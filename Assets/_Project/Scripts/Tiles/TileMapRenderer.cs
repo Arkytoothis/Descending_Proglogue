@@ -149,24 +149,21 @@ namespace Descending.Tiles
                     borderColor = TileColors.Blue;
                     backgroundColor = TileColors.Blue;
                     break;
-                case SpinAction spinAction:
-                    borderColor = TileColors.Yellow;
-                    backgroundColor = TileColors.Yellow;
-                    break;
                 case ThrowAction throwAction:
                     borderColor = TileColors.Black;
                     backgroundColor = TileColors.Black;
                     break;
-                case ShootAction shootAction:
+                case RangedAttackAction rangedAttackAction:
                     borderColor = TileColors.Red;
                     backgroundColor = TileColors.Red;
-                    shootAction.SetupData();
-                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, shootAction.MaxShootDistance, TileColors.Black, TileColors.Black);
+                    rangedAttackAction.SetupData();
+                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, rangedAttackAction.MaxShootDistance, TileColors.Black, TileColors.Black);
                     break;
-                case MeleeAction meleeAction:
+                case MeleeAttackAction meleeAttackAction:
                     borderColor = TileColors.Green;
                     backgroundColor = TileColors.Green;
-                    ShowGridPositionRangeSquare(selectedUnit.CurrentMapPosition, meleeAction.MeleeRange, TileColors.Black, TileColors.Black);
+                    meleeAttackAction.SetupData();
+                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, meleeAttackAction.MeleeRange, TileColors.Black, TileColors.Black);
                     break;
                 case InteractAction interactAction:
                     borderColor = TileColors.Yellow;
