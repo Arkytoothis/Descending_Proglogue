@@ -11,18 +11,19 @@ namespace Descending.Attributes
         [SerializeField] private AttributeDictionary _characteristics = null;
         [SerializeField] private AttributeDictionary _vitals = null;
         [SerializeField] private AttributeDictionary _statistics = null;
-        //[SerializeField] private AttributeDictionary _resistances = null;
+        [SerializeField] private ResistanceDictionary _resistances = null;
 
         public AttributeDictionary Characteristics => _characteristics;
         public AttributeDictionary Vitals => _vitals;
         public AttributeDictionary Statistics => _statistics;
-        //public AttributeDictionary Resistances => _resistances;
+        public ResistanceDictionary Resistances => _resistances;
 
         public void Setup(RaceDefinition race, ProfessionDefinition profession)
         {
             _characteristics.Clear();
             _vitals.Clear();
             _statistics.Clear();
+            _resistances.Clear();
             
             foreach (var startingAttribute in race.StartingCharacteristics)
             {
@@ -49,10 +50,15 @@ namespace Descending.Attributes
             
             CalculateAttributes(1, race);
             
-            //foreach (Resistance resistance in race.Resistances)
-            //{
-                //_resistances.Add(new Resistance(resistance));
-            //}
+            foreach (var damageTypeKVP in Database.instance.DamageTypes.Data)
+            {
+                _resistances.Add(damageTypeKVP.Key, new Resistance(damageTypeKVP.Value, 0));
+            }
+
+            foreach (Resistance raceResistance in race.Resistances)
+            {
+                _resistances[raceResistance.DamageType].SetResistance(raceResistance);
+            }
         }
         
         public void Setup(EnemyDefinition definition)
@@ -132,6 +138,11 @@ namespace Descending.Attributes
         public Attribute GetStatistic(string key)
         {
             return _statistics[key];
+        }
+
+        public Resistance GetResistance(string key)
+        {
+            return _resistances[key];
         }
 
         public void RefreshActions()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4278016603253126343}
   - component: {fileID: 3914951810430800097}
   - component: {fileID: 1348620230770313901}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Dungeon Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +74,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &596556439961533364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,8 +1232,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5303569, y: 1.8751848, z: 0.4099108}
-  m_Center: {x: -0.0039137006, y: 0.9102446, z: 0.0053120553}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8817563182959167238
 MonoBehaviour:
   m_ObjectHideFlags: 0

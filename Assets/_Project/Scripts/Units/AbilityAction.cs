@@ -159,13 +159,10 @@ namespace Descending.Units
 
         public void SetupData()
         {
-            Item item = _unit.GetRangedWeapon();
-            if (item != null)
+            if (_ability != null)
             {
-                WeaponData weaponData = item.GetWeaponData();
-                _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
-                _spawnProjectileDelay = weaponData.ProjectileDelay;
-                _range = weaponData.Range;
+                _spawnProjectileDelay = 0.5f;
+                _range = _ability.Definition.Range;
             }
         }
 

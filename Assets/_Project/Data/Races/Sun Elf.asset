@@ -158,7 +158,13 @@ MonoBehaviour:
     - _skill: {fileID: 11400000, guid: 039f5db9cdffac94487341e6ff2d81c2, type: 2}
       _minimumValue: 1
       _maximumValue: 1
-  _resistances: []
+  _resistances:
+  - _damageType: Fire
+    _currentValue: 10
+    _maximumValue: 10
+  - _damageType: Cold
+    _currentValue: -10
+    _maximumValue: -10
   WoundSoundsMale:
   - voice_male_c_hurt_pain_04
   - voice_male_c_hurt_pain_05

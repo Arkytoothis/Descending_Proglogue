@@ -9,14 +9,21 @@ namespace Descending.Attributes
     public class Resistance
     {
         [SerializeField] private string _damageType;
-        [SerializeField] private float _currentValue = 0;
-        [SerializeField] private float _maximumValue = 0;
-        public float CurrentValue => _currentValue;
-        public float MaximumValue => _maximumValue;
+        [SerializeField] private int _currentValue = 0;
+        [SerializeField] private int _maximumValue = 0;
+        public int CurrentValue => _currentValue;
+        public int MaximumValue => _maximumValue;
 
         public string DamageType => _damageType;
+        
+        public Resistance(DamageTypeDefinition damageType, int maximum)
+        {
+            _damageType = damageType.Name;
+            _currentValue = maximum;
+            _maximumValue = maximum;
+        }
 
-        public Resistance(Resistance resistance)
+        public void SetResistance(Resistance resistance)
         {
             _damageType = resistance._damageType;
             _currentValue = resistance._maximumValue;

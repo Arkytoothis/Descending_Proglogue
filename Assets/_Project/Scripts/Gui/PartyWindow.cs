@@ -12,8 +12,11 @@ namespace Descending.Gui
         [SerializeField] private HeroCharacteristicsPanel _characteristicsPanel = null;
         [SerializeField] private HeroVitalsPanel _vitalsPanel = null;
         [SerializeField] private HeroStatisticsPanel _statisticsPanel = null;
+        [SerializeField] private HeroResistancesPanel _resistancesPanel = null;
+        [SerializeField] private HeroSkillsPanel _skillsPanel = null;
         [SerializeField] private HeroEquipmentPanel _equipmentPanel = null;
         [SerializeField] private HeroAbilitiesPanel _abilitiesPanel = null;
+        [SerializeField] private StockpilePanel _stockpilePanel = null;
         
         public override void Setup(WindowManager manager)
         {
@@ -23,8 +26,11 @@ namespace Descending.Gui
             _characteristicsPanel.Setup();
             _vitalsPanel.Setup();
             _statisticsPanel.Setup();
+            _resistancesPanel.Setup();
+            _skillsPanel.Setup();
             _equipmentPanel.Setup();
             _abilitiesPanel.Setup();
+            _stockpilePanel.Setup();
             
             SelectHero(UnitManager.Instance.GetHero(0));
             Close();
@@ -33,6 +39,7 @@ namespace Descending.Gui
         public override void Open()
         {
             gameObject.SetActive(true);
+            _stockpilePanel.UpdateStockpile();
             _isOpen = true;
         }
 
@@ -48,6 +55,8 @@ namespace Descending.Gui
             _characteristicsPanel.DisplayHero(hero);
             _vitalsPanel.DisplayHero(hero);
             _statisticsPanel.DisplayHero(hero);
+            _resistancesPanel.DisplayHero(hero);
+            _skillsPanel.DisplayHero(hero);
             _equipmentPanel.DisplayHero(hero);
             _abilitiesPanel.DisplayHero(hero);
         }

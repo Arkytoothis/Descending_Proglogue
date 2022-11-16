@@ -49,6 +49,11 @@ namespace Descending.Core
     {
     }
     
+    [Serializable]
+    public class ResistanceDictionary : SerializedDictionary<string, Resistance>
+    {
+    }
+    
     // [Serializable]
     // public class AttributeWidgetDictionary : SerializedDictionary<string, AttributeWidget>
     // {

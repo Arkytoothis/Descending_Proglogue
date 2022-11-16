@@ -65,8 +65,8 @@ namespace Descending.Units
             {
                 _destroyed = true;
                 //transform.DOScale(0f, 0.5f);
-                Destroy(gameObject, 0.51f);
-                Destroy(_trailRenderer.gameObject, 0.51f);
+                Destroy(gameObject);
+                return;
             }
 
             Vector3 moveDirection = (_targetPosition - _positionXZ).normalized;
@@ -74,6 +74,9 @@ namespace Descending.Units
             float distanceBeforeMoving = Vector3.Distance(_positionXZ, _targetPosition);
             float distanceNormalized = 1 - distanceBeforeMoving / _totalDistance;
             float positionY = _arcCurve.Evaluate(distanceNormalized);
+            if (positionY > 1f) positionY = 1f;
+            if (positionY < 0f) positionY = 1f;
+            
             transform.position = new Vector3(_positionXZ.x, positionY, _positionXZ.z);
             transform.forward = _targetPosition - transform.position;
             float distanceAfterMoving = Vector3.Distance(_positionXZ, _targetPosition);
@@ -84,8 +87,12 @@ namespace Descending.Units
                 {
                     hitEffect.Process(_sourceUnit, new List<Unit>{ _targetUnit });
                 }
+
+                if (_trailRenderer != null)
+                {
+                    _trailRenderer.transform.SetParent(null);
+                }
                 
-                _trailRenderer.transform.SetParent(null);
                 transform.position = _targetPosition;
                 
                 Destroy(gameObject);

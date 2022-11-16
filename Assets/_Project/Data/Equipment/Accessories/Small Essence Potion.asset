@@ -19,7 +19,6 @@ MonoBehaviour:
   _equipModel: {fileID: 0}
   _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
     type: 3}
-  _projectile: {fileID: 0}
   _category: 0
   _itemType: 21
   _nameFormat: 0
@@ -41,12 +40,15 @@ MonoBehaviour:
   _weaponData:
     _hasData: 0
     _weaponType: 4
+    _damageClass: 0
     _range: 0
-    _delay: 0
     _knockbackStrength: 0
+    _projectileDelay: 0
     _damageType: {fileID: 0}
     _minDamage: 0
     _maxDamage: 0
+    _projectile: {fileID: 0}
+    _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
     HitSounds: []
     MissSounds: []
@@ -66,6 +68,23 @@ MonoBehaviour:
     _hasData: 1
     _maxUses: 1
     _cooldown: 0
+    _effects:
+      rid: 6849115570206146568
   _ingredientData:
     _hasData: 0
     _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6849115570206146568
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _data:
+        - rid: 6849115570206146569
+    - rid: 6849115570206146569
+      type: {class: RestoreEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _affects: 0
+        _attribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+        _minimumValue: 10
+        _maximumValue: 16

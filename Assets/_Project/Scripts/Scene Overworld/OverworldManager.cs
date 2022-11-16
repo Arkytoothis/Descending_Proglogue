@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Equipment;
 using Descending.Scene_Overworld;
 using Descending.Units;
 using UnityEngine;
@@ -24,11 +25,13 @@ namespace Descending.Overworld
         private void Start()
         {
             _database.Setup();
+            ItemGenerator.Setup();
             UnitManager.Instance.SpawnHeroesOverworld();
             _worldGenerator.BuildWorld();
             
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
+            StockpileManager.Instance.Setup();
             UnitManager.Instance.SyncHeroes();
         }
 

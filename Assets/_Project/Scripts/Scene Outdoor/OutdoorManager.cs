@@ -5,6 +5,7 @@ using Descending.Combat;
 using Descending.Combat_Events;
 using Descending.Core;
 using Descending.Enemies;
+using Descending.Equipment;
 using Descending.Gui;
 using Descending.Tiles;
 using Descending.Units;
@@ -30,6 +31,7 @@ namespace Descending.Scene_Outdoor
         private void Start()
         {
             _database.Setup();
+            ItemGenerator.Setup();
             InputManager.Instance.Setup();
             TurnManager.Instance.Setup();
             MapManager.Instance.Setup();
@@ -39,7 +41,7 @@ namespace Descending.Scene_Outdoor
             _enemyAI.Setup();
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
-            
+            StockpileManager.Instance.Setup();
             UnitManager.Instance.SyncHeroes();
         }
 

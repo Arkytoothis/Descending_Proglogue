@@ -210,7 +210,7 @@ Transform:
   - {fileID: 1747828202}
   - {fileID: 931143875}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &70447098
 GameObject:
@@ -244,7 +244,7 @@ Transform:
   m_Children:
   - {fileID: 2046825701}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &70447100
 MonoBehaviour:
@@ -435,7 +435,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &130375670
 MonoBehaviour:
@@ -509,7 +509,7 @@ Transform:
   - {fileID: 1658134400}
   - {fileID: 1977507596}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &143442778
 PrefabInstance:
@@ -1238,7 +1238,7 @@ Transform:
   - {fileID: 1700475134}
   - {fileID: 551010415}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509233112
 GameObject:
@@ -1768,7 +1768,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &751969057
 MonoBehaviour:
@@ -1858,7 +1858,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &817553692
 MonoBehaviour:
@@ -1925,8 +1925,52 @@ Transform:
   - {fileID: 885418931}
   - {fileID: 1184980615}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &819211523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819211524}
+  - component: {fileID: 819211525}
+  m_Layer: 0
+  m_Name: Stockpile Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819211524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819211523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1870405473}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819211525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819211523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f38394602402644a8666fbb380dea60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,7 +3649,7 @@ Transform:
   m_Children:
   - {fileID: 934812361}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400221299
 GameObject:
@@ -3655,7 +3699,7 @@ PrefabInstance:
     - target: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
         type: 3}
@@ -4398,7 +4442,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1796296954
 MonoBehaviour:
@@ -4466,6 +4510,7 @@ Transform:
   - {fileID: 468010615}
   - {fileID: 405240150}
   - {fileID: 620801366}
+  - {fileID: 819211524}
   - {fileID: 140844161}
   - {fileID: 38158958}
   - {fileID: 818686410}

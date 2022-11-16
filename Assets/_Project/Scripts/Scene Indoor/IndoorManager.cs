@@ -5,6 +5,7 @@ using Descending.Combat;
 using Descending.Combat_Events;
 using Descending.Core;
 using Descending.Enemies;
+using Descending.Equipment;
 using Descending.Gui;
 using Descending.Interactables;
 using Descending.Tiles;
@@ -31,6 +32,7 @@ namespace Descending.Scene_Indoor
         private void Start()
         {
             _database.Setup();
+            ItemGenerator.Setup();
             InputManager.Instance.Setup();
             TurnManager.Instance.Setup();
             MapManager.Instance.Setup();
@@ -40,7 +42,7 @@ namespace Descending.Scene_Indoor
             _enemyAI.Setup();
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
-            
+            StockpileManager.Instance.Setup();
             UnitManager.Instance.SyncHeroes();
         }
 

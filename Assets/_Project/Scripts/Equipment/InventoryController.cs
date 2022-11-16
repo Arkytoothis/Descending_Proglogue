@@ -46,7 +46,15 @@ namespace Descending.Equipment
             for (int i = 0; i < profession.StartingItems.Count; i++)
             {
                 Item item = ItemGenerator.GenerateItem(profession.StartingItems[i]);
-                EquipItem(item);
+
+                if (item.ItemDefinition.ItemType == ItemType.Potion)
+                {
+                    EquipAccessory(item);
+                }
+                else
+                {
+                    EquipItem(item);
+                }
             }
         
             if (profession.PrefersRanged == false)
@@ -167,6 +175,21 @@ namespace Descending.Equipment
         public Item GetRangedWeapon()
         {
             return _equipment[(int) EquipmentSlots.Ranged_Weapon];
+        }
+
+        public void EquipAccessory(Item item)
+        {
+            int index = -1;
+            for (int i = 0; i < _accessories.Length; i++)
+            {
+                if (_accessories[i] == null)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            _accessories[index] = new Item(item);
         }
     }
 
