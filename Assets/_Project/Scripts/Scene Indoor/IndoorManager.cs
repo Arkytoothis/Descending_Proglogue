@@ -7,7 +7,6 @@ using Descending.Core;
 using Descending.Enemies;
 using Descending.Equipment;
 using Descending.Gui;
-using Descending.Interactables;
 using Descending.Tiles;
 using Descending.Units;
 using DunGen;

@@ -311,7 +311,34 @@ namespace Descending.Equipment
 
             return sb.ToString();
         }
+        
+        public string GetItemWidgetText()
+        {
+            StringBuilder sb = new StringBuilder();
 
+            if (ItemDefinition.WeaponData.HasData == true)
+            {
+                sb.Append(ItemDefinition.WeaponData.GetItemWidgetText());
+            }
+
+            if (ItemDefinition.WearableData.HasData == true)
+            {
+                sb.Append("\n" + ItemDefinition.WearableData.GetItemWidgetText());
+            }
+
+            if (ItemDefinition.AccessoryData.HasData == true)
+            {
+                sb.Append("\n" + ItemDefinition.AccessoryData.GetItemWidgetText());
+            }
+
+            if (ItemDefinition.UsableData.HasData == true)
+            {
+                sb.Append("\n" + ItemDefinition.UsableData.GetItemWidgetText());
+            }
+
+            return sb.ToString();
+        }
+ 
         public void CalculatePower()
         {
             _itemPower = ItemDefinition.BasePower;

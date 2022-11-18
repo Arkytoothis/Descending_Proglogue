@@ -43,9 +43,8 @@ MonoBehaviour:
     _weaponType: 1
     _damageClass: 2
     _range: 4
-    _knockbackStrength: 0
     _projectileDelay: 0.2
-    _damageType: {fileID: 11400000, guid: e81cc1106fdbbb14ead08b0bbfa4f628, type: 2}
+    _damageType: {fileID: 11400000, guid: 5d7179a92e2df0a42adfbf17203b5a58, type: 2}
     _minDamage: 1
     _maxDamage: 4
     _projectile: {fileID: 11400000, guid: 552bf30484fa359408b9237bf2be36c7, type: 2}

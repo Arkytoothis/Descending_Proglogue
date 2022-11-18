@@ -27,14 +27,6 @@ namespace Descending.Equipment
             _cooldown = usableData.Cooldown;
         }
 
-        public string GetTooltipText()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(_effects.GetTooltipText());
-            
-            return sb.ToString();
-        }
-
         public void Use(Unit user, List<Unit> targets)
         {
             for (int i = 0; i < targets.Count; i++)
@@ -44,6 +36,24 @@ namespace Descending.Equipment
                     _effects.Data[i].Process(user, targets);
                 }
             }
+        }
+
+        public string GetTooltipText()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(_effects.GetTooltipText());
+            
+            return sb.ToString();
+        }
+
+        public string GetItemWidgetText()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("Max Uses: ");
+            sb.Append(_maxUses);
+
+            return sb.ToString();
         }
     }
 }

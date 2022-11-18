@@ -20,7 +20,7 @@ namespace Descending.Units
 
         public override string GetName()
         {
-            return "Interact";
+            return "I";
         }
 
         public override void PerformAction(MapPosition mapPosition, Action onInteractComplete)

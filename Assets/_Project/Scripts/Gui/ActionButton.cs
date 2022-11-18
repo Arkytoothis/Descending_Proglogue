@@ -8,6 +8,7 @@ using ScriptableObjectArchitecture;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Descending
@@ -16,7 +17,7 @@ namespace Descending
     {
         [SerializeField] private Button _button = null;
         [SerializeField] private Image _iconImage = null;
-        [SerializeField] private TMP_Text _actionLabel = null;
+        [FormerlySerializedAs("_actionLabel")] [SerializeField] private TMP_Text _hotkeyLabel = null;
         [SerializeField] private GameObject _border = null;
 
         [SerializeField] private AbilityEvent onDisplayAbilityTooltip = null;
@@ -30,7 +31,7 @@ namespace Descending
         {
             _action = action;
             _iconImage.sprite = action.Icon;
-            _actionLabel.SetText(action.GetName().ToUpper());
+            _hotkeyLabel.SetText(action.GetName().ToUpper());
             _button.onClick.AddListener(ActionButton_OnClick);
         }
 
@@ -40,14 +41,24 @@ namespace Descending
             _iconImage.sprite = ability.Definition.Icon;
             
             if(ability.AbilityType == AbilityType.Power)
-                _actionLabel.SetText("USE");
+                _hotkeyLabel.SetText("USE");
             else if(ability.AbilityType == AbilityType.Spell)
-                _actionLabel.SetText("CAST");
+                _hotkeyLabel.SetText("CAST");
         }
 
         public void SetItem(Item item)
         {
             _item = item;
+        }
+
+        public void SetHotkey(string hotkey)
+        {
+            _hotkeyLabel.SetText(hotkey);    
+        }
+
+        public void SetIcon(Sprite icon)
+        {
+            _iconImage.sprite = icon;
         }
         
         private void ActionButton_OnClick()
@@ -65,6 +76,10 @@ namespace Descending
             if (_ability != null)
             {
                 onDisplayAbilityTooltip.Invoke(_ability);
+            }
+            else if (_item != null)
+            {
+                onDisplayItemTooltip.Invoke(_item);
             }
         }
 

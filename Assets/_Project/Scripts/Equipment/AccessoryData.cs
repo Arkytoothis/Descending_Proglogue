@@ -55,5 +55,41 @@ namespace Descending.Equipment
 
             return sb.ToString();
         }
+
+        public string GetItemWidgetText()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("Type: ");
+            sb.Append(AccessoryType);
+            sb.Append("\n");
+
+            if (AccessoryType == AccessoryType.Food)
+            {
+                sb.Append("Restores ");
+            }
+            else if (AccessoryType == AccessoryType.Drink)
+            {
+                sb.Append("Restores ");
+            }
+            else if (AccessoryType == AccessoryType.Potion)
+            {
+                sb.Append("Restores ");
+            }
+            else if (AccessoryType == AccessoryType.Scroll)
+            {
+                sb.Append("Casts ");
+            }
+            else if (AccessoryType == AccessoryType.Spellbook)
+            {
+                sb.Append("Teaches ");
+            }
+            else if (AccessoryType == AccessoryType.Bomb)
+            {
+                sb.Append("Throw ");
+            }
+
+            return sb.ToString();
+        }
     }
 }

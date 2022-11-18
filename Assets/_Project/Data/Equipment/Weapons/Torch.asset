@@ -42,10 +42,9 @@ MonoBehaviour:
     _hasData: 1
     _weaponType: 0
     _damageClass: 0
-    _range: 2
-    _knockbackStrength: 0
+    _range: 1
     _projectileDelay: 0
-    _damageType: {fileID: 11400000, guid: 8ff2c276d8d17c242a2c7d9d56e56cac, type: 2}
+    _damageType: {fileID: 11400000, guid: 286982a59b92c254aaa4f6a5dff67682, type: 2}
     _minDamage: 1
     _maxDamage: 3
     _projectile: {fileID: 0}
@@ -61,9 +60,8 @@ MonoBehaviour:
     _hasData: 0
     _armor: 0
     _block: 0
-    _spellDefense: 0
+    _dodge: 0
     _perceptionModifier: 0
-    _walkSounds: []
     _wearableType: 0
     _headCoverType: 0
   _accessoryData:

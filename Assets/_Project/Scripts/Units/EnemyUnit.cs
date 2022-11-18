@@ -47,6 +47,7 @@ namespace Descending.Units
             }
 
             _healthSystem.Setup(_attributes);
+            _unitEffects.Setup();
             _worldPanel.Setup(this);
 
             UnitManager.Instance.UnitSpawned(this);

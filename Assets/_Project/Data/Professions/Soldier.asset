@@ -91,7 +91,7 @@ MonoBehaviour:
       _minimumValue: 1
       _maximumValue: 1
   _startingItems:
-  - _item: {fileID: 11400000, guid: a76083b8c56594643aa0dc8158f08229, type: 2}
+  - _item: {fileID: 11400000, guid: 8b6656d4b58b32946b9a00cde28a76fd, type: 2}
     _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
     _prefix: {fileID: 0}

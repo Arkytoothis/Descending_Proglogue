@@ -177,6 +177,16 @@ namespace Descending.Equipment
             return _equipment[(int) EquipmentSlots.Ranged_Weapon];
         }
 
+        public Item GetOffhandItem()
+        {
+            return _equipment[(int) EquipmentSlots.Off_Weapon];
+        }
+
+        public Item GetAmmo()
+        {
+            return _equipment[(int) EquipmentSlots.Ammo];
+        }
+
         public void EquipAccessory(Item item)
         {
             int index = -1;

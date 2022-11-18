@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 2001456721065693323}
   - component: {fileID: 5769566667834033888}
   - component: {fileID: 4235050283986746263}
+  - component: {fileID: 8215142737330831314}
   m_Layer: 7
   m_Name: Unit - Empty Enemy
   m_TagString: Enemy
@@ -632,6 +633,7 @@ MonoBehaviour:
   _ragdollSpawner: {fileID: 2879133665782977740}
   _actionController: {fileID: 4683604259709003716}
   _worldPanel: {fileID: 4130638580815317546}
+  _unitEffects: {fileID: 8215142737330831314}
   onDisplayCombatText:
     m_PersistentCalls:
       m_Calls:
@@ -758,6 +760,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8215142737330831314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898514663855011102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b85ed56bbabfa743afb099b1b39db82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effects: []
 --- !u!1 &4168632710789226459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1071,9 @@ MonoBehaviour:
       _modifier: 0
       _spent: 0
   _statistics:
+    keyData: []
+    valueData: []
+  _resistances:
     keyData: []
     valueData: []
 --- !u!1 &6450200958793339780

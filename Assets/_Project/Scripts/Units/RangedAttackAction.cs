@@ -94,7 +94,7 @@ namespace Descending.Units
 
         public override string GetName()
         {
-            return "Ranged";
+            return "";
         }
 
         public List<MapPosition> GetValidActionGridPositions(MapPosition unitPosition)
@@ -144,7 +144,7 @@ namespace Descending.Units
                 WeaponData weaponData = item.GetWeaponData();
                 _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
                 _spawnProjectileDelay = weaponData.ProjectileDelay;
-                _maxShootDistance = weaponData.Range;
+                _maxShootDistance = (int)weaponData.Range;
             }
         }
 

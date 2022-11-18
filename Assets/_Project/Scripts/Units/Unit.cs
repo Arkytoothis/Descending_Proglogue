@@ -30,6 +30,7 @@ namespace Descending.Units
         [SerializeField] protected RagdollSpawner _ragdollSpawner = null;
         [SerializeField] protected ActionController _actionController = null;
         [SerializeField] protected UnitWorldPanel _worldPanel = null;
+        [SerializeField] protected UnitEffects _unitEffects = null;
 
         [SerializeField] protected CombatTextEvent onDisplayCombatText = null;
         

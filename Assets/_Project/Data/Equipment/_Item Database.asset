@@ -37,6 +37,7 @@ MonoBehaviour:
     - Goblin Axe
     - Goblin Shield
     - Goblin Bow
+    - Spear
     valueData:
     - {fileID: 11400000, guid: 2ae505d62fdd6724d8de1ca2207b74d3, type: 2}
     - {fileID: 11400000, guid: 20b1b02d41a03ff4ab8e47ecf612ddf7, type: 2}
@@ -61,3 +62,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d429c90f446b7fe4689bfaea97a96450, type: 2}
     - {fileID: 11400000, guid: 79b41752cda24c640b5989c6046372fa, type: 2}
     - {fileID: 11400000, guid: 114719fa1993cc943b9581491322a95e, type: 2}
+    - {fileID: 11400000, guid: 8b6656d4b58b32946b9a00cde28a76fd, type: 2}

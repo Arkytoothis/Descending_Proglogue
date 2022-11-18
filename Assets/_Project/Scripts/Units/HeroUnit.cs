@@ -50,8 +50,8 @@ namespace Descending.Units
             _inventory.Setup(_portraitRenderer, _worldRenderer, gender, race, profession);
             _abilities.Setup(race, profession, _skills);
             _actionController.Setup(this);
-
             _healthSystem.Setup(_attributes);
+            _unitEffects.Setup();
             _worldPanel.Setup(this);
 
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
@@ -59,7 +59,6 @@ namespace Descending.Units
             {
                 child.gameObject.layer = LayerMask.NameToLayer("Portrait Light");
             }
-
         }
 
         public override string GetFullName()
@@ -70,6 +69,11 @@ namespace Descending.Units
         public override string GetShortName()
         {
             return _heroData.Name.ShortName;
+        }
+
+        public string GetFirstName()
+        {
+            return _heroData.Name.FirstName;
         }
 
         public override Item GetMeleeWeapon()

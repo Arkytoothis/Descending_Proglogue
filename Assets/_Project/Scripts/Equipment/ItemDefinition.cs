@@ -112,8 +112,8 @@ namespace Descending.Equipment
             {
                 sb.Append("Armor: " + _wearableData.Armor + "\n");
                 sb.Append("Block: " + _wearableData.Block + "\n");
+                sb.Append("Dodge: " + _wearableData.Dodge + "\n");
                 sb.Append("Perception Modifier: " + _wearableData.PerceptionModifier + "\n");
-                sb.Append("Spell Defense: " + _wearableData.SpellDefense + "\n");
                 sb.Append("Wearable Type: " + _wearableData.WearableType + "\n");
             }
 

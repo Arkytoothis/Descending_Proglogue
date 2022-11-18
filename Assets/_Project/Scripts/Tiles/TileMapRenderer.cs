@@ -163,7 +163,15 @@ namespace Descending.Tiles
                     borderColor = TileColors.Green;
                     backgroundColor = TileColors.Green;
                     meleeAttackAction.SetupData();
-                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, meleeAttackAction.MeleeRange, TileColors.Black, TileColors.Black);
+                    int range = selectedUnit.GetMeleeWeapon().GetWeaponData().Range;
+                    if (range == 1)
+                    {
+                        ShowGridPositionRangeSquare(selectedUnit.CurrentMapPosition, meleeAttackAction.MeleeRange, TileColors.Black, TileColors.Black);
+                    }
+                    else
+                    {
+                        ShowGridPositionRange(selectedUnit.CurrentMapPosition, meleeAttackAction.MeleeRange, TileColors.Black, TileColors.Black);
+                    }
                     break;
                 case InteractAction interactAction:
                     borderColor = TileColors.Yellow;

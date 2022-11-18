@@ -173,4 +173,9 @@ namespace Descending.Core
         Might, Finesse, Magic, 
         Number, None
     }
+    
+    public enum WeaponTypes
+    {
+        Melee, Ranged, Magic, Number, None
+    }
 }

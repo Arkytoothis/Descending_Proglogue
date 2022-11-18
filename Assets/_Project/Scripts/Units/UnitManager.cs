@@ -70,11 +70,10 @@ namespace Descending.Units
             else
             {
                 _heroUnits.Add(unit as HeroUnit);
+                onSyncParty.Invoke(true);
             }
             
             _units.Add(unit);
-            
-            onSyncParty.Invoke(true);
         }
 
         public void UnitDead(Unit unit)

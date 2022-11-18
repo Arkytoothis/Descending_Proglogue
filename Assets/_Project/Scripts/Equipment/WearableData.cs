@@ -10,12 +10,11 @@ namespace Descending.Equipment
     [System.Serializable]
     public class WearableData
     {
-        [SerializeField] private bool _hasData = true;
+        [SerializeField] private bool _hasData;
         [SerializeField] private int _armor = 0;
         [SerializeField] private int _block = 0;
-        [SerializeField] private int _spellDefense = 0;
+        [SerializeField] private int _dodge = 0;
         [SerializeField] private int _perceptionModifier = 0;
-        [SerializeField, SoundGroup] protected string[] _walkSounds = null;
 
         [SerializeField] private WearableType _wearableType = WearableType.None;
         [SerializeField] private HeadCoverType _headCoverType = HeadCoverType.None;
@@ -23,7 +22,7 @@ namespace Descending.Equipment
         public bool HasData => _hasData;
         public int Armor => _armor;
         public int Block => _block;
-        public int SpellDefense => _spellDefense;
+        public int Dodge => _dodge;
         public int PerceptionModifier => _perceptionModifier;
         public WearableType WearableType => _wearableType;
         public HeadCoverType HeadCoverType => _headCoverType;
@@ -33,7 +32,7 @@ namespace Descending.Equipment
             _hasData = wearableData._hasData;
             _armor = wearableData._armor;
             _block = wearableData._block;
-            _spellDefense = wearableData._spellDefense;
+            _dodge = wearableData._dodge;
             _perceptionModifier = wearableData._perceptionModifier;
             _wearableType = wearableData._wearableType;
             _headCoverType = wearableData._headCoverType;
@@ -51,20 +50,31 @@ namespace Descending.Equipment
             sb.Append(_block);
             sb.Append("\n");
 
-            sb.Append("Spell Defense: ");
-            sb.Append(_spellDefense);
+            sb.Append("Dodge: ");
+            sb.Append(_dodge);
             sb.Append("\n");
 
-            sb.Append("Perception Modfier: ");
+            sb.Append("Perception Modifier: ");
             sb.Append(_perceptionModifier);
             sb.Append("\n");
 
             return sb.ToString();
         }
 
-        public string GetRandomWalkSound()
+        public string GetItemWidgetText()
         {
-            return _walkSounds[Random.Range(0, _walkSounds.Length)];
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("A: ");
+            sb.Append(_armor);
+            sb.Append(" B: ");
+            sb.Append(_block);
+            sb.Append(" D: ");
+            sb.Append(_dodge);
+            sb.Append(" P: ");
+            sb.Append(_perceptionModifier);
+
+            return sb.ToString();
         }
     }
 }

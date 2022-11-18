@@ -7,19 +7,13 @@ using UnityEngine;
 
 namespace Descending.Equipment
 {
-    public enum WeaponType
-    {
-        Melee, Ranged, Magic, Number, None
-    }
-
     [System.Serializable]
     public class WeaponData
     {
         [SerializeField] private bool _hasData = true;
-        [SerializeField] private WeaponType _weaponType = WeaponType.None;
+        [SerializeField] private WeaponTypes _weaponType = WeaponTypes.None;
         [SerializeField] private DamageClasses _damageClass = DamageClasses.None;
-        [SerializeField] private int _range = 0;
-        [SerializeField] private float _knockbackStrength = 0;
+        [SerializeField] private int _range = 1;
         [SerializeField] private float _projectileDelay = 1f;
         [SerializeField] private DamageTypeDefinition _damageType = null;
         [SerializeField] private int _minDamage = 0;
@@ -33,14 +27,13 @@ namespace Descending.Equipment
         
         public bool HasData => _hasData;
         public ProjectileDefinition Projectile => _projectile;
-        public WeaponType WeaponType => _weaponType;
+        public WeaponTypes WeaponType => _weaponType;
         public DamageClasses DamageClass => _damageClass;
         public int Range => _range;
         public float ProjectileDelay => _projectileDelay;
         public DamageTypeDefinition DamageType => _damageType;
         public int MinDamage => _minDamage;
         public int MaxDamage => _maxDamage;
-        public float KnockbackStrength => _knockbackStrength;
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
         public GameObject AttackEffectPrefab => _attackEffectPrefab;
 
@@ -61,17 +54,9 @@ namespace Descending.Equipment
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("Delay: ");
-            sb.Append(_projectileDelay);
-            sb.Append("\n");
-
             sb.Append("Range: ");
             sb.Append(_range);
-            sb.Append("\n");
-
-            sb.Append("Weapon Type: ");
-            sb.Append(_weaponType);
-            sb.Append("\n");
+            sb.AppendLine();
 
             sb.Append(_minDamage);
             sb.Append("-");
@@ -81,7 +66,28 @@ namespace Descending.Equipment
             if (_damageType != null)
             {
                 sb.Append(_damageType.Name);
-                sb.Append(" damage\n");
+                sb.Append(" damage");
+            }
+
+            return sb.ToString();
+        }
+        
+        public string GetItemWidgetText()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("Range ");
+            sb.Append(_range);
+            sb.AppendLine();
+            sb.Append(_minDamage);
+            sb.Append("-");
+            sb.Append(_maxDamage);
+            sb.Append(" ");
+
+            if (_damageType != null)
+            {
+                sb.Append(_damageType.Name);
+                sb.Append(" damage");
             }
 
             return sb.ToString();

@@ -53,7 +53,6 @@ namespace Descending.Tiles
             }
         }
 
-        [Button]
         public void Scan()
         {
             for (int x = 0; x < _width; x++)

@@ -53,7 +53,7 @@ namespace Descending.Units
             {
                 WeaponData weaponData = item.GetWeaponData();
                 _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
-                _meleeRange = weaponData.Range;
+                _meleeRange = (int)weaponData.Range;
             }
         }
         
@@ -80,7 +80,7 @@ namespace Descending.Units
         
         public override string GetName()
         {
-            return "Melee";
+            return "";
         }
 
         public override void PerformAction(MapPosition mapPosition, Action onMeleeComplete)

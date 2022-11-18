@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Descending.Combat;
 using Descending.Units;
 using Descending.Core;
 using TMPro;
@@ -13,41 +12,75 @@ namespace Descending
     {
         [SerializeField] private GameObject _actionButtonPrefab = null;
         [SerializeField] private Transform _actionButtonsParent = null;
-        [SerializeField] private TMP_Text _actionPointsLabel = null;
+        [SerializeField] private Transform _abilitiesParent = null;
 
         private List<ActionButton> _actionButtons = null;
+        private List<ActionButton> _abilityButtons = null;
         
         public void Setup()
         {
             ActionManager.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
             ActionManager.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
             _actionButtons = new List<ActionButton>();
+            _abilityButtons = new List<ActionButton>();
         }
 
         private void CreateActionButtons()
         {
             _actionButtonsParent.ClearTransform();
+            _abilitiesParent.ClearTransform();
             _actionButtons.Clear();
+            _abilityButtons.Clear();
             
             Unit selectedUnit = UnitManager.Instance.SelectedHero;
+            int abilityHotkey = 1;
+            int itemHotkey = 1;
+            
             foreach (BaseAction action in selectedUnit.ActionController.Actions)
             {
                 GameObject clone = Instantiate(_actionButtonPrefab, _actionButtonsParent);
                 ActionButton actionButton = clone.GetComponent<ActionButton>();
                 actionButton.SetAction(action);
 
-                if (action.GetType() == typeof(AbilityAction))
+                if (action.GetType() == typeof(MeleeAttackAction))
                 {
-                    actionButton.SetAbility(((AbilityAction)action).Ability);
+                    if (selectedUnit.GetMeleeWeapon() != null)
+                    {
+                        actionButton.SetIcon(selectedUnit.GetMeleeWeapon().Icon);
+                    }
+                }
+                else if (action.GetType() == typeof(RangedAttackAction))
+                {
+                    if (selectedUnit.GetRangedWeapon() != null)
+                    {
+                        actionButton.SetIcon(selectedUnit.GetRangedWeapon().Icon);
+                    }
                 }
                 
-                _actionButtons.Add(actionButton);
+                if (action.GetType() == typeof(AbilityAction))
+                {
+                    clone.transform.SetParent(_abilitiesParent);
+                    actionButton.SetAbility(((AbilityAction)action).Ability);
+                    actionButton.SetHotkey(abilityHotkey.ToString());
+                    abilityHotkey++;
+                    _abilityButtons.Add(actionButton);
+                }
+                else if (action.GetType() == typeof(ItemAction))
+                {
+                    actionButton.SetItem(((ItemAction)action).Item);
+                    actionButton.SetHotkey("s" + itemHotkey);
+                    itemHotkey++;
+                    _actionButtons.Add(actionButton);
+                }
+                else
+                {
+                    _actionButtons.Add(actionButton);
+                }
             }
         }
 
         public void OnSelectHero(GameObject heroObject)
         {
-            UpdateActionPoints();
             CreateActionButtons();
             UpdateSelectedVisual();
         }
@@ -59,7 +92,6 @@ namespace Descending
 
         private void UnitActionSystem_OnActionStarted(object sender, EventArgs e)
         {
-            UpdateActionPoints();
         }
 
         private void UpdateSelectedVisual()
@@ -68,24 +100,11 @@ namespace Descending
             {
                 actionButton.UpdateSelectedVisual();
             }
-        }
-
-        private void UpdateActionPoints()
-        {
-            Unit unit = UnitManager.Instance.SelectedHero;
-            if (unit == null) return;
             
-            _actionPointsLabel.SetText("AP: " + unit.GetActions().Current + "/" + unit.GetActions().Maximum);
-        }
-
-        public void OnTurnChanged(bool b)
-        {
-            UpdateActionPoints();
-        }
-
-        private void Unit_OnAnyActionPointsChanged(object sender, EventArgs e)
-        {
-            UpdateActionPoints();
+            foreach (ActionButton actionButton in _abilityButtons)
+            {
+                actionButton.UpdateSelectedVisual();
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Descending.Abilities;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending.Units
@@ -32,6 +33,16 @@ namespace Descending.Units
                 AbilityAction abilityAction = gameObject.AddComponent<AbilityAction>();
                 abilityAction.SetAbility(spell, _projectileSpawnPoint);
                 _actions.Add(abilityAction);
+            }
+
+            foreach (Item accessory in _unit.Inventory.Accessories)
+            {
+                if (accessory != null)
+                {
+                    ItemAction itemAction = gameObject.AddComponent<ItemAction>();
+                    itemAction.SetItem(accessory, _projectileSpawnPoint);
+                    _actions.Add(itemAction);
+                }
             }
         }
 

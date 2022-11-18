@@ -19,7 +19,7 @@ namespace Descending.Units
         
         public override string GetName()
         {
-            return "Move";
+            return "M";
         }
 
         private void Update()

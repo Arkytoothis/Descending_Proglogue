@@ -129,6 +129,9 @@ MonoBehaviour:
   _statistics:
     keyData: []
     valueData: []
+  _resistances:
+    keyData: []
+    valueData: []
 --- !u!1 &848337357871340966
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,11 +212,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3374014569290712328}
   - component: {fileID: 8174846910021824058}
-  - component: {fileID: 7828791984210203853}
   - component: {fileID: 5894460593112489360}
   - component: {fileID: 2650041759746428569}
-  - component: {fileID: 2359931607118198885}
+  - component: {fileID: 7828791984210203853}
+  - component: {fileID: 5831324631987585263}
   - component: {fileID: 4543439512264701131}
+  - component: {fileID: 4683400330594419712}
   m_Layer: 7
   m_Name: Action Controller
   m_TagString: Untagged
@@ -250,24 +254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileSpawnPoint: {fileID: 2309567416013539528}
   _actions: []
---- !u!114 &7828791984210203853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 2986fece11e366e43aa063ab610dff01, type: 3}
-  _unitAnimator: {fileID: 5809406156201576434}
-  _moveSpeed: 4
-  _stoppingDistance: 0.1
-  _rotationSpeed: 20
-  _maxMoveDistance: 3
 --- !u!114 &5894460593112489360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dd2a2720fff6c42a4f6b4cba2a8254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 8ec3c0117dc2e6846ac61cef43cf5b83, type: 3}
+  _icon: {fileID: 21300000, guid: b0ecde0e45aac484b8033dba872a78e8, type: 3}
   _unitAnimator: {fileID: 5809406156201576434}
   _meleeRange: 1
   _preHitTime: 0.7
@@ -307,7 +293,7 @@ MonoBehaviour:
   _rotationSpeed: 10
   _spawnProjectileDelay: 1
   _maxShootDistance: 0
---- !u!114 &2359931607118198885
+--- !u!114 &7828791984210203853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,13 +302,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1249646892155087166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b125c5d07595934187a92b02dcfa619, type: 3}
+  m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 0a2ff1b62e32c6e498e9a1bf0a6e3fd1, type: 3}
-  _projectilePrefab: {fileID: 8192511630604537243, guid: ba5c4741cc206254e84bd7b4700e19e9,
-    type: 3}
-  _maxThrowDistance: 7
+  _icon: {fileID: 21300000, guid: 2986fece11e366e43aa063ab610dff01, type: 3}
+  _unitAnimator: {fileID: 5809406156201576434}
+  _moveSpeed: 4
+  _stoppingDistance: 0.1
+  _rotationSpeed: 20
+  _maxMoveDistance: 3
+--- !u!114 &5831324631987585263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249646892155087166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6d885d01d06434aa5a0d640b6822aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 8d6f6fd7ef0a07b40b2bf4f949292e8e, type: 3}
 --- !u!114 &4543439512264701131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +338,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 4d6d57a8d6d2d8f4694795b22b8b1fcf, type: 3}
   _interactRange: 1
+--- !u!114 &4683400330594419712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249646892155087166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33175a9516a62d4893789ca944d52b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 50538709cc8506d499474204e7fd6195, type: 3}
 --- !u!1 &1379592714488739915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1092,7 @@ GameObject:
   - component: {fileID: 5427972190694817063}
   - component: {fileID: 8817563182959167238}
   - component: {fileID: 3932504198747709498}
+  - component: {fileID: 4660825041713958887}
   m_Layer: 7
   m_Name: Unit - Hero
   m_TagString: Untagged
@@ -1143,6 +1158,7 @@ MonoBehaviour:
   _ragdollSpawner: {fileID: 1549989640505923971}
   _actionController: {fileID: 8174846910021824058}
   _worldPanel: {fileID: 2790532659437340537}
+  _unitEffects: {fileID: 4660825041713958887}
   onDisplayCombatText:
     m_PersistentCalls:
       m_Calls:
@@ -1302,6 +1318,19 @@ MonoBehaviour:
   multithreading: 0
   cellBased: 0
   snapToPixelCenter: 0
+--- !u!114 &4660825041713958887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898514663855011102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b85ed56bbabfa743afb099b1b39db82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effects: []
 --- !u!1 &3898997477929109526
 GameObject:
   m_ObjectHideFlags: 0
