@@ -481,6 +481,18 @@ namespace Descending.Equipment
             }
         }
 
+        public UsableData GetUsableData()
+        {
+            if (ItemDefinition.UsableData != null && ItemDefinition.UsableData.HasData == true)
+            {
+                return ItemDefinition.UsableData;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void CalculateValue()
         {
             ItemDefinition definition = Database.instance.Items.GetItem(_definitionKey);

@@ -21,7 +21,7 @@ namespace Descending.Units
         };
 
         [SerializeField] private UnitAnimator _unitAnimator = null;
-        [FormerlySerializedAs("_useAbilityStateTime")] [SerializeField] private float _useItemStateTime = 0.1f;
+        [SerializeField] private float _useItemStateTime = 0.1f;
         [SerializeField] private float _cooldownStateTime = 0.5f;
         [SerializeField] private float _aimingStateTime = 1f;
         [SerializeField] private float _rotationSpeed = 10f;
@@ -133,14 +133,18 @@ namespace Descending.Units
                     
                     Unit targetUnit = MapManager.Instance.GetUnitAtGridPosition(testMapPosition);
 
-                    // if (_ability.Definition.TargetType == TargetTypes.Friend)
-                    // {
-                    //     if (targetUnit.IsEnemy == true) continue;
-                    // }
-                    // else if (_ability.Definition.TargetType == TargetTypes.Enemy)
-                    // {
-                    //     if (targetUnit.IsEnemy == false) continue;
-                    // }
+                    if (_item.GetUsableData().TargetType == TargetTypes.Friend)
+                    {
+                        if (targetUnit.IsEnemy == true) continue;
+                    }
+                    else if (_item.GetUsableData().TargetType == TargetTypes.Enemy)
+                    {
+                        if (targetUnit.IsEnemy == false) continue;
+                    }
+                    else if (_item.GetUsableData().TargetType == TargetTypes.Self)
+                    {
+                        if (targetUnit != _unit) continue;
+                    }
 
                     if (MapManager.Instance.Linecast(_unit.CurrentMapPosition, testMapPosition)) continue;
                     
@@ -163,7 +167,7 @@ namespace Descending.Units
             if (_item != null)
             {
                 _spawnProjectileDelay = 0.5f;
-                _range = 1;
+                _range = _item.GetUsableData().Range;
             }
         }
 

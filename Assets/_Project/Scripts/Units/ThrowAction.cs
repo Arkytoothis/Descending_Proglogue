@@ -2,22 +2,44 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Tiles;
-using Descending.Core;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending.Units
 {
     public class ThrowAction : BaseAction
     {
-        [SerializeField] private GameObject _projectilePrefab = null;
-        [SerializeField] private int _maxThrowDistance = 7;
+        [SerializeField] private UnitAnimator _unitAnimator = null;
+        [SerializeField] private int _range = 0;
+
+        private Item _item = null;
+        private Transform _projectileSpawnPoint;
         
+        public int Range => _range;
+
         private void Update()
         {
             if (!_isActive) return;
             
         }
 
+        public void SetupData()
+        {
+            if (_item != null)
+            {
+                _range = _item.GetUsableData().Range;
+            }
+        }
+        
+        public void SetItem(Item item, Transform projectileSpawnPoint)
+        {
+            _item = item;
+            _icon = _item.ItemDefinition.Icon;
+            _unitAnimator = _unit.UnitAnimator;
+            _range = 1;
+            _projectileSpawnPoint = projectileSpawnPoint;
+        }
+        
         public override string GetName()
         {
             return "Throw";
@@ -27,7 +49,7 @@ namespace Descending.Units
         {
             //Debug.Log("Throwing");
             ActionStart(onThrowComplete);
-            GameObject clone = Instantiate(_projectilePrefab, _unit.transform.position, Quaternion.identity);
+            GameObject clone = Instantiate(_item.GetUsableData().Projectile.Prefab, _unit.transform.position, Quaternion.identity);
             ThrowableProjectile projectile = clone.GetComponent<ThrowableProjectile>();
             projectile.Setup(_unit, mapPosition, OnThrowComplete);
         }
@@ -36,9 +58,9 @@ namespace Descending.Units
         {
             List<MapPosition> validGridPositions = new List<MapPosition>();
             
-            for (int x = -_maxThrowDistance; x <= _maxThrowDistance; x++)
+            for (int x = -_range; x <= _range; x++)
             {
-                for (int y = -_maxThrowDistance; y <= _maxThrowDistance; y++)
+                for (int y = -_range; y <= _range; y++)
                 {
                     MapPosition offsetMapPosition = new MapPosition(x, y);
                     MapPosition testMapPosition = _unit.CurrentMapPosition + offsetMapPosition;
@@ -46,7 +68,7 @@ namespace Descending.Units
                     if (MapManager.Instance.IsValidGridPosition(testMapPosition) == false) continue;
                     
                     int testDistance = Mathf.Abs(x) + Mathf.Abs(y);
-                    if (testDistance > _maxThrowDistance) continue;
+                    if (testDistance > _range) continue;
                     
                     if (MapManager.Instance.Linecast(_unit.CurrentMapPosition, testMapPosition)) continue;
                     

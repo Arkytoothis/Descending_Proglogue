@@ -47,7 +47,8 @@ namespace Descending.Equipment
             {
                 Item item = ItemGenerator.GenerateItem(profession.StartingItems[i]);
 
-                if (item.ItemDefinition.ItemType == ItemType.Potion)
+                if (item.ItemDefinition.ItemType == ItemType.Potion || item.ItemDefinition.ItemType == ItemType.Scroll || item.ItemDefinition.ItemType == ItemType.Bomb ||
+                    item.ItemDefinition.ItemType == ItemType.Spellbook || item.ItemDefinition.ItemType == ItemType.Food || item.ItemDefinition.ItemType == ItemType.Drink)
                 {
                     EquipAccessory(item);
                 }

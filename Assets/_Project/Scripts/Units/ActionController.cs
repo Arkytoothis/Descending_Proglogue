@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Descending.Abilities;
+using Descending.Core;
 using Descending.Equipment;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace Descending.Units
                 abilityAction.SetAbility(power, _projectileSpawnPoint);
                 _actions.Add(abilityAction);
             }
-            
+
             foreach (Ability spell in _unit.Abilities.MemorizedSpells)
             {
                 AbilityAction abilityAction = gameObject.AddComponent<AbilityAction>();
@@ -39,9 +40,18 @@ namespace Descending.Units
             {
                 if (accessory != null)
                 {
-                    ItemAction itemAction = gameObject.AddComponent<ItemAction>();
-                    itemAction.SetItem(accessory, _projectileSpawnPoint);
-                    _actions.Add(itemAction);
+                    if (accessory.GetUsableData().UsableType == UsableTypes.Bomb)
+                    {
+                        ThrowAction throwAction = gameObject.AddComponent<ThrowAction>();
+                        throwAction.SetItem(accessory, _projectileSpawnPoint);
+                        _actions.Add(throwAction);
+                    }
+                    else
+                    {
+                        ItemAction itemAction = gameObject.AddComponent<ItemAction>();
+                        itemAction.SetItem(accessory, _projectileSpawnPoint);
+                        _actions.Add(itemAction);
+                    }
                 }
             }
         }

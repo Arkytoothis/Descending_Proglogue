@@ -178,4 +178,10 @@ namespace Descending.Core
     {
         Melee, Ranged, Magic, Number, None
     }
+
+    public enum UsableTypes
+    {
+        Potion, Scroll, Bomb, Spellbook, Food, Drink,
+        Number, None
+    }
 }

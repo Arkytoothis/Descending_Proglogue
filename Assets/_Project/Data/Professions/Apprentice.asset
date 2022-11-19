@@ -115,6 +115,11 @@ MonoBehaviour:
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
     _prefix: {fileID: 0}
     _suffix: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 3cea8c68bcb7d67429fe4930b8d72da1, type: 2}
+    _material: {fileID: 11400000, guid: 35d2a403c6053aa418768f1daa11ff5d, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
   _attributePointsPerLevel: 0
   _skillPointsPerLevel: 0
   _mightModifier: 1

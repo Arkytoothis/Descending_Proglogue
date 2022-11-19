@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
-  m_Name: Small Healing Potion
+  m_Name: Scroll of Fireball
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 8aeeec9c32c194a4da40898c52b7e7f2, type: 3}
-  _name: Small Healing Potion
-  _key: Small Healing Potion
+  _icon: {fileID: 21300000, guid: bd4fe7211c3123f49ba4b01fbadbd3cc, type: 3}
+  _name: Scroll of Fireball
+  _key: Scroll of Fireball
   _description: 
   _equipModel: {fileID: 0}
   _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
     type: 3}
   _category: 0
-  _itemType: 21
+  _itemType: 25
   _nameFormat: 0
-  _equipmentSlot: 11
+  _equipmentSlot: 13
   _renderSlots: []
-  _materialAllowed: 10
+  _materialAllowed: 11
   _hands: 5
   _bestQualityAllowed: 0
   _enchantable: 1
@@ -64,9 +64,9 @@ MonoBehaviour:
     _accessoryType: 2
   _usableData:
     _hasData: 1
-    _targetType: 2
+    _targetType: 4
     _maxUses: 1
-    _range: 0
+    _range: 8
     _cooldown: 0
     _effects:
       rid: 6849115570206146566
@@ -80,11 +80,13 @@ MonoBehaviour:
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
         _data:
-        - rid: 6849115570206146567
-    - rid: 6849115570206146567
-      type: {class: RestoreEffect, ns: Descending.Abilities, asm: Reclamation}
+        - rid: 6849115636785479680
+    - rid: 6849115636785479680
+      type: {class: ProjectileEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _affects: 0
-        _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
-        _minimumValue: 10
-        _maximumValue: 16
+        _affects: 1
+        _projectileDefinition: {fileID: 11400000, guid: 687e842fc3e6ddc42b013d959da9077a,
+          type: 2}
+        _spawnProjectileDelay: 0.5
+        _delayBetweenProjectiles: 0.25
+        _numProjectiles: 6

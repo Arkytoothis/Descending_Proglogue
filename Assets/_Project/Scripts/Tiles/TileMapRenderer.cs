@@ -152,6 +152,8 @@ namespace Descending.Tiles
                 case ThrowAction throwAction:
                     borderColor = TileColors.Black;
                     backgroundColor = TileColors.Black;
+                    throwAction.SetupData();
+                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, throwAction.Range, TileColors.Black, TileColors.Black);
                     break;
                 case RangedAttackAction rangedAttackAction:
                     borderColor = TileColors.Red;
@@ -183,6 +185,12 @@ namespace Descending.Tiles
                     backgroundColor = TileColors.Yellow;
                     abilityAction.SetupData();
                     ShowGridPositionRange(selectedUnit.CurrentMapPosition, abilityAction.Range, TileColors.Black, TileColors.Black);
+                    break;
+                case ItemAction itemAction:
+                    borderColor = TileColors.Yellow;
+                    backgroundColor = TileColors.Yellow;
+                    itemAction.SetupData();
+                    ShowGridPositionRange(selectedUnit.CurrentMapPosition, itemAction.Range, TileColors.Black, TileColors.Black);
                     break;
             }
             

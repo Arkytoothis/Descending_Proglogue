@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
-  m_Name: Small Healing Potion
+  m_Name: Small Bomb
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 8aeeec9c32c194a4da40898c52b7e7f2, type: 3}
-  _name: Small Healing Potion
-  _key: Small Healing Potion
+  _icon: {fileID: 21300000, guid: 0a2ff1b62e32c6e498e9a1bf0a6e3fd1, type: 3}
+  _name: Small Bomb
+  _key: Small Bomb
   _description: 
   _equipModel: {fileID: 0}
   _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
     type: 3}
   _category: 0
-  _itemType: 21
+  _itemType: 24
   _nameFormat: 0
-  _equipmentSlot: 11
+  _equipmentSlot: 13
   _renderSlots: []
-  _materialAllowed: 10
+  _materialAllowed: 5
   _hands: 5
   _bestQualityAllowed: 0
   _enchantable: 1
@@ -64,10 +64,12 @@ MonoBehaviour:
     _accessoryType: 2
   _usableData:
     _hasData: 1
-    _targetType: 2
+    _targetType: 4
+    _usableType: 2
     _maxUses: 1
-    _range: 0
+    _range: 5
     _cooldown: 0
+    _projectile: {fileID: 11400000, guid: 426add3bb7a766547916aee2c37c443a, type: 2}
     _effects:
       rid: 6849115570206146566
   _ingredientData:
@@ -79,12 +81,4 @@ MonoBehaviour:
     - rid: 6849115570206146566
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
-        _data:
-        - rid: 6849115570206146567
-    - rid: 6849115570206146567
-      type: {class: RestoreEffect, ns: Descending.Abilities, asm: Reclamation}
-      data:
-        _affects: 0
-        _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
-        _minimumValue: 10
-        _maximumValue: 16
+        _data: []

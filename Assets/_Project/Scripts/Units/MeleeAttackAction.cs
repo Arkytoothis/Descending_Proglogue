@@ -53,7 +53,7 @@ namespace Descending.Units
             {
                 WeaponData weaponData = item.GetWeaponData();
                 _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
-                _meleeRange = (int)weaponData.Range;
+                _meleeRange = weaponData.Range;
             }
         }
         
@@ -121,7 +121,13 @@ namespace Descending.Units
                     MapPosition testMapPosition = mapPosition + offsetMapPosition;
                     
                     if (MapManager.Instance.IsValidGridPosition(testMapPosition) == false) continue;
-                    
+
+                    if (_meleeRange > 1)
+                    {
+                        int testDistance = Mathf.Abs(x) + Mathf.Abs(y);
+                        if (testDistance > _meleeRange) continue;
+                    }
+
                     if (!MapManager.Instance.HasAnyUnit(testMapPosition)) continue;
                     Unit targetUnit = MapManager.Instance.GetUnitAtGridPosition(testMapPosition);
                     if (targetUnit.IsEnemy == _unit.IsEnemy) continue;

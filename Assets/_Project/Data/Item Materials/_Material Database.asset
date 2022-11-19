@@ -45,6 +45,12 @@ MonoBehaviour:
     - Sparkling
     - Swirling
     - Thick
+    - Blood Paper
+    - Dragon Skin Paper
+    - Paper
+    - Papyrus
+    - Parchment
+    - Troll Skin Paper
     valueData:
     - {fileID: 11400000, guid: 49345c7368b98014eafbb3716431f848, type: 2}
     - {fileID: 11400000, guid: 3642cdb6df63ab6439ae628853e7beca, type: 2}
@@ -77,3 +83,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ca2c00302be2ec043aace2b7a7ebcded, type: 2}
     - {fileID: 11400000, guid: 7c516d1221b3b724bb975fa9ac42df5e, type: 2}
     - {fileID: 11400000, guid: c6eec84a2a463fb4baa3f41c5e63e320, type: 2}
+    - {fileID: 11400000, guid: dd936208c503c3848bd6b3963a359ac2, type: 2}
+    - {fileID: 11400000, guid: b58b00c7eb14ec548bbea53ba0ae48c1, type: 2}
+    - {fileID: 11400000, guid: baed32c1c9583694a8d04134959977ab, type: 2}
+    - {fileID: 11400000, guid: 35d2a403c6053aa418768f1daa11ff5d, type: 2}
+    - {fileID: 11400000, guid: 9a16efcd8450fc94aafc8ee1f1b90681, type: 2}
+    - {fileID: 11400000, guid: 6cf60cd314100fb4e9aff5d295cb29a9, type: 2}

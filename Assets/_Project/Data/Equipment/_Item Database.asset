@@ -38,6 +38,9 @@ MonoBehaviour:
     - Goblin Shield
     - Goblin Bow
     - Spear
+    - Scroll of Lesser Heal
+    - Scroll of Fireball
+    - Small Bomb
     valueData:
     - {fileID: 11400000, guid: 2ae505d62fdd6724d8de1ca2207b74d3, type: 2}
     - {fileID: 11400000, guid: 20b1b02d41a03ff4ab8e47ecf612ddf7, type: 2}
@@ -63,3 +66,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 79b41752cda24c640b5989c6046372fa, type: 2}
     - {fileID: 11400000, guid: 114719fa1993cc943b9581491322a95e, type: 2}
     - {fileID: 11400000, guid: 8b6656d4b58b32946b9a00cde28a76fd, type: 2}
+    - {fileID: 11400000, guid: 435341378a5f42b4ea0c515610535d74, type: 2}
+    - {fileID: 11400000, guid: 3cea8c68bcb7d67429fe4930b8d72da1, type: 2}
+    - {fileID: 11400000, guid: 80ac4408d4f97544eaf15de20a598f63, type: 2}

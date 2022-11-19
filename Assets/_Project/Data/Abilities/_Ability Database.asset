@@ -27,6 +27,7 @@ MonoBehaviour:
     - Eagle Eye
     - Guard
     - Magic Arrow
+    - Quick Slash
     valueData:
     - {fileID: 11400000, guid: 5ab233f6a83df67479f5aae1c2fc36e1, type: 2}
     - {fileID: 11400000, guid: c2b68dd7030cc574492a0cff170584ef, type: 2}
@@ -41,3 +42,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c594d00660a9a6c47aea403914b4c375, type: 2}
     - {fileID: 11400000, guid: 277eb4b0fc2bdc847a8fae34af73a6ea, type: 2}
     - {fileID: 11400000, guid: 6b049418876d16144bf2f5f153351213, type: 2}
+    - {fileID: 11400000, guid: f1ff8fee25ef7d64b8bee0635496a153, type: 2}
