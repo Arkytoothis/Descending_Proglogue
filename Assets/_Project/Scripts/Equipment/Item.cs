@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Descending.Core;
 using Descending.Equipment.Enchantments;
+using Descending.Units;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Descending.Equipment
 {
@@ -572,6 +574,16 @@ namespace Descending.Equipment
             }
 
             return damage;
+        }
+
+        public void Use(Unit user, List<Unit> targets)
+        {
+            Debug.Log("Using " + DisplayName());
+            UsableData usableData = GetUsableData();
+
+            if (usableData == null) return;
+
+            usableData.Use(user, targets);
         }
     }
 }

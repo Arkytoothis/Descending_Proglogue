@@ -26,7 +26,7 @@ MonoBehaviour:
   _actionsToUse: 1
   _targetType: 4
   _area: 0
-  _range: 1
+  _range: 2
   _effects:
     rid: 6309569888065159168
   references:
@@ -41,7 +41,9 @@ MonoBehaviour:
       type: {class: WeaponAttackEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
-        _bonusAttacks: 0
-        _accuracyModifier: 0
-        _bonusDamage: 0
-        _damageModifier: 1
+        _attackType: 0
+        _bonusAttacks: 2
+        _minDamageModifier: 0
+        _maxDamageModifier: 0
+        _damageMultiplier: 0.5
+        _attackDelay: 1

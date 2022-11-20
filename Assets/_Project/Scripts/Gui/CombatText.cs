@@ -7,13 +7,13 @@ namespace Descending.Gui
     [System.Serializable]
     public class CombatText
     {
-        public Transform Transform;
+        public Vector3 Position;
         public string Text;
         public string TextType;
 
-        public CombatText(Transform transform, string text, string textType)
+        public CombatText(Vector3 position, string text, string textType)
         {
-            Transform = transform;
+            Position = position;
             Text = text;
             TextType = textType;
         }

@@ -184,4 +184,10 @@ namespace Descending.Core
         Potion, Scroll, Bomb, Spellbook, Food, Drink,
         Number, None
     }
+
+    public enum AttributeTypes
+    {
+        Characteristic, Vital, Statistic, Resistance,
+        Number, None
+    }
 }

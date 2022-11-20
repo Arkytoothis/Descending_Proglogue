@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using UnityEngine;
 
 namespace Descending.Units
@@ -12,7 +13,12 @@ namespace Descending.Units
         {
             _effects = new List<UnitEffect>();
         }
-        
-        
+
+        public void AddEffect(AbilityEffect abilityEffect)
+        {
+            ModifyAttributeUnitEffect unitEffect = new ModifyAttributeUnitEffect(abilityEffect);
+            Debug.Log(unitEffect.GetType() + " added to UnitEffects");
+            _effects.Add(unitEffect);
+        }
     }
 }

@@ -178,26 +178,8 @@ namespace Descending.Units
 
         private void UseItem()
         {
-            Debug.Log("Using Item");
             _unitAnimator.Cast();
-
-            // if (_ability.Definition.TargetType == TargetTypes.Friend || _ability.Definition.TargetType == TargetTypes.Enemy)
-            // {
-            //     _ability.Use(_unit, new List<Unit> { _targetUnit });
-            // }
-            // else if (_ability.Definition.TargetType == TargetTypes.Party)
-            // {
-            //     List<Unit> targets = new List<Unit>();
-            //     for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
-            //     {
-            //         if (Vector3.Distance(_unit.transform.position, UnitManager.Instance.HeroUnits[i].transform.position) <= _ability.Definition.Area)
-            //         {
-            //             targets.Add(UnitManager.Instance.HeroUnits[i]);
-            //         }
-            //     }
-            //     
-            //     _ability.Use(_unit, targets);
-            // }
+            _item.Use(_unit, new List<Unit> { _targetUnit });
         }
         
 

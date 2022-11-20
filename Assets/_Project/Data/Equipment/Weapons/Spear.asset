@@ -46,7 +46,7 @@ MonoBehaviour:
     _projectileDelay: 0
     _damageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}
     _minDamage: 4
-    _maxDamage: 16
+    _maxDamage: 8
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 8792079695798041162, guid: dda8190cc7e43bf49b13394dc4ef22b4,
       type: 3}
@@ -70,8 +70,12 @@ MonoBehaviour:
     _accessoryType: 0
   _usableData:
     _hasData: 0
+    _targetType: 0
+    _usableType: 0
     _maxUses: 0
+    _range: 0
     _cooldown: 0
+    _projectile: {fileID: 0}
     _effects:
       rid: -2
   _ingredientData:

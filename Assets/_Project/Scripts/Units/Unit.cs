@@ -158,5 +158,10 @@ namespace Descending.Units
         {
             return _actionController.GetAction<T>();
         }
+
+        public void AddUnitEffect(AbilityEffect abilityEffect)
+        {
+            _unitEffects.AddEffect(abilityEffect);
+        }
     }
 }

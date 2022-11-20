@@ -36,27 +36,36 @@ MonoBehaviour:
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
         _data:
-        - rid: 6849115550700011523
-        - rid: 6849115550700011524
-        - rid: 6849115550700011525
-    - rid: 6849115550700011523
-      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+        - rid: 6849115668820000773
+        - rid: 6849115668820000774
+        - rid: 6849115668820000775
+    - rid: 6849115668820000773
+      type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
+        _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
-        _minimumValue: 5
-        _maximumValue: 5
-    - rid: 6849115550700011524
-      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+        _minimumDuration: 5
+        _maximumDuration: 5
+        _minimumModifier: 10
+        _maximumModifier: 10
+    - rid: 6849115668820000774
+      type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
+        _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
-        _minimumValue: 5
-        _maximumValue: 5
-    - rid: 6849115550700011525
-      type: {class: BuffAttributeEffect, ns: Descending.Abilities, asm: Reclamation}
+        _minimumDuration: 5
+        _maximumDuration: 5
+        _minimumModifier: 10
+        _maximumModifier: 10
+    - rid: 6849115668820000775
+      type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
+        _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
-        _minimumValue: 5
-        _maximumValue: 5
+        _minimumDuration: 5
+        _maximumDuration: 5
+        _minimumModifier: 10
+        _maximumModifier: 10

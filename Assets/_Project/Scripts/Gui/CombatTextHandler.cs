@@ -11,7 +11,7 @@ namespace Descending.Gui
 
         public void OnAddText(CombatText combatText)
         {
-            _textManager.Add(combatText.Text, combatText.Transform, combatText.TextType);
+            _textManager.Add(combatText.Text, combatText.Position, combatText.TextType);
         }
     }
 }
