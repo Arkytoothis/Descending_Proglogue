@@ -7,7 +7,9 @@ namespace Descending.Units
 {
     public class UnitEffects : MonoBehaviour
     {
-        [SerializeField] private List<UnitEffect> _effects = null;
+        [SerializeReference] private List<UnitEffect> _effects = null;
+
+        public List<UnitEffect> Effects => _effects;
 
         public void Setup()
         {

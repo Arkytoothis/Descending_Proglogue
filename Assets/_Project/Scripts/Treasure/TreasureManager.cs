@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending.Treasure
@@ -15,6 +16,7 @@ namespace Descending.Treasure
         [SerializeField] private List<GameObject> _gemPrefabs = null;
         [SerializeField] private Transform _coinsParent = null;
         [SerializeField] private Transform _gemsParent = null;
+        [SerializeField] private Transform _itemDropsParent = null;
         [SerializeField] private float _torqueModifier = 10f;
         [SerializeField] private float _horizontalSpawnRadius = 0.4f;
         [SerializeField] private float _verticalSpawnMin = 0.5f;
@@ -46,6 +48,24 @@ namespace Descending.Treasure
             {
                 StartCoroutine(SpawnGem_Coroutine(delay, spawnPosition, gemType));
             }
+        }
+
+        public ItemDrop SpawnItemDrop(ItemDefinition itemDefinition, Vector3 spawnPosition)
+        {
+            float xOffset = Random.Range(-_horizontalSpawnRadius, _horizontalSpawnRadius);
+            float yOffset = Random.Range(_verticalSpawnMin, _verticalSpawnMax);
+            float zOffset = Random.Range(-_horizontalSpawnRadius, _horizontalSpawnRadius);
+            
+            GameObject clone = Instantiate(itemDefinition.ItemDrop.gameObject, _itemDropsParent);
+            clone.transform.position = new Vector3(spawnPosition.x + xOffset, spawnPosition.y + yOffset, spawnPosition.z + zOffset);
+
+            Rigidbody rigidbody = clone.GetComponent<Rigidbody>();
+            rigidbody.AddTorque(new Vector3(Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier), Random.Range(-_torqueModifier, _torqueModifier)));
+            
+            ItemDrop itemDrop = clone.GetComponent<ItemDrop>();
+
+            return itemDrop;
+            
         }
         
         private IEnumerator SpawnCoin_Coroutine(float delay, Vector3 spawnPosition, CoinTypes coinType)

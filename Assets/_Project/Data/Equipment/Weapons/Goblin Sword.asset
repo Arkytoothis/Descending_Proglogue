@@ -18,7 +18,7 @@ MonoBehaviour:
   _description: 
   _equipModel: {fileID: 9033823261840413309, guid: 62ded519e4977f94bb0d3b7b29852f90,
     type: 3}
-  _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
+  _itemDrop: {fileID: 8384081800384720211, guid: 291866621434ac24587f067d527260d7,
     type: 3}
   _category: 4
   _itemType: 10
@@ -69,8 +69,12 @@ MonoBehaviour:
     _accessoryType: 0
   _usableData:
     _hasData: 0
+    _targetType: 0
+    _usableType: 0
     _maxUses: 0
+    _range: 0
     _cooldown: 0
+    _projectile: {fileID: 0}
     _effects:
       rid: -2
   _ingredientData:

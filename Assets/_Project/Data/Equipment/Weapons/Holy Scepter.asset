@@ -18,7 +18,7 @@ MonoBehaviour:
   _description: 
   _equipModel: {fileID: 9033823261840413309, guid: 26427b19ecbcdb64489e4e9f38b3b094,
     type: 3}
-  _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
+  _itemDrop: {fileID: 8384081800384720211, guid: 67fb87b01a1c40e45a81b46f61dbe1d4,
     type: 3}
   _category: 4
   _itemType: 16
@@ -60,9 +60,8 @@ MonoBehaviour:
     _hasData: 0
     _armor: 0
     _block: 0
-    _spellDefense: 0
+    _dodge: 0
     _perceptionModifier: 0
-    _walkSounds: []
     _wearableType: 0
     _headCoverType: 0
   _accessoryData:
@@ -70,8 +69,12 @@ MonoBehaviour:
     _accessoryType: 0
   _usableData:
     _hasData: 0
+    _targetType: 0
+    _usableType: 0
     _maxUses: 0
+    _range: 0
     _cooldown: 0
+    _projectile: {fileID: 0}
     _effects:
       rid: -2
   _ingredientData:

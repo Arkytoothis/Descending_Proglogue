@@ -9,19 +9,11 @@ namespace Descending.Units
     [System.Serializable]
     public class ModifyAttributeUnitEffect : UnitEffect
     {
-        private Sprite _icon = null;
-        private AttributeDefinition _attributeDefinition = null;
-        private int _minimumDuration = 0;
-        private int _maximumDuration = 0;
-        private int _minimumModifier = 0;
-        private int _maximumModifier = 0;
+        [SerializeField] private AttributeDefinition _attributeDefinition = null;
+        [SerializeField] private int _modifier = 0;
 
-        public Sprite Icon => _icon;
         public AttributeDefinition AttributeDefinition => _attributeDefinition;
-        public int MinimumDuration => _minimumDuration;
-        public int MaximumDuration => _maximumDuration;
-        public int MinimumModifier => _minimumModifier;
-        public int MaximumModifier => _maximumModifier;
+        public int Modifier => _modifier;
 
         public ModifyAttributeUnitEffect(AbilityEffect abilityEffect)
         {
@@ -29,10 +21,8 @@ namespace Descending.Units
             {
                 _icon = unitEffect.Icon;
                 _attributeDefinition = unitEffect.Attribute;
-                _minimumDuration = unitEffect.MinimumDuration;
-                _maximumDuration = unitEffect.MaximumDuration;
-                _minimumModifier = unitEffect.MinimumModifier;
-                _maximumModifier = unitEffect.MaximumModifier;
+                _duration = Random.Range(unitEffect.MinimumDuration, unitEffect.MaximumDuration + 1);
+                _modifier = Random.Range(unitEffect.MinimumModifier, unitEffect.MaximumModifier + 1);
             }
         }
     }

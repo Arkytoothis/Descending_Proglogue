@@ -2,29 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
-//using ScriptableObjectArchitecture;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Equipment
 {
     public class ItemDrop : MonoBehaviour
     {
-        [SerializeField] private string _itemKey = null;
-        //[SerializeField] private ItemEvent onPickupItem = null;
+        [SerializeField] private ItemDefinition _itemDefinition = null;
         
-        public void Setup(ItemDefinition itemDefinition)
-        {
-            _itemKey = itemDefinition.Key;
-        }
+        [SerializeField] private ItemEvent onPickupItem = null;
+        public ItemDefinition ItemDefinition => _itemDefinition;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Pickup Sphere"))
+            if (other.CompareTag("Item Pickup Sphere"))
             {
-                //onPickupItem.Invoke(new Item(Database.instance.Items.GetItem(_itemKey)));
-                //Debug.Log(_itemKey + " picked up");
-                Destroy(gameObject);
+                PickupItem();
             }
+        }
+
+        private void PickupItem()
+        {
+            Item item = ItemGenerator.GenerateItem(Database.instance.Rarities.GetRarity("Legendary"), _itemDefinition.Key, 100, 100, 100);
+            onPickupItem.Invoke(item);
+            Debug.Log(item.Name + " picked up");
+            Destroy(gameObject);
         }
     }
 }

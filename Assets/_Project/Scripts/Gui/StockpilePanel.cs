@@ -42,5 +42,10 @@ namespace Descending.Gui
             _materialsLabel.SetText("Coins: " + ResourcesManager.Instance.Materials);
             _gemsLabel.SetText("Coins: " + ResourcesManager.Instance.Gems);
         }
+
+        public void OnSyncStockpile(bool b)
+        {
+            UpdateStockpile();
+        }
     }
 }

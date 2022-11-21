@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Dungeon Room
   - World Tile
+  - Item Pickup Sphere
   layers:
   - Default
   - TransparentFX

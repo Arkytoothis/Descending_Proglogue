@@ -8,5 +8,10 @@ namespace Descending.Units
     [System.Serializable]
     public abstract class UnitEffect
     {
+        [SerializeField] protected Sprite _icon = null;
+        [SerializeField] protected int _duration = 0;
+        
+        public Sprite Icon => _icon;
+        public int Duration => _duration;
     }
 }

@@ -56,6 +56,7 @@ namespace Descending.Units
         public HealthSystem HealthSystem => _healthSystem;
         public UnitAnimator UnitAnimator => _unitAnimator;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
+        public UnitEffects UnitEffects => _unitEffects;
 
         public bool IsActive => _isActive;
         public bool IsAlive => _isAlive;

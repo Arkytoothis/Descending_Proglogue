@@ -32,21 +32,18 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 6309569888065159181
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Reclamation}
       data:
         _data:
-        - rid: -2
-        - rid: 6849115668820000776
-    - rid: 6849115668820000776
+        - rid: 6849115687878918147
+    - rid: 6849115687878918147
       type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
         _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
-        _minimumDuration: 5
-        _maximumDuration: 5
+        _minimumDuration: 10
+        _maximumDuration: 10
         _minimumModifier: 20
         _maximumModifier: 20

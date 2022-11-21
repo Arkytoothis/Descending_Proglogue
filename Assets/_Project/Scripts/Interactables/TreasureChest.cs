@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
+using Descending.Equipment;
 using Descending.Tiles;
 using Descending.Treasure;
 using DG.Tweening;
+using UnityEditor.Experimental;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,15 +18,19 @@ namespace Descending.Interactables
         [SerializeField] private GameObject _gameObjectToHide = null;
         [SerializeField] private Collider _collider = null;
         [SerializeField] private Transform _lidTransform = null;
+        [SerializeField] private Transform _itemSpawnTransform = null;
         [SerializeField] private float _activateDuration = 1f;
         [SerializeField] private float _activateAngle = 50f;
         [SerializeField] private List<DropData> _coinData;
         [SerializeField] private List<DropData> _gemData;
+        [SerializeField] private ItemDefinition _itemDropDefinition;
         
         private bool _treasureDropped = false;
         private MapPosition _mapPosition;
         private float _timer;
         private bool _isInteracting;
+        private List<ItemDrop> _itemDrops = null;
+        
         private Action onComplete;
 
         private void Start()
@@ -37,6 +44,7 @@ namespace Descending.Interactables
             MapManager.Instance.SetInteractableAtGridPosition(_mapPosition, this);
             PathfindingManager.Instance.SetIsGridPositionWalkable(_mapPosition, false);
             _isInteracting = false;
+            _itemDrops = new List<ItemDrop>();
         }
 
         private void Update()
@@ -95,6 +103,8 @@ namespace Descending.Interactables
             TryDropGems(GemTypes.Ruby);
             TryDropGems(GemTypes.Emerald);
             TryDropGems(GemTypes.Diamond);
+            
+            TryDropItems();
         }
 
         private void TryDropCoins(CoinTypes coinType)
@@ -115,6 +125,15 @@ namespace Descending.Interactables
             {
                 TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType, 0f);
             }
+        }
+        
+        private void TryDropItems()
+        {
+            string itemKey = ItemGenerator.GetRandomKeyByType(GenerateItemType.Any_Shield);
+            ItemDefinition itemDefinition = Database.instance.Items.GetItem(itemKey);
+            ItemDrop itemDrop = TreasureManager.Instance.SpawnItemDrop(itemDefinition, _itemSpawnTransform.position);
+            
+            _itemDrops.Add(itemDrop);
         }
 
         private IEnumerator HideAndDestroy_Coroutine(float delay, float destroyAfter)

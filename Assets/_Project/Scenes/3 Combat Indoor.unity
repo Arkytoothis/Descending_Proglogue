@@ -363,6 +363,7 @@ MonoBehaviour:
   - {fileID: 5967938828364081566, guid: e691bbd7f80930f41921380740e39433, type: 3}
   _coinsParent: {fileID: 1658134400}
   _gemsParent: {fileID: 1977507596}
+  _itemDropsParent: {fileID: 0}
   _torqueModifier: 5
   _horizontalSpawnRadius: 0.4
   _verticalSpawnMin: 0.5
@@ -1950,6 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851853081}
   - component: {fileID: 851853082}
+  - component: {fileID: 851853083}
   m_Layer: 0
   m_Name: Stockpile Manager
   m_TagString: Untagged
@@ -1984,6 +1986,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f38394602402644a8666fbb380dea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSyncStockpile:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f4ccaa778bdecd44b9f0cd85058e7849, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &851853083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851853080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063faf4756604104a87e9f0ad6fe6e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 5e8e8755427d99d4e9b3c5b191bac3e5, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 851853082}
+        m_TargetAssemblyTypeName: Descending.Core.StockpileManager, Reclamation
+        m_MethodName: OnItemPickedUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue:
+    _name: 
+    _definitionKey: 
+    _description: 
+    _modelIndex: -1
+    _itemType: 29
+    _nameFormat: 4
+    _renderSlots: []
+    _materialAllowed: 14
+    _stackSize: 0
+    _itemPower: 0
+    _encumbrance: 0
+    _goldValue: 0
+    _gemValue: 0
+    _usesLeft: 0
+    _rarityKey: 
+    _materialKey: 
+    _qualityKey: 
+    _prefixEnchantKey: 
+    _suffixEnchantKey: 
 --- !u!1 &868132526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,7 +2507,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue:
-    Transform: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
     Text: 
     TextType: 
 --- !u!114 &989588347

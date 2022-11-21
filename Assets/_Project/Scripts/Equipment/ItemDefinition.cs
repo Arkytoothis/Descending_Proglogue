@@ -18,7 +18,7 @@ namespace Descending.Equipment
         [SerializeField, BoxGroup("Split/Text"), LabelWidth(75)] private string _key = "";
         [SerializeField] private string _description = "";
         [SerializeField] private GameObject _equipModel = null;
-        [SerializeField] private GameObject _dropModel = null;
+        [SerializeField] private ItemDrop _itemDrop = null;
         [SerializeField] private ItemCategory _category = ItemCategory.None;
         [SerializeField] private ItemType _itemType = ItemType.None;
         [SerializeField] private ItemNameFormat _nameFormat = ItemNameFormat.None;
@@ -49,7 +49,7 @@ namespace Descending.Equipment
         public string Description => _description;
         public Sprite Icon => _icon;
         public GameObject EquipModel => _equipModel;
-        public GameObject DropModel => _dropModel;
+        public ItemDrop ItemDrop => _itemDrop;
         public ItemType ItemType => _itemType;
         public ItemCategory Category => _category;
         public ItemNameFormat NameFormat => _nameFormat;

@@ -12,7 +12,7 @@ namespace Descending.Core
     
     public enum EquipmentSlots
     {
-        Melee_Weapon, Off_Weapon, Ranged_Weapon, Ammo, Head, Armor, Back, Hands, Feet, Neck, Finger_Left, Finger_Right,
+        Melee_Weapon, Off_Weapon, Ranged_Weapon, Ammo, Head, Torso, Back, Wrists, Hands, Legs, Feet, Neck, Finger_Left, Finger_Right,
         Number, None
     }
     
@@ -85,7 +85,7 @@ namespace Descending.Core
     
     public enum WearableType
     {
-        Head, Armor, Gloves, Feet, Back, Neck, Finger, 
+        Head, Armor, Wrists, Gloves, Legs, Feet, Back, Neck, Finger, 
         Number, None
     }
 

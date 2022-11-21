@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1774641947579439461}
+  - {fileID: 6244530059430916103}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,6 +64,7 @@ MonoBehaviour:
   _gameObjectToHide: {fileID: 1774641947579678881}
   _collider: {fileID: 4325470213671732288}
   _lidTransform: {fileID: 1774641947579422379}
+  _itemSpawnTransform: {fileID: 6244530059430916103}
   _activateDuration: 1
   _activateAngle: -50
   _coinData:
@@ -91,6 +93,39 @@ MonoBehaviour:
   - Chance: 0
     Minimum: 0
     Maximum: 0
+  _itemDropDefinition: {fileID: 11400000, guid: 417326d4bb9808f4a861860f0448673b,
+    type: 2}
+--- !u!1 &6506387862439998725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6244530059430916103}
+  m_Layer: 10
+  m_Name: Item Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6244530059430916103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506387862439998725}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.564, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4325470213671732289}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1774641947579550397
 PrefabInstance:
   m_ObjectHideFlags: 0

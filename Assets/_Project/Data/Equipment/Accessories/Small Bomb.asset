@@ -17,7 +17,7 @@ MonoBehaviour:
   _key: Small Bomb
   _description: 
   _equipModel: {fileID: 0}
-  _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
+  _itemDrop: {fileID: 8384081800384720211, guid: 8fc58a86760c3b44c8977dc6c2753e5b,
     type: 3}
   _category: 0
   _itemType: 24

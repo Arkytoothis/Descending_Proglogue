@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Equipment;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Core
@@ -9,6 +10,8 @@ namespace Descending.Core
     {
         public static StockpileManager Instance { get; private set; }
         public const int MAX_STOCKPILE_SLOTS = 96;
+
+        [SerializeField] private BoolEvent onSyncStockpile = null;
         
         private List<Item> _items = null;
         
@@ -33,10 +36,10 @@ namespace Descending.Core
                 _items.Add(null);    
             }
 
-            for (int i = 0; i < 20; i++)
-            {
-                AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
-            }
+            // for (int i = 0; i < 20; i++)
+            // {
+            //     AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
+            // }
         }
 
         public Item GetItem(int index)
@@ -61,6 +64,12 @@ namespace Descending.Core
             {
                 _items[index] = new Item(item);
             }
+        }
+
+        public void OnItemPickedUp(Item item)
+        {
+            AddItem(item);
+            onSyncStockpile.Invoke(true);
         }
     }
 }

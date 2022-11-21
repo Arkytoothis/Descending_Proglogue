@@ -17,8 +17,7 @@ MonoBehaviour:
   _key: Simple Vestments
   _description: 
   _equipModel: {fileID: 0}
-  _dropModel: {fileID: 0}
-  _projectile: {fileID: 0}
+  _itemDrop: {fileID: 0}
   _category: 5
   _itemType: 3
   _nameFormat: 1
@@ -30,8 +29,6 @@ MonoBehaviour:
     _index: 10
   - _bodyPart: 20
     _index: 10
-  - _bodyPart: 25
-    _index: 24
   _materialAllowed: 6
   _hands: 5
   _bestQualityAllowed: 0
@@ -48,12 +45,14 @@ MonoBehaviour:
   _weaponData:
     _hasData: 0
     _weaponType: 0
+    _damageClass: 0
     _range: 0
-    _delay: 0
-    _knockbackStrength: 0
+    _projectileDelay: 0
     _damageType: {fileID: 0}
     _minDamage: 0
     _maxDamage: 0
+    _projectile: {fileID: 0}
+    _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
     HitSounds: []
     MissSounds: []
@@ -61,19 +60,8 @@ MonoBehaviour:
     _hasData: 1
     _armor: 0
     _block: 0
-    _spellDefense: 0
+    _dodge: 0
     _perceptionModifier: 0
-    _walkSounds:
-    - Light Armor Grass Walking 2_01
-    - Light Armor Grass Walking 2_02
-    - Light Armor Grass Walking 2_03
-    - Light Armor Grass Walking 2_04
-    - Light Armor Grass Walking 2_05
-    - Light Armor Grass Walking 2_06
-    - Light Armor Grass Walking 2_07
-    - Light Armor Grass Walking 2_08
-    - Light Armor Grass Walking 2_09
-    - Light Armor Grass Walking 2_10
     _wearableType: 1
     _headCoverType: 5
   _accessoryData:
@@ -81,8 +69,19 @@ MonoBehaviour:
     _accessoryType: 0
   _usableData:
     _hasData: 0
+    _targetType: 0
+    _usableType: 0
     _maxUses: 0
+    _range: 0
     _cooldown: 0
+    _projectile: {fileID: 0}
+    _effects:
+      rid: -2
   _ingredientData:
     _hasData: 0
     _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

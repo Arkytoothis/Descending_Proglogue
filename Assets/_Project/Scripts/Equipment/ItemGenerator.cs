@@ -61,6 +61,12 @@ namespace Descending.Equipment
             return item;
         }
 
+        public static string GetRandomKeyByType(GenerateItemType itemType)
+        {
+            string itemKey = _itemsByType[(int)itemType][UnityEngine.Random.Range(0, _itemsByType[(int)itemType].Count)];
+            return itemKey;
+        }
+        
         public static Item GenerateRandomItem(RarityDefinition bestMaterial, GenerateItemType itemType, int plusChance, int prefixChance, int suffixChance)
         {
             if (_itemsByType[(int)itemType].Count == 0) { return null; }
@@ -82,6 +88,24 @@ namespace Descending.Equipment
             return item;
         }
 
+        public static Item GenerateItem(RarityDefinition bestMaterial, string itemKey, int plusChance, int prefixChance, int suffixChance)
+        {
+            Item item = new Item(Database.instance.Items.GetItem(itemKey));
+            MaterialDefinition material = GetItemMaterial(item, bestMaterial);
+            item.SetMaterial(material);
+            RandomizeQuality(ref item, plusChance);
+
+            if (item.ItemDefinition.Category != ItemCategory.Accessories)
+            {
+                RandomizePrefix(ref item, prefixChance);
+                RandomizeSuffix(ref item, suffixChance);
+            }
+
+            item.CalculateValue();
+
+            return item;
+        }
+        
         public static Item GenerateRandomAccessory(RarityDefinition bestMaterial)
         {
             string itemKey = _accessories[UnityEngine.Random.Range(0, _accessories.Count)];
@@ -235,7 +259,7 @@ namespace Descending.Equipment
                 item.SetSuffixEnchant(new Enchantment(_suffixEnchants[UnityEngine.Random.Range(0, _suffixEnchants.Count)]));
             }
         }
-
+        
         private static MaterialDefinition GetItemMaterial(Item item, RarityDefinition bestRarity)
         {
             MaterialDefinition material = null;
@@ -449,8 +473,8 @@ namespace Descending.Equipment
                     {
                         _itemsByType[(int)GenerateItemType.Any_Armor].Add(item.Key);
                     }
-                    else if (item.Value.ItemType == ItemType.Ammo || item.Value.ItemType == ItemType.Bomb || item.Value.ItemType == ItemType.Drink || item.Value.ItemType == ItemType.Food || item.Value.ItemType == ItemType.Potion ||
-                        item.Value.ItemType == ItemType.Scroll || item.Value.ItemType == ItemType.Spellbook)
+                    else if (item.Value.ItemType == ItemType.Bomb || item.Value.ItemType == ItemType.Drink || item.Value.ItemType == ItemType.Food || item.Value.ItemType == ItemType.Potion ||
+                             item.Value.ItemType == ItemType.Scroll || item.Value.ItemType == ItemType.Spellbook)
                     {
                         _itemsByType[(int)GenerateItemType.Any_Accessory].Add(item.Key);
                     }

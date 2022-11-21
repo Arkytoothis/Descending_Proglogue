@@ -17,7 +17,7 @@ MonoBehaviour:
   _key: Scroll of Lesser Heal
   _description: 
   _equipModel: {fileID: 0}
-  _dropModel: {fileID: 9033823261840413309, guid: 58140c2d03406fb40adfcd96eefd3fb1,
+  _itemDrop: {fileID: 8384081800384720211, guid: bc9c892fcffba8843a5c6d8ce0e96239,
     type: 3}
   _category: 0
   _itemType: 25
@@ -65,9 +65,11 @@ MonoBehaviour:
   _usableData:
     _hasData: 1
     _targetType: 3
+    _usableType: 0
     _maxUses: 1
     _range: 2
     _cooldown: 0
+    _projectile: {fileID: 0}
     _effects:
       rid: 6849115570206146566
   _ingredientData:

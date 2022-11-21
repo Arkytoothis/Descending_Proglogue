@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Units;
 using TMPro;
 using UnityEngine;
@@ -20,8 +21,12 @@ namespace Descending.Gui
         [SerializeField] private Color _deselectedColor = Color.white;
         [SerializeField] private List<VitalBar> _vitalBars = null;
         [SerializeField] private VitalBar _experienceBar = null;
+        
+        [SerializeField] private GameObject _unitEffectPrefab = null;
+        [SerializeField] private Transform _unitEffectsParent = null;
 
         private HeroUnit _hero = null;
+        private List<UnitEffectWidget> _unitEffectWidgets = null;
         
         public void Setup(HeroUnit hero)
         {
@@ -46,6 +51,8 @@ namespace Descending.Gui
                 
                 _experienceBar.gameObject.SetActive(true);
                 _experienceBar.UpdateData(hero.HeroData.Experience, hero.HeroData.ExpToNextLevel);
+                
+                UpdateUnitEffects();
             }
         }
 
@@ -75,6 +82,20 @@ namespace Descending.Gui
         public void OnClick()
         {
             UnitManager.Instance.SelectHero(_hero);
+        }
+
+        public void UpdateUnitEffects()
+        {
+            _unitEffectWidgets = new List<UnitEffectWidget>();
+            _unitEffectsParent.ClearTransform();
+            
+            foreach (UnitEffect unitEffect in _hero.UnitEffects.Effects)
+            {
+                GameObject clone = Instantiate(_unitEffectPrefab, _unitEffectsParent);
+                UnitEffectWidget widget = clone.GetComponent<UnitEffectWidget>();
+                widget.Setup(unitEffect.Icon, unitEffect.Duration);
+                _unitEffectWidgets.Add(widget);
+            }
         }
     }
 }
