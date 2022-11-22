@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
   m_Name: Leather Boots
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: c8abd34b90d2018408453e458ac182e8, type: 3}
+  _icon: {fileID: 21300000, guid: 0c4ffcbf4a320754db44aeae259d0b35, type: 3}
   _name: Boots
   _key: Leather Boots
   _description: 
   _equipModel: {fileID: 0}
-  _itemDrop: {fileID: 0}
+  _itemDrop: {fileID: 8384081800384720211, guid: 146e34c33337c6c41b51a79d51ae4612,
+    type: 3}
   _category: 5
   _itemType: 3
   _nameFormat: 1

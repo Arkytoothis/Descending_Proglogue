@@ -176,8 +176,10 @@ namespace Descending.Units
                 }
             }
             
-            ActionManager.Instance.SetSelectedAction(UnitManager.Instance.SelectedHero.GetAction<MoveAction>());
+            ActionManager.Instance.SetSelectedAction(_selectedHero.GetAction<MoveAction>());
             onSelectHero.Invoke(_selectedHero.gameObject);
+            
+            Debug.Log(_selectedHero.GetShortName() + " selected");
         }
         
         public void SpawnHeroesOverworld()
@@ -242,6 +244,16 @@ namespace Descending.Units
 
             EnemyUnit unit = clone.GetComponent<EnemyUnit>();
             unit.SetupEnemy(enemyDefinition);
+        }
+
+        public void RecalculateHeroAttributes()
+        {
+            foreach (HeroUnit heroUnit in _heroUnits)
+            {
+                heroUnit.RecalculateAttributes();
+            }
+            
+            SyncHeroes();
         }
     }
 }

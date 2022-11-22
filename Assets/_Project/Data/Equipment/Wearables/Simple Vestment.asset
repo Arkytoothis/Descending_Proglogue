@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
-  m_Name: Simple Vestments
+  m_Name: Simple Vestment
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 26d0df583f213774db667cd0a349d157, type: 3}
-  _name: Simple Vestments
-  _key: Simple Vestments
+  _icon: {fileID: 21300000, guid: f00f0ab03966b2d498a07f8cd3f2ee0a, type: 3}
+  _name: Simple Vestment
+  _key: Simple Vestment
   _description: 
   _equipModel: {fileID: 0}
-  _itemDrop: {fileID: 0}
+  _itemDrop: {fileID: 8384081800384720211, guid: 4b621eb7bbdad54489842536c313e97a,
+    type: 3}
   _category: 5
   _itemType: 3
   _nameFormat: 1

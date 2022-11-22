@@ -119,9 +119,6 @@ namespace Descending.Gui
                 _gemsIcon.enabled = true;
                 _gemsLabel.enabled = true;
                 _gemsLabel.text = item.GemValue.ToString();
-                
-                
-                
 
                 Show();
             }
@@ -160,77 +157,45 @@ namespace Descending.Gui
             }
         }
 
-        // public void SetData(PlayerController pc)
-        // {
-        //     if (pc != null)
-        //     {
-        //         SetupFull();
-        //
-        //         _icon.sprite = null;
-        //         _title.text = pc.PlayerData.Name.FullName;
-        //         _title.color = Color.white;
-        //         //ProfessionDefinition definition = Database.instance.Professions.GetProfession(pc.Details.Profession);
-        //         _description.text = "Level " + pc.PlayerData.Level + " " + pc.PlayerData.Gender + " " + pc.PlayerData.RaceKey;
-        //         //_details.text = pc.GetTooltipText();
-        //
-        //         _encumbranceIcon.enabled = false;
-        //         _encumbranceLabel.enabled = false;
-        //         _encumbranceLabel.text = "";
-        //         _goldIcon.enabled = false;
-        //         _goldLabel.enabled = false;
-        //         _goldLabel.text = "";
-        //         _gemsIcon.enabled = false;
-        //         _gemsLabel.enabled = false;
-        //         _gemsLabel.text = "";
-        //
-        //         Show();
-        //     }
-        //     else
-        //     {
-        //         Hide();
-        //     }
-        // }
-
-        // public void SetData(Npc npc)
-        // {
-        //     if (npc != null)
-        //     {
-        //         SetupFull();
-        //
-        //         _icon.sprite = null;
-        //         _icon.enabled = false;
-        //         _title.text = npc.Name.FullName;
-        //         _title.color = Color.white;
-        //
-        //         _details.text = "Level " + npc.Level + " " + npc.Gender + " " + npc.Race + " " + npc.Profession;
-        //         _encumbranceIcon.enabled = false;
-        //         _encumbranceLabel.enabled = false;
-        //         _encumbranceLabel.text = "";
-        //         _goldIcon.enabled = false;
-        //         _goldLabel.enabled = false;
-        //         _goldLabel.text = "";
-        //         _gemsIcon.enabled = false;
-        //         _gemsLabel.enabled = false;
-        //         _gemsLabel.text = "";
-        //
-        //         Show();
-        //     }
-        //     else
-        //     {
-        //         Hide();
-        //     }
-        // }
+        public void DisplayText(TooltipText tooltipText)
+        {
+            if (tooltipText != null)
+            {
+                SetupSimple();
+                _title.SetText(tooltipText.Heading);
+                _details.SetText(tooltipText.Text);
+                
+                Show();
+            }
+            else
+            {
+                Hide();
+            }
+        }
 
         private void SetupSimple()
         {
-            HideHeader();
+            //HideHeader();
+            _icon.gameObject.SetActive(false);
             _description.gameObject.SetActive(false);
+            
+            _encumbranceIcon.enabled = false;
+            _encumbranceLabel.enabled = false;
+            _encumbranceLabel.text = "";
+            _goldIcon.enabled = false;
+            _goldLabel.enabled = false;
+            _goldLabel.text = "";
+            _gemsIcon.enabled = false;
+            _gemsLabel.enabled = false;
+            _gemsLabel.text = "";
+            
             //experienceBar.Hide();
         }
 
         private void SetupFull()
         {
             ShowHeader();
+            _icon.gameObject.SetActive(true);
             _description.gameObject.SetActive(true);
         }
 
@@ -269,6 +234,18 @@ namespace Descending.Gui
         public void HideHeader()
         {
             _header.SetActive(false);
+        }
+    }
+
+    public class TooltipText
+    {
+        public string Heading;
+        public string Text;
+
+        public TooltipText(string heading, string text)
+        {
+            Heading = heading;
+            Text = text;
         }
     }
 }

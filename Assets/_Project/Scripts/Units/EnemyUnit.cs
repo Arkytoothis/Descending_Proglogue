@@ -148,7 +148,7 @@ namespace Descending.Units
         {
             if (_isAlive == false) return;
             
-            onDisplayCombatText.Invoke(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
+            CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
             _healthSystem.TakeDamage(attacker, damage);
             
             if (GetHealth() <= 0)

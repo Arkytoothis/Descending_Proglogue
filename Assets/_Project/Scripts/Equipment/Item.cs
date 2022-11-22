@@ -5,7 +5,6 @@ using Descending.Core;
 using Descending.Equipment.Enchantments;
 using Descending.Units;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Descending.Equipment
 {
@@ -410,6 +409,28 @@ namespace Descending.Equipment
             if (enchant != null)
             {
                 _prefixEnchantKey = enchant.Definition.Key;
+                CalculatePower();
+                CalculateEncumbrance();
+                CalculateRarity();
+            }
+        }
+        
+        public void SetPrefixEnchant(EnchantmentDefinition definition)
+        {
+            if (definition != null)
+            {
+                _prefixEnchantKey = definition.Key;
+                CalculatePower();
+                CalculateEncumbrance();
+                CalculateRarity();
+            }
+        }
+        
+        public void SetSuffixEnchant(EnchantmentDefinition definition)
+        {
+            if (definition != null)
+            {
+                _suffixEnchantKey = definition.Key;
                 CalculatePower();
                 CalculateEncumbrance();
                 CalculateRarity();

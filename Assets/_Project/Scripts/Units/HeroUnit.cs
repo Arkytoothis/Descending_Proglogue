@@ -48,6 +48,8 @@ namespace Descending.Units
             _attributes.Setup(race, profession);
             _skills.Setup(_attributes, race, profession);
             _inventory.Setup(_portraitRenderer, _worldRenderer, gender, race, profession);
+            
+            _attributes.CalculateAttributes();
             _abilities.Setup(race, profession, _skills);
             _actionController.Setup(this);
             _healthSystem.Setup(_attributes);
@@ -91,7 +93,7 @@ namespace Descending.Units
             if (_isAlive == false) return;
 
             _healthSystem.TakeDamage(attacker, damage);
-            onDisplayCombatText.Invoke(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
+            CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
 
             if (GetHealth() <= 0)
             {

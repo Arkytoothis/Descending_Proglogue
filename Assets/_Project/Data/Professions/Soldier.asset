@@ -94,8 +94,8 @@ MonoBehaviour:
   - _item: {fileID: 11400000, guid: 8b6656d4b58b32946b9a00cde28a76fd, type: 2}
     _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
-    _prefix: {fileID: 0}
-    _suffix: {fileID: 0}
+    _prefix: {fileID: 11400000, guid: a2e22a4759bb4f345a15ec123a48c45e, type: 2}
+    _suffix: {fileID: 11400000, guid: 285cbdf0c7a3530478760122e263dde8, type: 2}
   - _item: {fileID: 11400000, guid: d945a7368b40b8844ae8609eceebef82, type: 2}
     _material: {fileID: 11400000, guid: 0e316ba9cf40d164f9444a666e0ccdab, type: 2}
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}

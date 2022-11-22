@@ -7,9 +7,23 @@ namespace Descending.Gui
 {
     public class CombatTextHandler : MonoBehaviour
     {
+        public static CombatTextHandler Instance { get; private set; }
+        
         [SerializeField] private UltimateTextDamageManager _textManager = null;
 
-        public void OnAddText(CombatText combatText)
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Debug.LogError("Multiple UnitManagers " + transform + " - " + Instance);
+                Destroy(gameObject);
+                return;
+            }
+            
+            Instance = this;
+        }
+        
+        public void DisplayCombatText(CombatText combatText)
         {
             _textManager.Add(combatText.Text, combatText.Position, combatText.TextType);
         }

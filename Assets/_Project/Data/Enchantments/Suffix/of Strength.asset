@@ -21,7 +21,23 @@ MonoBehaviour:
   _gemValue: 1
   _itemPower: 25
   _encumbranceModifier: 0
-  _effects: []
+  _effects:
+  - rid: 6849115687878918161
+  - rid: 6849115687878918165
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 6849115687878918161
+      type: {class: ModifyAttributeEnchantmentEffect, ns: Descending.Equipment.Enchantments,
+        asm: Reclamation}
+      data:
+        _attributeDefinition: {fileID: 11400000, guid: 47f340717fc369b418e69affd97fa097,
+          type: 2}
+        _modifier: 1
+    - rid: 6849115687878918165
+      type: {class: ModifyAttributeEnchantmentEffect, ns: Descending.Equipment.Enchantments,
+        asm: Reclamation}
+      data:
+        _attributeDefinition: {fileID: 11400000, guid: c7702ba46626ec14fb9c3febb486d391,
+          type: 2}
+        _modifier: -1

@@ -32,7 +32,6 @@ namespace Descending.Gui
             _abilitiesPanel.Setup();
             _stockpilePanel.Setup();
             
-            SelectHero(UnitManager.Instance.GetHero(0));
             Close();
         }
 
@@ -41,6 +40,7 @@ namespace Descending.Gui
             gameObject.SetActive(true);
             _stockpilePanel.UpdateStockpile();
             _isOpen = true;
+            SelectHero(UnitManager.Instance.GetHero(0));
         }
 
         public override void Close()
@@ -51,6 +51,8 @@ namespace Descending.Gui
 
         public void SelectHero(HeroUnit hero)
         {
+            UnitManager.Instance.SelectHero(hero);
+            
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);
             _vitalsPanel.DisplayHero(hero);

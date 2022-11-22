@@ -93,7 +93,7 @@ namespace Descending.Gui
             {
                 GameObject clone = Instantiate(_unitEffectPrefab, _unitEffectsParent);
                 UnitEffectWidget widget = clone.GetComponent<UnitEffectWidget>();
-                widget.Setup(unitEffect.Icon, unitEffect.Duration);
+                widget.Setup(unitEffect);
                 _unitEffectWidgets.Add(widget);
             }
         }

@@ -45,27 +45,27 @@ MonoBehaviour:
         _affects: 1
         _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
-        _minimumDuration: 5
-        _maximumDuration: 5
-        _minimumModifier: 10
-        _maximumModifier: 10
+        _minimumDuration: 10
+        _maximumDuration: 10
+        _minimumModifier: 5
+        _maximumModifier: 5
     - rid: 6849115668820000774
       type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
         _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
-        _minimumDuration: 5
-        _maximumDuration: 5
-        _minimumModifier: 10
-        _maximumModifier: 10
+        _minimumDuration: 10
+        _maximumDuration: 10
+        _minimumModifier: 5
+        _maximumModifier: 5
     - rid: 6849115668820000775
       type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Reclamation}
       data:
         _affects: 1
         _icon: {fileID: 0}
         _attribute: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
-        _minimumDuration: 5
-        _maximumDuration: 5
-        _minimumModifier: 10
-        _maximumModifier: 10
+        _minimumDuration: 10
+        _maximumDuration: 10
+        _minimumModifier: 5
+        _maximumModifier: 5

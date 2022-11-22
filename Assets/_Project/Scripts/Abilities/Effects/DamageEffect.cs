@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Descending.Attributes;
+using Descending.Combat;
 using Descending.Core;
 using Descending.Units;
 using UnityEngine;
@@ -56,10 +57,11 @@ namespace Descending.Abilities
             }
             else if (_affects == AbilityEffectAffects.Target)
             {
-                foreach (Unit unit in targets)
+                foreach (Unit target in targets)
                 {
-                    int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                    unit.Damage(user.gameObject, amount);
+                    CombatCalculator.ProcessAttack(user, target);
+                    //int amount = Random.Range(_minimumValue, _maximumValue + 1);
+                    //unit.Damage(user.gameObject, amount);
                 }
             }
         }

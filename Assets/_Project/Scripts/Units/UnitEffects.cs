@@ -19,8 +19,26 @@ namespace Descending.Units
         public void AddEffect(AbilityEffect abilityEffect)
         {
             ModifyAttributeUnitEffect unitEffect = new ModifyAttributeUnitEffect(abilityEffect);
-            Debug.Log(unitEffect.GetType() + " added to UnitEffects");
+            //Debug.Log(unitEffect.GetType() + " added to UnitEffects");
             _effects.Add(unitEffect);
+        }
+
+        public void NextTurn()
+        {
+            foreach (UnitEffect unitEffect in _effects)
+            {
+                unitEffect.NextTurn();
+            }
+
+            for (int i = _effects.Count - 1; i >= 0; i--)
+            {
+                if (_effects[i].Duration <= 0)
+                {
+                    _effects.RemoveAt(i);
+                }
+            }
+            
+            UnitManager.Instance.RecalculateHeroAttributes();
         }
     }
 }

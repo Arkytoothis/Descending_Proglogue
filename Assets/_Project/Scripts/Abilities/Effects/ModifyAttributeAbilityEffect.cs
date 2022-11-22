@@ -4,7 +4,6 @@ using System.Text;
 using Descending.Attributes;
 using Descending.Units;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Descending.Abilities
 {
@@ -15,8 +14,8 @@ namespace Descending.Abilities
         [SerializeField] private AttributeDefinition _attribute = null;
         [SerializeField] private int _minimumDuration = 0;
         [SerializeField] private int _maximumDuration = 0;
-        [FormerlySerializedAs("_minimumValue")] [SerializeField] private int _minimumModifier = 0;
-        [FormerlySerializedAs("_maximumValue")] [SerializeField] private int _maximumModifier = 0;
+        [SerializeField] private int _minimumModifier = 0;
+        [SerializeField] private int _maximumModifier = 0;
 
         public Sprite Icon => _icon;
         public AttributeDefinition Attribute => _attribute;
@@ -50,7 +49,7 @@ namespace Descending.Abilities
             {
                 foreach (Unit target in targets)
                 {
-                    Debug.Log("Buffing " + _attribute.Name + " " + target.name);
+                    //Debug.Log("Buffing " + _attribute.Name + " " + target.name);
                     target.AddUnitEffect(this);
                 }
             }

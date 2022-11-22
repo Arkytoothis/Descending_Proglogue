@@ -13,5 +13,18 @@ namespace Descending.Units
         
         public Sprite Icon => _icon;
         public int Duration => _duration;
+
+        public void NextTurn()
+        {
+            _duration--;
+
+            if (_duration <= 0)
+            {
+                
+            }
+        }
+
+        public abstract string GetTooltipHeading();
+        public abstract string GetTooltipText();
     }
 }

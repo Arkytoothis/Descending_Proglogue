@@ -129,7 +129,7 @@ namespace Descending.Interactables
         
         private void TryDropItems()
         {
-            string itemKey = ItemGenerator.GetRandomKeyByType(GenerateItemType.Any_Shield);
+            string itemKey = ItemGenerator.GetRandomKeyByType(GenerateItemType.Any);
             ItemDefinition itemDefinition = Database.instance.Items.GetItem(itemKey);
             ItemDrop itemDrop = TreasureManager.Instance.SpawnItemDrop(itemDefinition, _itemSpawnTransform.position);
             

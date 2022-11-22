@@ -210,8 +210,20 @@ namespace Descending.Equipment
             item.SetMaterial(material);
             EnchantmentDefinition quality = Database.instance.Enchants.GetEnchant(itemShort.Quality.Key);
             item.SetQualityEnchant(quality);
-            item.CalculateValue();
 
+            if (itemShort.Prefix != null)
+            {
+                EnchantmentDefinition prefix = Database.instance.Enchants.GetEnchant(itemShort.Prefix.Key);
+                item.SetPrefixEnchant(prefix);
+            }
+
+            if (itemShort.Suffix != null)
+            {
+                EnchantmentDefinition suffix = Database.instance.Enchants.GetEnchant(itemShort.Suffix.Key);
+                item.SetSuffixEnchant(suffix);
+            }
+
+            item.CalculateValue();
             return item;
         }
 

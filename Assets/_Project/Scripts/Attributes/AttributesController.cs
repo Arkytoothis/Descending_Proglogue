@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Equipment;
+using Descending.Equipment.Enchantments;
 using Descending.Units;
 using UnityEngine;
 
@@ -8,11 +10,16 @@ namespace Descending.Attributes
 {
     public class AttributesController : MonoBehaviour
     {
+        [SerializeField] private UnitEffects _unitEffects = null;
+        [SerializeField] private InventoryController _inventory = null;
         [SerializeField] private AttributeDictionary _characteristics = null;
         [SerializeField] private AttributeDictionary _vitals = null;
         [SerializeField] private AttributeDictionary _statistics = null;
         [SerializeField] private ResistanceDictionary _resistances = null;
 
+        private RaceDefinition _raceDefinition = null;
+        private ProfessionDefinition _professionDefinition = null;
+        
         public AttributeDictionary Characteristics => _characteristics;
         public AttributeDictionary Vitals => _vitals;
         public AttributeDictionary Statistics => _statistics;
@@ -20,6 +27,9 @@ namespace Descending.Attributes
 
         public void Setup(RaceDefinition race, ProfessionDefinition profession)
         {
+            _raceDefinition = race;
+            _professionDefinition = profession;
+            
             _characteristics.Clear();
             _vitals.Clear();
             _statistics.Clear();
@@ -47,8 +57,6 @@ namespace Descending.Attributes
             {
                 _statistics.Add(kvp.Key, new Attribute(kvp.Key));
             }
-            
-            CalculateAttributes(1, race);
             
             foreach (var damageTypeKVP in Database.instance.DamageTypes.Data)
             {
@@ -88,41 +96,151 @@ namespace Descending.Attributes
         //     _vitals = Attribute.ConvertToDictionary(saveData.Vitals);
         //     _statistics = Attribute.ConvertToDictionary(saveData.Statistics);
         // }
-        
-        private void CalculateAttributes(int level, RaceDefinition race)
-        {
-            _vitals["Life"].Setup(Random.Range(race.StartingVitals["Life"].MinimumValue, race.StartingVitals["Life"].MinimumValue + 1) + 
-                                  (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
-            _vitals["Stamina"].Setup(Random.Range(race.StartingVitals["Stamina"].MinimumValue, race.StartingVitals["Stamina"].MinimumValue + 1) + 
-                                  (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
-            _vitals["Magic"].Setup(Random.Range(race.StartingVitals["Magic"].MinimumValue, race.StartingVitals["Magic"].MinimumValue + 1) + 
-                                  (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
-            _vitals["Actions"].Setup(Random.Range(race.StartingVitals["Actions"].MinimumValue, race.StartingVitals["Actions"].MinimumValue + 1));
 
+        private void ResetModifiers()
+        {
+            foreach (KeyValuePair<string,Attribute> kvp in _characteristics)
+            {
+                kvp.Value.ResetModifier();
+            }
+            
+            foreach (KeyValuePair<string,Attribute> kvp in _vitals)
+            {
+                kvp.Value.ResetModifier();
+            }
+            
+            foreach (KeyValuePair<string,Attribute> kvp in _statistics)
+            {
+                kvp.Value.ResetModifier();
+            }
+        }
+        
+        public void CalculateAttributes()
+        {
+            ResetModifiers();
+            CalculateCharacteristicModifiers();
+            
+            _vitals["Life"].Setup(Random.Range(_raceDefinition.StartingVitals["Life"].MinimumValue, _raceDefinition.StartingVitals["Life"].MinimumValue + 1) + 
+                                  (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
+            _vitals["Stamina"].Setup(Random.Range(_raceDefinition.StartingVitals["Stamina"].MinimumValue, _raceDefinition.StartingVitals["Stamina"].MinimumValue + 1) + 
+                                  (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            _vitals["Magic"].Setup(Random.Range(_raceDefinition.StartingVitals["Magic"].MinimumValue, _raceDefinition.StartingVitals["Magic"].MinimumValue + 1) + 
+                                  (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            _vitals["Actions"].Setup(Random.Range(_raceDefinition.StartingVitals["Actions"].MinimumValue, _raceDefinition.StartingVitals["Actions"].MinimumValue + 1));
+
+            CalculateVitalModifiers();
+            
             int mightDamage = (_characteristics["Might"].Maximum - 10) / 10;
             int finesseDamage = (_characteristics["Finesse"].Maximum - 10) / 10;
             int magicDamage = ((_characteristics["Intellect"].Maximum - 10) + (_characteristics["Spirit"].Maximum - 10)) / 10;
             
-            _statistics["Might Damage"].Setup(mightDamage + Random.Range(race.StartingStatistics["Might Damage"].MinimumValue, race.StartingStatistics["Might Damage"].MinimumValue + 1));
-            _statistics["Finesse Damage"].Setup(finesseDamage + Random.Range(race.StartingStatistics["Finesse Damage"].MinimumValue, race.StartingStatistics["Finesse Damage"].MinimumValue + 1));
-            _statistics["Magic Damage"].Setup(magicDamage + Random.Range(race.StartingStatistics["Magic Damage"].MinimumValue, race.StartingStatistics["Magic Damage"].MinimumValue + 1));
+            _statistics["Might Damage"].Setup(mightDamage + Random.Range(_raceDefinition.StartingStatistics["Might Damage"].MinimumValue, _raceDefinition.StartingStatistics["Might Damage"].MinimumValue + 1));
+            _statistics["Finesse Damage"].Setup(finesseDamage + Random.Range(_raceDefinition.StartingStatistics["Finesse Damage"].MinimumValue, _raceDefinition.StartingStatistics["Finesse Damage"].MinimumValue + 1));
+            _statistics["Magic Damage"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Magic Damage"].MinimumValue, _raceDefinition.StartingStatistics["Magic Damage"].MinimumValue + 1));
             
-            _statistics["Block"].Setup(Random.Range(race.StartingStatistics["Block"].MinimumValue, race.StartingStatistics["Block"].MinimumValue + 1) + 
-                                     _characteristics["Might"].Maximum + _characteristics["Endurance"].Maximum);
-            _statistics["Dodge"].Setup(Random.Range(race.StartingStatistics["Dodge"].MinimumValue, race.StartingStatistics["Dodge"].MinimumValue + 1) + 
-                                       _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
-            _statistics["Willpower"].Setup(Random.Range(race.StartingStatistics["Willpower"].MinimumValue, race.StartingStatistics["Willpower"].MinimumValue + 1) + 
-                                       _characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum);
-            _statistics["Perception"].Setup(Random.Range(race.StartingStatistics["Perception"].MinimumValue, race.StartingStatistics["Perception"].MinimumValue + 1) + 
+            _statistics["Block"].Setup(Random.Range(_raceDefinition.StartingStatistics["Block"].MinimumValue, _raceDefinition.StartingStatistics["Block"].MinimumValue + 1) + 
+                                     (_characteristics["Might"].Maximum + _characteristics["Endurance"].Maximum) / 2);
+            _statistics["Dodge"].Setup(Random.Range(_raceDefinition.StartingStatistics["Dodge"].MinimumValue, _raceDefinition.StartingStatistics["Dodge"].MinimumValue + 1) + 
+                                      (_characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum) / 2);
+            _statistics["Willpower"].Setup(Random.Range(_raceDefinition.StartingStatistics["Willpower"].MinimumValue, _raceDefinition.StartingStatistics["Willpower"].MinimumValue + 1) + 
+                                       (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            
+            _statistics["Perception"].Setup(Random.Range(_raceDefinition.StartingStatistics["Perception"].MinimumValue, _raceDefinition.StartingStatistics["Perception"].MinimumValue + 1) + 
                                             _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
+            _statistics["Movement"].Setup(_raceDefinition.StartingStatistics["Movement"].MinimumValue);
+            _statistics["Critical Damage"].Setup(_raceDefinition.StartingStatistics["Critical Damage"].MinimumValue);
             
-            _statistics["Movement"].Setup(race.StartingStatistics["Movement"].MinimumValue);
-            _statistics["Critical Damage"].Setup(race.StartingStatistics["Critical Damage"].MinimumValue);
+            CalculateStatisticModifiers();
+        }
+
+        public void CalculateCharacteristicModifiers()
+        {
+            foreach (Item equippedItem in _inventory.Equipment)
+            {
+                if (equippedItem == null) continue;
+
+                if (equippedItem.PrefixEnchantKey != "")
+                {
+                    CalculateEnchantModifiers(equippedItem.PrefixDefinition, _characteristics, AttributeTypes.Characteristic);
+                }
+                
+                if (equippedItem.SuffixEnchantKey != "")
+                {
+                    CalculateEnchantModifiers(equippedItem.SuffixDefinition, _characteristics, AttributeTypes.Characteristic);
+                }
+            }
+            
+            CalculateUnitEffectModifiers(_characteristics, AttributeTypes.Characteristic);
+        }
+
+        public void CalculateVitalModifiers()
+        {
+            foreach (Item equippedItem in _inventory.Equipment)
+            {
+                if (equippedItem == null) continue;
+
+                if (equippedItem.PrefixEnchantKey != "")
+                {
+                    CalculateEnchantModifiers(equippedItem.PrefixDefinition, _vitals, AttributeTypes.Vital);
+                }
+                
+                if (equippedItem.SuffixEnchantKey != "")
+                {
+                    CalculateEnchantModifiers(equippedItem.SuffixDefinition, _vitals, AttributeTypes.Vital);
+                }
+            }
+            
+            CalculateUnitEffectModifiers(_vitals, AttributeTypes.Vital);
         }
         
-        public bool IsAlive()
+        public void CalculateStatisticModifiers()
         {
-            return true;//Get(Core.Attributes.Life).Current > 0;
+            foreach (Item equippedItem in _inventory.Equipment)
+            {
+                if (equippedItem == null) continue;
+
+                if (equippedItem.PrefixEnchantKey != "")
+                {
+                    CalculateEnchantModifiers(equippedItem.PrefixDefinition, _statistics, AttributeTypes.Statistic);
+                }
+                
+                if (equippedItem.SuffixEnchantKey != "")
+                {
+                    CalculateEnchantModifiers(equippedItem.SuffixDefinition, _statistics, AttributeTypes.Statistic);
+                }
+            }
+            
+            CalculateUnitEffectModifiers(_statistics, AttributeTypes.Statistic);
+        }
+        
+        private void CalculateEnchantModifiers(EnchantmentDefinition enchant, AttributeDictionary attributes, AttributeTypes type)
+        {
+            foreach (EnchantmentEffect enchantmentEffect in enchant.Effects)
+            {
+                if (enchantmentEffect.GetType() == typeof(ModifyAttributeEnchantmentEffect))
+                {
+                    ModifyAttributeEnchantmentEffect modifyAttributeEffect = (ModifyAttributeEnchantmentEffect)enchantmentEffect;
+                            
+                    if (modifyAttributeEffect.AttributeDefinition == null || modifyAttributeEffect.AttributeDefinition.AttributeType != type) continue;
+                            
+                    attributes[modifyAttributeEffect.AttributeDefinition.Key].Modify(modifyAttributeEffect.Modifier);
+                }
+            }
+        }
+
+        private void CalculateUnitEffectModifiers(AttributeDictionary attributes, AttributeTypes type)
+        {
+            foreach (UnitEffect unitEffect in _unitEffects.Effects)
+            {
+                if (unitEffect.GetType() == typeof(ModifyAttributeUnitEffect))
+                {
+                    ModifyAttributeUnitEffect modifyAttributeEffect = (ModifyAttributeUnitEffect)unitEffect;
+                            
+                    if (modifyAttributeEffect.AttributeDefinition == null || modifyAttributeEffect.AttributeDefinition.AttributeType != type) continue;
+                            
+                    attributes[modifyAttributeEffect.AttributeDefinition.Key].Modify(modifyAttributeEffect.Modifier);
+                }
+            }
         }
 
         public Attribute GetAttribute(string key)

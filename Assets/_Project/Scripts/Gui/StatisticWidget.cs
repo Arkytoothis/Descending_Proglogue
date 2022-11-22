@@ -11,25 +11,62 @@ namespace Descending.Gui
     {
         [SerializeField] private TMP_Text _currentLabel = null;
         [SerializeField] private TMP_Text _maximumLabel = null;
+        [SerializeField] private TMP_Text _modifierLabel = null;
 
-        public void SetAttribute(int value)
+        public void SetAttribute(Attribute attribute)
         {
-            if (value < 0)
+            _currentLabel.SetText(attribute.TotalCurrent().ToString());
+            _maximumLabel.SetText(attribute.TotalMaximum().ToString());
+
+            if (attribute.Modifier < 0)
             {
-                _currentLabel.SetText("-" + value);
+                _modifierLabel.SetText(attribute.Modifier.ToString());
+                _modifierLabel.color = Color.red;
+                _currentLabel.color = Color.red;
+                _maximumLabel.color = Color.red;
+            }
+            else if (attribute.Modifier > 0)
+            {
+                _modifierLabel.SetText("+" + attribute.Modifier);
+                _modifierLabel.color = Color.green;
+                _currentLabel.color = Color.green;
+                _maximumLabel.color = Color.green;
             }
             else
             {
-                _currentLabel.SetText("+" + value);
+                _modifierLabel.SetText("");
+                _modifierLabel.color = Color.white;
+                _currentLabel.color = Color.white;
+                _maximumLabel.color = Color.white;
             }
-            
-            _maximumLabel.SetText("");
         }
         
-        public void SetAttribute(string value)
+        public void SetAttributePercent(Attribute attribute)
         {
-            _currentLabel.SetText(value);
-            _maximumLabel.SetText("");
+            _currentLabel.SetText(attribute.TotalCurrent() + "%");
+            _maximumLabel.SetText(attribute.TotalMaximum() + "%");
+
+            if (attribute.Modifier < 0)
+            {
+                _modifierLabel.SetText(attribute.Modifier.ToString());
+                _modifierLabel.color = Color.red;
+                _currentLabel.color = Color.red;
+                _maximumLabel.color = Color.red;
+            }
+            else if (attribute.Modifier > 0)
+            {
+                _modifierLabel.SetText("+" + attribute.Modifier);
+                _modifierLabel.color = Color.green;
+                _currentLabel.color = Color.green;
+                _maximumLabel.color = Color.green;
+            }
+            else
+            {
+                _modifierLabel.SetText("");
+                _modifierLabel.color = Color.white;
+                _currentLabel.color = Color.white;
+                _maximumLabel.color = Color.white;
+            }
         }
     }
 }

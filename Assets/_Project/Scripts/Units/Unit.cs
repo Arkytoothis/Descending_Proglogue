@@ -31,8 +31,6 @@ namespace Descending.Units
         [SerializeField] protected ActionController _actionController = null;
         [SerializeField] protected UnitWorldPanel _worldPanel = null;
         [SerializeField] protected UnitEffects _unitEffects = null;
-
-        [SerializeField] protected CombatTextEvent onDisplayCombatText = null;
         
         public abstract void SpendActionPoints(int actionPointCost);
         
@@ -137,6 +135,7 @@ namespace Descending.Units
             {
                 _attributes.RefreshActions();
                 _worldPanel.UpdateActionPoints(this);
+                _unitEffects.NextTurn();
             }
         }
 
@@ -163,6 +162,11 @@ namespace Descending.Units
         public void AddUnitEffect(AbilityEffect abilityEffect)
         {
             _unitEffects.AddEffect(abilityEffect);
+        }
+
+        public void RecalculateAttributes()
+        {
+            _attributes.CalculateAttributes();
         }
     }
 }

@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62e632bfd4b6e64e8c4b9b852a1fc7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitEffects: {fileID: 8240929313189264907}
+  _inventory: {fileID: 5208358111274881494}
   _characteristics:
     keyData: []
     valueData: []
@@ -3715,6 +3717,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b85ed56bbabfa743afb099b1b39db82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effects: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8235378440304047350
 GameObject:
   m_ObjectHideFlags: 0

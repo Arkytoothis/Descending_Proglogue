@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     keyData:
-    - Simple Clothes
+    - Cloth Shirt
     - Leather Boots
-    - Simple Robes
+    - Simple Robe
     - Short Bow
     - Short Sword
     - Leather Armor
@@ -25,7 +25,7 @@ MonoBehaviour:
     - Fire Staff
     - Holy Scepter
     - Torch
-    - Simple Vestments
+    - Simple Vestment
     - Dagger
     - Long Sword
     - Wood Shield
@@ -43,7 +43,7 @@ MonoBehaviour:
     - Small Bomb
     - Cloth Pants
     - Leather Pants
-    - Simple Robe Bottom
+    - Simple Skirt
     valueData:
     - {fileID: 11400000, guid: 2ae505d62fdd6724d8de1ca2207b74d3, type: 2}
     - {fileID: 11400000, guid: 20b1b02d41a03ff4ab8e47ecf612ddf7, type: 2}

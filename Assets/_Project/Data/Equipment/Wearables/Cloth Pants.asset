@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
   m_Name: Cloth Pants
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: b9f722568885b6b418f30bb279b97349, type: 3}
+  _icon: {fileID: 21300000, guid: d93278f7c1aa7f643823ed4c689e9408, type: 3}
   _name: Pants
   _key: Cloth Pants
   _description: 
   _equipModel: {fileID: 0}
-  _itemDrop: {fileID: 0}
+  _itemDrop: {fileID: 8384081800384720211, guid: 2704fb57d841028429a77c2ad83147b1,
+    type: 3}
   _category: 5
   _itemType: 3
   _nameFormat: 1
   _equipmentSlot: 9
   _renderSlots:
   - _bodyPart: 25
-    _index: 13
+    _index: 14
   _materialAllowed: 6
   _hands: 5
   _bestQualityAllowed: 0

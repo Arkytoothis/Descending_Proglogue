@@ -13,7 +13,7 @@ namespace Descending.Core
 
         [SerializeField] private BoolEvent onSyncStockpile = null;
         
-        private List<Item> _items = null;
+        [SerializeField] private List<Item> _items = null;
         
         private void Awake()
         {
@@ -36,10 +36,10 @@ namespace Descending.Core
                 _items.Add(null);    
             }
 
-            // for (int i = 0; i < 20; i++)
-            // {
-            //     AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
-            // }
+            for (int i = 0; i < 2; i++)
+            {
+                AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
+            }
         }
 
         public Item GetItem(int index)
@@ -69,6 +69,21 @@ namespace Descending.Core
         public void OnItemPickedUp(Item item)
         {
             AddItem(item);
+            onSyncStockpile.Invoke(true);
+        }
+
+        public void ClearItem(int index)
+        {
+            _items[index] = null;
+        }
+
+        public void SetItem(Item item, int index)
+        {
+            _items[index] = new Item(item);
+        }
+
+        public void SyncStockpile()
+        {
             onSyncStockpile.Invoke(true);
         }
     }

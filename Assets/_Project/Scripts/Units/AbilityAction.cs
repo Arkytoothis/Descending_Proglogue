@@ -91,6 +91,7 @@ namespace Descending.Units
                     break;
                 case State.Cooldown:
                     ActionComplete();
+                    UnitManager.Instance.RecalculateHeroAttributes();
                     break;
             }
         }

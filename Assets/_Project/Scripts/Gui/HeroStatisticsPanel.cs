@@ -24,14 +24,14 @@ namespace Descending.Gui
         
         public void DisplayHero(HeroUnit hero)
         {
-            _mightDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Might Damage").Current);
-            _finesseDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Finesse Damage").Current);
-            _magicDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Magic Damage").Current);
-            _blockWidget.SetAttribute(hero.Attributes.GetStatistic("Block").Current + "%");
-            _dodgeWidget.SetAttribute(hero.Attributes.GetStatistic("Dodge").Current + "%");
-            _willpowerWidget.SetAttribute(hero.Attributes.GetStatistic("Willpower").Current + "%");
-            _perceptionWidget.SetAttribute(hero.Attributes.GetStatistic("Perception").Current + "%");
-            _movementWidget.SetAttribute(hero.Attributes.GetStatistic("Movement").Current.ToString());
+            _mightDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Might Damage"));
+            _finesseDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Finesse Damage"));
+            _magicDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Magic Damage"));
+            _blockWidget.SetAttributePercent(hero.Attributes.GetStatistic("Block"));
+            _dodgeWidget.SetAttributePercent(hero.Attributes.GetStatistic("Dodge"));
+            _willpowerWidget.SetAttributePercent(hero.Attributes.GetStatistic("Willpower"));
+            _perceptionWidget.SetAttributePercent(hero.Attributes.GetStatistic("Perception"));
+            _movementWidget.SetAttribute(hero.Attributes.GetStatistic("Movement"));
         }
     }
 }

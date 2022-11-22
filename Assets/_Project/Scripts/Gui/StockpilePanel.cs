@@ -25,7 +25,7 @@ namespace Descending.Gui
             {
                 GameObject clone = Instantiate(_stockpileWidgetPrefab, _stockpileWidgetsParent);
                 StockpileWidget widget = clone.GetComponent<StockpileWidget>();
-                widget.SetItem(null);
+                widget.Setup(i);
                 _widgets.Add(widget);
             }
         }

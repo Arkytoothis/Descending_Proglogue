@@ -15,11 +15,11 @@ namespace Descending.Attributes
         [SerializeField] private int _spent = 0;
 
         public string Key => _key;
-        public int Current { get => _current; }
-        public int Maximum { get => _maximum; }
-        public int Modifier { get => _modifier; }
-        public int Spent { get => _spent; }
-        
+        public int Current => _current;
+        public int Maximum => _maximum;
+        public int Modifier => _modifier;
+        public int Spent => _spent;
+
         public Attribute(string key)
         {
             _key = key;
@@ -102,6 +102,26 @@ namespace Descending.Attributes
             }
 
             return list;
+        }
+
+        public void Modify(int amount)
+        {
+            _modifier += amount;
+        }
+
+        public void ResetModifier()
+        {
+            _modifier = 0;
+        }
+
+        public int TotalCurrent()
+        {
+            return _current + _modifier;
+        }
+
+        public int TotalMaximum()
+        {
+            return _maximum + _modifier;
         }
     }
 }

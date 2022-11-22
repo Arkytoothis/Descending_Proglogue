@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Combat;
 using Descending.Equipment;
 using Descending.Tiles;
 using UnityEngine;
@@ -64,11 +65,12 @@ namespace Descending.Units
                 case States.Pre_Hit:
                     _state = States.Post_Hit;
                     _stateTimer = _postHitTime;
-                    Item meleeWeapon = _unit.GetMeleeWeapon();
-                    WeaponData weaponData = meleeWeapon.GetWeaponData();
-                    
-                    int damage = Random.Range(weaponData.MinDamage, weaponData.MaxDamage + 1);
-                    _targetUnit.Damage(_unit.gameObject, damage);
+                    CombatCalculator.ProcessAttack(_unit, _targetUnit);
+                    // Item meleeWeapon = _unit.GetMeleeWeapon();
+                    // WeaponData weaponData = meleeWeapon.GetWeaponData();
+                    //
+                    // int damage = Random.Range(weaponData.MinDamage, weaponData.MaxDamage + 1);
+                    // _targetUnit.Damage(_unit.gameObject, damage);
                     break;
                 case States.Post_Hit:
                     

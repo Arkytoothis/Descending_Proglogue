@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -41,6 +42,7 @@ namespace Descending.Combat
             _isPlayerTurn = !_isPlayerTurn;
             
             onTurnChanged.Invoke(true);
+            UnitManager.Instance.SyncHeroes();
         }
     }
 }
