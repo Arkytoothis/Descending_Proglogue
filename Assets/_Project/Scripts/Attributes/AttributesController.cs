@@ -188,6 +188,13 @@ namespace Descending.Attributes
                 {
                     CalculateEnchantModifiers(equippedItem.SuffixDefinition, _vitals, AttributeTypes.Vital);
                 }
+                
+                WearableData wearableData = equippedItem.GetWearableData();
+                
+                if (wearableData != null)
+                {
+                    _vitals["Armor"].Modify(wearableData.Armor);
+                }
             }
             
             CalculateUnitEffectModifiers(_vitals, AttributeTypes.Vital);
@@ -207,6 +214,15 @@ namespace Descending.Attributes
                 if (equippedItem.SuffixEnchantKey != "")
                 {
                     CalculateEnchantModifiers(equippedItem.SuffixDefinition, _statistics, AttributeTypes.Statistic);
+                }
+
+                WearableData wearableData = equippedItem.GetWearableData();
+                
+                if (wearableData != null)
+                {
+                    _statistics["Block"].Modify(wearableData.Block);
+                    _statistics["Dodge"].Modify(wearableData.Dodge);
+                    _statistics["Perception"].Modify(wearableData.PerceptionModifier);
                 }
             }
             

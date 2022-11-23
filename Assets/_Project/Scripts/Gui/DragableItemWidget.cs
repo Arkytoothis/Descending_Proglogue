@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Equipment;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Descending.Gui
 {
@@ -15,5 +14,6 @@ namespace Descending.Gui
         public int Index => _index;
 
         public abstract void SetItem(Item item);
+        public abstract void Clear();
     }
 }

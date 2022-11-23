@@ -25,7 +25,7 @@ namespace Descending
             _abilityButtons = new List<ActionButton>();
         }
 
-        private void CreateActionButtons()
+        public void CreateActionButtons()
         {
             _actionButtonsParent.ClearTransform();
             _abilitiesParent.ClearTransform();
@@ -33,11 +33,14 @@ namespace Descending
             _abilityButtons.Clear();
             
             Unit selectedUnit = UnitManager.Instance.SelectedHero;
+            if (selectedUnit == null || selectedUnit.IsEnemy == true) return;
+            
             int abilityHotkey = 1;
             int itemHotkey = 1;
-            
+
             foreach (BaseAction action in selectedUnit.ActionController.Actions)
             {
+                
                 GameObject clone = Instantiate(_actionButtonPrefab, _actionButtonsParent);
                 ActionButton actionButton = clone.GetComponent<ActionButton>();
                 actionButton.SetAction(action);

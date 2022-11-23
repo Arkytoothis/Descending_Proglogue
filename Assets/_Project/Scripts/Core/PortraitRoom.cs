@@ -46,6 +46,8 @@ namespace Descending.Core
 
          public void SyncParty()
          {
+             if (_portraits == null) return;
+             
              //Debug.Log("Party Synced - Portrait Room");
              for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
              {

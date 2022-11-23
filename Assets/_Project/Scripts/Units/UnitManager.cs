@@ -179,7 +179,7 @@ namespace Descending.Units
             ActionManager.Instance.SetSelectedAction(_selectedHero.GetAction<MoveAction>());
             onSelectHero.Invoke(_selectedHero.gameObject);
             
-            Debug.Log(_selectedHero.GetShortName() + " selected");
+            //Debug.Log(_selectedHero.GetShortName() + " selected");
         }
         
         public void SpawnHeroesOverworld()

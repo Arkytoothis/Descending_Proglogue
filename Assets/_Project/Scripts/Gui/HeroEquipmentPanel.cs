@@ -21,6 +21,11 @@ namespace Descending.Gui
             {
                 _equippedItemWidgets[i].Setup(i);
             }
+            
+            for (int i = 0; i < _accessoryWidgets.Length; i++)
+            {
+                _accessoryWidgets[i].Setup(i);
+            }
         }
         
         public void DisplayHero(HeroUnit hero)

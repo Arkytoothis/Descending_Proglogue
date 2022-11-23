@@ -57,7 +57,7 @@ MonoBehaviour:
     - sword_swing_3
   _wearableData:
     _hasData: 1
-    _armor: 1
+    _armor: 5
     _block: 10
     _dodge: -2
     _perceptionModifier: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Descending.Gui
@@ -14,13 +15,11 @@ namespace Descending.Gui
         
         [SerializeField] private Image _iconImage = null;
 
-        private DragableItemWidget _currentWidget = null;
         private Item _dragItem = null;
         private DragableItemWidget _startDragWidget = null;
         private bool _isDragging = false;
     
         public bool IsDragging => _isDragging;
-        public DragableItemWidget CurrentWidget => _currentWidget;
         public Item DragItem => _dragItem;
         public DragableItemWidget StartDragWidget => _startDragWidget;
 
@@ -39,8 +38,11 @@ namespace Descending.Gui
 
         private void Update()
         {
-            _iconImage.rectTransform.position = Input.mousePosition;
-
+            if (_isDragging == true)
+            {
+                _iconImage.rectTransform.position = Input.mousePosition;
+            }
+            
             if (Input.GetMouseButtonUp(0))
             {
                 if (_isDragging == true)
@@ -50,31 +52,26 @@ namespace Descending.Gui
             }
         }
 
-        public void SetCurrentWidget(DragableItemWidget widget)
-        {
-            _currentWidget = widget;
-        }
-        
-        public void StartDrag(DragableItemWidget startDragWidget)
-        {
-            _startDragWidget = startDragWidget;
-            _dragItem = _startDragWidget.Item;
-            _iconImage.sprite = _dragItem.ItemDefinition.Icon;
-            _isDragging = true;
-        }
-        
-        public void EndDrag()
-        {
-            Clear();
-        }
-
         private void Clear()
         {
             _iconImage.sprite = Database.instance.BlankSprite;
             _startDragWidget = null;
             _dragItem = null;
+        }
+
+        public void BeginDrag(PointerEventData eventData, DragableItemWidget startWidget)
+        {
+            _isDragging = true;
+            _startDragWidget = startWidget;
+            _dragItem = eventData.pointerDrag.GetComponent<DragableItemWidget>().Item;
+            _iconImage.sprite = _dragItem.ItemDefinition.Icon;
+            
+        }
+
+        public void EndDrag(PointerEventData eventData)
+        {
             _isDragging = false;
-            _currentWidget = null;
+            Clear();
         }
     }
 }

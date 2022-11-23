@@ -32,8 +32,7 @@ namespace Descending.Core
 
             hero.PortraitRenderer.MountCloseCamera(_camClose);
             hero.PortraitRenderer.MountFarCamera(_camFar);
-            StartCoroutine(RefreshWithDelay());
-            StartCoroutine(RefreshWithDelayFar());
+            
         }
 
         public void SetModel(HeroUnit hero)
@@ -46,9 +45,6 @@ namespace Descending.Core
                  hero.PortraitModel.transform.SetParent(_modelMount, false);
                  hero.PortraitRenderer.MountCloseCamera(_camClose);
                  hero.PortraitRenderer.MountFarCamera(_camFar);
-                
-                StartCoroutine(RefreshWithDelay());
-                StartCoroutine(RefreshWithDelayFar());
             }
         }
 
@@ -74,12 +70,13 @@ namespace Descending.Core
 
         public RenderTexture GetCloseRt()
         {
-            Refresh();
+            StartCoroutine(RefreshWithDelay());
             return _camClose.targetTexture;
         }
 
         public RenderTexture GetFarRt()
         {
+            StartCoroutine(RefreshWithDelayFar());
             return _camFar.targetTexture;
         }
 
@@ -91,12 +88,7 @@ namespace Descending.Core
 
         public void Refresh()
         {
-            EnableCloseCamera();
-            DisableCloseCamera();
-        }
-
-        public void RefreshFarCam()
-        {
+            StartCoroutine(RefreshWithDelay());
             StartCoroutine(RefreshWithDelayFar());
         }
 

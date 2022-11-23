@@ -11,8 +11,7 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class StockpileWidget : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler,
-        IPointerUpHandler
+    public class StockpileWidget : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _stackSizeLabel = null;
@@ -41,8 +40,9 @@ namespace Descending.Gui
             }
         }
 
-        private void Clear()
+        public override void Clear()
         {
+            _item = null;
             _iconImage.sprite = Database.instance.BlankSprite;
             _stackSizeLabel.SetText("");
         }
@@ -51,49 +51,54 @@ namespace Descending.Gui
         public void OnPointerEnter(PointerEventData eventData)
         {
             onDisplayItemTooltip.Invoke(_item);
-            DragCursor.Instance.SetCurrentWidget(this);
             eventData.pointerPress = gameObject;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             onDisplayItemTooltip.Invoke(null);
-            DragCursor.Instance.SetCurrentWidget(null);
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public void OnDrag(PointerEventData eventData)
         {
-            if (_item.Key == "") return;
-
-            DragCursor.Instance.StartDrag(this);
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            DragCursor.Instance.BeginDrag(eventData, this);
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
         {
             if (DragCursor.Instance.IsDragging == true)
             {
-                Debug.Log("EndDrag StockpileWidget");
-                
-                if (DragCursor.Instance.CurrentWidget == null)
-                {
-                    StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, DragCursor.Instance.StartDragWidget.Index);
-                    return;
-                }
+            }
+        }
 
-                if (DragCursor.Instance.CurrentWidget.Item.Key == "")
+        public void OnDrop(PointerEventData eventData)
+        {
+            if (DragCursor.Instance.IsDragging == true)
+            {
+                if (_item != null &&_item.ItemDefinition.Key != "")
                 {
-                    StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, DragCursor.Instance.CurrentWidget.Index);
-                    StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+                    Item tempItem = new Item(_item);
+                    
+                    StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, _index);
+                    SetItem(DragCursor.Instance.DragItem);
+                    
+                    StockpileManager.Instance.SetItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
+                    DragCursor.Instance.StartDragWidget.SetItem(tempItem);
                 }
                 else
                 {
-                    Item tempItem = new Item(DragCursor.Instance.CurrentWidget.Item);
-                    StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, DragCursor.Instance.CurrentWidget.Index);
-                    StockpileManager.Instance.SetItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
-                }
+                    StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, _index);
+                    SetItem(DragCursor.Instance.DragItem);
 
-                StockpileManager.Instance.SyncStockpile();
-                DragCursor.Instance.EndDrag();
+                    StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+                    DragCursor.Instance.StartDragWidget.Clear();
+                }
+                
+                DragCursor.Instance.EndDrag(eventData);
             }
         }
     }

@@ -11,6 +11,7 @@ namespace Descending.Equipment
     {
         public const int MAX_ACCESSORY_SLOTS = 6;
         
+        [SerializeField] private AttributesController _attributes = null;
         [SerializeField] private Item[] _equipment = null;
         [SerializeField] private Item[] _accessories = null;
         
@@ -62,14 +63,14 @@ namespace Descending.Equipment
             {
                 if (_portraitBody != null)
                 {
-                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon]);
-                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon]);
+                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon], true);
+                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon], true);
                 }
 
                 if (_worldBody != null)
                 {
-                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon]);
-                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon]);
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon], false);
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon], false);
                 }
 
                 _currentWeapon = _equipment[(int) EquipmentSlots.Melee_Weapon];
@@ -78,12 +79,12 @@ namespace Descending.Equipment
             {
                 if (_worldBody != null)
                 {
-                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon]);
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon], false);
                 }
                 
                 if (_portraitBody != null)
                 {
-                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon]);
+                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon], true);
                 }
 
                 _currentWeapon = _equipment[(int) EquipmentSlots.Ranged_Weapon];
@@ -135,12 +136,12 @@ namespace Descending.Equipment
 
                 if (_portraitBody != null)
                 {
-                    _portraitBody.EquipItem(item);
+                    _portraitBody.EquipItem(item, true);
                 }
 
                 if (_worldBody != null)
                 {
-                    _worldBody.EquipItem(item);
+                    _worldBody.EquipItem(item, false);
                 }
             }
             else
@@ -148,21 +149,74 @@ namespace Descending.Equipment
                 _equipment[(int) item.ItemDefinition.EquipmentSlot] = new Item(item);
                 if (_portraitBody != null)
                 {
-                    _portraitBody.EquipItem(item);
+                    _portraitBody.EquipItem(item, true);
                 }
 
                 if (_worldBody != null)
                 {
-                    _worldBody.EquipItem(item);
+                    _worldBody.EquipItem(item, false);
                 }
             }
-        }
-
-        public void UnequipItem(Item item)
-        {
             
+            _attributes.CalculateAttributes();
         }
 
+        public void EquipItem(Item item, int slot)
+        {
+            _equipment[slot] = new Item(item);
+            
+            if (_portraitBody != null)
+            {
+                _portraitBody.EquipItem(item, true);
+            }
+
+            if (_worldBody != null)
+            {
+                _worldBody.EquipItem(item, false);
+            }
+            
+            _attributes.CalculateAttributes();
+        }
+
+        public void EquipAccessory(Item item)
+        {
+            int index = -1;
+            for (int i = 0; i < _accessories.Length; i++)
+            {
+                if (_accessories[i] == null)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            _accessories[index] = new Item(item);
+        }
+        
+        public void EquipAccessory(Item item, int slot)
+        {
+            if (_accessories[slot] != null)
+            {
+                UnequipAccessory(slot);
+            }
+            
+            _accessories[slot] = new Item(item);
+        }
+
+        public void UnequipItem(int slot)
+        {
+            StockpileManager.Instance.AddItem(_equipment[slot]);
+            _equipment[slot] = null;
+            StockpileManager.Instance.SyncStockpile();
+        }
+        
+        public void UnequipAccessory(int slot)
+        {
+            StockpileManager.Instance.AddItem(_accessories[slot]);
+            _accessories[slot] = null;
+            StockpileManager.Instance.SyncStockpile();
+        }
+        
         public Item GetCurrentWeapon()
         {
             return _currentWeapon;
@@ -186,21 +240,6 @@ namespace Descending.Equipment
         public Item GetAmmo()
         {
             return _equipment[(int) EquipmentSlots.Ammo];
-        }
-
-        public void EquipAccessory(Item item)
-        {
-            int index = -1;
-            for (int i = 0; i < _accessories.Length; i++)
-            {
-                if (_accessories[i] == null)
-                {
-                    index = i;
-                    break;
-                }
-            }
-
-            _accessories[index] = new Item(item);
         }
     }
 

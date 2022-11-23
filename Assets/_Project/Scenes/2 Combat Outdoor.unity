@@ -1891,6 +1891,57 @@ Transform:
   m_Father: {fileID: 1870405473}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &818762650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5255539705970433757, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462974890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &818762651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5255539705970433754, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462974890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818762650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44d626d949bb9d49b3e39d3a1956e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &818762652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818762650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: d1f065dd347c3694f80d58f8f0f16b11, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 818762651}
+        m_TargetAssemblyTypeName: Descending.Core.PortraitRoom, Reclamation
+        m_MethodName: SyncParty
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &819211523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +2003,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _items: []
 --- !u!114 &819211526
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -472,17 +472,17 @@ namespace Descending.Units
             go.GetComponent<SkinnedMeshRenderer>().sharedMaterial.SetColor(parameter, color);
         }
 
-        public void EquipItem(Item item)
+        public void EquipItem(Item item, bool portrait)
         {
-            // if (item.ItemDefinition.Category == ItemCategory.Weapons)
-            // {
-            //     EquipWeapon(item);
-            // }
-            // else if (item.ItemDefinition.Category == ItemCategory.Shields)
-            // {
-            //     EquipWeapon(item);
-            // }
-            if (item.ItemDefinition.Category == ItemCategory.Wearable)
+            if (item.ItemDefinition.Category == ItemCategory.Weapons)
+            {
+                EquipWeapon(item, portrait);
+            }
+            else if (item.ItemDefinition.Category == ItemCategory.Shields)
+            {
+                EquipWeapon(item, portrait);
+            }
+            else if (item.ItemDefinition.Category == ItemCategory.Wearable)
             {
                 foreach (var renderSlot in item.RenderSlots)
                 {
@@ -492,14 +492,24 @@ namespace Descending.Units
             }
         }
         
-        public void EquipWeapon(Item item)
+        public void EquipWeapon(Item item, bool portrait)
         {
             if (item == null || item.Key == "" || item.GetWeaponData() == null) return;
 
+            //Debug.Log("Equipping");
             if (item.ItemDefinition.Hands == Hands.Right)
             {
                 _rightHandMount.ClearTransform();
                 GameObject clone = item.SpawnItemModel(_rightHandMount, 0);
+
+                if (portrait == true)
+                {
+                    var children = clone.GetComponentsInChildren<Transform>(includeInactive: true);
+                    foreach (var child in children)
+                    {
+                        child.gameObject.layer = LayerMask.NameToLayer("Portrait Light");
+                    }
+                }
                 //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
                 
             }
@@ -507,6 +517,15 @@ namespace Descending.Units
             {
                 _leftHandMount.ClearTransform();
                 GameObject clone = item.SpawnItemModel(_leftHandMount, 0);
+                
+                if (portrait == true)
+                {
+                    var children = clone.GetComponentsInChildren<Transform>(includeInactive: true);
+                    foreach (var child in children)
+                    {
+                        child.gameObject.layer = LayerMask.NameToLayer("Portrait Light");
+                    }
+                }
                 //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
             }
         }

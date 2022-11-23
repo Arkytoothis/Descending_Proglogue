@@ -28,9 +28,9 @@ namespace Descending.Dungeons
             yield return 0;
             
             _cameraController.transform.position = UnitManager.Instance.HeroUnits[0].transform.position;
-            UnitManager.Instance.SelectHero(UnitManager.Instance.GetHero(0));
             PathfindingManager.Instance.Scan();
             InteractableManager.Instance.Setup();
+            UnitManager.Instance.SyncHeroes();
             UnitManager.Instance.SelectHeroDefault();
         }
     }

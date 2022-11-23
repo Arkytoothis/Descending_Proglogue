@@ -36,7 +36,7 @@ namespace Descending.Core
                 _items.Add(null);    
             }
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 20; i++)
             {
                 AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
             }

@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 330663317649081217}
   - component: {fileID: 330663317649081222}
   - component: {fileID: 6624542228431619832}
-  - component: {fileID: 3236849405491033844}
+  - component: {fileID: 1183081991553775878}
   m_Layer: 5
   m_Name: Unit Actions Panel
   m_TagString: Untagged
@@ -726,7 +726,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: {fileID: 0}
---- !u!114 &3236849405491033844
+--- !u!114 &1183081991553775878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -742,14 +742,14 @@ MonoBehaviour:
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
   _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 9016248c2189336479b5f92b57b7bed9, type: 2}
+  _event: {fileID: 11400000, guid: d1f065dd347c3694f80d58f8f0f16b11, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 330663317649081222}
         m_TargetAssemblyTypeName: Descending.ActionButtonsPanel, Reclamation
-        m_MethodName: OnTurnChanged
-        m_Mode: 0
+        m_MethodName: CreateActionButtons
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
