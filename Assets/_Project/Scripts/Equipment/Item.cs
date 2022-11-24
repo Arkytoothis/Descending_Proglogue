@@ -575,36 +575,20 @@ namespace Descending.Equipment
             t.SetParent(parent);
         }
 
-        public int GetMinimumDamage()
-        {
-            int damage = GetWeaponData().MinDamage;
-            if (GetWeaponData().Projectile != null)
-            {
-                //damage += GetWeaponData().Projectile.MinDamage;
-            }
-
-            return damage;
-        }
-
-        public int GetMaximumDamage()
-        {
-            int damage = GetWeaponData().MaxDamage;
-            if (GetWeaponData().Projectile != null)
-            {
-                //damage += GetWeaponData().Projectile.MaxDamage;
-            }
-
-            return damage;
-        }
-
         public void Use(Unit user, List<Unit> targets)
         {
-            Debug.Log("Using " + DisplayName());
             UsableData usableData = GetUsableData();
 
-            if (usableData == null) return;
-
+            if (usableData == null || _usesLeft <= 0) return;
+            
             usableData.Use(user, targets);
+            Use(1);
+            //Debug.Log("Used " + DisplayName());
+        }
+
+        public void Use(int uses)
+        {
+            _usesLeft -= uses;
         }
     }
 }

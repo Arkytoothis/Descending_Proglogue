@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,50 +11,24 @@ namespace Descending.Units
 {
     public class ActionController : MonoBehaviour
     {
-        [SerializeField] private Transform _projectileSpawnPoint = null;
         [SerializeField] private List<BaseAction> _actions = null;
         
         private Unit _unit = null;
         
         public List<BaseAction> Actions => _actions;
-        
-        public void Setup(Unit unit)
+
+        private void Awake()
         {
-            _unit = unit;
-            _actions = GetComponents<BaseAction>().ToList();
+            _unit = GetComponentInParent<Unit>();
+        }
 
-            foreach (Ability power in _unit.Abilities.MemorizedPowers)
-            {
-                AbilityAction abilityAction = gameObject.AddComponent<AbilityAction>();
-                abilityAction.SetAbility(power, _projectileSpawnPoint);
-                _actions.Add(abilityAction);
-            }
+        public void SetupActions()
+        {
+            _actions = new List<BaseAction>();
 
-            foreach (Ability spell in _unit.Abilities.MemorizedSpells)
-            {
-                AbilityAction abilityAction = gameObject.AddComponent<AbilityAction>();
-                abilityAction.SetAbility(spell, _projectileSpawnPoint);
-                _actions.Add(abilityAction);
-            }
-
-            foreach (Item accessory in _unit.Inventory.Accessories)
-            {
-                if (accessory != null)
-                {
-                    if (accessory.GetUsableData().UsableType == UsableTypes.Bomb)
-                    {
-                        ThrowAction throwAction = gameObject.AddComponent<ThrowAction>();
-                        throwAction.SetItem(accessory, _projectileSpawnPoint);
-                        _actions.Add(throwAction);
-                    }
-                    else
-                    {
-                        ItemAction itemAction = gameObject.AddComponent<ItemAction>();
-                        itemAction.SetItem(accessory, _projectileSpawnPoint);
-                        _actions.Add(itemAction);
-                    }
-                }
-            }
+            SetupDefaultActions();
+            SetupAbilityActions();
+            SetupItemActions();
         }
 
         public T GetAction<T>() where T : BaseAction
@@ -67,6 +42,69 @@ namespace Descending.Units
             }
 
             return null;
+        }
+
+        private void SetupDefaultActions()
+        {
+            MeleeAttackAction meleeAction = gameObject.AddComponent<MeleeAttackAction>();
+            _actions.Add(meleeAction);
+            
+            RangedAttackAction rangedAction = gameObject.AddComponent<RangedAttackAction>();
+            _actions.Add(rangedAction);
+            
+            MoveAction moveAction = gameObject.AddComponent<MoveAction>();
+            _actions.Add(moveAction);
+            
+            JumpAction jumpAction = gameObject.AddComponent<JumpAction>();
+            _actions.Add(jumpAction);
+            
+            InteractAction interactAction = gameObject.AddComponent<InteractAction>();
+            _actions.Add(interactAction);
+            
+            SearchAction searchAction = gameObject.AddComponent<SearchAction>();
+            _actions.Add(searchAction);
+        }
+
+        private void SetupAbilityActions()
+        {
+            foreach (Ability power in _unit.Abilities.MemorizedPowers)
+            {
+                AbilityAction abilityAction = gameObject.AddComponent<AbilityAction>();
+                abilityAction.SetAbility(power);
+                _actions.Add(abilityAction);
+            }
+            
+            foreach (Ability spell in _unit.Abilities.MemorizedSpells)
+            {
+                AbilityAction abilityAction = gameObject.AddComponent<AbilityAction>();
+                abilityAction.SetAbility(spell);
+                _actions.Add(abilityAction);
+            }
+        }
+
+        private void SetupItemActions()
+        {
+            int index = 0;
+            foreach (Item accessory in _unit.Inventory.Accessories)
+            {
+                if (accessory != null && accessory.ItemDefinition.Key != "")
+                {
+                    if (accessory.GetUsableData().UsableType == UsableTypes.Bomb)
+                    {
+                        ThrowAction throwAction = gameObject.AddComponent<ThrowAction>();
+                        throwAction.SetItem(accessory, index);
+                        _actions.Add(throwAction);
+                    }
+                    else
+                    {
+                        ItemAction itemAction = gameObject.AddComponent<ItemAction>();
+                        itemAction.SetItem(accessory, index);
+                        _actions.Add(itemAction);
+                    }
+                }
+
+                index++;
+            }
         }
     }
 }

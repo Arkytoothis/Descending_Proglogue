@@ -32,7 +32,7 @@ namespace Descending.Units
             _treasureDropped = false;
             
             _attributes.Setup(_definition);
-            _actionController.Setup(this);
+            _actionController.SetupActions();
             
             if(_definition.MeleeWeapon.Item != null)
             {
@@ -52,7 +52,7 @@ namespace Descending.Units
 
             UnitManager.Instance.UnitSpawned(this);
             Deactivate();
-        }
+        } 
         
         public void DropTreasure()
         {
@@ -144,12 +144,12 @@ namespace Descending.Units
             }
         }
         
-        public override void Damage(GameObject attacker, int damage)
+        public override void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital)
         {
             if (_isAlive == false) return;
             
             CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
-            _healthSystem.TakeDamage(attacker, damage);
+            _healthSystem.TakeDamage(attacker, damage, vital);
             
             if (GetHealth() <= 0)
             {
@@ -179,7 +179,7 @@ namespace Descending.Units
 
         public override void SpendActionPoints(int actionPointCost)
         {
-            _attributes.ModifyVital("Actions", actionPointCost);
+            _attributes.ModifyVital("Actions", actionPointCost, true);
             _worldPanel.UpdateActionPoints(this);
         }
     }

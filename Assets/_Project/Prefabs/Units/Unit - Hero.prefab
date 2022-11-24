@@ -214,12 +214,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3374014569290712328}
   - component: {fileID: 8174846910021824058}
-  - component: {fileID: 5894460593112489360}
-  - component: {fileID: 2650041759746428569}
-  - component: {fileID: 7828791984210203853}
-  - component: {fileID: 5831324631987585263}
-  - component: {fileID: 4543439512264701131}
-  - component: {fileID: 4683400330594419712}
   m_Layer: 7
   m_Name: Action Controller
   m_TagString: Untagged
@@ -254,105 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc038e650d8869c4c95f7aee3a9b1775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileSpawnPoint: {fileID: 2309567416013539528}
   _actions: []
---- !u!114 &5894460593112489360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02dd2a2720fff6c42a4f6b4cba2a8254, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: b0ecde0e45aac484b8033dba872a78e8, type: 3}
-  _unitAnimator: {fileID: 5809406156201576434}
-  _meleeRange: 1
-  _preHitTime: 0.7
-  _postHitTime: 0.5
-  _rotationSpeed: 10
---- !u!114 &2650041759746428569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d100d2053409e641917026398875da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: bc69f9291949ac14d8aa00c5bc0bab0b, type: 3}
-  _unitAnimator: {fileID: 5809406156201576434}
-  _projectileSpawnPoint: {fileID: 2309567416013539528}
-  _shootingStateTime: 2
-  _cooldownStateTime: 0.5
-  _aimingStateTime: 0.2
-  _rotationSpeed: 10
-  _spawnProjectileDelay: 1
-  _maxShootDistance: 0
---- !u!114 &7828791984210203853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8aeec8c492692943855ad8a17ff025c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 2986fece11e366e43aa063ab610dff01, type: 3}
-  _unitAnimator: {fileID: 5809406156201576434}
-  _moveSpeed: 4
-  _stoppingDistance: 0.1
-  _rotationSpeed: 20
-  _maxMoveDistance: 3
---- !u!114 &5831324631987585263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6d885d01d06434aa5a0d640b6822aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 8d6f6fd7ef0a07b40b2bf4f949292e8e, type: 3}
---- !u!114 &4543439512264701131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc90eaf3d52706745ac2fbbdd67a22ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 4d6d57a8d6d2d8f4694795b22b8b1fcf, type: 3}
-  _interactRange: 1
---- !u!114 &4683400330594419712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249646892155087166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b33175a9516a62d4893789ca944d52b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 50538709cc8506d499474204e7fd6195, type: 3}
 --- !u!1 &1379592714488739915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3796,7 +3692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

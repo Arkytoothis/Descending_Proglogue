@@ -21,24 +21,40 @@ namespace Descending.Units
             _attributes = attributes;
         }
         
-        public void TakeDamage(GameObject attacker, int amount)
+        public void TakeDamage(GameObject attacker, int amount, string vital)
         {
             _attacker = attacker;
-            _attributes.GetVital("Life").Damage(amount);
+            int damageLeft = amount;
+            
+            if (_attributes.GetVital("Armor").Current > 0) 
+            {
+                int armorDamage = Math.Min(damageLeft, _attributes.GetVital("Armor").Current);
+                _attributes.GetVital("Armor").Damage(armorDamage, true);
+                damageLeft -= armorDamage;
+            } 
+
+            if (damageLeft > 0)
+            {
+                _attributes.GetVital(vital).Damage(damageLeft, false);
+            }
+
             _worldPanel.UpdateHealth(this);
+            UnitManager.Instance.SyncHeroes();
             //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
         }
 
         public void UseResource(string vital, int amount)
         {
-            _attributes.GetVital(vital).Damage(amount);
+            _attributes.GetVital(vital).Damage(amount, true);
             _worldPanel.UpdateHealth(this);
+            UnitManager.Instance.SyncHeroes();
         }
 
         public void RestoreVital(string vital, int amount)
         {
             _attributes.GetVital(vital).Restore(amount);
             _worldPanel.UpdateHealth(this);
+            UnitManager.Instance.SyncHeroes();
         }
 
         public float GetVitalNormalized(string vitalKey)

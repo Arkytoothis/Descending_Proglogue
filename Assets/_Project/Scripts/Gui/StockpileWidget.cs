@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Units;
 using ScriptableObjectArchitecture;
 using TMPro;
 using UnityEngine;
@@ -32,7 +33,15 @@ namespace Descending.Gui
             if (_item != null)
             {
                 _iconImage.sprite = item.Icon;
-                _stackSizeLabel.SetText("1");
+
+                if (_item.UsesLeft > 0)
+                {
+                    _stackSizeLabel.SetText(_item.UsesLeft + "/" + _item.MaxUses);
+                }
+                else
+                {
+                    _stackSizeLabel.SetText(_item.StackSize.ToString());
+                }
             }
             else
             {
@@ -65,6 +74,8 @@ namespace Descending.Gui
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (_item == null || _item.ItemDefinition.Key == "") return;
+            
             DragCursor.Instance.BeginDrag(eventData, this);
         }
 
@@ -85,8 +96,20 @@ namespace Descending.Gui
                     
                     StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, _index);
                     SetItem(DragCursor.Instance.DragItem);
-                    
-                    StockpileManager.Instance.SetItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
+
+                    if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
+                    {
+                        StockpileManager.Instance.SetItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
+                    }
+                    else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(EquippedItemWidget))
+                    {
+                        UnitManager.Instance.SelectedHero.Inventory.EquipItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
+                    }
+                    else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(AccessoryWidget))
+                    {
+                        UnitManager.Instance.SelectedHero.Inventory.EquipAccessory(tempItem, DragCursor.Instance.StartDragWidget.Index);
+                    }
+
                     DragCursor.Instance.StartDragWidget.SetItem(tempItem);
                 }
                 else
@@ -94,11 +117,25 @@ namespace Descending.Gui
                     StockpileManager.Instance.SetItem(DragCursor.Instance.DragItem, _index);
                     SetItem(DragCursor.Instance.DragItem);
 
-                    StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
-                    DragCursor.Instance.StartDragWidget.Clear();
+                    if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
+                    {
+                        StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+                    }
+                    else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(EquippedItemWidget))
+                    {
+                        UnitManager.Instance.SelectedHero.Inventory.UnequipItem(DragCursor.Instance.StartDragWidget.Index, false);
+                    }
+                    else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(AccessoryWidget))
+                    {
+                        UnitManager.Instance.SelectedHero.Inventory.ClearAccessory(DragCursor.Instance.StartDragWidget.Index);
+                    }
                 }
-                
+
+                DragCursor.Instance.StartDragWidget.Clear();
                 DragCursor.Instance.EndDrag(eventData);
+                StockpileManager.Instance.SyncStockpile();
+                UnitManager.Instance.SyncHeroes();
+                UnitManager.Instance.RefreshSelectedHero();
             }
         }
     }

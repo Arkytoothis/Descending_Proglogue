@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Descending.Abilities;
 using Descending.Attributes;
 using Descending.Combat;
+using Descending.Core;
 using Descending.Equipment;
 using Descending.Gui;
 using Descending.Tiles;
@@ -63,7 +64,7 @@ namespace Descending.Units
         public abstract string GetShortName();
         public abstract Item GetMeleeWeapon();
         public abstract Item GetRangedWeapon();
-        public abstract void Damage(GameObject attacker, int damage);
+        public abstract void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital);
         public abstract void RestoreVital(string vital, int damage);
         public abstract void UseResource(string vital, int damage);
         protected abstract void Dead();

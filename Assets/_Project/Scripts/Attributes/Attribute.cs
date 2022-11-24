@@ -61,11 +61,11 @@ namespace Descending.Attributes
             _current += value;
         }
         
-        public void Damage(int amount)
+        public void Damage(int amount, bool resetToZero)
         {
             _current -= amount;
 
-            //if (_current < 0) _current = 0;
+            if (resetToZero && _current < 0) _current = 0;
         }
 
         public void Restore(int amount)

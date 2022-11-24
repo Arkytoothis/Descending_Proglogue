@@ -126,7 +126,9 @@ namespace Descending.Attributes
                                   (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
             _vitals["Magic"].Setup(Random.Range(_raceDefinition.StartingVitals["Magic"].MinimumValue, _raceDefinition.StartingVitals["Magic"].MinimumValue + 1) + 
                                   (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            
             _vitals["Actions"].Setup(Random.Range(_raceDefinition.StartingVitals["Actions"].MinimumValue, _raceDefinition.StartingVitals["Actions"].MinimumValue + 1));
+            _vitals["Armor"].Setup(Random.Range(_raceDefinition.StartingVitals["Armor"].MinimumValue, _raceDefinition.StartingVitals["Armor"].MinimumValue + 1));
 
             CalculateVitalModifiers();
             
@@ -193,7 +195,7 @@ namespace Descending.Attributes
                 
                 if (wearableData != null)
                 {
-                    _vitals["Armor"].Modify(wearableData.Armor);
+                    _vitals["Armor"].AddValue(wearableData.Armor);
                 }
             }
             
@@ -284,9 +286,9 @@ namespace Descending.Attributes
             GetVital("Actions").Refresh();
         }
 
-        public void ModifyVital(string key, int amount)
+        public void ModifyVital(string key, int amount, bool resetToZero)
         {
-            _vitals[key].Damage(amount);
+            _vitals[key].Damage(amount, resetToZero);
         }
     }
 

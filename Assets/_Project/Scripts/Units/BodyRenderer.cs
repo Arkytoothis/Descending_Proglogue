@@ -472,6 +472,34 @@ namespace Descending.Units
             go.GetComponent<SkinnedMeshRenderer>().sharedMaterial.SetColor(parameter, color);
         }
 
+        public void UnequipItem(Item item, int slot)
+        {
+            if ((EquipmentSlots)slot == EquipmentSlots.Melee_Weapon)
+            {
+                _rightHandMount.ClearTransform();
+            }
+            else if((EquipmentSlots)slot == EquipmentSlots.Ranged_Weapon)
+            {
+                _leftHandMount.ClearTransform();
+            }
+            else if((EquipmentSlots)slot == EquipmentSlots.Off_Weapon)
+            {
+                _leftHandMount.ClearTransform();
+            }
+            else if((EquipmentSlots)slot == EquipmentSlots.Ammo)
+            {
+                //_leftHandMount.ClearTransform();
+            }
+            else
+            {
+                foreach (var renderSlot in item.RenderSlots)
+                {
+                    SetChildrenEnabled(renderSlot.BodyPart, false);
+                    SetPartEnabled(renderSlot.BodyPart, 0, true);  
+                }
+            }
+        }
+        
         public void EquipItem(Item item, bool portrait)
         {
             if (item.ItemDefinition.Category == ItemCategory.Weapons)

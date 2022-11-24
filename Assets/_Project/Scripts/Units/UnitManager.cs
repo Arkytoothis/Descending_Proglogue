@@ -159,6 +159,11 @@ namespace Descending.Units
             ActionManager.Instance.SetSelectedAction(_selectedHero.GetAction<MoveAction>());
             onSelectHero.Invoke(_selectedHero.gameObject);
         }
+
+        public void RefreshSelectedHero()
+        {
+            SelectHero(_selectedHero);
+        }
         
         public void SelectHero(HeroUnit hero)
         {

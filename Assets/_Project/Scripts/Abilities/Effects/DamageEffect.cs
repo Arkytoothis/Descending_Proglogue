@@ -13,11 +13,13 @@ namespace Descending.Abilities
     {
         [SerializeField] private DamageTypeDefinition _damageType = null;
         [SerializeField] private AttributeDefinition _attribute = null;
+        [SerializeField] private DamageClasses _damageClass = DamageClasses.None;
         [SerializeField] private int _minimumValue = 0;
         [SerializeField] private int _maximumValue = 0;
 
         public DamageTypeDefinition DamageType => _damageType;
         public AttributeDefinition Attribute => _attribute;
+        public DamageClasses DamageClass => _damageClass;
         public int MinimumValue => _minimumValue;
         public int MaximumValue => _maximumValue;
 

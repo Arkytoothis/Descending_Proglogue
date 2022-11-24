@@ -34,7 +34,13 @@ namespace Descending.Units
         public Unit TargetUnit => _targetUnit;
         public int MaxShootDistance => _maxShootDistance;
 
-
+        protected override void Awake()
+        {
+            _unit = GetComponentInParent<Unit>();
+            _unitAnimator = _unit.UnitAnimator;
+            _projectileSpawnPoint = _unit.ProjectileSpawnPoint;
+        }
+        
         private void Update()
         {
             if (_isActive == false) return;

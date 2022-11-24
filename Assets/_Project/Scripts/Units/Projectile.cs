@@ -10,12 +10,12 @@ namespace Descending.Units
 {
     public class Projectile : MonoBehaviour
     {
+        [SerializeField] private ProjectileDefinition _definition;
         [SerializeField] private AnimationCurve _arcCurve;
         [SerializeField] private TrailRenderer _trailRenderer = null;
         [SerializeField] private GameObject _hitEffectPrefab = null;
         [SerializeField] private float _force = 300f;
         [SerializeField] private float _minimumDistance = 0.2f;
-        [SerializeField] private AbilityEffects _hitEffects = null;
 
         private Unit _sourceUnit;
         private Unit _targetUnit;
@@ -83,7 +83,7 @@ namespace Descending.Units
             
             if (distanceAfterMoving < _minimumDistance && _destroyed == false)
             {
-                foreach (AbilityEffect hitEffect in _hitEffects.Data)
+                foreach (DamageEffect hitEffect in _definition.DamageEffects)
                 {
                     hitEffect.Process(_sourceUnit, new List<Unit>{ _targetUnit });
                 }

@@ -17,6 +17,12 @@ namespace Descending.Units
         private List<Vector3> _pathList;
         private int _currentPositionIndex; 
         
+        protected override void Awake()
+        {
+            _unit = GetComponentInParent<Unit>();
+            _unitAnimator = _unit.UnitAnimator;
+        }
+        
         public override string GetName()
         {
             return "M";

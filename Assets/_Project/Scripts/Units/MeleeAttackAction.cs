@@ -25,6 +25,12 @@ namespace Descending.Units
         
         public int MeleeRange => _meleeRange;
 
+        protected override void Awake()
+        {
+            _unit = GetComponentInParent<Unit>();
+            _unitAnimator = _unit.UnitAnimator;
+        }
+
         private void Update()
         {
             if (!_isActive) return;
@@ -66,11 +72,6 @@ namespace Descending.Units
                     _state = States.Post_Hit;
                     _stateTimer = _postHitTime;
                     CombatCalculator.ProcessAttack(_unit, _targetUnit);
-                    // Item meleeWeapon = _unit.GetMeleeWeapon();
-                    // WeaponData weaponData = meleeWeapon.GetWeaponData();
-                    //
-                    // int damage = Random.Range(weaponData.MinDamage, weaponData.MaxDamage + 1);
-                    // _targetUnit.Damage(_unit.gameObject, damage);
                     break;
                 case States.Post_Hit:
                     

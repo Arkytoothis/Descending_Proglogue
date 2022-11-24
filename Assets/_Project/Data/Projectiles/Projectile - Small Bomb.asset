@@ -16,3 +16,10 @@ MonoBehaviour:
   DamageType: {fileID: 11400000, guid: 286982a59b92c254aaa4f6a5dff67682, type: 2}
   DamageClass: 1
   Speed: 15
+  DamageEffects:
+  - _affects: 1
+    _damageType: {fileID: 11400000, guid: 286982a59b92c254aaa4f6a5dff67682, type: 2}
+    _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+    _damageClass: 4
+    _minimumValue: 5
+    _maximumValue: 20

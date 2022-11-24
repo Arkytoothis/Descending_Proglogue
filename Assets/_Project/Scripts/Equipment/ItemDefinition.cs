@@ -101,8 +101,8 @@ namespace Descending.Equipment
 
             if (_weaponData.HasData == true)
             {
-                sb.Append("Damage Type: " + _weaponData.DamageType + "\n");
-                sb.Append("Damage: " + _weaponData.MinDamage + "-" + _weaponData.MaxDamage + "\n");
+                //sb.Append("Damage Type: " + _weaponData.get + "\n");
+                //sb.Append("Damage: " + _weaponData.MinDamage + "-" + _weaponData.MaxDamage + "\n");
                 sb.Append("Range: " + _weaponData.Range + "\n");
                 sb.Append("Delay: " + _weaponData.ProjectileDelay + "\n");
                 sb.Append("Weapon Type: " + _weaponData.WeaponType + "\n");

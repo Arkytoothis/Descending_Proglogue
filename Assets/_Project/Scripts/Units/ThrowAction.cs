@@ -9,14 +9,21 @@ namespace Descending.Units
 {
     public class ThrowAction : BaseAction
     {
-        [SerializeField] private UnitAnimator _unitAnimator = null;
         [SerializeField] private int _range = 0;
 
+        private UnitAnimator _unitAnimator = null;
         private Item _item = null;
-        private Transform _projectileSpawnPoint;
+        private int _itemIndex;
         
         public int Range => _range;
+        public Item Item => _item;
 
+        protected override void Awake()
+        {
+            _unit = GetComponentInParent<Unit>();
+            _unitAnimator = _unit.UnitAnimator;
+        }
+        
         private void Update()
         {
             if (!_isActive) return;
@@ -31,13 +38,12 @@ namespace Descending.Units
             }
         }
         
-        public void SetItem(Item item, Transform projectileSpawnPoint)
+        public void SetItem(Item item, int index)
         {
             _item = item;
+            _itemIndex = index;
             _icon = _item.ItemDefinition.Icon;
-            _unitAnimator = _unit.UnitAnimator;
             _range = 1;
-            _projectileSpawnPoint = projectileSpawnPoint;
         }
         
         public override string GetName()
@@ -51,7 +57,18 @@ namespace Descending.Units
             ActionStart(onThrowComplete);
             GameObject clone = Instantiate(_item.GetUsableData().Projectile.Prefab, _unit.transform.position, Quaternion.identity);
             ThrowableProjectile projectile = clone.GetComponent<ThrowableProjectile>();
-            projectile.Setup(_unit, mapPosition, OnThrowComplete);
+            projectile.Setup(_unit, mapPosition, OnThrowComplete, projectile.DamageType, projectile.Attribute);
+            
+            _item.Use(1);
+            
+            if (_item.UsesLeft <= 0)
+            {
+                _unit.Inventory.ClearAccessory(_itemIndex);
+            }
+            
+            UnitManager.Instance.SelectedHero.ActionController.SetupActions();
+            UnitManager.Instance.SyncHeroes();
+            UnitManager.Instance.RefreshSelectedHero();
         }
 
         public override List<MapPosition> GetValidActionGridPositions()

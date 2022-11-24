@@ -39,13 +39,18 @@ namespace Descending.Units
         public int Range => _range;
         public Ability Ability => _ability;
 
-        public void SetAbility(Ability ability, Transform projectileSpawnPoint)
+        protected override void Awake()
+        {
+            _unit = GetComponentInParent<Unit>();
+            _unitAnimator = _unit.UnitAnimator;
+            _projectileSpawnPoint = _unit.ProjectileSpawnPoint;
+        }
+        
+        public void SetAbility(Ability ability)
         {
             _ability = ability;
             _icon = _ability.Definition.Icon;
-            _unitAnimator = _unit.UnitAnimator;
             _range = _ability.Definition.Range;
-            _projectileSpawnPoint = projectileSpawnPoint;
         }
         
         private void Update()

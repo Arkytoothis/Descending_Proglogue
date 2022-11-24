@@ -195,26 +195,40 @@ namespace Descending.Equipment
         
         public void EquipAccessory(Item item, int slot)
         {
-            if (_accessories[slot] != null)
-            {
-                UnequipAccessory(slot);
-            }
-            
             _accessories[slot] = new Item(item);
         }
 
-        public void UnequipItem(int slot)
+        public void UnequipItem(int slot, bool addToStockpile)
         {
-            StockpileManager.Instance.AddItem(_equipment[slot]);
+            if (_portraitBody != null)
+            {
+                _portraitBody.UnequipItem(_equipment[slot], slot);
+            }
+
+            if (_worldBody != null)
+            {
+                _worldBody.UnequipItem(_equipment[slot], slot);
+            }
+
+            if (addToStockpile == true)
+            {
+                StockpileManager.Instance.AddItem(_equipment[slot]);
+            }
+            
             _equipment[slot] = null;
-            StockpileManager.Instance.SyncStockpile();
+            
+            _attributes.CalculateAttributes();
         }
         
         public void UnequipAccessory(int slot)
         {
             StockpileManager.Instance.AddItem(_accessories[slot]);
             _accessories[slot] = null;
-            StockpileManager.Instance.SyncStockpile();
+        }
+
+        public void ClearAccessory(int slot)
+        {
+            _accessories[slot] = null;
         }
         
         public Item GetCurrentWeapon()

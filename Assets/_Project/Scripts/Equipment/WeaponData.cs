@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using DarkTonic.MasterAudio;
+using Descending.Abilities;
+using Descending.Combat;
 using Descending.Core;
 using UnityEngine;
 
@@ -12,15 +14,12 @@ namespace Descending.Equipment
     {
         [SerializeField] private bool _hasData = true;
         [SerializeField] private WeaponTypes _weaponType = WeaponTypes.None;
-        [SerializeField] private DamageClasses _damageClass = DamageClasses.None;
         [SerializeField] private int _range = 1;
         [SerializeField] private float _projectileDelay = 1f;
-        [SerializeField] private DamageTypeDefinition _damageType = null;
-        [SerializeField] private int _minDamage = 0;
-        [SerializeField] private int _maxDamage = 0;
         [SerializeField] private ProjectileDefinition _projectile = null;
         [SerializeField] private GameObject _attackEffectPrefab = null;
         [SerializeField] private AnimatorOverrideController _animatorOverride = null;
+        [SerializeReference] private List<DamageEffect> damageEffects = null;
 
         [SoundGroup] public List<string> HitSounds;
         [SoundGroup] public List<string> MissSounds;
@@ -28,14 +27,12 @@ namespace Descending.Equipment
         public bool HasData => _hasData;
         public ProjectileDefinition Projectile => _projectile;
         public WeaponTypes WeaponType => _weaponType;
-        public DamageClasses DamageClass => _damageClass;
         public int Range => _range;
         public float ProjectileDelay => _projectileDelay;
-        public DamageTypeDefinition DamageType => _damageType;
-        public int MinDamage => _minDamage;
-        public int MaxDamage => _maxDamage;
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
         public GameObject AttackEffectPrefab => _attackEffectPrefab;
+        public List<DamageEffect> DamageEffects => damageEffects;
+
 
         public WeaponData(WeaponData weaponData)
         {
@@ -44,10 +41,7 @@ namespace Descending.Equipment
             _range = weaponData._range;
             _weaponType = weaponData._weaponType;
             _animatorOverride = weaponData.AnimatorOverride;
-            _damageType = weaponData._damageType;
-            _minDamage = weaponData._minDamage;
-            _maxDamage = weaponData._maxDamage;
-            _damageType = weaponData._damageType;
+            damageEffects = weaponData.damageEffects;
         }
 
         public string GetTooltipText()
@@ -58,15 +52,10 @@ namespace Descending.Equipment
             sb.Append(_range);
             sb.AppendLine();
 
-            sb.Append(_minDamage);
-            sb.Append("-");
-            sb.Append(_maxDamage);
-            sb.Append(" ");
-
-            if (_damageType != null)
+            foreach (DamageEffect attack in damageEffects)
             {
-                sb.Append(_damageType.Name);
-                sb.Append(" damage");
+                sb.Append(attack.MinimumValue).Append("-").Append(attack.MaximumValue).Append(" ");
+                sb.Append(attack.DamageType.Name).Append(" damage (").Append(attack.DamageClass).Append(")").AppendLine();
             }
 
             return sb.ToString();
@@ -79,15 +68,11 @@ namespace Descending.Equipment
             sb.Append("Range ");
             sb.Append(_range);
             sb.AppendLine();
-            sb.Append(_minDamage);
-            sb.Append("-");
-            sb.Append(_maxDamage);
-            sb.Append(" ");
-
-            if (_damageType != null)
+            
+            foreach (DamageEffect attack in damageEffects)
             {
-                sb.Append(_damageType.Name);
-                sb.Append(" damage");
+                sb.Append(attack.MinimumValue).Append("-").Append(attack.MaximumValue).Append(" ");
+                sb.Append(attack.DamageType.Name).Append(" damage (").Append(attack.DamageClass).Append(")").AppendLine();
             }
 
             return sb.ToString();

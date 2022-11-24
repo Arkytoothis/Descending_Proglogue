@@ -62,5 +62,18 @@ namespace Descending.Gui
             _equipmentPanel.DisplayHero(hero);
             _abilitiesPanel.DisplayHero(hero);
         }
+
+        public void OnDisplaySelectedHero(bool b)
+        {
+            HeroUnit hero = UnitManager.Instance.SelectedHero;
+            _detailsPanel.DisplayHero(hero);
+            _characteristicsPanel.DisplayHero(hero);
+            _vitalsPanel.DisplayHero(hero);
+            _statisticsPanel.DisplayHero(hero);
+            _resistancesPanel.DisplayHero(hero);
+            _skillsPanel.DisplayHero(hero);
+            _equipmentPanel.DisplayHero(hero);
+            _abilitiesPanel.DisplayHero(hero);
+        }
     }
 }

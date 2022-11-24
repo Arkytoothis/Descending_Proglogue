@@ -87,8 +87,11 @@ namespace Descending.Abilities
             {
                 foreach (Unit unit in targets)
                 {
-                    int damage = (int)(Random.Range(weaponData.MinDamage + _minDamageModifier, weaponData.MaxDamage + _maxDamageModifier + 1) * _damageMultiplier);
-                    unit.Damage(user.gameObject, damage);
+                    for (int j = 0; j < weaponData.DamageEffects.Count; j++)
+                    {
+                        int damage = (int)(Random.Range(weaponData.DamageEffects[j].MinimumValue + _minDamageModifier, weaponData.DamageEffects[j].MaximumValue + _maxDamageModifier + 1) * _damageMultiplier);
+                        unit.Damage(user.gameObject, weaponData.DamageEffects[j].DamageType, damage, weaponData.DamageEffects[j].Attribute.Key);
+                    }
                 }
                 
                 yield return new WaitForSeconds(_attackDelay);

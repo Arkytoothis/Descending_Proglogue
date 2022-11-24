@@ -31,8 +31,10 @@ namespace Descending.Gui
 
             if (_item != null)
             {
+                UsableData usableData = _item.GetUsableData();
+                
                 _iconImage.sprite = item.Icon;
-                _stackSizeLabel.SetText("1");
+                _stackSizeLabel.SetText(_item.UsesLeft + "/" + usableData.MaxUses);
             }
             else
             {
@@ -57,12 +59,15 @@ namespace Descending.Gui
         {
             onDisplayItemTooltip.Invoke(null);
         }
+        
         public void OnDrag(PointerEventData eventData)
         {
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (_item == null || _item.ItemDefinition.Key == "") return;
+            
             DragCursor.Instance.BeginDrag(eventData, this);
         }
 
@@ -108,7 +113,10 @@ namespace Descending.Gui
                 }
                 
                 DragCursor.Instance.EndDrag(eventData);
+                
+                hero.ActionController.SetupActions();
                 UnitManager.Instance.SyncHeroes();
+                UnitManager.Instance.RefreshSelectedHero();
             }
         }
     }

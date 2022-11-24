@@ -41,16 +41,14 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 0
-    _damageClass: 0
     _range: 1
     _projectileDelay: 0
-    _damageType: {fileID: 11400000, guid: cb9aedaee7f52074ea462916a20afe1a, type: 2}
-    _minDamage: 1
-    _maxDamage: 4
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
       type: 2}
+    damageEffects:
+    - rid: 6849115757289406480
     HitSounds: []
     MissSounds:
     - sword_swing_1
@@ -85,3 +83,12 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 6849115757289406480
+      type: {class: DamageEffect, ns: Descending.Abilities, asm: Reclamation}
+      data:
+        _affects: 1
+        _damageType: {fileID: 11400000, guid: cb9aedaee7f52074ea462916a20afe1a, type: 2}
+        _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+        _damageClass: 1
+        _minimumValue: 2
+        _maximumValue: 7

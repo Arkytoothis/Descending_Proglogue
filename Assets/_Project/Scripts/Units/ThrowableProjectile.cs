@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Attributes;
 using Descending.Interactables;
 using Descending.Tiles;
 using Descending.Core;
@@ -23,24 +24,29 @@ namespace Descending.Units
         [SerializeField] private float _damageRadius = 4f;
         [SerializeField] private int _minimumDamage = 0;
         [SerializeField] private int _maximumDamage = 0;
+        [SerializeField] private AttributeDefinition _attribute = null;
 
         private Action onThrowComplete;
         private Vector3 _targetPosition;
         private Vector3 _positionXZ;
         private float _totalDistance;
-
+        private DamageTypeDefinition _damageType;
         private Unit _sourceUnit;
 
         public Unit SourceUnit => _sourceUnit;
         public float Force => _force;
+        public DamageTypeDefinition DamageType => _damageType;
+        public AttributeDefinition Attribute => _attribute;
 
-        public void Setup(Unit sourceUnit, MapPosition targetMapPosition, Action onThrowComplete)
+        public void Setup(Unit sourceUnit, MapPosition targetMapPosition, Action onThrowComplete, DamageTypeDefinition damageType, AttributeDefinition attribute)
         {
             _sourceUnit = sourceUnit;
             this.onThrowComplete = onThrowComplete;
             _targetPosition = MapManager.Instance.GetWorldPosition(targetMapPosition);
             _positionXZ = new Vector3(transform.position.x, 0, transform.position.z);
             _totalDistance = Vector3.Distance(_positionXZ, _targetPosition);
+            _damageType = damageType;
+            _attribute = attribute;
         }
 
         private void Update()
@@ -61,7 +67,7 @@ namespace Descending.Units
                     if (collidersHit.TryGetComponent<Unit>(out Unit targetUnit))
                     {
                         int damage = Random.Range(_minimumDamage, _maximumDamage + 1);
-                        targetUnit.Damage(gameObject, damage);
+                        targetUnit.Damage(gameObject, _damageType, damage, _attribute.Key);
                     }
                     
                     if (collidersHit.TryGetComponent<Crate>(out Crate crate))

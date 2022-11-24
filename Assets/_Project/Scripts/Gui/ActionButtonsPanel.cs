@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Units;
 using Descending.Core;
-using TMPro;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending
@@ -40,7 +40,6 @@ namespace Descending
 
             foreach (BaseAction action in selectedUnit.ActionController.Actions)
             {
-                
                 GameObject clone = Instantiate(_actionButtonPrefab, _actionButtonsParent);
                 ActionButton actionButton = clone.GetComponent<ActionButton>();
                 actionButton.SetAction(action);
@@ -51,12 +50,20 @@ namespace Descending
                     {
                         actionButton.SetIcon(selectedUnit.GetMeleeWeapon().Icon);
                     }
+                    else
+                    {
+                        actionButton.SetIcon(Database.instance.DefaultMeleeActionIcon);
+                    }
                 }
                 else if (action.GetType() == typeof(RangedAttackAction))
                 {
                     if (selectedUnit.GetRangedWeapon() != null)
                     {
                         actionButton.SetIcon(selectedUnit.GetRangedWeapon().Icon);
+                    }
+                    else
+                    {
+                        actionButton.SetIcon(Database.instance.BlankSprite);
                     }
                 }
                 
@@ -68,11 +75,40 @@ namespace Descending
                     abilityHotkey++;
                     _abilityButtons.Add(actionButton);
                 }
+                else if (action.GetType() == typeof(ThrowAction))
+                {
+                    Item item = ((ThrowAction)action).Item;
+                    UsableData usableData = item.GetUsableData();
+                    actionButton.SetItem(item);
+                    actionButton.SetHotkey(item.UsesLeft + "/" + usableData.MaxUses);
+                    _actionButtons.Add(actionButton);
+                }
                 else if (action.GetType() == typeof(ItemAction))
                 {
-                    actionButton.SetItem(((ItemAction)action).Item);
-                    actionButton.SetHotkey("s" + itemHotkey);
-                    itemHotkey++;
+                    Item item = ((ItemAction)action).Item;
+                    UsableData usableData = item.GetUsableData();
+                    actionButton.SetItem(item);
+                    actionButton.SetHotkey(item.UsesLeft + "/" + usableData.MaxUses);
+                    _actionButtons.Add(actionButton);
+                }
+                else if (action.GetType() == typeof(MoveAction))
+                {
+                    actionButton.SetIcon(Database.instance.MoveActionIcon);
+                    _actionButtons.Add(actionButton);
+                }
+                else if (action.GetType() == typeof(JumpAction))
+                {
+                    actionButton.SetIcon(Database.instance.JumpActionIcon);
+                    _actionButtons.Add(actionButton);
+                }
+                else if (action.GetType() == typeof(InteractAction))
+                {
+                    actionButton.SetIcon(Database.instance.InteractActionIcon);
+                    _actionButtons.Add(actionButton);
+                }
+                else if (action.GetType() == typeof(SearchAction))
+                {
+                    actionButton.SetIcon(Database.instance.SearchActionIcon);
                     _actionButtons.Add(actionButton);
                 }
                 else

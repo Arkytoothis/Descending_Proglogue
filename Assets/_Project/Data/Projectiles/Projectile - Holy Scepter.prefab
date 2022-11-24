@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2855791292a9643a267ed6c1352fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _definition: {fileID: 11400000, guid: 552bf30484fa359408b9237bf2be36c7, type: 2}
   _arcCurve:
     serializedVersion: 2
     m_Curve:
@@ -84,20 +85,6 @@ MonoBehaviour:
     type: 3}
   _force: 300
   _minimumDistance: 0.2
-  _hitEffects:
-    _data:
-    - rid: 6849115550700011542
-  references:
-    version: 2
-    RefIds:
-    - rid: 6849115550700011542
-      type: {class: DamageEffect, ns: Descending.Abilities, asm: Reclamation}
-      data:
-        _affects: 1
-        _damageType: {fileID: 11400000, guid: 5d7179a92e2df0a42adfbf17203b5a58, type: 2}
-        _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
-        _minimumValue: 6
-        _maximumValue: 14
 --- !u!1 &6521511267611007692
 GameObject:
   m_ObjectHideFlags: 0

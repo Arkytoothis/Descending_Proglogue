@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class EquippedItemWidget : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+    public class EquippedItemWidget : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _stackSizeLabel = null;
@@ -59,12 +59,28 @@ namespace Descending.Gui
             onDisplayItemTooltip.Invoke(null);
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_item == null || _item.ItemDefinition.Key == "") return;
+            
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                UnitManager.Instance.SelectedHero.Inventory.UnequipItem(_index, true);
+                Clear();
+                StockpileManager.Instance.SyncStockpile();
+                UnitManager.Instance.SyncHeroes();
+                UnitManager.Instance.RefreshSelectedHero();
+            }
+        }
+        
         public void OnDrag(PointerEventData eventData)
         {
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (_item == null || _item.ItemDefinition.Key == "") return;
+            
             DragCursor.Instance.BeginDrag(eventData, this);
         }
 
@@ -92,7 +108,7 @@ namespace Descending.Gui
                     
                     if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
                     {
-                        StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+                        StockpileManager.Instance.SetItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
                     }
                     
                     DragCursor.Instance.StartDragWidget.SetItem(tempItem);
@@ -111,7 +127,9 @@ namespace Descending.Gui
                 }
                 
                 DragCursor.Instance.EndDrag(eventData);
+                StockpileManager.Instance.SyncStockpile();
                 UnitManager.Instance.SyncHeroes();
+                UnitManager.Instance.RefreshSelectedHero();
             }
         }
     }

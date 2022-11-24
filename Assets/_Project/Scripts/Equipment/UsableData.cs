@@ -52,6 +52,8 @@ namespace Descending.Equipment
         public string GetTooltipText()
         {
             StringBuilder sb = new StringBuilder();
+            
+            sb.Append("Uses: ").Append(_maxUses).AppendLine();
             sb.Append(_effects.GetTooltipText());
             
             return sb.ToString();
@@ -61,8 +63,7 @@ namespace Descending.Equipment
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("Max Uses: ");
-            sb.Append(_maxUses);
+            sb.Append("Uses: ").Append(_maxUses);
 
             return sb.ToString();
         }

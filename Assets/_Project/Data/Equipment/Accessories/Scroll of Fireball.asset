@@ -66,6 +66,7 @@ MonoBehaviour:
     _hasData: 1
     _targetType: 4
     _usableType: 0
+    _uses: 1
     _maxUses: 1
     _range: 8
     _cooldown: 0

@@ -171,6 +171,7 @@ MonoBehaviour:
   _damageRadius: 2
   _minimumDamage: 5
   _maximumDamage: 10
+  _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
 --- !u!1 &9022372738158112516
 GameObject:
   m_ObjectHideFlags: 0

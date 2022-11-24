@@ -20,7 +20,6 @@ namespace Descending.Units
             Cooldown
         };
 
-        [SerializeField] private UnitAnimator _unitAnimator = null;
         [SerializeField] private float _useItemStateTime = 0.1f;
         [SerializeField] private float _cooldownStateTime = 0.5f;
         [SerializeField] private float _aimingStateTime = 1f;
@@ -30,23 +29,30 @@ namespace Descending.Units
         [SerializeField] private int _range = 0;
         [SerializeField] private Item _item = null;
         
+        private UnitAnimator _unitAnimator = null;
         private State _state;
         private float _stateTimer;
         private Unit _targetUnit;
         private bool _canUseAbility;
-        private Transform _projectileSpawnPoint;
+        private int _itemIndex;
         
         public Unit TargetUnit => _targetUnit;
         public int Range => _range;
         public Item Item => _item;
+        public int ItemIndex => _itemIndex;
 
-        public void SetItem(Item item, Transform projectileSpawnPoint)
+        protected override void Awake()
+        {
+            _unit = GetComponentInParent<Unit>();
+            _unitAnimator = _unit.UnitAnimator;
+        }
+        
+        public void SetItem(Item item, int index)
         {
             _item = item;
+            _itemIndex = index;
             _icon = _item.ItemDefinition.Icon;
-            _unitAnimator = _unit.UnitAnimator;
             _range = 1;
-            _projectileSpawnPoint = projectileSpawnPoint;
         }
         
         private void Update()
@@ -180,6 +186,15 @@ namespace Descending.Units
         {
             _unitAnimator.Cast();
             _item.Use(_unit, new List<Unit> { _targetUnit });
+
+            if (_item.UsesLeft <= 0)
+            {
+                _unit.Inventory.ClearAccessory(_itemIndex);
+            }
+            
+            UnitManager.Instance.SelectedHero.ActionController.SetupActions();
+            UnitManager.Instance.SyncHeroes();
+            UnitManager.Instance.RefreshSelectedHero();
         }
         
 

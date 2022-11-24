@@ -35,6 +35,12 @@ namespace Descending.Core
         [SerializeField] private string _worldDataFilePath = "";
         [SerializeField] private string _overworldSpawnFilePath = "";
         [SerializeField] private string _stockpileFilePath = "";
+        
+        [SerializeField] private Sprite _defaultMeleeActionIcon = null;
+        [SerializeField] private Sprite _moveActionIcon = null;
+        [SerializeField] private Sprite _jumpActionIcon = null;
+        [SerializeField] private Sprite _interactActionIcon = null;
+        [SerializeField] private Sprite _searchActionIcon = null;
 
         [SerializeField] private Sprite _blankSprite = null;
 
@@ -54,6 +60,11 @@ namespace Descending.Core
         public EnemyDatabase Enemies => _enemies;
         public GameObject HeroPrefab => _heroPrefab;
         public Sprite BlankSprite => _blankSprite;
+        public Sprite MoveActionIcon => _moveActionIcon;
+        public Sprite JumpActionIcon => _jumpActionIcon;
+        public Sprite InteractActionIcon => _interactActionIcon;
+        public Sprite SearchActionIcon => _searchActionIcon;
+        public Sprite DefaultMeleeActionIcon => _defaultMeleeActionIcon;
         public string PartyDataFilePath => _partyDataFilePath;
         public string TimeDataFilePath => _timeDataFilePath;
         public string ResourceDataFilePath => _resourceDataFilePath;
