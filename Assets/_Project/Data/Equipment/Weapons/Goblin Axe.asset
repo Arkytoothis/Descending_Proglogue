@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
   m_Name: Goblin Axe
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: c908543ba2fecd44e97e641b839166c7, type: 3}
+  _icon: {fileID: 21300000, guid: 01e620ddb420f494d9b3bd8da0c4a992, type: 3}
   _name: Goblin Axe
   _key: Goblin Axe
   _description: 
@@ -90,5 +90,5 @@ MonoBehaviour:
         _damageType: {fileID: 11400000, guid: cb9aedaee7f52074ea462916a20afe1a, type: 2}
         _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
         _damageClass: 1
-        _minimumValue: 2
-        _maximumValue: 7
+        _minimumValue: 1
+        _maximumValue: 4

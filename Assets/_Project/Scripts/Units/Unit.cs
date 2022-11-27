@@ -8,7 +8,6 @@ using Descending.Core;
 using Descending.Equipment;
 using Descending.Gui;
 using Descending.Tiles;
-using ScriptableObjectArchitecture;
 using UnityEngine;
 using Attribute = Descending.Attributes.Attribute;
 
@@ -36,7 +35,7 @@ namespace Descending.Units
         public abstract void SpendActionPoints(int actionPointCost);
         
         protected bool _isEnemy = false;
-        protected HealthSystem _healthSystem;
+        protected DamageSystem _damageSystem;
         protected MapPosition currentMapPosition;
         protected bool _isActive = false;
         protected bool _isAlive = false;
@@ -52,7 +51,7 @@ namespace Descending.Units
         public InventoryController Inventory => _inventory;
         public AbilityController Abilities => _abilities;
         public ActionController ActionController => _actionController;
-        public HealthSystem HealthSystem => _healthSystem;
+        public DamageSystem DamageSystem => _damageSystem;
         public UnitAnimator UnitAnimator => _unitAnimator;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
         public UnitEffects UnitEffects => _unitEffects;
@@ -71,7 +70,7 @@ namespace Descending.Units
         
         private void Awake()
         {
-            _healthSystem = GetComponent<HealthSystem>();
+            _damageSystem = GetComponent<DamageSystem>();
             _isAlive = true;
         }
 
@@ -104,6 +103,16 @@ namespace Descending.Units
         {
             return _attributes.GetVital("Actions");
         }
+
+        public Attribute GetArmor()
+        {
+            return _attributes.GetVital("Armor");
+        }
+
+        public Attribute GetLife()
+        {
+            return _attributes.GetVital("Life");
+        }
         
         public bool TryPerformAction(BaseAction action)
         {
@@ -135,7 +144,7 @@ namespace Descending.Units
                (!_isEnemy && TurnManager.Instance.IsPlayerTurn))
             {
                 _attributes.RefreshActions();
-                _worldPanel.UpdateActionPoints(this);
+                _worldPanel.UpdateActionPoints();
                 _unitEffects.NextTurn();
             }
         }
@@ -167,7 +176,12 @@ namespace Descending.Units
 
         public void RecalculateAttributes()
         {
-            _attributes.CalculateAttributes();
+            _attributes.CalculateModifiers();
+        }
+
+        public void SyncWorldPanel()
+        {
+            _worldPanel.Sync();
         }
     }
 }

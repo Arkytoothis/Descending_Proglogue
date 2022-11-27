@@ -46,15 +46,12 @@ MonoBehaviour:
   _weaponData:
     _hasData: 0
     _weaponType: 0
-    _damageClass: 0
     _range: 0
     _projectileDelay: 0
-    _damageType: {fileID: 0}
-    _minDamage: 0
-    _maxDamage: 0
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
+    damageEffects: []
     HitSounds: []
     MissSounds: []
   _wearableData:

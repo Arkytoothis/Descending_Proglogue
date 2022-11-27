@@ -46,7 +46,7 @@ namespace Descending.Units
                 EquipWeapon(_rangedWeapon);
             }
 
-            _healthSystem.Setup(_attributes);
+            _damageSystem.Setup(this);
             _unitEffects.Setup();
             _worldPanel.Setup(this);
 
@@ -149,7 +149,7 @@ namespace Descending.Units
             if (_isAlive == false) return;
             
             CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
-            _healthSystem.TakeDamage(attacker, damage, vital);
+            _damageSystem.TakeDamage(attacker, damage, vital);
             
             if (GetHealth() <= 0)
             {
@@ -159,12 +159,12 @@ namespace Descending.Units
 
         public override void RestoreVital(string vital, int amount)
         {
-            _healthSystem.RestoreVital(vital, amount);
+            _damageSystem.RestoreVital(vital, amount);
         }
 
         public override void UseResource(string vital, int amount)
         {
-            _healthSystem.UseResource(vital, amount);
+            _damageSystem.UseResource(vital, amount);
         }
 
         protected override void Dead()
@@ -172,7 +172,7 @@ namespace Descending.Units
             _isAlive = false;
             MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
             UnitManager.Instance.UnitDead(this);
-            _ragdollSpawner.Activate(_healthSystem);
+            _ragdollSpawner.Activate(_damageSystem);
             UnitManager.Instance.AwardExperience(_definition.ExpValue);
             Destroy(gameObject);
         }
@@ -180,7 +180,7 @@ namespace Descending.Units
         public override void SpendActionPoints(int actionPointCost)
         {
             _attributes.ModifyVital("Actions", actionPointCost, true);
-            _worldPanel.UpdateActionPoints(this);
+            _worldPanel.UpdateActionPoints();
         }
     }
 }

@@ -22,4 +22,4 @@ MonoBehaviour:
     _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
     _damageClass: 1
     _minimumValue: 1
-    _maximumValue: 5
+    _maximumValue: 4

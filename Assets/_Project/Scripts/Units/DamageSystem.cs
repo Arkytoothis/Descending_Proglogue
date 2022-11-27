@@ -1,24 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Descending.Attributes;
 using Descending.Gui;
 using UnityEngine;
 
 namespace Descending.Units
 {
-    public class HealthSystem : MonoBehaviour
+    public class DamageSystem : MonoBehaviour
     {
-        [SerializeField] private AttributesController _attributes = null;
         [SerializeField] private UnitWorldPanel _worldPanel = null;
 
+        private Unit _unit = null;
         private GameObject _attacker = null;
 
         public GameObject Attacker => _attacker;
 
-        public void Setup(AttributesController attributes)
+        public void Setup(HeroUnit hero)
         {
-            _attributes = attributes;
+            _unit = hero;
+        }
+        
+        public void Setup(EnemyUnit enemy)
+        {
+            _unit = enemy;
         }
         
         public void TakeDamage(GameObject attacker, int amount, string vital)
@@ -26,40 +30,40 @@ namespace Descending.Units
             _attacker = attacker;
             int damageLeft = amount;
             
-            if (_attributes.GetVital("Armor").Current > 0) 
+            if (_unit.Attributes.GetVital("Armor").Current > 0) 
             {
-                int armorDamage = Math.Min(damageLeft, _attributes.GetVital("Armor").Current);
-                _attributes.GetVital("Armor").Damage(armorDamage, true);
+                int armorDamage = Math.Min(damageLeft, _unit.Attributes.GetVital("Armor").Current);
+                _unit.Attributes.GetVital("Armor").Damage(armorDamage, true);
                 damageLeft -= armorDamage;
             } 
 
             if (damageLeft > 0)
             {
-                _attributes.GetVital(vital).Damage(damageLeft, false);
+                _unit.Attributes.GetVital(vital).Damage(damageLeft, false);
             }
 
-            _worldPanel.UpdateHealth(this);
+            _worldPanel.Sync();
             UnitManager.Instance.SyncHeroes();
             //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
         }
 
         public void UseResource(string vital, int amount)
         {
-            _attributes.GetVital(vital).Damage(amount, true);
-            _worldPanel.UpdateHealth(this);
+            _unit.Attributes.GetVital(vital).Damage(amount, true);
+            _worldPanel.Sync();
             UnitManager.Instance.SyncHeroes();
         }
 
         public void RestoreVital(string vital, int amount)
         {
-            _attributes.GetVital(vital).Restore(amount);
-            _worldPanel.UpdateHealth(this);
+            _unit.Attributes.GetVital(vital).Restore(amount);
+            _worldPanel.Sync();
             UnitManager.Instance.SyncHeroes();
         }
 
         public float GetVitalNormalized(string vitalKey)
         {
-            return (float)_attributes.GetVital(vitalKey).Current / _attributes.GetVital(vitalKey).Maximum;
+            return (float)_unit.Attributes.GetVital(vitalKey).TotalCurrent() / _unit.Attributes.GetVital(vitalKey).TotalMaximum();
         }
     }
 }

@@ -12,28 +12,40 @@ namespace Descending.Gui
     public class UnitWorldPanel : MonoBehaviour
     {
         [SerializeField] private TMP_Text _actionPointsLabel = null;
+        [SerializeField] private TMP_Text _armorLabel = null;
+        [SerializeField] private TMP_Text _lifeLabel = null;
         [SerializeField] private Image _armorImage = null;
         [SerializeField] private Image _lifeImage = null;
 
+        private Unit _unit = null;
+        
         public void Setup(Unit unit)
         {
             if (unit == null) return;
+            _unit = unit;
             
-            UpdateActionPoints(unit);
-            UpdateHealth(unit.HealthSystem);
+            UpdateActionPoints();
+            Sync();
         }
 
-        public void UpdateActionPoints(Unit unit)
+        public void UpdateActionPoints()
         {
-            _actionPointsLabel.SetText(unit.GetActions().Current + "/" + unit.GetActions().Maximum);
+            _actionPointsLabel.SetText(_unit.GetActions().Current + "/" + _unit.GetActions().Maximum);
         }
 
-        public void UpdateHealth(HealthSystem healthSystem)
+        public void Sync()
         {
-            if (healthSystem == null) return;
+            if (_unit == null) return;
             
-            _armorImage.fillAmount = healthSystem.GetVitalNormalized("Armor");
-            _lifeImage.fillAmount = healthSystem.GetVitalNormalized("Life");
+            _armorImage.fillAmount = _unit.DamageSystem.GetVitalNormalized("Armor");
+            _lifeImage.fillAmount = _unit.DamageSystem.GetVitalNormalized("Life");
+            _armorLabel.SetText(_unit.GetArmor().TotalCurrent() + "/" + _unit.GetArmor().TotalMaximum());
+            _lifeLabel.SetText(_unit.GetLife().TotalCurrent() + "/" + _unit.GetLife().TotalMaximum());
+        }
+
+        public void OnSyncData(bool b)
+        {
+            Sync();
         }
     }
 }

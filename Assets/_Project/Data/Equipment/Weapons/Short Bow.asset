@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
   m_Name: Short Bow
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 1551455648414af418ff7434405c1338, type: 3}
+  _icon: {fileID: 21300000, guid: a44d26833c4dd934e9a7f1e6c0629107, type: 3}
   _name: Short Bow
   _key: Short Bow
   _description: 
@@ -41,16 +41,13 @@ MonoBehaviour:
   _weaponData:
     _hasData: 1
     _weaponType: 1
-    _damageClass: 1
     _range: 6
     _projectileDelay: 0.75
-    _damageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}
-    _minDamage: 1
-    _maxDamage: 4
     _projectile: {fileID: 11400000, guid: 93e952be948f5c94988af5cf3a5fabbf, type: 2}
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 22100000, guid: e264fc8b7b1b5ab4eae5bc92d53857e2,
       type: 2}
+    damageEffects: []
     HitSounds: []
     MissSounds:
     - sword_swing_1

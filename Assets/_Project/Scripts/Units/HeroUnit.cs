@@ -52,7 +52,7 @@ namespace Descending.Units
             _attributes.CalculateAttributes();
             _abilities.Setup(race, profession, _skills);
             _actionController.SetupActions();
-            _healthSystem.Setup(_attributes);
+            _damageSystem.Setup(this);
             _unitEffects.Setup();
             _worldPanel.Setup(this);
 
@@ -92,7 +92,7 @@ namespace Descending.Units
         {
             if (_isAlive == false) return;
 
-            _healthSystem.TakeDamage(attacker, damage, vital);
+            _damageSystem.TakeDamage(attacker, damage, vital);
             CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
 
             if (GetHealth() <= 0)
@@ -107,7 +107,7 @@ namespace Descending.Units
         {
             if (_isAlive == false) return;
 
-            _healthSystem.RestoreVital(vital, amount);
+            _damageSystem.RestoreVital(vital, amount);
             onSyncParty.Invoke(true);
         }
 
@@ -115,7 +115,7 @@ namespace Descending.Units
         {
             if (_isAlive == false) return;
 
-            _healthSystem.UseResource(vital, amount);
+            _damageSystem.UseResource(vital, amount);
             onSyncParty.Invoke(true);
         }
 
@@ -141,7 +141,7 @@ namespace Descending.Units
         public override void SpendActionPoints(int actionPointCost)
         {
             _attributes.ModifyVital("Actions", actionPointCost, true);
-            _worldPanel.UpdateActionPoints(this);
+            _worldPanel.UpdateActionPoints();
             onSyncParty.Invoke(true);
         }
     }

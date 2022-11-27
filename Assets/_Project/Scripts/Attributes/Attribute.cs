@@ -54,6 +54,16 @@ namespace Descending.Attributes
             _modifier = 0;
             _spent = 0;
         }
+        
+        public void SetMaximum(int maximum)
+        {
+            _maximum = maximum;
+        }
+        
+        public void AddToMaximum(int maximum)
+        {
+            _maximum += maximum;
+        }
 
         public void AddValue(int value)
         {
@@ -78,6 +88,15 @@ namespace Descending.Attributes
         public void Refresh()
         {
             _current = _maximum;
+        }
+
+        public void Reset()
+        {
+            _key = "";
+            _current = 0;
+            _maximum = 0;
+            _modifier = 0;
+            _spent = 0;
         }
 
         public static AttributeDictionary ConvertToDictionary(List<Attribute> list)

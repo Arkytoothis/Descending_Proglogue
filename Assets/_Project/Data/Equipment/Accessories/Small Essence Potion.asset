@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
   m_Name: Small Essence Potion
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 52f591e589ef1c64bb973d4ce47ea57f, type: 3}
+  _icon: {fileID: 21300000, guid: ac445b4641697b540b750f3b8a1f7dc8, type: 3}
   _name: Small Essence Potion
   _key: Small Essence Potion
   _description: 
@@ -40,15 +40,12 @@ MonoBehaviour:
   _weaponData:
     _hasData: 0
     _weaponType: 4
-    _damageClass: 0
     _range: 0
     _projectileDelay: 0
-    _damageType: {fileID: 0}
-    _minDamage: 0
-    _maxDamage: 0
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
+    damageEffects: []
     HitSounds: []
     MissSounds: []
   _wearableData:
@@ -66,7 +63,6 @@ MonoBehaviour:
     _hasData: 1
     _targetType: 2
     _usableType: 0
-    _uses: 3
     _maxUses: 3
     _range: 0
     _cooldown: 0

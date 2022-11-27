@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b08a0d8530dda48b38ac587f1dabd2, type: 3}
   m_Name: Eagle Eye
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: fd1a92a2780902d46a302767a98dd42d, type: 3}
+  _icon: {fileID: 21300000, guid: ddef8402de7a9ce48b71b09a72f847cb, type: 3}
   _abilityType: 0
   _actionType: 4
   _name: Eagle Eye

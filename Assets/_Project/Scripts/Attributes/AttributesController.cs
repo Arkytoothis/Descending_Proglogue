@@ -153,8 +153,18 @@ namespace Descending.Attributes
             _statistics["Critical Damage"].Setup(_raceDefinition.StartingStatistics["Critical Damage"].MinimumValue);
             
             CalculateStatisticModifiers();
-        }
 
+            _vitals["Armor"].Refresh();
+        }
+        
+        public void CalculateModifiers()
+        {
+            ResetModifiers();
+            CalculateCharacteristicModifiers();
+            CalculateVitalModifiers();
+            CalculateStatisticModifiers();
+        }
+        
         public void CalculateCharacteristicModifiers()
         {
             foreach (Item equippedItem in _inventory.Equipment)
@@ -177,6 +187,8 @@ namespace Descending.Attributes
 
         public void CalculateVitalModifiers()
         {
+            _vitals["Armor"].SetMaximum(0);
+            
             foreach (Item equippedItem in _inventory.Equipment)
             {
                 if (equippedItem == null) continue;
@@ -195,7 +207,7 @@ namespace Descending.Attributes
                 
                 if (wearableData != null)
                 {
-                    _vitals["Armor"].AddValue(wearableData.Armor);
+                    _vitals["Armor"].AddToMaximum(wearableData.Armor);
                 }
             }
             
