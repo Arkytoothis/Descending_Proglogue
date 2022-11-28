@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 3898514663855011101}
   - component: {fileID: 3744795400195205478}
   m_Layer: 0
-  m_Name: Ragdoll Enemy
+  m_Name: Ragdoll Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
