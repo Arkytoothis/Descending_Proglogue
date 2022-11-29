@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Party;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Descending.Units
@@ -185,10 +187,34 @@ namespace Descending.Units
                     _heroUnits[i].Deselect();
                 }
             }
+
+            if (ActionManager.Instance != null)
+            {
+                ActionManager.Instance.SetSelectedAction(_selectedHero.GetAction<MoveAction>());
+            }
             
-            ActionManager.Instance.SetSelectedAction(_selectedHero.GetAction<MoveAction>());
             onSelectHero.Invoke(_selectedHero.gameObject);
             
+            //Debug.Log(_selectedHero.GetShortName() + " selected");
+        }
+        
+        public void SelectHeroOverworld(HeroUnit hero)
+        {
+            _selectedHero = hero;
+            
+            for (int i = 0; i < _heroUnits.Count; i++)
+            {
+                if (hero.HeroData.ListIndex == i)
+                {
+                    _heroUnits[i].Select();
+                }
+                else
+                {
+                    _heroUnits[i].Deselect();
+                }
+            }
+            
+            SetPartyLeader(_selectedHero);
             //Debug.Log(_selectedHero.GetShortName() + " selected");
         }
         
@@ -216,6 +242,19 @@ namespace Descending.Units
             
             _heroUnits.Add(heroUnit);
         }
+        
+        private void LoadHeroOverworld(HeroSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.SetupHero(Genders.Male, Database.instance.Races.GetRace(saveData.RaceKey), Database.instance.Profession.GetProfession(saveData.ProfessionKey), saveData.ListIndex);
+            heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            _heroUnits.Add(heroUnit);
+        }
 
         public void HideHeroes(Transform parent)
         {
@@ -225,16 +264,14 @@ namespace Descending.Units
             }
         }
 
-        public void SetPartyLeader(GameObject heroObject)
+        public void SetPartyLeader(HeroUnit hero)
         {
-            HeroUnit hero = heroObject.GetComponent<HeroUnit>();
-
             if (_partyController != null)
             {
                 _partyController.SetPartyLeader(hero.HeroData.ListIndex);
             }
             
-            onSelectHero.Invoke(heroObject);
+            onSelectHero.Invoke(hero.gameObject);
         }
 
         public void AwardExperience(int experience)
@@ -264,6 +301,30 @@ namespace Descending.Units
             }
             
             SyncHeroes();
+        }
+        
+        
+        public void SaveState(string filePath)
+        {
+            PartySaveData saveData = new PartySaveData(_heroUnits);
+            byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
+            File.WriteAllBytes(filePath, bytes);
+        }
+        
+        public void LoadState(string filePath)
+        {
+            if (!File.Exists(filePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(filePath);
+            PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
+
+            _heroesParent.ClearTransform();
+            _heroUnits.Clear();
+            
+            for (int i = 0; i < saveData.Heroes.Length; i++)
+            {
+                LoadHeroOverworld(saveData.Heroes[i]);
+            }
         }
     }
 }

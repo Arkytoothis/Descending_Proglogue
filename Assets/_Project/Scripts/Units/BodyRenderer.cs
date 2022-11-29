@@ -85,17 +85,17 @@ namespace Descending.Units
             _tattooColorIndex = renderer.TattooColorIndex;
         }
 
-        // public void LoadDetails(HeroSaveData saveData)
-        // {
-        //     _headIndex = saveData.HeroData.HeadIndex;
-        //     _hairIndex = saveData.HeroData.HairIndex;
-        //     _eyebrowIndex = saveData.HeroData.EyebrowIndex;
-        //     _facialHairIndex = saveData.HeroData.FacialHairIndex;
-        //     _hairColorIndex = saveData.HeroData.HairColorIndex;
-        //     _eyeColorIndex = saveData.HeroData.EyeColorIndex;
-        //     _skinColorIndex = saveData.HeroData.SkinColorIndex;
-        //     _tattooColorIndex = saveData.HeroData.TattooColorIndex;
-        // }
+        public void LoadDetails(HeroSaveData saveData)
+        {
+            _headIndex = saveData.HeadIndex;
+            _hairIndex = saveData.HairIndex;
+            _eyebrowIndex = saveData.EyebrowIndex;
+            _facialHairIndex = saveData.FacialHairIndex;
+            _hairColorIndex = saveData.HairColorIndex;
+            _eyeColorIndex = saveData.EyeColorIndex;
+            _skinColorIndex = saveData.SkinColorIndex;
+            _tattooColorIndex = saveData.TattooColorIndex;
+        }
         
         public void SetupBody(Genders gender, RaceDefinition race, ProfessionDefinition profession)
         {
@@ -201,57 +201,57 @@ namespace Descending.Units
             }
         }
         
-        // public void LoadBody(HeroSaveData saveData)
-        // {
-        //     RaceDefinition race = Database.instance.Races.GetRace(saveData.HeroData.RaceKey);
-        //     
-        //     SetupParts();
-        //     HideAll();
-        //     _gender = saveData.HeroData.Gender;
-        //     LoadDetails(saveData);
-        //     
-        //     SetPartEnabled(BodyParts.Head, _headIndex, true);
-        //     
-        //     if(race.HairAllowed == true)
-        //         SetPartEnabled(BodyParts.Hair, _hairIndex, true);
-        //     
-        //     if(race.EyebrowsAllowed == true)
-        //         SetPartEnabled(BodyParts.Eyebrows, _eyebrowIndex, true);
-        //
-        //     if (saveData.HeroData.Gender == Genders.Male && Random.Range(0, 100) < race.MaleBeardChance)
-        //         SetPartEnabled(BodyParts.Facial_Hair, _facialHairIndex, true);
-        //
-        //     SetPartEnabled(BodyParts.Torso, 0, true);
-        //     SetPartEnabled(BodyParts.Arm_Left, 0, true);
-        //     SetPartEnabled(BodyParts.Arm_Right, 0, true);
-        //     SetPartEnabled(BodyParts.Wrist_Left, 0, true);
-        //     SetPartEnabled(BodyParts.Wrist_Right, 0, true);
-        //     SetPartEnabled(BodyParts.Hand_Left, 0, true);
-        //     SetPartEnabled(BodyParts.Hand_Right, 0, true);
-        //     SetPartEnabled(BodyParts.Legs, 0, true);
-        //     SetPartEnabled(BodyParts.Foot_Left, 0, true);
-        //     SetPartEnabled(BodyParts.Foot_Right, 0, true);
-        //
-        //     if (_gender == Genders.Male)
-        //     {
-        //         SetSkinColorInstance(race.SkinColors[_skinColorIndex], race.ScarColors[_skinColorIndex],
-        //             race.StubbleColors[_skinColorIndex], race.TattooColors[_tattooColorIndex]);
-        //     }
-        //     else if (_gender == Genders.Female)
-        //     {
-        //         SetSkinColorInstance(race.SkinColors[_skinColorIndex], race.ScarColors[_skinColorIndex],
-        //             race.SkinColors[_skinColorIndex], race.TattooColors[_tattooColorIndex]);
-        //     }
-        //
-        //     SetHairColorInstance(race.HairColors[_hairColorIndex]);
-        //     SetEyeColorInstance(race.EyeColors[_eyeColorIndex]);
-        //     
-        //     if (race.EarIndex > -1)
-        //     {
-        //         _earIndex = race.EarIndex;
-        //         SetPartEnabled(BodyParts.Ears, _earIndex, true);
-        //     }
-        // }
+        public void LoadBody(HeroSaveData saveData)
+        {
+            RaceDefinition race = Database.instance.Races.GetRace(saveData.RaceKey);
+            
+            SetupParts();
+            HideAll();
+            _gender = saveData.Gender;
+            LoadDetails(saveData);
+            
+            SetPartEnabled(BodyParts.Head, _headIndex, true);
+            
+            if(race.HairAllowed == true)
+                SetPartEnabled(BodyParts.Hair, _hairIndex, true);
+            
+            if(race.EyebrowsAllowed == true)
+                SetPartEnabled(BodyParts.Eyebrows, _eyebrowIndex, true);
+        
+            if (saveData.Gender == Genders.Male)
+                SetPartEnabled(BodyParts.Facial_Hair, _facialHairIndex, true);
+        
+            SetPartEnabled(BodyParts.Torso, 0, true);
+            SetPartEnabled(BodyParts.Arm_Left, 0, true);
+            SetPartEnabled(BodyParts.Arm_Right, 0, true);
+            SetPartEnabled(BodyParts.Wrist_Left, 0, true);
+            SetPartEnabled(BodyParts.Wrist_Right, 0, true);
+            SetPartEnabled(BodyParts.Hand_Left, 0, true);
+            SetPartEnabled(BodyParts.Hand_Right, 0, true);
+            SetPartEnabled(BodyParts.Legs, 0, true);
+            SetPartEnabled(BodyParts.Foot_Left, 0, true);
+            SetPartEnabled(BodyParts.Foot_Right, 0, true);
+        
+            if (_gender == Genders.Male)
+            {
+                SetSkinColorInstance(race.SkinColors[_skinColorIndex], race.ScarColors[_skinColorIndex],
+                    race.StubbleColors[_skinColorIndex], race.TattooColors[_tattooColorIndex]);
+            }
+            else if (_gender == Genders.Female)
+            {
+                SetSkinColorInstance(race.SkinColors[_skinColorIndex], race.ScarColors[_skinColorIndex],
+                    race.SkinColors[_skinColorIndex], race.TattooColors[_tattooColorIndex]);
+            }
+        
+            SetHairColorInstance(race.HairColors[_hairColorIndex]);
+            SetEyeColorInstance(race.EyeColors[_eyeColorIndex]);
+            
+            if (race.EarIndex > -1)
+            {
+                _earIndex = race.EarIndex;
+                SetPartEnabled(BodyParts.Ears, _earIndex, true);
+            }
+        }
         
         private void SetupParts()
         {

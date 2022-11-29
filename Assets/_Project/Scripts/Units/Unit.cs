@@ -161,7 +161,10 @@ namespace Descending.Units
 
         public void Deselect()
         {
-            _selectionIndicator.SetActive(false);
+            if (_selectionIndicator != null)
+            {
+                _selectionIndicator.SetActive(false);
+            }
         }
 
         public T GetAction<T>() where T : BaseAction

@@ -91,42 +91,42 @@ namespace Descending.Equipment
             }
         }
         
-        // public void LoadData(BodyRenderer portraitBody, Genders gender, RaceDefinition race, ProfessionDefinition profession, InventorySaveData saveData)
-        // {
-        //     _portraitBody = portraitBody;
-        //     _gender = gender;
-        //     _equipment = new Item[saveData.EquippedItems.Length];
-        //     _accessories = new Item[saveData.Accessories.Length];
-        //     
-        //     for (int i = 0; i < saveData.EquippedItems.Length; i++)
-        //     {
-        //         _equipment[i] = new Item(saveData.EquippedItems[i]);
-        //     }
-        //
-        //     for (int i = 0; i < saveData.Accessories.Length; i++)
-        //     {
-        //         _accessories[i] = new Item(saveData.Accessories[i]);
-        //     }
-        //     
-        //     for (int i = 0; i < saveData.EquippedItems.Length; i++)
-        //     {
-        //         if (saveData.EquippedItems[i].Key == "" || saveData.EquippedItems[i].ItemDefinition.Key == "") continue;
-        //         
-        //         EquipItem(saveData.EquippedItems[i]);
-        //     }
-        //
-        //     if (profession.PrefersRanged == false)
-        //     {
-        //         _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon]);
-        //         _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon]);
-        //         _currentWeapon = _equipment[(int) EquipmentSlots.Melee_Weapon];
-        //     }
-        //     else
-        //     {
-        //         _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon]);
-        //         _currentWeapon = _equipment[(int) EquipmentSlots.Ranged_Weapon];
-        //     }
-        // }
+        public void LoadData(BodyRenderer portraitBody, Genders gender, RaceDefinition race, ProfessionDefinition profession, InventorySaveData saveData)
+        {
+            _portraitBody = portraitBody;
+            _gender = gender;
+            _equipment = new Item[saveData.EquippedItems.Length];
+            _accessories = new Item[saveData.Accessories.Length];
+            
+            for (int i = 0; i < saveData.EquippedItems.Length; i++)
+            {
+                _equipment[i] = new Item(saveData.EquippedItems[i]);
+            }
+        
+            for (int i = 0; i < saveData.Accessories.Length; i++)
+            {
+                _accessories[i] = new Item(saveData.Accessories[i]);
+            }
+            
+            for (int i = 0; i < saveData.EquippedItems.Length; i++)
+            {
+                if (saveData.EquippedItems[i].Key == "" || saveData.EquippedItems[i].ItemDefinition.Key == "") continue;
+                
+                EquipItem(saveData.EquippedItems[i]);
+            }
+        
+            if (profession.PrefersRanged == false)
+            {
+                _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon], true);
+                _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon], true);
+                _currentWeapon = _equipment[(int) EquipmentSlots.Melee_Weapon];
+            }
+            else
+            {
+                _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon], true);
+                _currentWeapon = _equipment[(int) EquipmentSlots.Ranged_Weapon];
+            }
+        }
         
         public void EquipItem(Item item)
         {

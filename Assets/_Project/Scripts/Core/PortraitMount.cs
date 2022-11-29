@@ -33,6 +33,7 @@ namespace Descending.Core
             hero.PortraitRenderer.MountCloseCamera(_camClose);
             hero.PortraitRenderer.MountFarCamera(_camFar);
             
+            Refresh();
         }
 
         public void SetModel(HeroUnit hero)
@@ -45,6 +46,8 @@ namespace Descending.Core
                  hero.PortraitModel.transform.SetParent(_modelMount, false);
                  hero.PortraitRenderer.MountCloseCamera(_camClose);
                  hero.PortraitRenderer.MountFarCamera(_camFar);
+                 
+                 Refresh();
             }
         }
 

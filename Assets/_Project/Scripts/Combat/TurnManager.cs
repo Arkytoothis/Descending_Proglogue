@@ -33,7 +33,6 @@ namespace Descending.Combat
 
         public void Setup()
         {
-            
         }
         
         public void NextTurn()

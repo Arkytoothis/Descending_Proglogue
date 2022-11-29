@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Descending.Party;
 using Descending.Units;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace Descending.Gui
 {
     public class PartyPanel : MonoBehaviour
     {
-        [SerializeField] private List<PartyMemberWidget> _partyMemberWidgets = null;
+        [SerializeField] private List<PartyMemberWidget_Overworld> _partyMemberWidgets = null;
 
         public void Setup()
         {

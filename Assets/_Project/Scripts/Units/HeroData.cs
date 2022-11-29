@@ -27,6 +27,7 @@ namespace Descending.Units
         [SerializeField] private int _skinColorIndex = -1;
         [SerializeField] private int _hairColorIndex = -1;
         [SerializeField] private int _eyeColorIndex = -1;
+        [SerializeField] private int _tattooColorIndex = -1;
         
         public FantasyName Name => _name;
         public Genders Gender => _gender;
@@ -45,6 +46,7 @@ namespace Descending.Units
         public int SkinColorIndex => _skinColorIndex;
         public int HairColorIndex => _hairColorIndex;
         public int EyeColorIndex => _eyeColorIndex;
+        public int TattooColorIndex => _tattooColorIndex;
         
         public RaceDefinition RaceDefinition => Database.instance.Races.GetRace(_raceKey);
 
@@ -67,9 +69,10 @@ namespace Descending.Units
             _skinColorIndex = bodyRenderer.SkinColorIndex;
             _hairColorIndex = bodyRenderer.HairColorIndex;
             _eyeColorIndex = bodyRenderer.EyeColorIndex;
+            _tattooColorIndex = bodyRenderer.TattooColorIndex;
         }
 
-        public void LoadData(HeroDataSaveData saveData, BodyRenderer bodyRenderer)
+        public void LoadData(HeroSaveData saveData, BodyRenderer bodyRenderer)
         {
             _name = new FantasyName(saveData.Name);
             _gender = saveData.Gender;
@@ -88,6 +91,7 @@ namespace Descending.Units
             _skinColorIndex = bodyRenderer.SkinColorIndex;
             _hairColorIndex = bodyRenderer.HairColorIndex;
             _eyeColorIndex = bodyRenderer.EyeColorIndex;
+            _tattooColorIndex = bodyRenderer.TattooColorIndex;
         }
 
         public void AddExperience(int experience)
@@ -100,68 +104,5 @@ namespace Descending.Units
         {
             return _name.FullName;
         }
-    }
-
-    [System.Serializable]
-    public class HeroDataSaveData
-    {
-        [SerializeField] private FantasyName _name = new FantasyName();
-        [SerializeField] private Genders _gender = Genders.None;
-        [SerializeField] private string _raceKey = "";
-        [SerializeField] private string _professionKey = "";
-        [SerializeField] private int _level = 0;
-        [SerializeField] private int _experience = 0;
-        [SerializeField] private int _expToNextLevel = 0;
-        
-        [SerializeField] private int _listIndex = -1;
-        [SerializeField] private int _headIndex = -1;
-        [SerializeField] private int _hairIndex = -1;
-        [SerializeField] private int _earIndex = -1;
-        [SerializeField] private int _facialHairIndex = -1;
-        [SerializeField] private int _eyebrowIndex = -1;
-        [SerializeField] private int _skinColorIndex = -1;
-        [SerializeField] private int _tattooColorIndex = -1;
-        [SerializeField] private int _hairColorIndex = -1;
-        [SerializeField] private int _eyeColorIndex = -1;
-        
-        public FantasyName Name => _name;
-        public Genders Gender => _gender;
-        public string RaceKey => _raceKey;
-        public string ProfessionKey => _professionKey;
-        public int Level => _level;
-        public int Experience => _experience;
-        public int ExpToNextLevel => _expToNextLevel;
-        public int ListIndex => _listIndex;
-        public int HeadIndex => _headIndex;
-        public int HairIndex => _hairIndex;
-        public int EarIndex => _earIndex;
-        public int FacialHairIndex => _facialHairIndex;
-        public int EyebrowIndex => _eyebrowIndex;
-        public int SkinColorIndex => _skinColorIndex;
-        public int HairColorIndex => _hairColorIndex;
-        public int EyeColorIndex => _eyeColorIndex;
-        public int TattooColorIndex => _tattooColorIndex;
-
-        // public HeroDataSaveData(Hero hero)
-        // {
-        //     _name = new FantasyName(hero.HeroData.Name);
-        //     _gender = hero.HeroData.Gender;
-        //     _raceKey = hero.HeroData.RaceKey;
-        //     _professionKey = hero.HeroData.ProfessionKey;
-        //     _level = hero.HeroData.Level;
-        //     _experience = hero.HeroData.Experience;
-        //     _expToNextLevel = hero.HeroData.ExpToNextLevel;
-        //
-        //     _listIndex = hero.HeroData.ListIndex;
-        //     _headIndex = hero.PortraitRenderer.HeadIndex;
-        //     _hairIndex = hero.PortraitRenderer.HairIndex;
-        //     _earIndex = hero.PortraitRenderer.EarIndex;
-        //     _facialHairIndex = hero.PortraitRenderer.FacialHairIndex;
-        //     _eyebrowIndex = hero.PortraitRenderer.EyebrowIndex;
-        //     _skinColorIndex = hero.PortraitRenderer.SkinColorIndex;
-        //     _hairColorIndex = hero.PortraitRenderer.HairColorIndex;
-        //     _eyeColorIndex = hero.PortraitRenderer.EyeColorIndex;
-        //     _tattooColorIndex = hero.PortraitRenderer.TattooColorIndex;
-        // }
     }
 }
