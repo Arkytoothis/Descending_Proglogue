@@ -17,17 +17,17 @@ namespace Descending.Scene_Main_Menu
 
         public void GenerateButtonClick()
         {
-            PartyBuilder.Instance.SpawnHero(0, Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetRandomProfession());
+            PartyBuilder.Instance.SpawnHeroes();
         }
 
         public void SaveButtonClick()
         {
-            SaveManager.Instance.SaveState();
+            PartyBuilder.Instance.SaveState(Database.instance.PartyDataFilePath);
         }
 
         public void LoadButtonClick()
         {
-            SaveManager.Instance.LoadState();
+            PartyBuilder.Instance.LoadState(Database.instance.PartyDataFilePath);
         }
     }
 }

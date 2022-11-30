@@ -317,6 +317,8 @@ namespace Descending.Equipment
         {
             StringBuilder sb = new StringBuilder();
 
+            if (_definitionKey == "") return "";
+            
             if (ItemDefinition.WeaponData.HasData == true)
             {
                 sb.Append(ItemDefinition.WeaponData.GetItemWidgetText());
@@ -482,6 +484,8 @@ namespace Descending.Equipment
 
         public WeaponData GetWeaponData()
         {
+            if (_definitionKey == "") return null;
+            
             if (ItemDefinition.WeaponData != null && ItemDefinition.WeaponData.HasData == true)
             {
                 return ItemDefinition.WeaponData;
@@ -494,6 +498,8 @@ namespace Descending.Equipment
 
         public WearableData GetWearableData()
         {
+            if (_definitionKey == "") return null;
+            
             if (ItemDefinition.WearableData != null && ItemDefinition.WearableData.HasData == true)
             {
                 return ItemDefinition.WearableData;
@@ -506,6 +512,8 @@ namespace Descending.Equipment
 
         public UsableData GetUsableData()
         {
+            if (_definitionKey == "") return null;
+            
             if (ItemDefinition.UsableData != null && ItemDefinition.UsableData.HasData == true)
             {
                 return ItemDefinition.UsableData;

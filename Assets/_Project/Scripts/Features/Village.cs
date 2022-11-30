@@ -9,7 +9,7 @@ namespace Descending.Features
     {
         public override void Interact()
         {
-            Debug.Log("Interacting with Village");
+            //Debug.Log("Interacting with Village");
         }
     }
 }

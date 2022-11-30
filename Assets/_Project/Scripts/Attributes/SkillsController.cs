@@ -29,10 +29,10 @@ namespace Descending.Attributes
             FindStartingAbilities();
         }
 
-        // public void LoadData(SkillsSaveData saveData)
-        // {
-        //     _skills = Skill.LoadSkills(saveData.Skills);
-        // }
+        public void LoadData(SkillsSaveData saveData)
+        {
+            _skills = Skill.LoadSkills(saveData.Skills);
+        }
         
         public void AddSkill(SkillDefinition skill, int value)
         {
@@ -64,16 +64,17 @@ namespace Descending.Attributes
             }
         }
     }
-    // [System.Serializable]
-    // public class SkillsSaveData
-    // {
-    //     [SerializeField] private List<Skill> _skills = null;
-    //
-    //     public List<Skill> Skills => _skills;
-    //
-    //     public SkillsSaveData(Hero hero)
-    //     {
-    //         //_skills = Skill.SaveSkills(hero.Skills.Skills);
-    //     }
-    // }
+    
+    [System.Serializable]
+    public class SkillsSaveData
+    {
+        [SerializeField] private List<Skill> _skills = null;
+    
+        public List<Skill> Skills => _skills;
+    
+        public SkillsSaveData(HeroUnit hero)
+        {
+            _skills = Skill.SaveSkills(hero.Skills.Skills);
+        }
+    }
 }

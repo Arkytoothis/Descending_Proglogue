@@ -4,6 +4,7 @@ using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
 using Descending.Gui;
+using Descending.Scene_Overworld;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -83,11 +84,11 @@ namespace Descending.Units
 
             _heroData.LoadData(saveData, _worldRenderer);
             _attributes.Setup(race, profession);
-            _skills.Setup(_attributes, race, profession);
-            _inventory.Setup(_portraitRenderer, _worldRenderer, saveData.Gender, race, profession);
+            _attributes.LoadData(saveData.AttributesSaveData);
+            _skills.LoadData(saveData.SkillsSaveData);
+            _inventory.LoadData(_worldRenderer, _portraitRenderer, saveData);
+            _abilities.LoadData(saveData.AbilitySaveData);
             
-            _attributes.CalculateAttributes();
-            _abilities.Setup(race, profession, _skills);
             _actionController.SetupActions();
             _damageSystem.Setup(this);
             _unitEffects.Setup();

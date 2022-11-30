@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Descending.Units;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Scene_Overworld;
 using UnityEngine;
 
 namespace Descending
@@ -36,7 +37,7 @@ namespace Descending
             if (selectedUnit == null || selectedUnit.IsEnemy == true) return;
             
             int abilityHotkey = 1;
-            int itemHotkey = 1;
+            //int itemHotkey = 1;
 
             foreach (BaseAction action in selectedUnit.ActionController.Actions)
             {

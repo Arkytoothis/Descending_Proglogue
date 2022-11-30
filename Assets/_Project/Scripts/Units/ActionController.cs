@@ -87,7 +87,7 @@ namespace Descending.Units
             int index = 0;
             foreach (Item accessory in _unit.Inventory.Accessories)
             {
-                if (accessory != null && accessory.ItemDefinition.Key != "")
+                if (accessory != null && accessory.Key != "")
                 {
                     if (accessory.GetUsableData().UsableType == UsableTypes.Bomb)
                     {

@@ -24,7 +24,7 @@ namespace Descending.Units
         [SerializeField] private float _cooldownStateTime = 0.5f;
         [SerializeField] private float _aimingStateTime = 1f;
         [SerializeField] private float _rotationSpeed = 10f;
-        [SerializeField] private float _spawnProjectileDelay = 0.5f;
+        //[SerializeField] private float _spawnProjectileDelay = 0.5f;
 
         [SerializeField] private int _range = 0;
         [SerializeField] private Item _item = null;
@@ -172,7 +172,7 @@ namespace Descending.Units
         {
             if (_item != null)
             {
-                _spawnProjectileDelay = 0.5f;
+                //_spawnProjectileDelay = 0.5f;
                 _range = _item.GetUsableData().Range;
             }
         }

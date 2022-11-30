@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
-using Descending.Units;
 using UnityEngine;
 
 namespace Descending.Scene_Main_Menu
@@ -27,7 +25,7 @@ namespace Descending.Scene_Main_Menu
             ItemGenerator.Setup();
             
             SpawnGui();
-            PartyBuilder.Instance.SpawnHero(0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
+            PartyBuilder.Instance.SpawnHeroes();
         }
 
         private void SpawnGui()

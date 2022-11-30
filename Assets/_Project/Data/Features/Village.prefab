@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670854218bcc9d74c96eae1c2cd9f891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _definition: {fileID: 11400000, guid: 8543e1775bf953f4abc243dd153541a0, type: 2}
   _interactionTransform: {fileID: 0}
 --- !u!1001 &5060875216073656995
 PrefabInstance:

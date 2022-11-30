@@ -11,14 +11,15 @@ namespace Descending.Attributes
         [SerializeField] private string _damageType;
         [SerializeField] private int _currentValue = 0;
         [SerializeField] private int _maximumValue = 0;
+        
+        public string DamageType => _damageType;
         public int CurrentValue => _currentValue;
         public int MaximumValue => _maximumValue;
 
-        public string DamageType => _damageType;
         
         public Resistance(DamageTypeDefinition damageType, int maximum)
         {
-            _damageType = damageType.Name;
+            _damageType = damageType.Key;
             _currentValue = maximum;
             _maximumValue = maximum;
         }

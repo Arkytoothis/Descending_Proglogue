@@ -16,6 +16,7 @@ namespace Descending.Tiles
         public int Width => _width;
         public int Height => _height;
         public float CellSize => _cellSize;
+        public T[,] GridObjects => _gridObjects;
 
         public TileMap(int width, int height, float cellSize, Func<TileMap<T>, MapPosition, T> createGridObject)
         {
@@ -63,6 +64,12 @@ namespace Descending.Tiles
         {
             //Debug.Log("mapPosition.X: " + mapPosition.X + " mapPosition.Y: " + mapPosition.Y);
             return _gridObjects[mapPosition.X, mapPosition.Y];
+        }
+
+        public T GetGridObject(int x, int y)
+        {
+            //Debug.Log("mapPosition.X: " + mapPosition.X + " mapPosition.Y: " + mapPosition.Y);
+            return _gridObjects[x, y];
         }
 
         public bool IsValidGridPosition(MapPosition mapPosition)

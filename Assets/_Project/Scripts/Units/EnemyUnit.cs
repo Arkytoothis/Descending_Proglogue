@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
 using Descending.Gui;
+using Descending.Scene_Overworld;
 using Descending.Tiles;
 using Descending.Treasure;
 using UnityEngine;

@@ -194,7 +194,7 @@ namespace Descending.Core
         {
             if (transform == null)
             {
-                Debug.Log("transform == null");
+                //Debug.Log("transform == null");
                 return null;
             }
 

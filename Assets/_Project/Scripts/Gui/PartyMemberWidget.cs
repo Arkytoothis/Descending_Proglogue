@@ -39,7 +39,11 @@ namespace Descending.Gui
                 //_borderImage.color = Color.gray;
                 _nameLabel.SetText(hero.GetFirstName());
                 _portraitImage.gameObject.SetActive(true);
-                _portraitImage.texture = hero.Portrait.RtClose;
+
+                if (hero.Portrait != null)
+                {
+                    _portraitImage.texture = hero.Portrait.RtClose;
+                }
                 
                 _vitalBarsContainer.SetActive(true);
                 _levelLabel.SetText(hero.HeroData.Level.ToString());

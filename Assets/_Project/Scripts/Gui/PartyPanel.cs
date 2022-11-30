@@ -8,7 +8,7 @@ namespace Descending.Gui
 {
     public class PartyPanel : MonoBehaviour
     {
-        [SerializeField] private List<PartyMemberWidget_Overworld> _partyMemberWidgets = null;
+        [SerializeField] private List<PartyMemberWidget> _partyMemberWidgets = null;
 
         public void Setup()
         {
@@ -17,17 +17,15 @@ namespace Descending.Gui
         
         public void SyncParty(bool b)
         {
-            //Debug.Log("Syncing Party Data");
             for (int i = 0; i < _partyMemberWidgets.Count; i++)
             {
-                if (i < UnitManager.Instance.HeroUnits.Count)
-                {
-                    _partyMemberWidgets[i].Setup(UnitManager.Instance.GetHero(i));
-                }
-                else
-                {
-                    _partyMemberWidgets[i].Clear();
-                }
+                _partyMemberWidgets[i].Clear();
+            }
+
+            //Debug.Log("Syncing Party Data");
+            for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
+            {
+                _partyMemberWidgets[i].Setup(UnitManager.Instance.GetHero(i));
             }
         }
 

@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using Descending.Equipment;
 using Descending.Gui;
 using Descending.Units;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Descending.Combat
 {
+    public enum AttackTypes { Melee, Ranged, Ability, Number, None }
+    
     public static class CombatCalculator
     {
-        public static void ProcessAttack(Unit attacker, Unit defender)
+        public static void ProcessAttack(Unit attacker, Unit defender, DamageEffect damageEffect)
         {
             if (TryDefense(defender))
             {
@@ -18,7 +20,14 @@ namespace Descending.Combat
             }
             else
             {
-                Hit(attacker, defender);
+                if (damageEffect == null)
+                {
+                    Hit(attacker, defender);
+                }
+                else
+                {
+                    Hit(damageEffect, attacker, defender);
+                }
             }
         }
 
@@ -53,7 +62,7 @@ namespace Descending.Combat
         {
             Item meleeWeapon = attacker.GetMeleeWeapon();
             Item rangedWeapon = attacker.GetRangedWeapon();
-            WeaponData weaponData = null;
+            //WeaponData weaponData = null;
             
             if (meleeWeapon != null)
             {
@@ -64,6 +73,12 @@ namespace Descending.Combat
                 RollDamage(rangedWeapon, attacker, defender);
             }
         }
+        
+        private static void Hit(DamageEffect damageEffect, Unit attacker, Unit defender)
+        {
+            //RollDamage(meleeWeapon, attacker, defender);
+            RollDamage(damageEffect, attacker, defender);
+        }
 
         private static void Miss(Unit attacker, Unit defender)
         {
@@ -71,21 +86,13 @@ namespace Descending.Combat
 
         private static void RollDamage(Item weapon, Unit attacker, Unit defender)
         {
+            if (weapon == null) return;
+            
             WeaponData weaponData = weapon.GetWeaponData();
             
             if (weaponData != null)
             {
-                if (weaponData.Projectile != null)
-                {
-                    for (int i = 0; i < weaponData.Projectile.DamageEffects.Count; i++)
-                    {
-                        int minDamage = weaponData.Projectile.DamageEffects[i].MinimumValue + attacker.Attributes.GetStatistic("Might Damage").TotalCurrent();
-                        int maxDamage = weaponData.Projectile.DamageEffects[i].MaximumValue + attacker.Attributes.GetStatistic("Might Damage").TotalCurrent();
-                        int damage = Random.Range(minDamage, maxDamage + 1);
-                        defender.Damage(attacker.gameObject, weaponData.Projectile.DamageEffects[i].DamageType, damage, weaponData.Projectile.DamageEffects[i].Attribute.Key);
-                    }
-                }
-                else
+                if (weaponData.Projectile == null)
                 {
                     for (int i = 0; i < weaponData.DamageEffects.Count; i++)
                     {
@@ -97,6 +104,14 @@ namespace Descending.Combat
                     }
                 }
             }
+        }
+        
+        private static void RollDamage(DamageEffect damageEffect, Unit attacker, Unit defender)
+        {
+            int minDamage = damageEffect.MinimumValue + attacker.Attributes.GetStatistic("Might Damage").TotalCurrent();
+            int maxDamage = damageEffect.MaximumValue + attacker.Attributes.GetStatistic("Might Damage").TotalCurrent();
+            int damage = Random.Range(minDamage, maxDamage + 1);
+            defender.Damage(attacker.gameObject, damageEffect.DamageType, damage, damageEffect.Attribute.Key);
         }
     }
 }

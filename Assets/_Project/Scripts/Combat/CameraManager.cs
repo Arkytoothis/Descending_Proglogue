@@ -9,7 +9,7 @@ namespace Descending.Combat
 {
     public class CameraManager : MonoBehaviour
     {
-        [SerializeField] private GameObject _actionCamera = null;
+        //[SerializeField] private GameObject _actionCamera = null;
 
         private void Start()
         {

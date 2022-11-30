@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550fb2b019657c4438377666031e0885, type: 3}
   m_Name: Shadow
   m_EditorClassIdentifier: 
-  _name: Unholy
-  _key: Unholy
+  _name: Shadow
+  _key: Shadow
   _textColor: {r: 1, g: 1, b: 1, a: 1}

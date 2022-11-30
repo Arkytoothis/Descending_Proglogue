@@ -71,7 +71,7 @@ namespace Descending.Units
                 case States.Pre_Hit:
                     _state = States.Post_Hit;
                     _stateTimer = _postHitTime;
-                    CombatCalculator.ProcessAttack(_unit, _targetUnit);
+                    CombatCalculator.ProcessAttack(_unit, _targetUnit, null);
                     break;
                 case States.Post_Hit:
                     

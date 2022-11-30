@@ -39,6 +39,7 @@ namespace Descending.Gui
         {
             gameObject.SetActive(true);
             _stockpilePanel.UpdateStockpile();
+            _listPanel.Setup(this);
             _isOpen = true;
             SelectHero(UnitManager.Instance.GetHero(0));
         }
@@ -74,6 +75,10 @@ namespace Descending.Gui
             _skillsPanel.DisplayHero(hero);
             _equipmentPanel.DisplayHero(hero);
             _abilitiesPanel.DisplayHero(hero);
+        }
+
+        public void RefreshHeroList(bool b)
+        {
         }
     }
 }

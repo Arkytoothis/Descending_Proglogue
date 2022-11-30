@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
+using Descending.Attributes;
 using Descending.Core;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending.Units
@@ -27,6 +30,11 @@ namespace Descending.Units
         [SerializeField] private int _hairColorIndex = -1;
         [SerializeField] private int _eyeColorIndex = -1;
         
+        [SerializeField] private AttributesSaveData _attributesSaveData = null;
+        [SerializeField] private SkillsSaveData _skillsSaveData = null;
+        [SerializeField] private InventorySaveData _inventorySaveData = null;
+        [SerializeField] private AbilitySaveData _abilitySaveData = null;
+        
         public FantasyName Name => _name;
         public Genders Gender => _gender;
         public string RaceKey => _raceKey;
@@ -44,6 +52,11 @@ namespace Descending.Units
         public int HairColorIndex => _hairColorIndex;
         public int EyeColorIndex => _eyeColorIndex;
         public int TattooColorIndex => _tattooColorIndex;
+
+        public AttributesSaveData AttributesSaveData => _attributesSaveData;
+        public SkillsSaveData SkillsSaveData => _skillsSaveData;
+        public InventorySaveData InventorySaveData => _inventorySaveData;
+        public AbilitySaveData AbilitySaveData => _abilitySaveData;
 
         public HeroSaveData()
         {
@@ -65,6 +78,10 @@ namespace Descending.Units
             _tattooColorIndex = -1;
             _hairColorIndex = -1;
             _eyeColorIndex = -1;
+            _attributesSaveData = null;
+            _skillsSaveData = null;
+            _inventorySaveData = null;
+            _abilitySaveData = null;
         }
 
         public HeroSaveData(HeroUnit hero)
@@ -87,6 +104,11 @@ namespace Descending.Units
             _tattooColorIndex = hero.HeroData.TattooColorIndex;
             _hairColorIndex = hero.HeroData.HairColorIndex;
             _eyeColorIndex = hero.HeroData.EyeColorIndex;
+
+            _attributesSaveData = new AttributesSaveData(hero);
+            _skillsSaveData = new SkillsSaveData(hero);
+            _inventorySaveData = new InventorySaveData(hero);
+            _abilitySaveData = new AbilitySaveData(hero);
         }
     }
 }

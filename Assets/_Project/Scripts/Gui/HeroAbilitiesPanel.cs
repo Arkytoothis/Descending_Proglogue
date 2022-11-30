@@ -12,7 +12,7 @@ namespace Descending.Gui
         [SerializeField] private GameObject _abilityWidgetPrefab = null;
         [SerializeField] private Transform _powersParent = null;
         [SerializeField] private Transform _spellsParent = null;
-        [SerializeField] private Transform _traitsParent = null;
+        //[SerializeField] private Transform _traitsParent = null;
         
         [SerializeField] private List<AbilityWidget> _powerWidgets = null;
         [SerializeField] private List<AbilityWidget> _spellWidgets = null;

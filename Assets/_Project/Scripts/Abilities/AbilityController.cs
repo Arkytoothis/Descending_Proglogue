@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Units;
-using Descending.Abilities;
 using UnityEngine;
 
 namespace Descending.Abilities
@@ -13,20 +12,22 @@ namespace Descending.Abilities
         [SerializeField] private List<Ability> _memorizedPowers = null;
         [SerializeField] private List<Ability> _memorizedSpells = null;
         //[SerializeField] private List<Ability> _traits = null;
-
-        [SerializeField] private List<ActionConfig> _actionConfigs = null;
         
         public List<Ability> MemorizedPowers => _memorizedPowers;
         public List<Ability> MemorizedSpells => _memorizedSpells;
-        public List<ActionConfig> ActionConfigs => _actionConfigs;
 
         public void Setup(RaceDefinition race, ProfessionDefinition profession, SkillsController skills)
         {
-            _actionConfigs = new List<ActionConfig>();
             FindStartingAbilities(race, profession, skills);
             LoadActionConfigs();
         }
 
+        public void LoadData(AbilitySaveData saveData)
+        {
+            _memorizedPowers = saveData.MemorizedPowers;
+            _memorizedSpells = saveData.MemorizedSpells;
+        }
+        
         private void FindStartingAbilities(RaceDefinition race, ProfessionDefinition profession, SkillsController skills)
         {
             foreach (var abilityKvp in Database.instance.Abilities.Abilities)
@@ -61,7 +62,32 @@ namespace Descending.Abilities
         private void AddAbility(Ability ability)
         {
             //Debug.Log("Adding " + ability.Definition.Details.Name);
-            _actionConfigs.Add(new ActionConfig(ability));
+        }
+    }
+
+    [System.Serializable]
+    public class AbilitySaveData
+    {
+        [SerializeField] private List<Ability> _memorizedPowers = null;
+        [SerializeField] private List<Ability> _memorizedSpells = null;
+
+        public List<Ability> MemorizedPowers => _memorizedPowers;
+        public List<Ability> MemorizedSpells => _memorizedSpells;
+
+        public AbilitySaveData(HeroUnit hero)
+        {
+            _memorizedPowers = new List<Ability>();
+            _memorizedSpells = new List<Ability>();
+            
+            for (int i = 0; i < hero.Abilities.MemorizedPowers.Count; i++)
+            {
+                _memorizedPowers.Add(new Ability(hero.Abilities.MemorizedPowers[i]));
+            }
+            
+            for (int i = 0; i < hero.Abilities.MemorizedSpells.Count; i++)
+            {
+                _memorizedSpells.Add(new Ability(hero.Abilities.MemorizedSpells[i]));
+            }
         }
     }
 }

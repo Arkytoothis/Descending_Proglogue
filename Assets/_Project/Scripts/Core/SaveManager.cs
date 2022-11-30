@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +7,9 @@ using Descending.Units;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Descending.Scene_Main_Menu
+namespace Descending.Core
 {
-    public class SaveManager : MonoBehaviour
+    public abstract class SaveManager : MonoBehaviour
     {
         public static SaveManager Instance { get; private set; }
         
@@ -24,14 +25,7 @@ namespace Descending.Scene_Main_Menu
             Instance = this;
         }
 
-        public void SaveState()
-        {
-            UnitManager.Instance.SaveState(Database.instance.PartyDataFilePath);
-        }
-
-        public void LoadState()
-        {
-            UnitManager.Instance.LoadState(Database.instance.PartyDataFilePath);
-        }
+        public abstract void SaveState();
+        public abstract void LoadState();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Interactables;
+using Descending.Scene_Overworld;
 using Descending.Units;
 using UnityEngine;
 
@@ -14,8 +15,8 @@ namespace Descending.Tiles
 
         public event EventHandler OnAnyUnitMoved;
         
-        [SerializeField] private GameObject _tileDebugPrefab = null;
-        [SerializeField] private Transform _tilesParent = null;
+        //[SerializeField] private GameObject _tileDebugPrefab = null;
+        //[SerializeField] private Transform _tilesParent = null;
         
         [SerializeField] private int _width = 10;
         [SerializeField] private int _height = 10;
@@ -23,10 +24,12 @@ namespace Descending.Tiles
         [SerializeField] private LayerMask _defaultObstaclesLayer;
         
         private TileMap<Tile> _tileMap = null;
+        
         public int Width => _tileMap.Width;
         public int Height => _tileMap.Height;
         public float CellSize => _tileMap.CellSize;
-        
+        public TileMap<Tile> TileMap => _tileMap;
+
         private void Awake()
         {
             if (Instance != null)
@@ -156,6 +159,16 @@ namespace Descending.Tiles
             {
                 return null;
             }
+        }
+
+        public void SaveState()
+        {
+            
+        }
+
+        public void LoadState()
+        {
+            
         }
     }
 }

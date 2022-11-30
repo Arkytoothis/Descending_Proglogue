@@ -10,7 +10,7 @@ namespace Descending.Party
 {
     public class PartyMover : MonoBehaviour
     {
-        [SerializeField] private float _targetDistance = 3f;
+        //[SerializeField] private float _targetDistance = 3f;
         [SerializeField] private Seeker _seeker;
 
         [SerializeField] private WorldTile _currentTile = null;

@@ -29,7 +29,7 @@ namespace Descending.Gui
         {
             _item = item;
 
-            if (_item != null)
+            if (_item != null && _item.Key != "")
             {
                 UsableData usableData = _item.GetUsableData();
                 

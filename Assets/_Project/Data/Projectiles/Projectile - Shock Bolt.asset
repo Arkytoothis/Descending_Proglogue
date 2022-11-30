@@ -21,5 +21,6 @@ MonoBehaviour:
     _damageType: {fileID: 11400000, guid: c6fe112f6a236ae4295a27e1053ce16c, type: 2}
     _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
     _damageClass: 2
+    _attackType: 2
     _minimumValue: 2
     _maximumValue: 16

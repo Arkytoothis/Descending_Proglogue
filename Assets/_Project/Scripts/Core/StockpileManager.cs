@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Descending.Equipment;
 using ScriptableObjectArchitecture;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Descending.Core
@@ -85,6 +87,22 @@ namespace Descending.Core
         public void SyncStockpile()
         {
             onSyncStockpile.Invoke(true);
+        }
+        
+        public void SaveState(string filePath)
+        {
+            byte[] bytes = SerializationUtility.SerializeValue(_items, DataFormat.JSON);
+            File.WriteAllBytes(filePath, bytes);
+        }
+        
+        public void LoadState(string filePath)
+        {
+            if (!File.Exists(filePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(filePath);
+            _items = SerializationUtility.DeserializeValue<List<Item>>(bytes, DataFormat.JSON);
+            
+            SyncStockpile();
         }
     }
 }

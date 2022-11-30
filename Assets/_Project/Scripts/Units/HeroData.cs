@@ -74,6 +74,7 @@ namespace Descending.Units
 
         public void LoadData(HeroSaveData saveData, BodyRenderer bodyRenderer)
         {
+            //Debug.Log("Loading :" + saveData.Name.FullName);
             _name = new FantasyName(saveData.Name);
             _gender = saveData.Gender;
             _raceKey = saveData.RaceKey;

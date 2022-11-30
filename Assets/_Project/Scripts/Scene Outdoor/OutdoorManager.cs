@@ -21,6 +21,9 @@ namespace Descending.Scene_Outdoor
         [SerializeField] private RuntimeDungeon _dungeon = null;
         [SerializeField] private GameObject _guiPrefab = null;
         [SerializeField] private Transform _guiParent = null;
+        [SerializeField] private PortraitRoom _portraitRoom = null;
+        
+        [SerializeField] private bool _loadData = false;
 
         private GuiManager _guiManager = null;
         
@@ -29,6 +32,18 @@ namespace Descending.Scene_Outdoor
         }
 
         private void Start()
+        {
+            if (_loadData == false)
+            {
+                Setup();
+            }
+            else
+            {
+                Load();
+            }
+        }
+
+        private void Setup()
         {
             _database.Setup();
             ItemGenerator.Setup();
@@ -42,6 +57,23 @@ namespace Descending.Scene_Outdoor
             SpawnGui();
             ResourcesManager.Instance.Setup(100, 10, 0, 0);
             StockpileManager.Instance.Setup();
+            UnitManager.Instance.SyncHeroes();
+        }
+
+        private void Load()
+        {
+            _database.Setup();
+            ItemGenerator.Setup();
+            InputManager.Instance.Setup();
+            TurnManager.Instance.Setup();
+            MapManager.Instance.Setup();
+            CombatEventManager.Instance.Setup();
+            _dungeon.Generate();
+            UnitManager.Instance.LoadState_Combat(Database.instance.PartyDataFilePath);
+            _enemyAI.Setup();
+            SpawnGui();
+            ResourcesManager.Instance.LoadState(Database.instance.ResourceDataFilePath);
+            StockpileManager.Instance.LoadState(Database.instance.StockpileFilePath);
             UnitManager.Instance.SyncHeroes();
         }
 

@@ -6,6 +6,7 @@ using Descending.Attributes;
 using Descending.Core;
 using Descending.Party;
 using Descending.Tiles;
+using Descending.Units;
 using ScriptableObjectArchitecture;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -29,7 +30,7 @@ namespace Descending.Units
         
         [SerializeField] private BoolEvent onSyncParty = null;
         [SerializeField] private GameObjectEvent onSelectHero = null;
-
+        
         private PlayerSpawner _playerSpawner = null;
         private HeroUnit _selectedHero = null;
         
@@ -60,6 +61,7 @@ namespace Descending.Units
 
         public void SyncHeroes()
         {
+            //Debug.Log("Syncing Heroes");
             onSyncParty.Invoke(true);
 
             foreach (HeroUnit heroUnit in _heroUnits)
@@ -131,6 +133,19 @@ namespace Descending.Units
             clone.name = "Hero: " + heroUnit.GetFullName();
             
             UnitSpawned(heroUnit);
+        }
+        
+        private void LoadHero(MapPosition mapPosition, HeroSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.LoadHero(saveData);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            _heroUnits.Add(heroUnit);
         }
 
         public void RegisterEnemySpawner(GameObject spawnerObject)
@@ -249,7 +264,7 @@ namespace Descending.Units
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, Database.instance.Races.GetRace(saveData.RaceKey), Database.instance.Profession.GetProfession(saveData.ProfessionKey), saveData.ListIndex);
+            heroUnit.LoadHero(saveData);
             heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
             clone.name = "Hero: " + heroUnit.GetFullName();
             
@@ -306,25 +321,44 @@ namespace Descending.Units
         
         public void SaveState(string filePath)
         {
-            PartySaveData saveData = new PartySaveData(_heroUnits);
+            PartySaveData saveData = new PartySaveData(_partyController.transform.position, _heroUnits);
             byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
             File.WriteAllBytes(filePath, bytes);
         }
         
-        public void LoadState(string filePath)
+        public void LoadState_Overworld(string filePath)
         {
             if (!File.Exists(filePath)) return; // No state to load
 	
             byte[] bytes = File.ReadAllBytes(filePath);
             PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
 
+            //_partyController.transform.position = saveData.WorldPosition;
             _heroesParent.ClearTransform();
             _heroUnits.Clear();
-            
+
             for (int i = 0; i < saveData.Heroes.Length; i++)
             {
                 LoadHeroOverworld(saveData.Heroes[i]);
             }
+        }
+        
+        public void LoadState_Combat(string filePath)
+        {
+            if (!File.Exists(filePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(filePath);
+            PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
+
+            //_partyController.transform.position = saveData.WorldPosition;
+            _heroesParent.ClearTransform();
+            _heroUnits.Clear();
+
+            MapPosition spawnerPosition = MapManager.Instance.GetGridPosition(_playerSpawner.transform.position);
+            LoadHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), saveData.Heroes[0]);
+            LoadHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), saveData.Heroes[1]);
+            LoadHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), saveData.Heroes[2]);
+            LoadHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), saveData.Heroes[3]);
         }
     }
 }

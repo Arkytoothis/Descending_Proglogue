@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Descending.Attributes;
 using Descending.Core;
+using Descending.Party;
 using Descending.Units;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -14,11 +15,9 @@ namespace Descending.Scene_Main_Menu
         public static PartyBuilder Instance { get; private set; }
         
         [SerializeField] private GameObject _heroPrefab = null;
-        [SerializeField] private Transform _heroParent = null;
+        [SerializeField] private List<Transform> _heroMounts = null;
 
-        private HeroUnit _hero = null;
-
-        public HeroUnit Hero => _hero;
+        private List<HeroUnit> _heroes = null;
 
         private void Awake()
         {
@@ -32,48 +31,58 @@ namespace Descending.Scene_Main_Menu
             Instance = this;
         }
 
-        public void SpawnHero(int listIndex, RaceDefinition race, ProfessionDefinition profession)
+        public void SpawnHeroes()
         {
-            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
-            _heroParent.ClearTransform();
-            GameObject clone = Instantiate(_heroPrefab, _heroParent);
+            _heroes = new List<HeroUnit>();
             
-            _hero = clone.GetComponent<HeroUnit>();
-            _hero.SetupHero(Genders.Male, race, profession, listIndex);
-            _hero.PortraitModel.SetActive(false);
-            clone.name = "Hero: " + _hero.GetFullName();
-            
-            Destroy(_hero.PortraitModel);
-        }
-
-        public void LoadHero(HeroSaveData saveData)
-        {
-            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
-            _heroParent.ClearTransform();
-            GameObject clone = Instantiate(_heroPrefab, _heroParent);
-            
-            _hero = clone.GetComponent<HeroUnit>();
-            _hero.LoadHero(saveData);
-            clone.name = "Hero: " + _hero.GetFullName();
-            
-            Destroy(_hero.PortraitModel);
+            SpawnHero(0, Database.instance.Races.GetRace("Half Orc"), Database.instance.Profession.GetProfession("Soldier"));
+            SpawnHero(1, Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"));
+            SpawnHero(2, Database.instance.Races.GetRace("Mountain Dwarf"), Database.instance.Profession.GetProfession("Acolyte"));
+            SpawnHero(3, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
         }
         
-        private void Update()
+        private void SpawnHero(int listIndex, RaceDefinition race, ProfessionDefinition profession)
         {
-            if (Input.GetKeyDown(KeyCode.F5))
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            
+            _heroMounts[listIndex].ClearTransform();
+            GameObject clone = Instantiate(_heroPrefab, _heroMounts[listIndex]);
+            
+            HeroUnit hero = clone.GetComponent<HeroUnit>();
+            hero.SetupHero(Genders.Male, race, profession, listIndex);
+            hero.PortraitModel.SetActive(false);
+            clone.name = "Hero: " + hero.GetFullName();
+            
+            Destroy(hero.PortraitModel);
+            _heroes.Add(hero);
+        }
+
+        private void LoadHeroes(PartySaveData saveData)
+        {
+            for (int i = 0; i < saveData.Heroes.Length; i++)
             {
-                SaveState(Database.instance.PartyDataFilePath);
+                LoadHero(saveData.Heroes[i]);
             }
-            else if (Input.GetKeyDown(KeyCode.F9))
-            {
-                LoadState(Database.instance.PartyDataFilePath);
-            }
+        }
+        
+        private void LoadHero(HeroSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            _heroMounts[saveData.ListIndex].ClearTransform();
+            GameObject clone = Instantiate(_heroPrefab, _heroMounts[saveData.ListIndex]);
+            
+            HeroUnit hero = clone.GetComponent<HeroUnit>();
+            hero.LoadHero(saveData);
+            clone.name = "Hero: " + hero.GetFullName();
+            
+            Destroy(hero.PortraitModel);
+            _heroes.Add(hero);
         }
         
         public void SaveState(string filePath)
         {
-            byte[] bytes = SerializationUtility.SerializeValue(new HeroSaveData(_hero), DataFormat.JSON);
+            PartySaveData saveData = new PartySaveData(Vector3.zero, _heroes);
+            byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
             File.WriteAllBytes(filePath, bytes);
         }
         
@@ -82,8 +91,8 @@ namespace Descending.Scene_Main_Menu
             if (!File.Exists(filePath)) return; // No state to load
 	
             byte[] bytes = File.ReadAllBytes(filePath);
-            HeroSaveData saveData = SerializationUtility.DeserializeValue<HeroSaveData>(bytes, DataFormat.JSON);
-            LoadHero(saveData);
+            PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
+            LoadHeroes(saveData);
         }
     }
 }

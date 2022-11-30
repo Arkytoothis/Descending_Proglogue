@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Units;
 using UnityEngine;
 
@@ -13,11 +15,17 @@ namespace Descending.Gui
         private PartyWindow _partyWindow = null;
         private List<HeroListWidget> _heroWidgets = null;
 
+        private void Awake()
+        {
+            _heroWidgets = new List<HeroListWidget>();
+        }
+
         public void Setup(PartyWindow partyWindow)
         {
             _partyWindow = partyWindow;
-            _heroWidgets = new List<HeroListWidget>();
-
+            _heroWidgetsParent.ClearTransform();
+            _heroWidgets.Clear();
+            
             for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
             {
                 GameObject clone = Instantiate(_heroWidgetPrefab, _heroWidgetsParent);

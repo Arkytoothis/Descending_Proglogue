@@ -19,7 +19,10 @@ namespace Descending.Gui
         public void Setup(PartyWindow partyWindow, HeroUnit hero)
         {
             _hero = hero;
-            _portraitImage.texture = hero.Portrait.RtClose;
+            
+            if(_hero.Portrait != null)
+                _portraitImage.texture = hero.Portrait.RtClose;
+            
             _partyWindow = partyWindow;
             _nameLabel.SetText(hero.GetShortName());
             _detailsLabel.SetText(hero.HeroData.Gender + " " + hero.HeroData.RaceKey + " " + hero.HeroData.ProfessionKey);

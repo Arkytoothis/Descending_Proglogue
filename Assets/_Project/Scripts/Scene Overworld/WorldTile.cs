@@ -18,6 +18,7 @@ namespace Descending.Scene_Overworld
         [SerializeField] private bool _isMovable = false;
         [SerializeField] private bool _isWater = false;
         [SerializeField] private int _threatLevel = 0;
+        [SerializeField] private int _tileIndex = -1;
 
         [SerializeField] private WorldFeature _feature = null;
         [SerializeField] private int _x = -1;
@@ -36,10 +37,13 @@ namespace Descending.Scene_Overworld
         public bool IsMovable => _isMovable;
         public bool IsWater => _isWater;
         public int ThreatLevel => _threatLevel;
+        public int TileIndex => _tileIndex;
         public List<WorldTile> NeighborTiles => _neighborTiles;
+        public List<GameObject> TileProps => _tileProps;
 
-        public void Setup(int x, int y)
+        public void Setup(int tileIndex, int x, int y)
         {
+            _tileIndex = tileIndex;
             _x = x;
             _y = y;
             Randomize();
@@ -153,6 +157,64 @@ namespace Descending.Scene_Overworld
             for (int i = 0; i < _centerProps.Count; i++)
             {
                 _centerProps[i].SetActive(false);
+            }
+        }
+
+        public void LoadTile(WorldTileSaveData saveData, int x, int y)
+        {
+            transform.Rotate(Vector3.up, saveData.TileRotation);
+            _tileIndex = saveData.TileIndex;
+            _x = x;
+            _y = y;
+
+            for (int i = 0; i < saveData.PropsActive.Count; i++)
+            {
+                _tileProps[i].SetActive(saveData.PropsActive[i]);
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class WorldTileSaveData
+    {
+        [SerializeField] private int _tileIndex = -1;
+        [SerializeField] private int _threatLevel = 0;
+        [SerializeField] private float _tileRotation = 0f;
+        [SerializeField] private string _featureKey = "";
+        [SerializeField] private List<bool> _propsActive = null;
+
+        public int TileIndex => _tileIndex;
+        public int ThreatLevel => _threatLevel;
+        public float TileRotation => _tileRotation;
+        public string FeatureKey => _featureKey;
+        public List<bool> PropsActive => _propsActive;
+
+        public WorldTileSaveData()
+        {
+            _tileIndex = -1;
+            _threatLevel = 0;
+            _tileRotation = 0f;
+            _featureKey = "";
+            _propsActive = new List<bool>();
+        }
+        
+        public WorldTileSaveData(WorldTile tile)
+        {
+            _tileIndex = tile.TileIndex;
+            _threatLevel = tile.ThreatLevel;
+            _tileRotation = tile.transform.rotation.y;
+            _featureKey = "";
+            
+            if (tile.Feature != null)
+            {
+                _featureKey = tile.Feature.Definition.Key;
+            }
+            
+            _propsActive = new List<bool>();
+
+            for (int i = 0; i < tile.TileProps.Count; i++)
+            {
+                _propsActive.Add(tile.TileProps[i].activeSelf);
             }
         }
     }

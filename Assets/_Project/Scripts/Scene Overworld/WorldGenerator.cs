@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Descending.Core;
 using Descending.Features;
 using Descending.Party;
+using Descending.Units;
+using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 namespace Descending.Scene_Overworld
 {
+    public enum HeightTypes { Sand, Grass, Hills, Mountains, Mountain_Peak}
+        
+    public enum TileTypes { Sand, Grass, Hills, Mountains, Forest, Desert, Water_Shallow, Water_Deep}
+    
     public class WorldGenerator : MonoBehaviour
     {
         public const int MAX_THREAT_LEVEL = 10;
         [SerializeField] private PartyController _partyController = null;
+        [SerializeField] private PortraitRoom _portraitRoom = null;
         [SerializeField] private int _sampleSize = 10;
         [SerializeField] private int _seed = 0;
         [SerializeField] private bool _randomizeSeed = true;
@@ -48,15 +56,14 @@ namespace Descending.Scene_Overworld
         [SerializeField] private TerrainType[] _moistureTerrainTypes = null;
         [SerializeField] private TerrainType[] _falloffMapTypes = null;
         
-        
         [SerializeField] private int _maxTries = 20;
         [SerializeField] private int _groundTiles = 0;
         [SerializeField] private int _mountainTiles = 0;
         [SerializeField] private int _forestTiles = 0;
         [SerializeField] private int _minGroundTiles = 300;
         [SerializeField] private int _minMountainTiles = 50;
-        [SerializeField] private int _maxMountainTiles = 70;
-        [SerializeField] private int _minForestTiles = 50;
+        //[SerializeField] private int _maxMountainTiles = 70;
+        //[SerializeField] private int _minForestTiles = 50;
 
         private float[,] _heightMap = null;
         private float[,] _heatMap = null;
@@ -71,7 +78,10 @@ namespace Descending.Scene_Overworld
         private List<List<WorldTile>> _tilesByThreatLevel = null;
         private int _highestThreatLevel = 0;
         private int _tries = 0;
-        
+
+        public int SampleSize => _sampleSize;
+        public WorldTile[,] Tiles => _tiles;
+
         public void BuildWorld()
         {
             for (_tries = 1; _tries < _maxTries; _tries++)
@@ -90,9 +100,73 @@ namespace Descending.Scene_Overworld
                 }
             }
             
-            Debug.Log("Tries: " + _tries);
+            //Debug.Log("Tries: " + _tries);
         }
 
+        public void LoadWorld(WorldSaveData saveData)
+        {
+            ClearTiles();
+            _featurePlacer.ClearFeatures();
+            
+            _tiles = new WorldTile[saveData.Size, saveData.Size];
+            _spawnableTiles = new List<WorldTile>();
+            _startingTiles = new List<WorldTile>();
+            _shoreTiles = new List<WorldTile>();
+            _tilesParent.ClearTransform();
+            _groundTiles = 0;
+            _mountainTiles = 0;
+            _forestTiles = 0;
+            
+            for (int x = 0; x < saveData.Size; x++)
+            {
+                for (int y = 0; y < saveData.Size; y++)
+                {
+                    float xPosition = 0;
+                    float yPosition = 1f;
+                    float zPosition = 0;
+
+                    if (y % 2 == 0)
+                    {
+                        xPosition = x * _tileOffsetX;
+                        zPosition = y * _tileOffsetY;
+                    }
+                    else
+                    {
+                        xPosition = x * _tileOffsetX + _tileOffsetX / 2;
+                        zPosition = y * _tileOffsetY;
+                    }
+
+                    LoadTile(saveData.TileSaveData[x,y], x, y, new Vector3(xPosition, yPosition, zPosition));
+
+                    if (saveData.TileSaveData[x, y].FeatureKey != "")
+                    {
+                        FeatureDefinition featureDefinition = Database.instance.Features.GetFeature(saveData.TileSaveData[x, y].FeatureKey);
+                        _featurePlacer.PlaceFeature(featureDefinition, _tiles[x, y]);
+                    }
+                }
+            }
+            
+            ScanAstar();
+            _portraitRoom.Setup();
+            UnitManager.Instance.SyncHeroes();
+            //CalculateThreatLevels();
+            // SpawnStartingVillage();
+            // SpawnVillages();
+            // SpawnDungeons();
+            // SpawnParty();
+        }
+
+        private void ClearTiles()
+        {
+            for (int x = 0; x < _tiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < _tiles.GetLength(1); y++)
+                {
+                    Destroy(_tiles[x, y]);
+                }
+            }    
+        }
+        
         private void CreateHeightMap()
         {
             if (_randomizeSeed == true)
@@ -113,10 +187,6 @@ namespace Descending.Scene_Overworld
             CreateDataMap(heatTerrainMap, moistureTerrainMap);
             CreateTextures(heatTerrainMap, moistureTerrainMap);
         }
-
-        public enum HeightTypes { Sand, Grass, Hills, Mountains, Mountain_Peak}
-        
-        public enum TileTypes { Sand, Grass, Hills, Mountains, Forest, Desert, Water_Shallow, Water_Deep}
         
         private void SpawnTiles()
         {
@@ -202,7 +272,7 @@ namespace Descending.Scene_Overworld
                         tileIndex = (int)TileTypes.Water_Shallow;
                     }
 
-                    SpawnTile(_tilePrefabs[tileIndex], x, y, new Vector3(xPosition, yPosition, zPosition));
+                    SpawnTile(tileIndex, x, y, new Vector3(xPosition, yPosition, zPosition));
                 }
             }
         }
@@ -245,19 +315,30 @@ namespace Descending.Scene_Overworld
             }
         }
 
-        private void SpawnTile(GameObject prefab, int tileX, int tileY, Vector3 spawnPosition)
+        private void SpawnTile(int tileIndex, int tileX, int tileY, Vector3 spawnPosition)
         {
-            GameObject clone = Instantiate(prefab, _tilesParent);
+            GameObject clone = Instantiate(_tilePrefabs[tileIndex], _tilesParent);
             clone.transform.position = spawnPosition;
             
             WorldTile tile = clone.GetComponent<WorldTile>();
-            tile.Setup( tileX, tileY);
+            tile.Setup(tileIndex, tileX, tileY);
             _tiles[tileX, tileY] = tile;
 
             if (tile.IsSpawnable)
             {
                 _spawnableTiles.Add(tile);
             }
+        }
+        
+        private void LoadTile(WorldTileSaveData saveData, int tileX, int tileY, Vector3 spawnPosition)
+        {
+            GameObject clone = Instantiate(_tilePrefabs[saveData.TileIndex], _tilesParent);
+            clone.transform.position = spawnPosition;
+            
+            WorldTile tile = clone.GetComponent<WorldTile>();
+            tile.LoadTile(saveData, tileX, tileY);
+            
+            _tiles[tileX, tileY] = tile;
         }
 
         private void CreateDataMap(TerrainType[,] heatTerrainMap, TerrainType[,] moistureTerrainMap)
@@ -434,6 +515,48 @@ namespace Descending.Scene_Overworld
         {
             _partyController.transform.position = _startingTile.transform.position;
             _partyController.SetPartyLeader(0);
+        }
+
+        public void SaveState(string filePath)
+        {
+            WorldSaveData saveData = new WorldSaveData(this);
+            byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
+            File.WriteAllBytes(filePath, bytes);
+        }
+        
+        public void LoadState(string filePath)
+        {
+            if (!File.Exists(filePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(filePath);
+            WorldSaveData saveData = SerializationUtility.DeserializeValue<WorldSaveData>(bytes, DataFormat.JSON);
+            LoadWorld(saveData);
+        }
+    }
+
+    [System.Serializable]
+    public class WorldSaveData
+    {
+        [SerializeField] private int _size = 0;
+        [SerializeField] private WorldTileSaveData[,] _tileSaveData = null;
+
+        public int Size => _size;
+        public WorldTileSaveData[,] TileSaveData => _tileSaveData;
+
+        public WorldSaveData(WorldGenerator worldGenerator)
+        {
+            _size = worldGenerator.SampleSize;
+            _tileSaveData = new WorldTileSaveData[_size, _size];
+
+            for (int x = 0; x < _size; x++)
+            {
+                for (int y = 0; y < _size; y++)
+                {
+                    WorldTile tile = worldGenerator.Tiles[x, y];
+                    WorldTileSaveData tileSaveData = new WorldTileSaveData(tile);
+                    _tileSaveData[x, y] = tileSaveData;
+                }
+            }
         }
     }
 }

@@ -1776,7 +1776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6112e2673f190b34ca8b2e1a5fb348ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionCamera: {fileID: 602975388}
 --- !u!4 &773148552
 Transform:
   m_ObjectHideFlags: 0
@@ -1865,9 +1864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948147cb550960f4482db30e2c733b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileDebugPrefab: {fileID: 5221036800074882777, guid: 082fac5b553232449b51c85eb11ccf35,
-    type: 3}
-  _tilesParent: {fileID: 885418931}
   _width: 100
   _height: 100
   _cellSize: 2
@@ -3241,6 +3237,8 @@ MonoBehaviour:
   _guiPrefab: {fileID: 330663318723976907, guid: 2c9743463798ae340af6c8fe8df7e6d1,
     type: 3}
   _guiParent: {fileID: 1231723739}
+  _portraitRoom: {fileID: 818762651}
+  _loadData: 1
 --- !u!1001 &1218405750
 PrefabInstance:
   m_ObjectHideFlags: 0

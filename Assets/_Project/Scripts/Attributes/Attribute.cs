@@ -111,9 +111,33 @@ namespace Descending.Attributes
             return dictionary;
         }
 
+        public static ResistanceDictionary ConvertToDictionary(List<Resistance> list)
+        {
+            ResistanceDictionary dictionary = new ResistanceDictionary();
+
+            foreach (Resistance resistance in list)
+            {
+                dictionary.Add(resistance.DamageType, resistance);
+            }
+
+            return dictionary;
+        }
+
         public static List<Attribute> ConvertToList(AttributeDictionary dictionary)
         {
             List<Attribute> list = new List<Attribute>();
+
+            foreach (var kvp in dictionary)
+            {
+                list.Add(kvp.Value);
+            }
+
+            return list;
+        }
+
+        public static List<Resistance> ConvertToList(ResistanceDictionary dictionary)
+        {
+            List<Resistance> list = new List<Resistance>();
 
             foreach (var kvp in dictionary)
             {

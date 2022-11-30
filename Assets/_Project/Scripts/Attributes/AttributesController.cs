@@ -90,13 +90,6 @@ namespace Descending.Attributes
             }
         }
 
-        // public void LoadData(AttributesSaveData saveData)
-        // {
-        //     _characteristics = Attribute.ConvertToDictionary(saveData.Characteristics);
-        //     _vitals = Attribute.ConvertToDictionary(saveData.Vitals);
-        //     _statistics = Attribute.ConvertToDictionary(saveData.Statistics);
-        // }
-
         private void ResetModifiers()
         {
             foreach (KeyValuePair<string,Attribute> kvp in _characteristics)
@@ -169,7 +162,7 @@ namespace Descending.Attributes
         {
             foreach (Item equippedItem in _inventory.Equipment)
             {
-                if (equippedItem == null) continue;
+                if (equippedItem == null || equippedItem.Key == "") continue;
 
                 if (equippedItem.PrefixEnchantKey != "")
                 {
@@ -191,7 +184,7 @@ namespace Descending.Attributes
             
             foreach (Item equippedItem in _inventory.Equipment)
             {
-                if (equippedItem == null) continue;
+                if (equippedItem == null || equippedItem.Key == "") continue;
 
                 if (equippedItem.PrefixEnchantKey != "")
                 {
@@ -218,7 +211,7 @@ namespace Descending.Attributes
         {
             foreach (Item equippedItem in _inventory.Equipment)
             {
-                if (equippedItem == null) continue;
+                if (equippedItem == null || equippedItem.Key == "") continue;
 
                 if (equippedItem.PrefixEnchantKey != "")
                 {
@@ -302,27 +295,35 @@ namespace Descending.Attributes
         {
             _vitals[key].Damage(amount, resetToZero);
         }
+
+        public void LoadData(AttributesSaveData saveData)
+        {
+            _characteristics = Attribute.ConvertToDictionary(saveData.Characteristics);
+            _vitals = Attribute.ConvertToDictionary(saveData.Vitals);
+            _statistics = Attribute.ConvertToDictionary(saveData.Statistics);
+            _resistances = Attribute.ConvertToDictionary(saveData.Resistances);
+        }
     }
 
-    // [System.Serializable]
-    // public class AttributesSaveData
-    // {
-    //     [SerializeField] private List<Attribute> _characteristics = null;
-    //     [SerializeField] private List<Attribute> _vitals = null;
-    //     [SerializeField] private List<Attribute> _statistics = null;
-    //     //[SerializeField] private List<Resistance> _resistances = null;
-    //
-    //     public List<Attribute> Characteristics => _characteristics;
-    //     public List<Attribute> Vitals => _vitals;
-    //     public List<Attribute> Statistics => _statistics;
-    //     //public List<Resistance> Resistances => _resistances;
-    //
-    //     public AttributesSaveData(Hero hero)
-    //     {
-    //         // _characteristics = Attribute.ConvertToList(hero.Attributes.Characteristics);
-    //         // _vitals = Attribute.ConvertToList(hero.Attributes.Vitals);
-    //         // _statistics = Attribute.ConvertToList(hero.Attributes.Statistics);
-    //         //_resistances = Attribute.SaveAttributes(attributes.Resistances;
-    //     }
-    // }
+    [System.Serializable]
+    public class AttributesSaveData
+    {
+        [SerializeField] private List<Attribute> _characteristics = null;
+        [SerializeField] private List<Attribute> _vitals = null;
+        [SerializeField] private List<Attribute> _statistics = null;
+        [SerializeField] private List<Resistance> _resistances = null;
+    
+        public List<Attribute> Characteristics => _characteristics;
+        public List<Attribute> Vitals => _vitals;
+        public List<Attribute> Statistics => _statistics;
+        public List<Resistance> Resistances => _resistances;
+    
+        public AttributesSaveData(HeroUnit hero)
+        {
+             _characteristics = Attribute.ConvertToList(hero.Attributes.Characteristics);
+             _vitals = Attribute.ConvertToList(hero.Attributes.Vitals);
+             _statistics = Attribute.ConvertToList(hero.Attributes.Statistics);
+             _resistances = Attribute.ConvertToList(hero.Attributes.Resistances);
+        }
+    }
 }

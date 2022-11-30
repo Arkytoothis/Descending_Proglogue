@@ -91,39 +91,61 @@ namespace Descending.Equipment
             }
         }
         
-        public void LoadData(BodyRenderer portraitBody, Genders gender, RaceDefinition race, ProfessionDefinition profession, InventorySaveData saveData)
+        public void LoadData(BodyRenderer worldBody, BodyRenderer portraitBody, HeroSaveData saveData)
         {
+            _worldBody = worldBody;
             _portraitBody = portraitBody;
-            _gender = gender;
-            _equipment = new Item[saveData.EquippedItems.Length];
-            _accessories = new Item[saveData.Accessories.Length];
+            _gender = saveData.Gender;
+            _equipment = new Item[saveData.InventorySaveData.EquippedItems.Length];
+            _accessories = new Item[saveData.InventorySaveData.Accessories.Length];
             
-            for (int i = 0; i < saveData.EquippedItems.Length; i++)
+            for (int i = 0; i < saveData.InventorySaveData.EquippedItems.Length; i++)
             {
-                _equipment[i] = new Item(saveData.EquippedItems[i]);
+                _equipment[i] = new Item(saveData.InventorySaveData.EquippedItems[i]);
             }
         
-            for (int i = 0; i < saveData.Accessories.Length; i++)
+            for (int i = 0; i < saveData.InventorySaveData.Accessories.Length; i++)
             {
-                _accessories[i] = new Item(saveData.Accessories[i]);
+                _accessories[i] = new Item(saveData.InventorySaveData.Accessories[i]);
             }
             
-            for (int i = 0; i < saveData.EquippedItems.Length; i++)
+            for (int i = 0; i < saveData.InventorySaveData.EquippedItems.Length; i++)
             {
-                if (saveData.EquippedItems[i].Key == "" || saveData.EquippedItems[i].ItemDefinition.Key == "") continue;
+                if (saveData.InventorySaveData.EquippedItems[i].Key == "" || saveData.InventorySaveData.EquippedItems[i].ItemDefinition.Key == "") continue;
                 
-                EquipItem(saveData.EquippedItems[i]);
+                EquipItem(saveData.InventorySaveData.EquippedItems[i]);
             }
-        
+
+            ProfessionDefinition profession = Database.instance.Profession.GetProfession(saveData.ProfessionKey);
+            
             if (profession.PrefersRanged == false)
             {
-                _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon], true);
-                _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon], true);
+                if (_portraitBody != null)
+                {
+                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon], true);
+                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon], true);
+                }
+
+                if (_worldBody != null)
+                {
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Melee_Weapon], false);
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Off_Weapon], false);
+                }
+
                 _currentWeapon = _equipment[(int) EquipmentSlots.Melee_Weapon];
             }
             else
             {
-                _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon], true);
+                if (_worldBody != null)
+                {
+                    _worldBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon], false);
+                }
+                
+                if (_portraitBody != null)
+                {
+                    _portraitBody.EquipWeapon(_equipment[(int) EquipmentSlots.Ranged_Weapon], true);
+                }
+
                 _currentWeapon = _equipment[(int) EquipmentSlots.Ranged_Weapon];
             }
         }
@@ -268,21 +290,21 @@ namespace Descending.Equipment
         public Item[] Accessories => _accessories;
         public int AccessorySlots => _accessorySlots;
 
-        //public InventorySaveData(Hero hero)
-        //{
-            // _accessorySlots = hero.Inventory.AccessorySlots;
-            // _equippedItems = new Item[hero.Inventory.Equipment.Length];
-            // _accessories = new Item[hero.Inventory.Accessories.Length];
-            //
-            // for (int i = 0; i < hero.Inventory.Equipment.Length; i++)
-            // {
-            //     _equippedItems[i] = new Item(hero.Inventory.Equipment[i]);
-            // }
-            //
-            // for (int i = 0; i < hero.Inventory.Accessories.Length; i++)
-            // {
-            //     _accessories[i] = new Item(hero.Inventory.Accessories[i]);
-            // }
-        //}
+        public InventorySaveData(HeroUnit hero)
+        {
+             _accessorySlots = hero.Inventory.AccessorySlots;
+             _equippedItems = new Item[hero.Inventory.Equipment.Length];
+             _accessories = new Item[hero.Inventory.Accessories.Length];
+            
+             for (int i = 0; i < hero.Inventory.Equipment.Length; i++)
+             {
+                 _equippedItems[i] = new Item(hero.Inventory.Equipment[i]);
+             }
+            
+             for (int i = 0; i < hero.Inventory.Accessories.Length; i++)
+             {
+                 _accessories[i] = new Item(hero.Inventory.Accessories[i]);
+             }
+        }
     }
 }

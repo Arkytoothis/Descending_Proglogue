@@ -100,7 +100,7 @@ namespace Descending.Gui
                 
                 HeroUnit hero = UnitManager.Instance.SelectedHero;
                 
-                if (_item != null &&_item.ItemDefinition.Key != "")
+                if (_item != null && _item.Key != "")
                 {
                     Item tempItem = new Item(_item);
                     hero.Inventory.EquipItem(DragCursor.Instance.DragItem, _index);

@@ -32,6 +32,7 @@ namespace Descending.Gui
 
         public void UpdateStockpile()
         {
+            //Debug.Log("Syncing Stockpile");
             for (int i = 0; i < StockpileManager.MAX_STOCKPILE_SLOTS; i++)
             {
                 _widgets[i].SetItem(StockpileManager.Instance.GetItem(i));
