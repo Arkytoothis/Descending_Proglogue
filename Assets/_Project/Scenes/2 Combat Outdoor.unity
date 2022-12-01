@@ -163,6 +163,7 @@ MonoBehaviour:
   _heroUnits: []
   _enemyUnits: []
   _enemySpawners: []
+  _loadData: 1
   onSyncParty:
     m_PersistentCalls:
       m_Calls:
@@ -1543,6 +1544,7 @@ MonoBehaviour:
   _supplies: 0
   _materials: 0
   _gems: 0
+  _loadData: 1
   onUpdateCoins:
     m_PersistentCalls:
       m_Calls:
@@ -1983,6 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f38394602402644a8666fbb380dea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadData: 1
   onSyncStockpile:
     m_PersistentCalls:
       m_Calls:
@@ -3237,8 +3240,6 @@ MonoBehaviour:
   _guiPrefab: {fileID: 330663318723976907, guid: 2c9743463798ae340af6c8fe8df7e6d1,
     type: 3}
   _guiParent: {fileID: 1231723739}
-  _portraitRoom: {fileID: 818762651}
-  _loadData: 1
 --- !u!1001 &1218405750
 PrefabInstance:
   m_ObjectHideFlags: 0

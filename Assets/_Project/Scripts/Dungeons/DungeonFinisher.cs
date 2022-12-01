@@ -17,7 +17,7 @@ namespace Descending.Dungeons
         protected override void Run(DungeonGenerator generator)
         {
             //Debug.Log("Finishing Dungeon");
-            UnitManager.Instance.SpawnHeroes();
+            UnitManager.Instance.SpawnHeroes_Combat();
             UnitManager.Instance.SpawnEnemies();
             
             StartCoroutine(Finish_Coroutine());

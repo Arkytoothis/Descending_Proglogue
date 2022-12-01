@@ -4191,6 +4191,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6367450495034743511}
     m_Modifications:
+    - target: {fileID: 6911966056262668640, guid: f4bbe1adad4d6c648a418643fc7dbea7,
+        type: 3}
+      propertyPath: _turnOnEvent
+      value: 2417636990466392064
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911966056262668640, guid: f4bbe1adad4d6c648a418643fc7dbea7,
+        type: 3}
+      propertyPath: managedReferences[2417636990466392064]
+      value: Reclamation Descending.Combat_Events.CombatEventParameters
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911966056262668640, guid: f4bbe1adad4d6c648a418643fc7dbea7,
+        type: 3}
+      propertyPath: managedReferences[2417636990466392065]
+      value: Reclamation Descending.Combat_Events.EndCombatEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911966056262668640, guid: f4bbe1adad4d6c648a418643fc7dbea7,
+        type: 3}
+      propertyPath: managedReferences[2417636990466392064].CombatEvent
+      value: 2417636990466392065
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911966056262668640, guid: f4bbe1adad4d6c648a418643fc7dbea7,
+        type: 3}
+      propertyPath: managedReferences[2417636990466392064].OffsetPosition.X
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911966056262668640, guid: f4bbe1adad4d6c648a418643fc7dbea7,
+        type: 3}
+      propertyPath: managedReferences[2417636990466392064].OffsetPosition.Y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6911966056262668641, guid: f4bbe1adad4d6c648a418643fc7dbea7,
         type: 3}
       propertyPath: m_RootOrder

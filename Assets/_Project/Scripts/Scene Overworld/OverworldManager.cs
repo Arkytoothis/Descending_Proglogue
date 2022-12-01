@@ -26,11 +26,11 @@ namespace Descending.Overworld
         {
             _database.Setup();
             ItemGenerator.Setup();
-            UnitManager.Instance.SpawnHeroesOverworld();
+            UnitManager.Instance.GenerateHeroes_Overworld();
             _worldGenerator.BuildWorld();
             
             SpawnGui();
-            ResourcesManager.Instance.Setup(100, 10, 0, 0);
+            ResourcesManager.Instance.Setup();
             StockpileManager.Instance.Setup();
             UnitManager.Instance.SyncHeroes();
         }

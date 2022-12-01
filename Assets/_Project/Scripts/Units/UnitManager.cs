@@ -28,6 +28,8 @@ namespace Descending.Units
         [SerializeField] private List<EnemyUnit> _enemyUnits = null;
         [SerializeField] private List<EnemySpawner> _enemySpawners = null;
         
+        [SerializeField] private bool _loadData = false;
+        
         [SerializeField] private BoolEvent onSyncParty = null;
         [SerializeField] private GameObjectEvent onSelectHero = null;
         
@@ -63,7 +65,8 @@ namespace Descending.Units
         {
             //Debug.Log("Syncing Heroes");
             onSyncParty.Invoke(true);
-
+            PortraitRoom.Instance.RefreshCameras();
+            
             foreach (HeroUnit heroUnit in _heroUnits)
             {
                 heroUnit.SyncWorldPanel();
@@ -108,44 +111,16 @@ namespace Descending.Units
             _playerSpawner = spawner;
         }
 
-        public void SpawnHeroes()
+        public void SpawnHeroes_Combat()
         {
-            MapPosition spawnerPosition = MapManager.Instance.GetGridPosition(_playerSpawner.transform.position);
-            
-            //SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
-            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
-            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 1, Database.instance.Races.GetRace("Halfling"), Database.instance.Profession.GetProfession("Scout"));
-            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), 2, Database.instance.Races.GetRace("Sun Elf"), Database.instance.Profession.GetProfession("Acolyte"));
-            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), 3, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
-            
-            PortraitRoom.Instance.Setup();
-            onSyncParty.Invoke(true);
-        }
-        
-        private void SpawnHero(MapPosition mapPosition, int listIndex, RaceDefinition race, ProfessionDefinition profession)
-        {
-            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
-            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
-            clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
-            
-            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
-            clone.name = "Hero: " + heroUnit.GetFullName();
-            
-            UnitSpawned(heroUnit);
-        }
-        
-        private void LoadHero(MapPosition mapPosition, HeroSaveData saveData)
-        {
-            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
-            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
-            clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
-            
-            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.LoadHero(saveData);
-            clone.name = "Hero: " + heroUnit.GetFullName();
-            
-            _heroUnits.Add(heroUnit);
+            if (_loadData == true)
+            {
+                LoadState_Combat(Database.instance.PartyDataFilePath);
+            }
+            else
+            {
+                GenerateHeroes_Combat();
+            }
         }
 
         public void RegisterEnemySpawner(GameObject spawnerObject)
@@ -233,43 +208,7 @@ namespace Descending.Units
             //Debug.Log(_selectedHero.GetShortName() + " selected");
         }
         
-        public void SpawnHeroesOverworld()
-        {
-            _heroUnits = new List<HeroUnit>();
-            SpawnHeroOverworld(0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
-            SpawnHeroOverworld(1, Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"));
-            SpawnHeroOverworld(2, Database.instance.Races.GetRace("Imperial"), Database.instance.Profession.GetProfession("Acolyte"));
-            SpawnHeroOverworld(3, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
-            
-            PortraitRoom.Instance.Setup();
-            onSyncParty.Invoke(true);
-        }
         
-        private void SpawnHeroOverworld(int listIndex, RaceDefinition race, ProfessionDefinition profession)
-        {
-            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
-            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
-            
-            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
-            heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
-            clone.name = "Hero: " + heroUnit.GetFullName();
-            
-            _heroUnits.Add(heroUnit);
-        }
-        
-        private void LoadHeroOverworld(HeroSaveData saveData)
-        {
-            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
-            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
-            
-            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.LoadHero(saveData);
-            heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
-            clone.name = "Hero: " + heroUnit.GetFullName();
-            
-            _heroUnits.Add(heroUnit);
-        }
 
         public void HideHeroes(Transform parent)
         {
@@ -326,6 +265,58 @@ namespace Descending.Units
             File.WriteAllBytes(filePath, bytes);
         }
         
+        public void GenerateHeroes_Overworld()
+        {
+            _heroUnits = new List<HeroUnit>();
+            SpawnHeroOverworld(0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
+            SpawnHeroOverworld(1, Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"));
+            SpawnHeroOverworld(2, Database.instance.Races.GetRace("Imperial"), Database.instance.Profession.GetProfession("Acolyte"));
+            SpawnHeroOverworld(3, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
+            
+            PortraitRoom.Instance.Setup();
+            PortraitRoom.Instance.SyncParty();
+        }
+        
+        public void GenerateHeroes_Combat()
+        {
+            Debug.Log("GenerateHeroes");
+            MapPosition spawnerPosition = MapManager.Instance.GetGridPosition(_playerSpawner.transform.position);
+            
+            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));
+            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), 1, Database.instance.Races.GetRace("Halfling"), Database.instance.Profession.GetProfession("Scout"));
+            SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), 2, Database.instance.Races.GetRace("Sun Elf"), Database.instance.Profession.GetProfession("Acolyte"));
+            SpawnHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), 3, Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"));
+            
+            PortraitRoom.Instance.Setup();
+            PortraitRoom.Instance.SyncParty();
+        }
+        
+        private void SpawnHeroOverworld(int listIndex, RaceDefinition race, ProfessionDefinition profession)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
+            heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            _heroUnits.Add(heroUnit);
+        }
+        
+        private void LoadHeroOverworld(HeroSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.LoadHero(saveData);
+            heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            _heroUnits.Add(heroUnit);
+        }
+        
         public void LoadState_Overworld(string filePath)
         {
             if (!File.Exists(filePath)) return; // No state to load
@@ -341,10 +332,40 @@ namespace Descending.Units
             {
                 LoadHeroOverworld(saveData.Heroes[i]);
             }
+            
+            PortraitRoom.Instance.Setup();
+            PortraitRoom.Instance.SyncParty();
+        }
+        
+        private void SpawnHero(MapPosition mapPosition, int listIndex, RaceDefinition race, ProfessionDefinition profession)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            UnitSpawned(heroUnit);
+        }
+        
+        private void LoadHero(MapPosition mapPosition, HeroSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
+            
+            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
+            heroUnit.LoadHero(saveData);
+            clone.name = "Hero: " + heroUnit.GetFullName();
+            
+            _heroUnits.Add(heroUnit);
         }
         
         public void LoadState_Combat(string filePath)
         {
+            //Debug.Log("LoadState_Combat");
             if (!File.Exists(filePath)) return; // No state to load
 	
             byte[] bytes = File.ReadAllBytes(filePath);
@@ -359,6 +380,9 @@ namespace Descending.Units
             LoadHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y), saveData.Heroes[1]);
             LoadHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y - 1), saveData.Heroes[2]);
             LoadHero(new MapPosition(spawnerPosition.X + 1, spawnerPosition.Y - 1), saveData.Heroes[3]);
+            
+            PortraitRoom.Instance.Setup();
+            PortraitRoom.Instance.SyncParty();
         }
     }
 }

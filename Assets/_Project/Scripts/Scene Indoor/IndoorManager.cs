@@ -30,6 +30,11 @@ namespace Descending.Scene_Indoor
 
         private void Start()
         {
+            Setup();
+        }
+        
+        private void Setup()
+        {
             _database.Setup();
             ItemGenerator.Setup();
             InputManager.Instance.Setup();
@@ -40,7 +45,7 @@ namespace Descending.Scene_Indoor
             UnitManager.Instance.Setup();
             _enemyAI.Setup();
             SpawnGui();
-            ResourcesManager.Instance.Setup(100, 10, 0, 0);
+            ResourcesManager.Instance.Setup();
             StockpileManager.Instance.Setup();
             UnitManager.Instance.SyncHeroes();
         }

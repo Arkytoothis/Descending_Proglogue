@@ -15,6 +15,8 @@ namespace Descending.Core
         [SerializeField] private int _supplies = 0;
         [SerializeField] private int _materials = 0;
         [SerializeField] private int _gems = 0;
+        
+        [SerializeField] private bool _loadData = false;
 
         [SerializeField] private IntEvent onUpdateCoins = null;
         [SerializeField] private IntEvent onUpdateSupplies = null;
@@ -37,9 +39,22 @@ namespace Descending.Core
             
             Instance = this;
         }
-        
-        public void Setup(int coins, int supplies, int materials, int gems)
+
+        public void Setup()
         {
+            if (_loadData == true)
+            {
+                LoadState(Database.instance.ResourceDataFilePath);
+            }
+            else
+            {
+                Setup(100, 10, 0, 0);
+            }
+        }
+        
+        private void Setup(int coins, int supplies, int materials, int gems)
+        {
+            
             AddCoins(coins);
             AddSupplies(supplies);
             AddMaterials(materials);

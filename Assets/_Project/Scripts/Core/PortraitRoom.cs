@@ -32,12 +32,9 @@ namespace Descending.Core
          public void Setup()
          {
              //Debug.Log("PortraitRoom.Setup");
-             if (_portraits != null)
+             for (int i = 0; i < _portraits.Count; i++)
              {
-                 for (int i = 0; i < _portraits.Count; i++)
-                 {
-                     _portraits[i].ClearMount();
-                 }
+                 _portraits[i].ClearMount();
              }
              
              for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
@@ -55,10 +52,17 @@ namespace Descending.Core
          {
              if (_portraits == null) return;
              
-             //Debug.Log("Party Synced - Portrait Room");
              for (int i = 0; i < _portraits.Count; i++)
              {
                  _portraits[i].SetModel(UnitManager.Instance.HeroUnits[i]);
+                 _portraits[i].Refresh();
+             }
+         }
+
+         public void RefreshCameras()
+         {
+             for (int i = 0; i < _portraits.Count; i++)
+             {
                  _portraits[i].Refresh();
              }
          }

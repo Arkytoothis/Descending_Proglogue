@@ -28,26 +28,25 @@ namespace Descending.Core
             _camClose.targetTexture = _rtClose;
             _rtFar = new RenderTexture(2560, 3760, 32);
             _camFar.targetTexture = _rtFar;
-            SetModel(hero);
+            //SetModel(hero);
 
             hero.PortraitRenderer.MountCloseCamera(_camClose);
             hero.PortraitRenderer.MountFarCamera(_camFar);
-            
+
             Refresh();
         }
 
         public void SetModel(HeroUnit hero)
         {
-            if (hero != null && hero.PortraitModel != null)
+            if (hero != null)
             {
-                 _model = hero.PortraitModel;
-                
-                 hero.SetPortrait(this);
-                 hero.PortraitModel.transform.SetParent(_modelMount, false);
-                 hero.PortraitRenderer.MountCloseCamera(_camClose);
-                 hero.PortraitRenderer.MountFarCamera(_camFar);
-                 
-                 Refresh();
+                _model = hero.PortraitModel;
+                hero.SetPortrait(this);
+                hero.PortraitModel.transform.SetParent(_modelMount, false);
+                hero.PortraitRenderer.MountCloseCamera(_camClose);
+                hero.PortraitRenderer.MountFarCamera(_camFar);
+
+                Refresh();
             }
         }
 
@@ -100,7 +99,7 @@ namespace Descending.Core
             EnableCloseCamera();
 
             yield return new WaitForSeconds(0.1f);
-            
+
             DisableCloseCamera();
         }
 
@@ -109,7 +108,7 @@ namespace Descending.Core
             EnableFarCamera();
 
             yield return new WaitForSeconds(0.1f);
-            
+
             DisableFarCamera();
         }
     }

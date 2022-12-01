@@ -13,6 +13,8 @@ namespace Descending.Core
         public static StockpileManager Instance { get; private set; }
         public const int MAX_STOCKPILE_SLOTS = 96;
 
+        [SerializeField] private bool _loadData = false;
+        
         [SerializeField] private BoolEvent onSyncStockpile = null;
         
         [SerializeField] private List<Item> _items = null;
@@ -31,16 +33,13 @@ namespace Descending.Core
 
         public void Setup()
         {
-            _items = new List<Item>();
-            
-            for (int i = 0; i < MAX_STOCKPILE_SLOTS; i++)
+            if (_loadData == true)
             {
-                _items.Add(null);    
+                LoadState(Database.instance.StockpileFilePath);
             }
-
-            for (int i = 0; i < 20; i++)
+            else
             {
-                AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
+                GenerateData();
             }
         }
 
@@ -93,6 +92,21 @@ namespace Descending.Core
         {
             byte[] bytes = SerializationUtility.SerializeValue(_items, DataFormat.JSON);
             File.WriteAllBytes(filePath, bytes);
+        }
+
+        private void GenerateData()
+        {
+            _items = new List<Item>();
+            
+            for (int i = 0; i < MAX_STOCKPILE_SLOTS; i++)
+            {
+                _items.Add(null);    
+            }
+
+            for (int i = 0; i < 20; i++)
+            {
+                AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
+            }
         }
         
         public void LoadState(string filePath)

@@ -66,6 +66,7 @@ namespace Descending.Gui
 
         public void OnDisplaySelectedHero(bool b)
         {
+            //Debug.Log("OnDisplaySelectedHero");
             HeroUnit hero = UnitManager.Instance.SelectedHero;
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);

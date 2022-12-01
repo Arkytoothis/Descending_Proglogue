@@ -45,7 +45,7 @@ namespace Descending.Scene_Outdoor
                 }
             }
             
-            UnitManager.Instance.SpawnHeroes();
+            UnitManager.Instance.GenerateHeroes_Combat();
             UnitManager.Instance.SpawnEnemies();
             
             StartCoroutine(Finish_Coroutine());
