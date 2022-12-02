@@ -26,8 +26,8 @@ namespace Descending.Equipment
         {
             Item item = ItemGenerator.GenerateItem(Database.instance.Rarities.GetRarity("Legendary"), _itemDefinition.Key, 100, 100, 100);
             onPickupItem.Invoke(item);
-            Debug.Log(item.Name + " picked up");
             Destroy(gameObject);
+            //Debug.Log(item.Name + " picked up");
         }
     }
 }

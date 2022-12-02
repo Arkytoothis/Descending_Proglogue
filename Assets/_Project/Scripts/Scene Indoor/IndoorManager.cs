@@ -76,10 +76,7 @@ namespace Descending.Scene_Indoor
         {
             yield return new WaitForSeconds(1f);
 
-            UnitManager.Instance.SaveState_Combat();
-            ResourcesManager.Instance.SaveState();
-            StockpileManager.Instance.SaveState();
-            
+            SaveManager.Instance.SaveState();
             SceneManager.LoadScene((int)GameScenes.Overworld);
         }
     }

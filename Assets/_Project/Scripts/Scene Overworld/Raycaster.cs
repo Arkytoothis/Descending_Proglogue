@@ -4,6 +4,7 @@ using Descending.Core;
 using Descending.Party;
 using Descending.Scene_Overworld;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Descending.Overworld
 {
@@ -15,6 +16,8 @@ namespace Descending.Overworld
 
         private void Update()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMousePosition());
             
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f, _tileMask))

@@ -7,6 +7,7 @@ namespace Descending.Overworld
 {
     public class GuiManager : MonoBehaviour
     {
+        [SerializeField] private PartyPanel_Overworld  _partyPanel = null;
         [SerializeField] private WindowManager _windowManager = null;
         [SerializeField] private GameObject _tooltipPrefab = null;
 
@@ -15,6 +16,7 @@ namespace Descending.Overworld
         public void Setup()
         {
             _windowManager.Setup();
+            _partyPanel.Setup();
             SpawnTooltip();
         }
 

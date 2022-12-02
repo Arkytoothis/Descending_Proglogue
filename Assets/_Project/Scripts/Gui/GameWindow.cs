@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Descending.Gui
 {
-    public enum GameWindows { Menu, Party, Treasure, Armory, Stronghold, Library, Number, None }
+    public enum GameWindows { Menu, Party, Village, Dungeon, Number, None }
     
     public abstract class GameWindow : MonoBehaviour
     {

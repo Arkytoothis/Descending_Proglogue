@@ -91,7 +91,6 @@ namespace Descending.Scene_Overworld
             }
 
             s += _threatLevel;
-            Debug.Log("Clicked");
         }
 
         public void SetThreatLevel(int threatLevel)

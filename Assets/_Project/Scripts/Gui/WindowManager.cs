@@ -102,29 +102,14 @@ namespace Descending.Gui
             return false;
         }
 
-        public void OnTogglePartyWindow(bool b)
+        public void OnToggleVillageWindow(bool b)
         {
-            if (_windows[(int) GameWindows.Party].IsOpen)
-            {
-                _windows[(int) GameWindows.Party].Close();
-            }
-            else
-            {
-                _windows[(int)GameWindows.Party].Open();
-            }
+            OpenWindow((int)GameWindows.Village);
         }
 
-        public void OnTogglePauseWindow(bool b)
+        public void OnToggleDungeonWindow(bool b)
         {
-            if (_windows[(int) GameWindows.Menu].IsOpen)
-            {
-                _windows[(int) GameWindows.Menu].Close();
-            }
-            else
-            {
-                CLoseAll();
-                _windows[(int)GameWindows.Menu].Open();
-            }
+            OpenWindow((int)GameWindows.Dungeon);
         }
     }
 }

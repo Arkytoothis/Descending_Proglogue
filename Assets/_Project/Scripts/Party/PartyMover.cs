@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Descending.Features;
 using Descending.Scene_Overworld;
 using Pathfinding;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Party
@@ -15,6 +16,9 @@ namespace Descending.Party
 
         [SerializeField] private WorldTile _currentTile = null;
         [SerializeField] private WorldTile _lastTile = null;
+        
+        [SerializeField] private BoolEvent onSetVillageButtonInteractable = null;
+        [SerializeField] private BoolEvent onSetDungeonButtonInteractable = null;
 
         public WorldTile CurrentTile => _currentTile;
         public WorldTile LastTile => _lastTile;
@@ -32,7 +36,14 @@ namespace Descending.Party
                 
                 if (_currentTile.Feature != null)
                 {
-                    //_currentTile.Feature.Interact();
+                    if (_currentTile.Feature.GetType() == typeof(Village))
+                    {
+                        onSetVillageButtonInteractable.Invoke(true);
+                    }
+                    else if (_currentTile.Feature.GetType() == typeof(Dungeon))
+                    {
+                        onSetDungeonButtonInteractable.Invoke(true);
+                    }
                 }
             }
         }
@@ -42,6 +53,18 @@ namespace Descending.Party
             if (other.CompareTag("World Tile"))
             {
                 _lastTile = other.GetComponentInParent<WorldTile>();
+                
+                if (_lastTile.Feature != null)
+                {
+                    if (_lastTile.Feature.GetType() == typeof(Village))
+                    {
+                        onSetVillageButtonInteractable.Invoke(false);
+                    }
+                    else if (_lastTile.Feature.GetType() == typeof(Dungeon))
+                    {
+                        onSetDungeonButtonInteractable.Invoke(false);
+                    }
+                }
             }
         }
     }
