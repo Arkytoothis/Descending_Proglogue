@@ -62,6 +62,8 @@ namespace Descending.Scene_Overworld
         [SerializeField] private int _forestTiles = 0;
         [SerializeField] private int _minGroundTiles = 300;
         [SerializeField] private int _minMountainTiles = 50;
+        [SerializeField] private bool _loadData = false;
+        
         //[SerializeField] private int _maxMountainTiles = 70;
         //[SerializeField] private int _minForestTiles = 50;
 
@@ -82,6 +84,18 @@ namespace Descending.Scene_Overworld
         public int SampleSize => _sampleSize;
         public WorldTile[,] Tiles => _tiles;
 
+        public void Setup()
+        {
+            if (_loadData == true)
+            {
+                LoadState();
+            }
+            else
+            {
+                BuildWorld();
+            }
+        }
+        
         public void BuildWorld()
         {
             for (_tries = 1; _tries < _maxTries; _tries++)
@@ -105,7 +119,11 @@ namespace Descending.Scene_Overworld
 
         public void LoadWorld(WorldSaveData saveData)
         {
-            ClearTiles();
+            if (_tiles != null)
+            {
+                ClearTiles();
+            }
+            
             _featurePlacer.ClearFeatures();
             
             _tiles = new WorldTile[saveData.Size, saveData.Size];
@@ -146,14 +164,7 @@ namespace Descending.Scene_Overworld
                 }
             }
             
-            ScanAstar();
-            _portraitRoom.Setup();
-            UnitManager.Instance.SyncHeroes();
-            //CalculateThreatLevels();
-            // SpawnStartingVillage();
-            // SpawnVillages();
-            // SpawnDungeons();
-            // SpawnParty();
+            StartCoroutine(FinalizeLoad());
         }
 
         private void ClearTiles()
@@ -436,6 +447,44 @@ namespace Descending.Scene_Overworld
             SpawnDungeons();
             SpawnParty();
         }
+        
+        private IEnumerator FinalizeLoad()
+        {
+            yield return null;
+            _shoreTiles = new List<WorldTile>();
+            
+            for (int x = 0; x < _sampleSize; x++)
+            {
+                for (int y = 0; y < _sampleSize; y++)
+                {
+                    if (_tiles[x, y] != null && _tiles[x,y].IsWater == false)
+                    {
+                        _tiles[x,y].FindNeighbors(_tiles);
+                    }
+                }
+            }
+            
+            for (int x = 0; x < _sampleSize; x++)
+            {
+                for (int y = 0; y < _sampleSize; y++)
+                {
+                    if (_tiles[x, y] != null)
+                    {
+                        if (_tiles[x, y].NeighborTiles.Count < 6 && _tiles[x,y].IsSpawnable)
+                        {
+                            _shoreTiles.Add(_tiles[x, y]);
+                            
+                            if (_tiles[x, y].Name == "Forest" && x >= _minStartingX)
+                            {
+                                _startingTiles.Add(_tiles[x, y]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            ScanAstar();
+        }
 
         private void SpawnStartingVillage()
         {
@@ -517,20 +566,25 @@ namespace Descending.Scene_Overworld
             _partyController.SetPartyLeader(0);
         }
 
-        public void SaveState(string filePath)
+        public void SaveState()
         {
             WorldSaveData saveData = new WorldSaveData(this);
             byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
-            File.WriteAllBytes(filePath, bytes);
+            File.WriteAllBytes(Database.instance.WorldDataFilePath, bytes);
         }
         
-        public void LoadState(string filePath)
+        public void LoadState()
         {
-            if (!File.Exists(filePath)) return; // No state to load
+            if (!File.Exists(Database.instance.WorldDataFilePath)) return; // No state to load
 	
-            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] bytes = File.ReadAllBytes(Database.instance.WorldDataFilePath);
             WorldSaveData saveData = SerializationUtility.DeserializeValue<WorldSaveData>(bytes, DataFormat.JSON);
             LoadWorld(saveData);
+        }
+
+        public void SetLoadData(bool loadData)
+        {
+            _loadData = loadData;
         }
     }
 

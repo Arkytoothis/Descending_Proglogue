@@ -14,7 +14,11 @@ namespace Descending.Party
         [SerializeField] private Seeker _seeker;
 
         [SerializeField] private WorldTile _currentTile = null;
-        
+        [SerializeField] private WorldTile _lastTile = null;
+
+        public WorldTile CurrentTile => _currentTile;
+        public WorldTile LastTile => _lastTile;
+
         public void MoveTo(Vector3 position)
         {
             _seeker.StartPath(transform.position, position);
@@ -28,8 +32,16 @@ namespace Descending.Party
                 
                 if (_currentTile.Feature != null)
                 {
-                    _currentTile.Feature.Interact();
+                    //_currentTile.Feature.Interact();
                 }
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("World Tile"))
+            {
+                _lastTile = other.GetComponentInParent<WorldTile>();
             }
         }
     }

@@ -316,7 +316,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122857051}
-  m_LocalRotation: {x: 0.6339889, y: 0.000000009979813, z: -0.00000000818149, w: 0.7733422}
+  m_LocalRotation: {x: 0.6339889, y: -0.000000009979813, z: 0.00000000818149, w: 0.7733422}
   m_LocalPosition: {x: 0, y: 50, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -659,7 +659,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369120449}
-  m_LocalRotation: {x: 0.6339889, y: 0.000000009979813, z: -0.00000000818149, w: 0.7733422}
+  m_LocalRotation: {x: 0.6339889, y: -0.000000009979813, z: 0.00000000818149, w: 0.7733422}
   m_LocalPosition: {x: 0, y: 50, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -975,6 +975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f38394602402644a8666fbb380dea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numItemToGenerate: 0
+  _loadData: 1
   onSyncStockpile:
     m_PersistentCalls:
       m_Calls:
@@ -1280,6 +1282,7 @@ MonoBehaviour:
   _supplies: 0
   _materials: 0
   _gems: 0
+  _loadData: 1
   onUpdateCoins:
     m_PersistentCalls:
       m_Calls:
@@ -1549,6 +1552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3546eb54527809144ba3efa0af6057e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unitManager: {fileID: 1649929347}
+  _stockpileManager: {fileID: 668825384}
+  _resourcesManager: {fileID: 928542160}
   _worldGenerator: {fileID: 1440122486}
 --- !u!1 &1091909222
 GameObject:
@@ -2710,6 +2716,7 @@ MonoBehaviour:
   _forestTiles: 0
   _minGroundTiles: 280
   _minMountainTiles: 40
+  _loadData: 1
   _startingTiles: []
 --- !u!1 &1449607556
 GameObject:
@@ -2821,6 +2828,7 @@ Transform:
   - {fileID: 1091909223}
   - {fileID: 292738489}
   - {fileID: 726082405}
+  - {fileID: 1699002119}
   m_Father: {fileID: 2096221668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2922,6 +2930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _seeker: {fileID: 1451443517}
   _currentTile: {fileID: 0}
+  _lastTile: {fileID: 0}
 --- !u!65 &1451443519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3092,7 +3101,7 @@ MonoBehaviour:
   _heroUnits: []
   _enemyUnits: []
   _enemySpawners: []
-  _loadData: 0
+  _loadData: 1
   onSyncParty:
     m_PersistentCalls:
       m_Calls:
@@ -3156,6 +3165,81 @@ Transform:
   m_Father: {fileID: 2080043934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1699002118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1699002119}
+  - component: {fileID: 1699002120}
+  - component: {fileID: 1699002121}
+  - component: {fileID: 1699002122}
+  m_Layer: 2
+  m_Name: Feature Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1699002119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699002118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1451443512}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1699002120
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699002118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1699002121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699002118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596a6f527fb4b8046bed8a28965994ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1699002122
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699002118}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1700541326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3241,6 +3325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710172497}
   - component: {fileID: 1710172496}
+  - component: {fileID: 1710172498}
   m_Layer: 0
   m_Name: Overworld Manager
   m_TagString: Untagged
@@ -3280,6 +3365,39 @@ Transform:
   m_Father: {fileID: 1337971118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710172498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710172495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 030b2ccebe6f90342a414ed8e7eb9510, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710172496}
+        m_TargetAssemblyTypeName: Descending.Overworld.OverworldManager, Reclamation
+        m_MethodName: OnEndCombat
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1001 &1719657993
 PrefabInstance:
   m_ObjectHideFlags: 0

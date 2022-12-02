@@ -87,10 +87,10 @@ namespace Descending.Core
             _sceneLoadFilePath = Application.streamingAssetsPath + "/SaveData/scene_load_data.dat";
             _partyDataFilePath = Application.streamingAssetsPath + "/SaveData/party_data.dat";
             _timeDataFilePath = Application.streamingAssetsPath + "/SaveData/time_data.dat";
-            _resourceDataFilePath = Application.streamingAssetsPath + "/SaveData/resource_data.dat";
+            _resourceDataFilePath = Application.streamingAssetsPath + "/SaveData/resources_data.dat";
             _overworldSpawnFilePath = Application.streamingAssetsPath + "/SaveData/overworld_spawn.dat";
             _stockpileFilePath = Application.streamingAssetsPath + "/SaveData/stockpile_data.dat";
-            _worldDataFilePath = Application.streamingAssetsPath + "/SaveData/_world_data.dat";
+            _worldDataFilePath = Application.streamingAssetsPath + "/SaveData/world_data.dat";
         }
     }
 }

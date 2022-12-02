@@ -91,6 +91,7 @@ namespace Descending.Scene_Overworld
             }
 
             s += _threatLevel;
+            Debug.Log("Clicked");
         }
 
         public void SetThreatLevel(int threatLevel)
@@ -162,8 +163,16 @@ namespace Descending.Scene_Overworld
 
         public void LoadTile(WorldTileSaveData saveData, int x, int y)
         {
-            transform.Rotate(Vector3.up, saveData.TileRotation);
+            if (transform != null)
+            {
+                transform.Rotate(Vector3.up, saveData.TileRotation);
+            }
+            
             _tileIndex = saveData.TileIndex;
+            _threatLevel = saveData.ThreatLevel;
+            _isSpawnable = saveData.IsSpawnable;
+            _isMovable = saveData.IsMovable;
+            _isWater = saveData.IsWater;
             _x = x;
             _y = y;
 
@@ -181,12 +190,18 @@ namespace Descending.Scene_Overworld
         [SerializeField] private int _threatLevel = 0;
         [SerializeField] private float _tileRotation = 0f;
         [SerializeField] private string _featureKey = "";
+        [SerializeField] private bool _isSpawnable = false;
+        [SerializeField] private bool _isMovable = false;
+        [SerializeField] private bool _isWater = false;
         [SerializeField] private List<bool> _propsActive = null;
 
         public int TileIndex => _tileIndex;
         public int ThreatLevel => _threatLevel;
         public float TileRotation => _tileRotation;
         public string FeatureKey => _featureKey;
+        public bool IsSpawnable => _isSpawnable;
+        public bool IsMovable => _isMovable;
+        public bool IsWater => _isWater;
         public List<bool> PropsActive => _propsActive;
 
         public WorldTileSaveData()
@@ -195,6 +210,9 @@ namespace Descending.Scene_Overworld
             _threatLevel = 0;
             _tileRotation = 0f;
             _featureKey = "";
+            _isSpawnable = false;
+            _isMovable = false;
+            _isWater = false;
             _propsActive = new List<bool>();
         }
         
@@ -203,6 +221,10 @@ namespace Descending.Scene_Overworld
             _tileIndex = tile.TileIndex;
             _threatLevel = tile.ThreatLevel;
             _tileRotation = tile.transform.rotation.y;
+            _isSpawnable = tile.IsSpawnable;
+            _isMovable = tile.IsMovable;
+            _isWater = tile.IsWater;
+            
             _featureKey = "";
             
             if (tile.Feature != null)

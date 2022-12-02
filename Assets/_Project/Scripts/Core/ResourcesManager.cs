@@ -44,7 +44,7 @@ namespace Descending.Core
         {
             if (_loadData == true)
             {
-                LoadState(Database.instance.ResourceDataFilePath);
+                LoadState();
             }
             else
             {
@@ -94,18 +94,18 @@ namespace Descending.Core
             onUpdateSupplies.Invoke(_supplies);
         }
         
-        public void SaveState(string filePath)
+        public void SaveState()
         {
             ResourcesSaveData saveData = new ResourcesSaveData();
             byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
-            File.WriteAllBytes(filePath, bytes);
+            File.WriteAllBytes(Database.instance.ResourceDataFilePath, bytes);
         }
         
-        public void LoadState(string filePath)
+        public void LoadState()
         {
-            if (!File.Exists(filePath)) return; // No state to load
+            if (!File.Exists(Database.instance.ResourceDataFilePath)) return; // No state to load
 	
-            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] bytes = File.ReadAllBytes(Database.instance.ResourceDataFilePath);
             ResourcesSaveData saveData = SerializationUtility.DeserializeValue<ResourcesSaveData>(bytes, DataFormat.JSON);
 
             _coins = saveData.Coins;
@@ -114,6 +114,11 @@ namespace Descending.Core
             _supplies = saveData.Supplies;
 
             SyncResources();
+        }
+
+        public void SetLoadData(bool loadData)
+        {
+            _loadData = loadData;
         }
     }
 

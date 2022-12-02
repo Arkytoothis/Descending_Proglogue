@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Descending.Core;
-using Descending.Scene_Overworld;
 using Descending.Tiles;
-using Descending.Units;
+using ScriptableObjectArchitecture;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Descending.Combat_Events
 {
     [System.Serializable]
     public class EndCombatEvent : CombatEvent
     {
-
+        [SerializeField] private BoolEvent onEndCombat = null;
+        
         public EndCombatEvent()
         {
             
@@ -20,7 +18,7 @@ namespace Descending.Combat_Events
         
         public override void TriggerEvent(MapPosition mapPosition)
         {
-            SceneManager.LoadScene((int)GameScenes.Overworld);
+            onEndCombat.Invoke(true);
         }
     }
 }

@@ -202,28 +202,32 @@ namespace Descending.Gui
         private void Show()
         {
             //_isShown = true;
-            Invoke("DelayedOpen", _openDelay);
+            //Invoke("DelayedOpen", _openDelay);
+            DelayedOpen();
         }
 
         public void DelayedOpen()
         {
             //_isShown = true;
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
-            _canvasGroup.DOFade(1f, _openSpeed);
+            _canvasGroup.alpha = 1f;
+            //_canvasGroup.DOFade(1f, _openSpeed);
         }
 
         public void Hide()
         {
             //_isShown = false;
-            CancelInvoke("DelayedOpen");
-            _canvasGroup.DOFade(0f, _closeSpeed);
+            //CancelInvoke("DelayedOpen");
+            _canvasGroup.alpha = 0f;
+            //_canvasGroup.DOFade(0f, _closeSpeed);
         }
 
         public void Close()
         {
             //_isShown = false;
-            CancelInvoke("DelayedOpen");
-            _canvasGroup.DOFade(0f, 0f);
+            //CancelInvoke("DelayedOpen");
+            //_canvasGroup.DOFade(0f, 0f);
+            _canvasGroup.alpha = 0f;
         }
 
         public void ShowHeader()

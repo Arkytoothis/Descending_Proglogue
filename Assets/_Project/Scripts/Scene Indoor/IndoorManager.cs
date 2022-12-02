@@ -9,8 +9,10 @@ using Descending.Equipment;
 using Descending.Gui;
 using Descending.Tiles;
 using Descending.Units;
+using DG.Tweening;
 using DunGen;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Descending.Scene_Indoor
 {
@@ -63,6 +65,22 @@ namespace Descending.Scene_Indoor
             GameObject clone = Instantiate(_guiPrefab, _guiParent);
             _guiManager = clone.GetComponent<GuiManager>();
             _guiManager.Setup();
+        }
+
+        public void OnEndCombat(bool b)
+        {
+            StartCoroutine(DelayedLoadEndCombat());
+        }
+        
+        private IEnumerator DelayedLoadEndCombat()
+        {
+            yield return new WaitForSeconds(1f);
+
+            UnitManager.Instance.SaveState_Combat();
+            ResourcesManager.Instance.SaveState();
+            StockpileManager.Instance.SaveState();
+            
+            SceneManager.LoadScene((int)GameScenes.Overworld);
         }
     }
 }

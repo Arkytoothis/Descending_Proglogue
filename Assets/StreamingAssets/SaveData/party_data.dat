@@ -1,30 +1,24 @@
 {
     "$id": 0,
     "$type": "0|Descending.Party.PartySaveData, Reclamation",
-    "_worldPosition": {
-        "$type": "1|UnityEngine.Vector3, UnityEngine.CoreModule",
-        122.887787,
-        0.99999994,
-        50.2928429
-    },
     "_heroes": {
         "$id": 1,
-        "$type": "2|Descending.Units.HeroSaveData[], Reclamation",
+        "$type": "1|Descending.Units.HeroSaveData[], Reclamation",
         "$rlength": 4,
         "$rcontent": [
             {
                 "$id": 2,
-                "$type": "3|Descending.Units.HeroSaveData, Reclamation",
+                "$type": "2|Descending.Units.HeroSaveData, Reclamation",
                 "_name": {
                     "$id": 3,
-                    "$type": "4|Descending.Units.FantasyName, Reclamation",
+                    "$type": "3|Descending.Units.FantasyName, Reclamation",
                     "gender": 3,
-                    "title": "Mr",
-                    "firstName": "Hevavan",
+                    "title": "",
+                    "firstName": "Brax",
                     "nickName": "",
-                    "lastName": "Grimsinner",
+                    "lastName": "Doommist",
                     "postfix": "",
-                    "land": "Drunmyr Falls"
+                    "land": "Rotor Lands"
                 },
                 "_gender": 0,
                 "_raceKey": "Godkin",
@@ -33,44 +27,44 @@
                 "_experience": 0,
                 "_expToNextLevel": 1000,
                 "_listIndex": 0,
-                "_headIndex": 9,
-                "_hairIndex": 16,
+                "_headIndex": 16,
+                "_hairIndex": 7,
                 "_earIndex": -1,
-                "_facialHairIndex": 17,
-                "_eyebrowIndex": 8,
+                "_facialHairIndex": 15,
+                "_eyebrowIndex": 6,
                 "_skinColorIndex": 0,
                 "_tattooColorIndex": 0,
                 "_hairColorIndex": 1,
-                "_eyeColorIndex": 2,
+                "_eyeColorIndex": 1,
                 "_attributesSaveData": {
                     "$id": 4,
-                    "$type": "5|Descending.Attributes.AttributesSaveData, Reclamation",
+                    "$type": "4|Descending.Attributes.AttributesSaveData, Reclamation",
                     "_characteristics": {
                         "$id": 5,
-                        "$type": "6|System.Collections.Generic.List`1[[Descending.Attributes.Attribute, Reclamation]], mscorlib",
+                        "$type": "5|System.Collections.Generic.List`1[[Descending.Attributes.Attribute, Reclamation]], mscorlib",
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 6,
-                                "$type": "7|Descending.Attributes.Attribute, Reclamation",
+                                "$type": "6|Descending.Attributes.Attribute, Reclamation",
                                 "_key": "Endurance",
-                                "_current": 106,
-                                "_maximum": 106,
+                                "_current": 104,
+                                "_maximum": 104,
                                 "_modifier": 1,
                                 "_spent": 0
                             },
                             {
                                 "$id": 7,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Spirit",
-                                "_current": 101,
-                                "_maximum": 101,
+                                "_current": 102,
+                                "_maximum": 102,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 8,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Intellect",
                                 "_current": 100,
                                 "_maximum": 100,
@@ -79,16 +73,16 @@
                             },
                             {
                                 "$id": 9,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Senses",
-                                "_current": 101,
-                                "_maximum": 101,
+                                "_current": 103,
+                                "_maximum": 103,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 10,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might",
                                 "_current": 106,
                                 "_maximum": 106,
@@ -97,10 +91,10 @@
                             },
                             {
                                 "$id": 11,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse",
-                                "_current": 104,
-                                "_maximum": 104,
+                                "_current": 103,
+                                "_maximum": 103,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -108,21 +102,21 @@
                     },
                     "_vitals": {
                         "$id": 12,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 13,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Life",
-                                "_current": 111,
-                                "_maximum": 111,
+                                "_current": 110,
+                                "_maximum": 110,
                                 "_modifier": 20,
                                 "_spent": 0
                             },
                             {
                                 "$id": 14,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Armor",
                                 "_current": 18,
                                 "_maximum": 18,
@@ -131,16 +125,16 @@
                             },
                             {
                                 "$id": 15,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic",
-                                "_current": 105,
-                                "_maximum": 105,
+                                "_current": 106,
+                                "_maximum": 106,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 16,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Stamina",
                                 "_current": 108,
                                 "_maximum": 108,
@@ -149,7 +143,7 @@
                             },
                             {
                                 "$id": 17,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Actions",
                                 "_current": 99,
                                 "_maximum": 99,
@@ -158,7 +152,7 @@
                             },
                             {
                                 "$id": 18,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Quick Actions",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -169,12 +163,12 @@
                     },
                     "_statistics": {
                         "$id": 19,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 9,
                         "$rcontent": [
                             {
                                 "$id": 20,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse Damage",
                                 "_current": 9,
                                 "_maximum": 9,
@@ -183,7 +177,7 @@
                             },
                             {
                                 "$id": 21,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might Damage",
                                 "_current": 9,
                                 "_maximum": 9,
@@ -192,25 +186,25 @@
                             },
                             {
                                 "$id": 22,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Block",
-                                "_current": 106,
-                                "_maximum": 106,
+                                "_current": 105,
+                                "_maximum": 105,
                                 "_modifier": 10,
                                 "_spent": 0
                             },
                             {
                                 "$id": 23,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Dodge",
-                                "_current": 102,
-                                "_maximum": 102,
+                                "_current": 103,
+                                "_maximum": 103,
                                 "_modifier": -4,
                                 "_spent": 0
                             },
                             {
                                 "$id": 24,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic Damage",
                                 "_current": 18,
                                 "_maximum": 18,
@@ -219,7 +213,7 @@
                             },
                             {
                                 "$id": 25,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Willpower",
                                 "_current": 103,
                                 "_maximum": 103,
@@ -228,7 +222,7 @@
                             },
                             {
                                 "$id": 26,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Movement",
                                 "_current": 5,
                                 "_maximum": 5,
@@ -237,7 +231,7 @@
                             },
                             {
                                 "$id": 27,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Critical Damage",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -246,10 +240,10 @@
                             },
                             {
                                 "$id": 28,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Perception",
-                                "_current": 215,
-                                "_maximum": 215,
+                                "_current": 216,
+                                "_maximum": 216,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -257,75 +251,75 @@
                     },
                     "_resistances": {
                         "$id": 29,
-                        "$type": "8|System.Collections.Generic.List`1[[Descending.Attributes.Resistance, Reclamation]], mscorlib",
+                        "$type": "7|System.Collections.Generic.List`1[[Descending.Attributes.Resistance, Reclamation]], mscorlib",
                         "$rlength": 10,
                         "$rcontent": [
                             {
                                 "$id": 30,
-                                "$type": "9|Descending.Attributes.Resistance, Reclamation",
+                                "$type": "8|Descending.Attributes.Resistance, Reclamation",
                                 "_damageType": "Blunt",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 31,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Cold",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 32,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Fire",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 33,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Holy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 34,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Nature",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 35,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Pierce",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 36,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shock",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 37,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Slash",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 38,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Unholy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 39,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shadow",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
@@ -335,15 +329,15 @@
                 },
                 "_skillsSaveData": {
                     "$id": 40,
-                    "$type": "10|Descending.Attributes.SkillsSaveData, Reclamation",
+                    "$type": "9|Descending.Attributes.SkillsSaveData, Reclamation",
                     "_skills": {
                         "$id": 41,
-                        "$type": "11|System.Collections.Generic.List`1[[Descending.Attributes.Skill, Reclamation]], mscorlib",
+                        "$type": "10|System.Collections.Generic.List`1[[Descending.Attributes.Skill, Reclamation]], mscorlib",
                         "$rlength": 5,
                         "$rcontent": [
                             {
                                 "$id": 42,
-                                "$type": "12|Descending.Attributes.Skill, Reclamation",
+                                "$type": "11|Descending.Attributes.Skill, Reclamation",
                                 "_key": "Leadership",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -352,7 +346,7 @@
                             },
                             {
                                 "$id": 43,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Bartering",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -361,7 +355,7 @@
                             },
                             {
                                 "$id": 44,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Blades",
                                 "_current": 2,
                                 "_maximum": 2,
@@ -370,7 +364,7 @@
                             },
                             {
                                 "$id": 45,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Armor",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -379,7 +373,7 @@
                             },
                             {
                                 "$id": 46,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Shields",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -391,15 +385,15 @@
                 },
                 "_inventorySaveData": {
                     "$id": 47,
-                    "$type": "13|Descending.Equipment.InventorySaveData, Reclamation",
+                    "$type": "12|Descending.Equipment.InventorySaveData, Reclamation",
                     "_equippedItems": {
                         "$id": 48,
-                        "$type": "14|Descending.Equipment.Item[], Reclamation",
+                        "$type": "13|Descending.Equipment.Item[], Reclamation",
                         "$rlength": 14,
                         "$rcontent": [
                             {
                                 "$id": 49,
-                                "$type": "15|Descending.Equipment.Item, Reclamation",
+                                "$type": "14|Descending.Equipment.Item, Reclamation",
                                 "_name": "Spear",
                                 "_definitionKey": "Spear",
                                 "_description": "",
@@ -408,7 +402,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 50,
-                                    "$type": "16|System.Collections.Generic.List`1[[Descending.Equipment.RenderSlot, Reclamation]], mscorlib",
+                                    "$type": "15|System.Collections.Generic.List`1[[Descending.Equipment.RenderSlot, Reclamation]], mscorlib",
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -428,7 +422,7 @@
                             },
                             {
                                 "$id": 51,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Shield",
                                 "_definitionKey": "Wood Shield",
                                 "_description": "",
@@ -437,7 +431,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 52,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -457,7 +451,7 @@
                             },
                             {
                                 "$id": 53,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Throwing Knife",
                                 "_definitionKey": "Throwing Knife",
                                 "_description": "",
@@ -466,7 +460,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 54,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -486,7 +480,7 @@
                             },
                             {
                                 "$id": 55,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -495,7 +489,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 56,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -515,7 +509,7 @@
                             },
                             {
                                 "$id": 57,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -524,7 +518,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 58,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -544,7 +538,7 @@
                             },
                             {
                                 "$id": 59,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Mail Armor",
                                 "_definitionKey": "Mail Armor",
                                 "_description": "",
@@ -553,24 +547,24 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 60,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 3,
                                     "$rcontent": [
                                         {
                                             "$id": 61,
-                                            "$type": "17|Descending.Equipment.RenderSlot, Reclamation",
+                                            "$type": "16|Descending.Equipment.RenderSlot, Reclamation",
                                             "_bodyPart": 18,
                                             "_index": 12
                                         },
                                         {
                                             "$id": 62,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 19,
                                             "_index": 12
                                         },
                                         {
                                             "$id": 63,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 20,
                                             "_index": 12
                                         }
@@ -591,7 +585,7 @@
                             },
                             {
                                 "$id": 64,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -600,7 +594,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 65,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -620,7 +614,7 @@
                             },
                             {
                                 "$id": 66,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -629,7 +623,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 67,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -649,7 +643,7 @@
                             },
                             {
                                 "$id": 68,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -658,7 +652,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 69,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -678,7 +672,7 @@
                             },
                             {
                                 "$id": 70,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Pants",
                                 "_definitionKey": "Leather Pants",
                                 "_description": "",
@@ -687,12 +681,12 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 71,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 1,
                                     "$rcontent": [
                                         {
                                             "$id": 72,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 25,
                                             "_index": 13
                                         }
@@ -713,7 +707,7 @@
                             },
                             {
                                 "$id": 73,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Boots",
                                 "_definitionKey": "Leather Boots",
                                 "_description": "",
@@ -722,18 +716,18 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 74,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 2,
                                     "$rcontent": [
                                         {
                                             "$id": 75,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 26,
                                             "_index": 19
                                         },
                                         {
                                             "$id": 76,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 27,
                                             "_index": 19
                                         }
@@ -754,7 +748,7 @@
                             },
                             {
                                 "$id": 77,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -763,7 +757,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 78,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -783,7 +777,7 @@
                             },
                             {
                                 "$id": 79,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -792,7 +786,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 80,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -812,7 +806,7 @@
                             },
                             {
                                 "$id": 81,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -821,7 +815,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 82,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -843,12 +837,12 @@
                     },
                     "_accessories": {
                         "$id": 83,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 84,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Small Healing Potion",
                                 "_definitionKey": "Small Healing Potion",
                                 "_description": "",
@@ -857,7 +851,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 85,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -877,7 +871,7 @@
                             },
                             {
                                 "$id": 86,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Small Bomb",
                                 "_definitionKey": "Small Bomb",
                                 "_description": "",
@@ -886,7 +880,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 87,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -906,7 +900,7 @@
                             },
                             {
                                 "$id": 88,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -915,7 +909,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 89,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -935,7 +929,7 @@
                             },
                             {
                                 "$id": 90,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -944,7 +938,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 91,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -964,7 +958,7 @@
                             },
                             {
                                 "$id": 92,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -973,7 +967,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 93,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -993,7 +987,7 @@
                             },
                             {
                                 "$id": 94,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1002,7 +996,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 95,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1026,29 +1020,29 @@
                 },
                 "_abilitySaveData": {
                     "$id": 96,
-                    "$type": "18|Descending.Abilities.AbilitySaveData, Reclamation",
+                    "$type": "17|Descending.Abilities.AbilitySaveData, Reclamation",
                     "_memorizedPowers": {
                         "$id": 97,
-                        "$type": "19|System.Collections.Generic.List`1[[Descending.Abilities.Ability, Reclamation]], mscorlib",
+                        "$type": "18|System.Collections.Generic.List`1[[Descending.Abilities.Ability, Reclamation]], mscorlib",
                         "$rlength": 3,
                         "$rcontent": [
                             {
                                 "$id": 98,
-                                "$type": "20|Descending.Abilities.Ability, Reclamation",
+                                "$type": "19|Descending.Abilities.Ability, Reclamation",
                                 "_abilityType": 0,
                                 "_key": "Rally",
                                 "_empty": false
                             },
                             {
                                 "$id": 99,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 0,
                                 "_key": "Guard",
                                 "_empty": false
                             },
                             {
                                 "$id": 100,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 0,
                                 "_key": "Quick Slash",
                                 "_empty": false
@@ -1057,7 +1051,7 @@
                     },
                     "_memorizedSpells": {
                         "$id": 101,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 0,
                         "$rcontent": [
                         ]
@@ -1066,17 +1060,17 @@
             },
             {
                 "$id": 102,
-                "$type": 3,
+                "$type": 2,
                 "_name": {
                     "$id": 103,
-                    "$type": 4,
+                    "$type": 3,
                     "gender": 3,
-                    "title": "",
-                    "firstName": "Kelnton",
+                    "title": "Sire",
+                    "firstName": "Rurik",
                     "nickName": "",
-                    "lastName": "Ironbite",
-                    "postfix": "the Terrible",
-                    "land": "Cormyr"
+                    "lastName": "Doomhunter",
+                    "postfix": "",
+                    "land": "Broken Coast"
                 },
                 "_gender": 0,
                 "_raceKey": "Wild Elf",
@@ -1085,74 +1079,74 @@
                 "_experience": 0,
                 "_expToNextLevel": 1000,
                 "_listIndex": 1,
-                "_headIndex": 10,
-                "_hairIndex": 24,
+                "_headIndex": 17,
+                "_hairIndex": 16,
                 "_earIndex": 2,
-                "_facialHairIndex": 9,
-                "_eyebrowIndex": 7,
-                "_skinColorIndex": 0,
+                "_facialHairIndex": 1,
+                "_eyebrowIndex": 0,
+                "_skinColorIndex": 2,
                 "_tattooColorIndex": 0,
-                "_hairColorIndex": 2,
-                "_eyeColorIndex": 3,
+                "_hairColorIndex": 1,
+                "_eyeColorIndex": 1,
                 "_attributesSaveData": {
                     "$id": 104,
-                    "$type": 5,
+                    "$type": 4,
                     "_characteristics": {
                         "$id": 105,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 106,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Endurance",
-                                "_current": 15,
-                                "_maximum": 15,
+                                "_current": 13,
+                                "_maximum": 13,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 107,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Spirit",
-                                "_current": 19,
-                                "_maximum": 19,
+                                "_current": 21,
+                                "_maximum": 21,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 108,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Intellect",
-                                "_current": 12,
-                                "_maximum": 12,
+                                "_current": 13,
+                                "_maximum": 13,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 109,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Senses",
-                                "_current": 27,
-                                "_maximum": 27,
+                                "_current": 28,
+                                "_maximum": 28,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 110,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might",
-                                "_current": 15,
-                                "_maximum": 15,
+                                "_current": 11,
+                                "_maximum": 11,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 111,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse",
-                                "_current": 31,
-                                "_maximum": 31,
+                                "_current": 28,
+                                "_maximum": 28,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -1160,21 +1154,21 @@
                     },
                     "_vitals": {
                         "$id": 112,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 113,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Life",
-                                "_current": 19,
-                                "_maximum": 19,
+                                "_current": 16,
+                                "_maximum": 16,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 114,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Armor",
                                 "_current": 8,
                                 "_maximum": 8,
@@ -1183,16 +1177,16 @@
                             },
                             {
                                 "$id": 115,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic",
-                                "_current": 20,
-                                "_maximum": 20,
+                                "_current": 22,
+                                "_maximum": 22,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 116,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Stamina",
                                 "_current": 32,
                                 "_maximum": 32,
@@ -1201,7 +1195,7 @@
                             },
                             {
                                 "$id": 117,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Actions",
                                 "_current": 4,
                                 "_maximum": 4,
@@ -1210,7 +1204,7 @@
                             },
                             {
                                 "$id": 118,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Quick Actions",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -1221,21 +1215,21 @@
                     },
                     "_statistics": {
                         "$id": 119,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 9,
                         "$rcontent": [
                             {
                                 "$id": 120,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse Damage",
-                                "_current": 2,
-                                "_maximum": 2,
+                                "_current": 1,
+                                "_maximum": 1,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 121,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might Damage",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -1244,25 +1238,25 @@
                             },
                             {
                                 "$id": 122,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Block",
-                                "_current": 15,
-                                "_maximum": 15,
+                                "_current": 12,
+                                "_maximum": 12,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 123,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Dodge",
-                                "_current": 29,
-                                "_maximum": 29,
+                                "_current": 28,
+                                "_maximum": 28,
                                 "_modifier": 6,
                                 "_spent": 0
                             },
                             {
                                 "$id": 124,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic Damage",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -1271,7 +1265,7 @@
                             },
                             {
                                 "$id": 125,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Willpower",
                                 "_current": 17,
                                 "_maximum": 17,
@@ -1280,7 +1274,7 @@
                             },
                             {
                                 "$id": 126,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Movement",
                                 "_current": 3,
                                 "_maximum": 3,
@@ -1289,7 +1283,7 @@
                             },
                             {
                                 "$id": 127,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Critical Damage",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -1298,10 +1292,10 @@
                             },
                             {
                                 "$id": 128,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Perception",
-                                "_current": 63,
-                                "_maximum": 63,
+                                "_current": 61,
+                                "_maximum": 61,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -1309,75 +1303,75 @@
                     },
                     "_resistances": {
                         "$id": 129,
-                        "$type": 8,
+                        "$type": 7,
                         "$rlength": 10,
                         "$rcontent": [
                             {
                                 "$id": 130,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Blunt",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 131,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Cold",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 132,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Fire",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 133,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Holy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 134,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Nature",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 135,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Pierce",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 136,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shock",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 137,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Slash",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 138,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Unholy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 139,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shadow",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
@@ -1387,15 +1381,15 @@
                 },
                 "_skillsSaveData": {
                     "$id": 140,
-                    "$type": 10,
+                    "$type": 9,
                     "_skills": {
                         "$id": 141,
-                        "$type": 11,
+                        "$type": 10,
                         "$rlength": 4,
                         "$rcontent": [
                             {
                                 "$id": 142,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Survival",
                                 "_current": 2,
                                 "_maximum": 2,
@@ -1404,7 +1398,7 @@
                             },
                             {
                                 "$id": 143,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Water Magic",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -1413,7 +1407,7 @@
                             },
                             {
                                 "$id": 144,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Bows",
                                 "_current": 2,
                                 "_maximum": 2,
@@ -1422,7 +1416,7 @@
                             },
                             {
                                 "$id": 145,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Awareness",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -1434,15 +1428,15 @@
                 },
                 "_inventorySaveData": {
                     "$id": 146,
-                    "$type": 13,
+                    "$type": 12,
                     "_equippedItems": {
                         "$id": 147,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 14,
                         "$rcontent": [
                             {
                                 "$id": 148,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Short Sword",
                                 "_definitionKey": "Short Sword",
                                 "_description": "",
@@ -1451,7 +1445,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 149,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1471,7 +1465,7 @@
                             },
                             {
                                 "$id": 150,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1480,7 +1474,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 151,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1500,7 +1494,7 @@
                             },
                             {
                                 "$id": 152,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Short Bow",
                                 "_definitionKey": "Short Bow",
                                 "_description": "",
@@ -1509,7 +1503,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 153,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1529,7 +1523,7 @@
                             },
                             {
                                 "$id": 154,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1538,7 +1532,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 155,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1558,7 +1552,7 @@
                             },
                             {
                                 "$id": 156,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1567,7 +1561,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 157,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1587,7 +1581,7 @@
                             },
                             {
                                 "$id": 158,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Armor",
                                 "_definitionKey": "Leather Armor",
                                 "_description": "",
@@ -1596,24 +1590,24 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 159,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 3,
                                     "$rcontent": [
                                         {
                                             "$id": 160,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 18,
                                             "_index": 13
                                         },
                                         {
                                             "$id": 161,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 19,
                                             "_index": 9
                                         },
                                         {
                                             "$id": 162,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 20,
                                             "_index": 9
                                         }
@@ -1634,7 +1628,7 @@
                             },
                             {
                                 "$id": 163,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1643,7 +1637,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 164,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1663,7 +1657,7 @@
                             },
                             {
                                 "$id": 165,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1672,7 +1666,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 166,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1692,7 +1686,7 @@
                             },
                             {
                                 "$id": 167,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1701,7 +1695,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 168,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1721,7 +1715,7 @@
                             },
                             {
                                 "$id": 169,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Pants",
                                 "_definitionKey": "Leather Pants",
                                 "_description": "",
@@ -1744,7 +1738,7 @@
                             },
                             {
                                 "$id": 170,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Boots",
                                 "_definitionKey": "Leather Boots",
                                 "_description": "",
@@ -1767,7 +1761,7 @@
                             },
                             {
                                 "$id": 171,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1776,7 +1770,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 172,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1796,7 +1790,7 @@
                             },
                             {
                                 "$id": 173,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1805,7 +1799,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 174,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1825,7 +1819,7 @@
                             },
                             {
                                 "$id": 175,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1834,7 +1828,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 176,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1856,12 +1850,12 @@
                     },
                     "_accessories": {
                         "$id": 177,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 178,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Small Healing Potion",
                                 "_definitionKey": "Small Healing Potion",
                                 "_description": "",
@@ -1884,7 +1878,7 @@
                             },
                             {
                                 "$id": 179,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1893,7 +1887,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 180,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1913,7 +1907,7 @@
                             },
                             {
                                 "$id": 181,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1922,7 +1916,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 182,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1942,7 +1936,7 @@
                             },
                             {
                                 "$id": 183,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1951,7 +1945,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 184,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -1971,7 +1965,7 @@
                             },
                             {
                                 "$id": 185,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -1980,7 +1974,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 186,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2000,7 +1994,7 @@
                             },
                             {
                                 "$id": 187,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2009,7 +2003,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 188,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2033,15 +2027,15 @@
                 },
                 "_abilitySaveData": {
                     "$id": 189,
-                    "$type": 18,
+                    "$type": 17,
                     "_memorizedPowers": {
                         "$id": 190,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 1,
                         "$rcontent": [
                             {
                                 "$id": 191,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 0,
                                 "_key": "Eagle Eye",
                                 "_empty": false
@@ -2050,7 +2044,7 @@
                     },
                     "_memorizedSpells": {
                         "$id": 192,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 0,
                         "$rcontent": [
                         ]
@@ -2059,17 +2053,17 @@
             },
             {
                 "$id": 193,
-                "$type": 3,
+                "$type": 2,
                 "_name": {
                     "$id": 194,
-                    "$type": 4,
+                    "$type": 3,
                     "gender": 3,
-                    "title": "",
-                    "firstName": "Blacaire",
+                    "title": "Sire",
+                    "firstName": "Harald",
                     "nickName": "",
-                    "lastName": "Smokebone",
-                    "postfix": "the Tormented",
-                    "land": "Dranthar"
+                    "lastName": "Blacklust",
+                    "postfix": "the Unholy",
+                    "land": "Roker Hills"
                 },
                 "_gender": 0,
                 "_raceKey": "Imperial",
@@ -2078,74 +2072,74 @@
                 "_experience": 0,
                 "_expToNextLevel": 1000,
                 "_listIndex": 2,
-                "_headIndex": 18,
-                "_hairIndex": 23,
+                "_headIndex": 11,
+                "_hairIndex": 19,
                 "_earIndex": -1,
-                "_facialHairIndex": 11,
-                "_eyebrowIndex": 9,
-                "_skinColorIndex": 1,
+                "_facialHairIndex": 1,
+                "_eyebrowIndex": 1,
+                "_skinColorIndex": 0,
                 "_tattooColorIndex": 0,
-                "_hairColorIndex": 0,
-                "_eyeColorIndex": 1,
+                "_hairColorIndex": 3,
+                "_eyeColorIndex": 0,
                 "_attributesSaveData": {
                     "$id": 195,
-                    "$type": 5,
+                    "$type": 4,
                     "_characteristics": {
                         "$id": 196,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 197,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Endurance",
-                                "_current": 19,
-                                "_maximum": 19,
+                                "_current": 18,
+                                "_maximum": 18,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 198,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Spirit",
-                                "_current": 24,
-                                "_maximum": 24,
+                                "_current": 18,
+                                "_maximum": 18,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 199,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Intellect",
-                                "_current": 12,
-                                "_maximum": 12,
+                                "_current": 17,
+                                "_maximum": 17,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 200,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Senses",
-                                "_current": 15,
-                                "_maximum": 15,
+                                "_current": 17,
+                                "_maximum": 17,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 201,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might",
-                                "_current": 14,
-                                "_maximum": 14,
+                                "_current": 16,
+                                "_maximum": 16,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 202,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse",
-                                "_current": 18,
-                                "_maximum": 18,
+                                "_current": 14,
+                                "_maximum": 14,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -2153,21 +2147,21 @@
                     },
                     "_vitals": {
                         "$id": 203,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 204,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Life",
-                                "_current": 21,
-                                "_maximum": 21,
+                                "_current": 22,
+                                "_maximum": 22,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 205,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Armor",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2176,25 +2170,25 @@
                             },
                             {
                                 "$id": 206,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic",
+                                "_current": 22,
+                                "_maximum": 22,
+                                "_modifier": 0,
+                                "_spent": 0
+                            },
+                            {
+                                "$id": 207,
+                                "$type": 6,
+                                "_key": "Stamina",
                                 "_current": 23,
                                 "_maximum": 23,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
-                                "$id": 207,
-                                "$type": 7,
-                                "_key": "Stamina",
-                                "_current": 26,
-                                "_maximum": 26,
-                                "_modifier": 0,
-                                "_spent": 0
-                            },
-                            {
                                 "$id": 208,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Actions",
                                 "_current": 3,
                                 "_maximum": 3,
@@ -2203,7 +2197,7 @@
                             },
                             {
                                 "$id": 209,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Quick Actions",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -2214,12 +2208,12 @@
                     },
                     "_statistics": {
                         "$id": 210,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 9,
                         "$rcontent": [
                             {
                                 "$id": 211,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse Damage",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -2228,7 +2222,7 @@
                             },
                             {
                                 "$id": 212,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might Damage",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -2237,25 +2231,25 @@
                             },
                             {
                                 "$id": 213,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Block",
-                                "_current": 16,
-                                "_maximum": 16,
+                                "_current": 17,
+                                "_maximum": 17,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 214,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Dodge",
-                                "_current": 16,
-                                "_maximum": 16,
+                                "_current": 15,
+                                "_maximum": 15,
                                 "_modifier": 1,
                                 "_spent": 0
                             },
                             {
                                 "$id": 215,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic Damage",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2264,16 +2258,16 @@
                             },
                             {
                                 "$id": 216,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Willpower",
-                                "_current": 21,
-                                "_maximum": 21,
+                                "_current": 18,
+                                "_maximum": 18,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 217,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Movement",
                                 "_current": 3,
                                 "_maximum": 3,
@@ -2282,7 +2276,7 @@
                             },
                             {
                                 "$id": 218,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Critical Damage",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2291,10 +2285,10 @@
                             },
                             {
                                 "$id": 219,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Perception",
-                                "_current": 33,
-                                "_maximum": 33,
+                                "_current": 31,
+                                "_maximum": 31,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -2302,75 +2296,75 @@
                     },
                     "_resistances": {
                         "$id": 220,
-                        "$type": 8,
+                        "$type": 7,
                         "$rlength": 10,
                         "$rcontent": [
                             {
                                 "$id": 221,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Blunt",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 222,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Cold",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 223,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Fire",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 224,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Holy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 225,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Nature",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 226,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Pierce",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 227,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shock",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 228,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Slash",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 229,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Unholy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 230,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shadow",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
@@ -2380,15 +2374,15 @@
                 },
                 "_skillsSaveData": {
                     "$id": 231,
-                    "$type": 10,
+                    "$type": 9,
                     "_skills": {
                         "$id": 232,
-                        "$type": 11,
+                        "$type": 10,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 233,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Leadership",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2397,7 +2391,7 @@
                             },
                             {
                                 "$id": 234,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Bartering",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2406,7 +2400,7 @@
                             },
                             {
                                 "$id": 235,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Blades",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2415,7 +2409,7 @@
                             },
                             {
                                 "$id": 236,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Life Magic",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2424,7 +2418,7 @@
                             },
                             {
                                 "$id": 237,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Death Magic",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2433,7 +2427,7 @@
                             },
                             {
                                 "$id": 238,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Earth Magic",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -2445,15 +2439,15 @@
                 },
                 "_inventorySaveData": {
                     "$id": 239,
-                    "$type": 13,
+                    "$type": 12,
                     "_equippedItems": {
                         "$id": 240,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 14,
                         "$rcontent": [
                             {
                                 "$id": 241,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2462,7 +2456,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 242,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2482,7 +2476,7 @@
                             },
                             {
                                 "$id": 243,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2491,7 +2485,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 244,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2511,7 +2505,7 @@
                             },
                             {
                                 "$id": 245,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Holy Scepter",
                                 "_definitionKey": "Holy Scepter",
                                 "_description": "",
@@ -2520,7 +2514,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 246,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2540,7 +2534,7 @@
                             },
                             {
                                 "$id": 247,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2549,7 +2543,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 248,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2569,7 +2563,7 @@
                             },
                             {
                                 "$id": 249,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2578,7 +2572,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 250,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2598,7 +2592,7 @@
                             },
                             {
                                 "$id": 251,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Simple Vestment",
                                 "_definitionKey": "Simple Vestment",
                                 "_description": "",
@@ -2607,24 +2601,24 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 252,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 3,
                                     "$rcontent": [
                                         {
                                             "$id": 253,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 18,
                                             "_index": 8
                                         },
                                         {
                                             "$id": 254,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 19,
                                             "_index": 10
                                         },
                                         {
                                             "$id": 255,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 20,
                                             "_index": 10
                                         }
@@ -2645,7 +2639,7 @@
                             },
                             {
                                 "$id": 256,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2654,7 +2648,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 257,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2674,7 +2668,7 @@
                             },
                             {
                                 "$id": 258,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2683,7 +2677,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 259,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2703,7 +2697,7 @@
                             },
                             {
                                 "$id": 260,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2712,7 +2706,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 261,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2732,7 +2726,7 @@
                             },
                             {
                                 "$id": 262,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Pants",
                                 "_definitionKey": "Cloth Pants",
                                 "_description": "",
@@ -2741,12 +2735,12 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 263,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 1,
                                     "$rcontent": [
                                         {
                                             "$id": 264,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 25,
                                             "_index": 14
                                         }
@@ -2767,7 +2761,7 @@
                             },
                             {
                                 "$id": 265,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Boots",
                                 "_definitionKey": "Leather Boots",
                                 "_description": "",
@@ -2790,7 +2784,7 @@
                             },
                             {
                                 "$id": 266,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2799,7 +2793,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 267,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2819,7 +2813,7 @@
                             },
                             {
                                 "$id": 268,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2828,7 +2822,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 269,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2848,7 +2842,7 @@
                             },
                             {
                                 "$id": 270,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2857,7 +2851,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 271,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2879,12 +2873,12 @@
                     },
                     "_accessories": {
                         "$id": 272,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 273,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Small Essence Potion",
                                 "_definitionKey": "Small Essence Potion",
                                 "_description": "",
@@ -2893,7 +2887,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 274,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2913,7 +2907,7 @@
                             },
                             {
                                 "$id": 275,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Scroll of Lesser Heal",
                                 "_definitionKey": "Scroll of Lesser Heal",
                                 "_description": "",
@@ -2922,7 +2916,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 276,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2942,7 +2936,7 @@
                             },
                             {
                                 "$id": 277,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2951,7 +2945,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 278,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -2971,7 +2965,7 @@
                             },
                             {
                                 "$id": 279,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -2980,7 +2974,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 280,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3000,7 +2994,7 @@
                             },
                             {
                                 "$id": 281,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3009,7 +3003,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 282,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3029,7 +3023,7 @@
                             },
                             {
                                 "$id": 283,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3038,7 +3032,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 284,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3062,22 +3056,22 @@
                 },
                 "_abilitySaveData": {
                     "$id": 285,
-                    "$type": 18,
+                    "$type": 17,
                     "_memorizedPowers": {
                         "$id": 286,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 2,
                         "$rcontent": [
                             {
                                 "$id": 287,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 0,
                                 "_key": "Rally",
                                 "_empty": false
                             },
                             {
                                 "$id": 288,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 0,
                                 "_key": "Quick Slash",
                                 "_empty": false
@@ -3086,47 +3080,47 @@
                     },
                     "_memorizedSpells": {
                         "$id": 289,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 290,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Bless",
                                 "_empty": false
                             },
                             {
                                 "$id": 291,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Lesser Healing",
                                 "_empty": false
                             },
                             {
                                 "$id": 292,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Earthen Skin",
                                 "_empty": false
                             },
                             {
                                 "$id": 293,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Lesser Regeneration",
                                 "_empty": false
                             },
                             {
                                 "$id": 294,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Armor of Justice",
                                 "_empty": false
                             },
                             {
                                 "$id": 295,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Life Drain",
                                 "_empty": false
@@ -3137,17 +3131,17 @@
             },
             {
                 "$id": 296,
-                "$type": 3,
+                "$type": 2,
                 "_name": {
                     "$id": 297,
-                    "$type": 4,
+                    "$type": 3,
                     "gender": 3,
                     "title": "",
-                    "firstName": "Norax",
+                    "firstName": "Krashnor",
                     "nickName": "",
-                    "lastName": "Doomheart",
-                    "postfix": "",
-                    "land": "Raker"
+                    "lastName": "Bloodbite",
+                    "postfix": "the Cruel",
+                    "land": "Dragon Hills"
                 },
                 "_gender": 0,
                 "_raceKey": "Valarian",
@@ -3156,26 +3150,26 @@
                 "_experience": 0,
                 "_expToNextLevel": 1000,
                 "_listIndex": 3,
-                "_headIndex": 9,
-                "_hairIndex": 3,
+                "_headIndex": 22,
+                "_hairIndex": 11,
                 "_earIndex": -1,
-                "_facialHairIndex": 2,
-                "_eyebrowIndex": 4,
-                "_skinColorIndex": 1,
+                "_facialHairIndex": 6,
+                "_eyebrowIndex": 5,
+                "_skinColorIndex": 0,
                 "_tattooColorIndex": 0,
                 "_hairColorIndex": 0,
                 "_eyeColorIndex": 3,
                 "_attributesSaveData": {
                     "$id": 298,
-                    "$type": 5,
+                    "$type": 4,
                     "_characteristics": {
                         "$id": 299,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 300,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Endurance",
                                 "_current": 11,
                                 "_maximum": 11,
@@ -3184,46 +3178,46 @@
                             },
                             {
                                 "$id": 301,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Spirit",
-                                "_current": 28,
-                                "_maximum": 28,
+                                "_current": 29,
+                                "_maximum": 29,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 302,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Intellect",
-                                "_current": 34,
-                                "_maximum": 34,
+                                "_current": 30,
+                                "_maximum": 30,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 303,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Senses",
-                                "_current": 14,
-                                "_maximum": 14,
+                                "_current": 12,
+                                "_maximum": 12,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 304,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might",
-                                "_current": 11,
-                                "_maximum": 11,
+                                "_current": 10,
+                                "_maximum": 10,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 305,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse",
-                                "_current": 12,
-                                "_maximum": 12,
+                                "_current": 13,
+                                "_maximum": 13,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -3231,21 +3225,21 @@
                     },
                     "_vitals": {
                         "$id": 306,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 307,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Life",
-                                "_current": 13,
-                                "_maximum": 13,
+                                "_current": 12,
+                                "_maximum": 12,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 308,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Armor",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -3254,34 +3248,34 @@
                             },
                             {
                                 "$id": 309,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic",
-                                "_current": 46,
-                                "_maximum": 46,
+                                "_current": 44,
+                                "_maximum": 44,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 310,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Stamina",
-                                "_current": 21,
-                                "_maximum": 21,
+                                "_current": 22,
+                                "_maximum": 22,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 311,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Actions",
-                                "_current": 3,
+                                "_current": 0,
                                 "_maximum": 3,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 312,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Quick Actions",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -3292,12 +3286,12 @@
                     },
                     "_statistics": {
                         "$id": 313,
-                        "$type": 6,
+                        "$type": 5,
                         "$rlength": 9,
                         "$rcontent": [
                             {
                                 "$id": 314,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Finesse Damage",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -3306,7 +3300,7 @@
                             },
                             {
                                 "$id": 315,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Might Damage",
                                 "_current": 0,
                                 "_maximum": 0,
@@ -3315,43 +3309,43 @@
                             },
                             {
                                 "$id": 316,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Block",
-                                "_current": 11,
-                                "_maximum": 11,
+                                "_current": 10,
+                                "_maximum": 10,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 317,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Dodge",
-                                "_current": 13,
-                                "_maximum": 13,
+                                "_current": 12,
+                                "_maximum": 12,
                                 "_modifier": 1,
                                 "_spent": 0
                             },
                             {
                                 "$id": 318,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Magic Damage",
-                                "_current": 4,
-                                "_maximum": 4,
+                                "_current": 3,
+                                "_maximum": 3,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 319,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Willpower",
-                                "_current": 19,
-                                "_maximum": 19,
+                                "_current": 20,
+                                "_maximum": 20,
                                 "_modifier": 0,
                                 "_spent": 0
                             },
                             {
                                 "$id": 320,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Movement",
                                 "_current": 3,
                                 "_maximum": 3,
@@ -3360,7 +3354,7 @@
                             },
                             {
                                 "$id": 321,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Critical Damage",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -3369,10 +3363,10 @@
                             },
                             {
                                 "$id": 322,
-                                "$type": 7,
+                                "$type": 6,
                                 "_key": "Perception",
-                                "_current": 26,
-                                "_maximum": 26,
+                                "_current": 25,
+                                "_maximum": 25,
                                 "_modifier": 0,
                                 "_spent": 0
                             }
@@ -3380,75 +3374,75 @@
                     },
                     "_resistances": {
                         "$id": 323,
-                        "$type": 8,
+                        "$type": 7,
                         "$rlength": 10,
                         "$rcontent": [
                             {
                                 "$id": 324,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Blunt",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 325,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Cold",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 326,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Fire",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 327,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Holy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 328,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Nature",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 329,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Pierce",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 330,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shock",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 331,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Slash",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 332,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Unholy",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
                             },
                             {
                                 "$id": 333,
-                                "$type": 9,
+                                "$type": 8,
                                 "_damageType": "Shadow",
                                 "_currentValue": 0,
                                 "_maximumValue": 0
@@ -3458,15 +3452,15 @@
                 },
                 "_skillsSaveData": {
                     "$id": 334,
-                    "$type": 10,
+                    "$type": 9,
                     "_skills": {
                         "$id": 335,
-                        "$type": 11,
+                        "$type": 10,
                         "$rlength": 5,
                         "$rcontent": [
                             {
                                 "$id": 336,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Arcane Magic",
                                 "_current": 2,
                                 "_maximum": 2,
@@ -3475,7 +3469,7 @@
                             },
                             {
                                 "$id": 337,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Shadow Magic",
                                 "_current": 2,
                                 "_maximum": 2,
@@ -3484,7 +3478,7 @@
                             },
                             {
                                 "$id": 338,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Polearms",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -3493,7 +3487,7 @@
                             },
                             {
                                 "$id": 339,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Air Magic",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -3502,7 +3496,7 @@
                             },
                             {
                                 "$id": 340,
-                                "$type": 12,
+                                "$type": 11,
                                 "_key": "Fire Magic",
                                 "_current": 1,
                                 "_maximum": 1,
@@ -3514,15 +3508,15 @@
                 },
                 "_inventorySaveData": {
                     "$id": 341,
-                    "$type": 13,
+                    "$type": 12,
                     "_equippedItems": {
                         "$id": 342,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 14,
                         "$rcontent": [
                             {
                                 "$id": 343,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3531,7 +3525,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 344,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3551,7 +3545,7 @@
                             },
                             {
                                 "$id": 345,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3560,7 +3554,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 346,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3580,7 +3574,7 @@
                             },
                             {
                                 "$id": 347,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Fire Staff",
                                 "_definitionKey": "Fire Staff",
                                 "_description": "",
@@ -3589,7 +3583,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 348,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3609,7 +3603,7 @@
                             },
                             {
                                 "$id": 349,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3618,7 +3612,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 350,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3638,7 +3632,7 @@
                             },
                             {
                                 "$id": 351,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3647,7 +3641,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 352,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3667,7 +3661,7 @@
                             },
                             {
                                 "$id": 353,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Simple Robe",
                                 "_definitionKey": "Simple Robe",
                                 "_description": "",
@@ -3676,24 +3670,24 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 354,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 3,
                                     "$rcontent": [
                                         {
                                             "$id": 355,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 18,
                                             "_index": 6
                                         },
                                         {
                                             "$id": 356,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 19,
                                             "_index": 20
                                         },
                                         {
                                             "$id": 357,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 20,
                                             "_index": 20
                                         }
@@ -3714,7 +3708,7 @@
                             },
                             {
                                 "$id": 358,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3723,7 +3717,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 359,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3743,7 +3737,7 @@
                             },
                             {
                                 "$id": 360,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3752,7 +3746,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 361,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3772,7 +3766,7 @@
                             },
                             {
                                 "$id": 362,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3781,7 +3775,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 363,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3801,7 +3795,7 @@
                             },
                             {
                                 "$id": 364,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Simple Skirt",
                                 "_definitionKey": "Simple Skirt",
                                 "_description": "",
@@ -3810,12 +3804,12 @@
                                 "_nameFormat": 1,
                                 "_renderSlots": {
                                     "$id": 365,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 1,
                                     "$rcontent": [
                                         {
                                             "$id": 366,
-                                            "$type": 17,
+                                            "$type": 16,
                                             "_bodyPart": 25,
                                             "_index": 8
                                         }
@@ -3836,7 +3830,7 @@
                             },
                             {
                                 "$id": 367,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Boots",
                                 "_definitionKey": "Leather Boots",
                                 "_description": "",
@@ -3859,7 +3853,7 @@
                             },
                             {
                                 "$id": 368,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3868,7 +3862,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 369,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3888,7 +3882,7 @@
                             },
                             {
                                 "$id": 370,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3897,7 +3891,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 371,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3917,7 +3911,7 @@
                             },
                             {
                                 "$id": 372,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -3926,7 +3920,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 373,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -3948,12 +3942,12 @@
                     },
                     "_accessories": {
                         "$id": 374,
-                        "$type": 14,
+                        "$type": 13,
                         "$rlength": 6,
                         "$rcontent": [
                             {
                                 "$id": 375,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Small Essence Potion",
                                 "_definitionKey": "Small Essence Potion",
                                 "_description": "",
@@ -3976,7 +3970,7 @@
                             },
                             {
                                 "$id": 376,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "Scroll of Fireball",
                                 "_definitionKey": "Scroll of Fireball",
                                 "_description": "",
@@ -3985,7 +3979,7 @@
                                 "_nameFormat": 0,
                                 "_renderSlots": {
                                     "$id": 377,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -4005,7 +3999,7 @@
                             },
                             {
                                 "$id": 378,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -4014,7 +4008,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 379,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -4034,7 +4028,7 @@
                             },
                             {
                                 "$id": 380,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -4043,7 +4037,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 381,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -4063,7 +4057,7 @@
                             },
                             {
                                 "$id": 382,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -4072,7 +4066,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 383,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -4092,7 +4086,7 @@
                             },
                             {
                                 "$id": 384,
-                                "$type": 15,
+                                "$type": 14,
                                 "_name": "",
                                 "_definitionKey": "",
                                 "_description": "",
@@ -4101,7 +4095,7 @@
                                 "_nameFormat": 4,
                                 "_renderSlots": {
                                     "$id": 385,
-                                    "$type": 16,
+                                    "$type": 15,
                                     "$rlength": 0,
                                     "$rcontent": [
                                     ]
@@ -4125,36 +4119,36 @@
                 },
                 "_abilitySaveData": {
                     "$id": 386,
-                    "$type": 18,
+                    "$type": 17,
                     "_memorizedPowers": {
                         "$id": 387,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 0,
                         "$rcontent": [
                         ]
                     },
                     "_memorizedSpells": {
                         "$id": 388,
-                        "$type": 19,
+                        "$type": 18,
                         "$rlength": 3,
                         "$rcontent": [
                             {
                                 "$id": 389,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Fire Bolts",
                                 "_empty": false
                             },
                             {
                                 "$id": 390,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Shadow Bolts",
                                 "_empty": false
                             },
                             {
                                 "$id": 391,
-                                "$type": 20,
+                                "$type": 19,
                                 "_abilityType": 1,
                                 "_key": "Magic Arrow",
                                 "_empty": false

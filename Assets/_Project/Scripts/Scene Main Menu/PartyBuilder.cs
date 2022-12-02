@@ -81,7 +81,7 @@ namespace Descending.Scene_Main_Menu
         
         public void SaveState(string filePath)
         {
-            PartySaveData saveData = new PartySaveData(Vector3.zero, _heroes);
+            PartySaveData saveData = new PartySaveData(_heroes);
             byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
             File.WriteAllBytes(filePath, bytes);
         }

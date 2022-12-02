@@ -13,6 +13,7 @@ namespace Descending.Core
         public static StockpileManager Instance { get; private set; }
         public const int MAX_STOCKPILE_SLOTS = 96;
 
+        [SerializeField] private int _numItemToGenerate = 0;
         [SerializeField] private bool _loadData = false;
         
         [SerializeField] private BoolEvent onSyncStockpile = null;
@@ -35,7 +36,7 @@ namespace Descending.Core
         {
             if (_loadData == true)
             {
-                LoadState(Database.instance.StockpileFilePath);
+                LoadState();
             }
             else
             {
@@ -88,10 +89,10 @@ namespace Descending.Core
             onSyncStockpile.Invoke(true);
         }
         
-        public void SaveState(string filePath)
+        public void SaveState()
         {
             byte[] bytes = SerializationUtility.SerializeValue(_items, DataFormat.JSON);
-            File.WriteAllBytes(filePath, bytes);
+            File.WriteAllBytes(Database.instance.StockpileFilePath, bytes);
         }
 
         private void GenerateData()
@@ -103,20 +104,25 @@ namespace Descending.Core
                 _items.Add(null);    
             }
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < _numItemToGenerate; i++)
             {
                 AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
             }
         }
         
-        public void LoadState(string filePath)
+        public void LoadState()
         {
-            if (!File.Exists(filePath)) return; // No state to load
+            if (!File.Exists(Database.instance.StockpileFilePath)) return; // No state to load
 	
-            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] bytes = File.ReadAllBytes(Database.instance.StockpileFilePath);
             _items = SerializationUtility.DeserializeValue<List<Item>>(bytes, DataFormat.JSON);
             
             SyncStockpile();
+        }
+
+        public void SetLoadData(bool loadData)
+        {
+            _loadData = loadData;
         }
     }
 }

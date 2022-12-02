@@ -5,7 +5,9 @@ using Descending.Core;
 using Descending.Equipment;
 using Descending.Scene_Overworld;
 using Descending.Units;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Descending.Overworld
 {
@@ -26,12 +28,14 @@ namespace Descending.Overworld
         {
             _database.Setup();
             ItemGenerator.Setup();
-            UnitManager.Instance.GenerateHeroes_Overworld();
-            _worldGenerator.BuildWorld();
+            _worldGenerator.Setup();
+            UnitManager.Instance.SpawnHeroes_Overworld();
             
             SpawnGui();
+            
             ResourcesManager.Instance.Setup();
             StockpileManager.Instance.Setup();
+            UnitManager.Instance.SelectDefaultHeroOverworld();
             UnitManager.Instance.SyncHeroes();
         }
 

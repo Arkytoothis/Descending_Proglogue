@@ -111,11 +111,23 @@ namespace Descending.Units
             _playerSpawner = spawner;
         }
 
+        public void SpawnHeroes_Overworld()
+        {
+            if (_loadData == true)
+            {
+                LoadState_Overworld();
+            }
+            else
+            {
+                GenerateHeroes_Overworld();
+            }
+        }
+
         public void SpawnHeroes_Combat()
         {
             if (_loadData == true)
             {
-                LoadState_Combat(Database.instance.PartyDataFilePath);
+                LoadState_Combat();
             }
             else
             {
@@ -208,6 +220,12 @@ namespace Descending.Units
             //Debug.Log(_selectedHero.GetShortName() + " selected");
         }
         
+        public void SelectDefaultHeroOverworld()
+        {
+            _selectedHero = _heroUnits[0];
+            SelectHeroOverworld(_selectedHero);
+            SetPartyLeader(_selectedHero);
+        }
         
 
         public void HideHeroes(Transform parent)
@@ -258,13 +276,40 @@ namespace Descending.Units
         }
         
         
-        public void SaveState(string filePath)
+        public void SaveState_Combat()
         {
-            PartySaveData saveData = new PartySaveData(_partyController.transform.position, _heroUnits);
+            PartySaveData saveData = new PartySaveData(_heroUnits);
             byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
-            File.WriteAllBytes(filePath, bytes);
+            File.WriteAllBytes(Database.instance.PartyDataFilePath, bytes);
         }
         
+        public void SaveState_Overworld()
+        {
+            PartySaveData saveData = new PartySaveData(_heroUnits);
+            byte[] saveDataBytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
+            File.WriteAllBytes(Database.instance.PartyDataFilePath, saveDataBytes);
+            SavePartyPosition();
+        }
+
+        public void SavePartyPosition()
+        {
+            PartyMover partyMover = _partyController.GetComponent<PartyMover>();
+            PartyPositionSaveData positionSaveData = new PartyPositionSaveData();
+
+            if (partyMover.LastTile != null)
+            {
+                positionSaveData = new PartyPositionSaveData(partyMover.LastTile.transform.position);
+            }
+            else if (partyMover.CurrentTile != null)
+            {
+                positionSaveData = new PartyPositionSaveData(partyMover.CurrentTile.transform.position);
+            }
+            
+            byte[] positionBytes = SerializationUtility.SerializeValue(positionSaveData, DataFormat.JSON);
+            File.WriteAllBytes(Database.instance.OverworldSpawnFilePath, positionBytes);
+        }
+        
+            
         public void GenerateHeroes_Overworld()
         {
             _heroUnits = new List<HeroUnit>();
@@ -317,11 +362,11 @@ namespace Descending.Units
             _heroUnits.Add(heroUnit);
         }
         
-        public void LoadState_Overworld(string filePath)
+        public void LoadState_Overworld()
         {
-            if (!File.Exists(filePath)) return; // No state to load
+            if (!File.Exists(Database.instance.PartyDataFilePath)) return; // No state to load
 	
-            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] bytes = File.ReadAllBytes(Database.instance.PartyDataFilePath);
             PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
 
             //_partyController.transform.position = saveData.WorldPosition;
@@ -335,6 +380,16 @@ namespace Descending.Units
             
             PortraitRoom.Instance.Setup();
             PortraitRoom.Instance.SyncParty();
+            LoadOverworldSpawn();
+        }
+
+        private void LoadOverworldSpawn()
+        {
+            if (!File.Exists(Database.instance.OverworldSpawnFilePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(Database.instance.OverworldSpawnFilePath);
+            PartyPositionSaveData saveData = SerializationUtility.DeserializeValue<PartyPositionSaveData>(bytes, DataFormat.JSON);
+            _partyController.transform.position = saveData.WorldPosition;
         }
         
         private void SpawnHero(MapPosition mapPosition, int listIndex, RaceDefinition race, ProfessionDefinition profession)
@@ -363,12 +418,12 @@ namespace Descending.Units
             _heroUnits.Add(heroUnit);
         }
         
-        public void LoadState_Combat(string filePath)
+        public void LoadState_Combat()
         {
             //Debug.Log("LoadState_Combat");
-            if (!File.Exists(filePath)) return; // No state to load
+            if (!File.Exists(Database.instance.PartyDataFilePath)) return; // No state to load
 	
-            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] bytes = File.ReadAllBytes(Database.instance.PartyDataFilePath);
             PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
 
             //_partyController.transform.position = saveData.WorldPosition;
@@ -383,6 +438,11 @@ namespace Descending.Units
             
             PortraitRoom.Instance.Setup();
             PortraitRoom.Instance.SyncParty();
+        }
+
+        public void SetLoadData(bool loadData)
+        {
+            _loadData = loadData;
         }
     }
 }

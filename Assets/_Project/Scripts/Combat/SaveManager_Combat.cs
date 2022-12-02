@@ -6,14 +6,13 @@ using Descending.Units;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Descending.Scene_Overworld
+namespace Descending.Combat
 {
-    public class SaveManager_Overworld : SaveManager
+    public class SaveManager_Combat : SaveManager
     {
         [SerializeField] private UnitManager _unitManager = null;
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private ResourcesManager _resourcesManager = null;
-        [SerializeField] private WorldGenerator _worldGenerator = null;
         
         private void Update()
         {
@@ -31,16 +30,14 @@ namespace Descending.Scene_Overworld
         {
             _resourcesManager.SaveState();
             _stockpileManager.SaveState();
-            _unitManager.SaveState_Overworld();
-            _worldGenerator.SaveState();
+            _unitManager.SaveState_Combat();
         }
 
         public override void LoadState()
         {
             _resourcesManager.LoadState();
             _stockpileManager.LoadState();
-            _unitManager.LoadState_Overworld();
-            _worldGenerator.LoadState();
+            _unitManager.LoadState_Combat();
         }
 
         [Button("Generate Data")]
@@ -49,7 +46,6 @@ namespace Descending.Scene_Overworld
             _unitManager.SetLoadData(false);
             _resourcesManager.SetLoadData(false);
             _stockpileManager.SetLoadData(false);
-            _worldGenerator.SetLoadData(false);
         }
         
         [Button("Load Data")]
@@ -58,7 +54,6 @@ namespace Descending.Scene_Overworld
             _unitManager.SetLoadData(true);
             _resourcesManager.SetLoadData(true);
             _stockpileManager.SetLoadData(true);
-            _worldGenerator.SetLoadData(true);
         }
     }
 }

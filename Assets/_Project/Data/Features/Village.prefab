@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5060875217264684858}
   - component: {fileID: 5060875217264684857}
-  m_Layer: 0
+  - component: {fileID: 8794726649376865271}
+  m_Layer: 2
   m_Name: Village
-  m_TagString: Untagged
+  m_TagString: World Feature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +53,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _definition: {fileID: 11400000, guid: 8543e1775bf953f4abc243dd153541a0, type: 2}
   _interactionTransform: {fileID: 0}
+--- !u!135 &8794726649376865271
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060875217264684859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.42
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5060875216073656995
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -28,9 +28,9 @@ MonoBehaviour:
     type: 3}
   _sceneLoadFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/scene_load_data.dat
   _partyDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/party_data.dat
-  _resourceDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/resource_data.dat
+  _resourceDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/resources_data.dat
   _timeDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/time_data.dat
-  _worldDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/_world_data.dat
+  _worldDataFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/world_data.dat
   _overworldSpawnFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/overworld_spawn.dat
   _stockpileFilePath: D:/Projects/Descending/Descending - Prologue/Assets/StreamingAssets/SaveData/stockpile_data.dat
   _defaultMeleeActionIcon: {fileID: 21300000, guid: bbb568c0fcc345744a377a48f52c3cf4,
