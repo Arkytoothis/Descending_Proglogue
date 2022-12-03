@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3b77493f5f9cf7428cc731c81fffb77, type: 3}
-  m_Name: ovr_OpenVillageWindow
+  m_Name: ovr_SetCurrentVillage
   m_EditorClassIdentifier: 
   _debugValue: {fileID: 0}

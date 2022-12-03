@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Features;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -102,8 +103,9 @@ namespace Descending.Gui
             return false;
         }
 
-        public void OnToggleVillageWindow(bool b)
+        public void OnToggleVillageWindow(Village village)
         {
+            ((VillageWindow)_windows[(int)GameWindows.Village]).SetVillage(village);
             OpenWindow((int)GameWindows.Village);
         }
 

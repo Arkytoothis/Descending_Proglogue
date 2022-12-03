@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Features;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -14,9 +15,11 @@ namespace Descending.Gui
         [SerializeField] private Button _dungeonButton = null;
         [SerializeField] private List<PartyMemberWidget_Overworld> _partyMemberWidgets = null;
 
-        [SerializeField] private BoolEvent onOpenVillageWindow = null;
+        [SerializeField] private VillageEvent onOpenVillageWindow = null;
         [SerializeField] private BoolEvent onOpenDungeonWindow = null;
 
+        private WorldFeature _currentFeature = null;
+        
         public void Setup()
         {
             _villageButton.interactable = false;
@@ -66,9 +69,14 @@ namespace Descending.Gui
             _dungeonButton.interactable = interactable;
         }
 
+        public void OnSetVillage(Village village)
+        {
+            _currentFeature = village;
+        }
+
         public void VillageButtonClick()
         {
-            onOpenVillageWindow.Invoke(true);
+            onOpenVillageWindow.Invoke(_currentFeature as Village);
         }
 
         public void DungeonButtonClick()

@@ -1197,7 +1197,7 @@
                                 "$id": 117,
                                 "$type": 6,
                                 "_key": "Actions",
-                                "_current": 1,
+                                "_current": 4,
                                 "_maximum": 4,
                                 "_modifier": 0,
                                 "_spent": 0
@@ -3268,7 +3268,7 @@
                                 "$id": 311,
                                 "$type": 6,
                                 "_key": "Actions",
-                                "_current": 0,
+                                "_current": 3,
                                 "_maximum": 3,
                                 "_modifier": 0,
                                 "_spent": 0

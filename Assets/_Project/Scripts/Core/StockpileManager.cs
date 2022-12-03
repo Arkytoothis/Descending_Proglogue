@@ -19,7 +19,9 @@ namespace Descending.Core
         [SerializeField] private BoolEvent onSyncStockpile = null;
         
         [SerializeField] private List<Item> _items = null;
-        
+
+        public List<Item> Items => _items;
+
         private void Awake()
         {
             if (Instance != null)

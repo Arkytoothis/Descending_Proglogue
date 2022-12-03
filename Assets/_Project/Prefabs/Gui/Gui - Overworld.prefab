@@ -2216,6 +2216,7 @@ GameObject:
   - component: {fileID: 5231370484313342958}
   - component: {fileID: 1026983513109346131}
   - component: {fileID: 7391045226829860061}
+  - component: {fileID: 8032938094461023340}
   m_Layer: 5
   m_Name: Party Panel
   m_TagString: Untagged
@@ -2280,9 +2281,9 @@ MonoBehaviour:
   onOpenVillageWindow:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: e1d957d2f771e134c892678b6a483f2d, type: 2}
-        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[System.Boolean,
-          mscorlib
+      - m_Target: {fileID: 11400000, guid: 660f4942a1ac65f4daed0e99a37d849d, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[Descending.Features.Village,
+          Reclamation
         m_MethodName: Raise
         m_Mode: 0
         m_Arguments:
@@ -2441,6 +2442,39 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: 0
+--- !u!114 &8032938094461023340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413997545129154600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5f7ff97c39f0548851147fc4b5259d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 035420f464b4a7f4f8531a52be0288af, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2858161035955811190}
+        m_TargetAssemblyTypeName: Descending.Gui.PartyPanel_Overworld, Reclamation
+        m_MethodName: OnSetVillage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: {fileID: 0}
 --- !u!1001 &96817442721204491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2853,7 +2887,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2456498331679442031, guid: d08d494b1eec24c4a9924b00df398c97, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d08d494b1eec24c4a9924b00df398c97, type: 3}
 --- !u!114 &1546740148034884269 stripped
 MonoBehaviour:
@@ -2861,12 +2896,51 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3703030028973381226}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4411170119816690185}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dabd12cf878ac949abe97520b34aa2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4411170119816690185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1032540285926485091, guid: d08d494b1eec24c4a9924b00df398c97,
+    type: 3}
+  m_PrefabInstance: {fileID: 3703030028973381226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3497864685352282495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411170119816690185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5f7ff97c39f0548851147fc4b5259d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 660f4942a1ac65f4daed0e99a37d849d, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1546740148034884269}
+        m_TargetAssemblyTypeName: Descending.Gui.WindowManager, Reclamation
+        m_MethodName: OnToggleVillageWindow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: {fileID: 0}
 --- !u!224 &7018936738458340346 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5911972831128690064, guid: d08d494b1eec24c4a9924b00df398c97,
