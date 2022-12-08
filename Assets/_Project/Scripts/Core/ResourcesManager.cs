@@ -85,6 +85,31 @@ namespace Descending.Core
             _gems += gems;
             onUpdateGems.Invoke(_gems);
         }
+        
+        public void SpendCoins(int coins)
+        {
+            _coins -= coins;
+            onUpdateCoins.Invoke(_coins);
+            //Debug.Log("Coins Added: " + coins + "/" + _coins);
+        }
+
+        public void SpendSupplies(int supplies)
+        {
+            _supplies -= supplies;
+            onUpdateSupplies.Invoke(_supplies);
+        }
+
+        public void SPendMaterials(int materials)
+        {
+            _materials -= materials;
+            onUpdateMaterials.Invoke(_materials);
+        }
+
+        public void SPendGems(int gems)
+        {
+            _gems -= gems;
+            onUpdateGems.Invoke(_gems);
+        }
 
         public void SyncResources()
         {

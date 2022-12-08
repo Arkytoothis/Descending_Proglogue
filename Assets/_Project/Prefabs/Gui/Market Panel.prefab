@@ -925,6 +925,8 @@ GameObject:
   - component: {fileID: 3759264880463605480}
   - component: {fileID: 1373527959926971995}
   - component: {fileID: 8094839961590680533}
+  - component: {fileID: 2251721112466944300}
+  - component: {fileID: 4711680808016678417}
   m_Layer: 5
   m_Name: Market Panel
   m_TagString: Untagged
@@ -1065,7 +1067,7 @@ MonoBehaviour:
   - {fileID: 2088182125287112520}
   _shopWidgetPrefab: {fileID: 5070709477954059915, guid: a50341d49b738c34f9272447257cfd38,
     type: 3}
-  __shopWidgetsParent: {fileID: 1723450349317308929}
+  _shopWidgetsParent: {fileID: 1723450349317308929}
 --- !u!114 &8094839961590680533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,6 +1101,72 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: {fileID: 0}
+--- !u!114 &2251721112466944300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407844223636443899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: f4ccaa778bdecd44b9f0cd85058e7849, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1373527959926971995}
+        m_TargetAssemblyTypeName: Descending.Gui.MarketPanel, Reclamation
+        m_MethodName: OnSyncStockpile
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
+--- !u!114 &4711680808016678417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407844223636443899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: ec2d6971001d63d448c5054ce84d8c66, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1373527959926971995}
+        m_TargetAssemblyTypeName: Descending.Gui.MarketPanel, Reclamation
+        m_MethodName: OnRemoveShopItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &8658761799042748153
 GameObject:
   m_ObjectHideFlags: 0

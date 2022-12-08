@@ -34,25 +34,30 @@ MonoBehaviour:
     - Magic
     - Stamina
     - Actions
-    - Quick Actions
+    - Luck
     valueData:
     - {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
     - {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
     - {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
     - {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
     - {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
-    - {fileID: 11400000, guid: 938b431383d8eb94fb991d5892d95063, type: 2}
+    - {fileID: 11400000, guid: 27d332bb7fb63b140b49d3c274f47b48, type: 2}
   _statistics:
     keyData:
-    - Finesse Damage
-    - Might Damage
+    - Finesse Modifier
+    - Might Modifier
     - Block
     - Dodge
-    - Magic Damage
+    - Magic Modifier
     - Willpower
     - Movement
     - Critical Damage
     - Perception
+    - Aim
+    - Attack
+    - Focus
+    - Critical Hit
+    - Fumble
     valueData:
     - {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
     - {fileID: 11400000, guid: 296303d97cde9fa4f9a5045c006e427d, type: 2}
@@ -63,3 +68,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
     - {fileID: 11400000, guid: 0cd740360ef66834aa82570a681c9014, type: 2}
     - {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
+    - {fileID: 11400000, guid: 87a10bd272f6ce34a926fbdd2deaad03, type: 2}
+    - {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+    - {fileID: 11400000, guid: 45429c19ba0d2cf46a652eb0bdd22c14, type: 2}
+    - {fileID: 11400000, guid: f65dc07989b8ce64d8d4f271352aad0a, type: 2}
+    - {fileID: 11400000, guid: 3cb8cc87716487b449b07b2f723a26c6, type: 2}

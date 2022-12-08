@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Descending.Core;
 using ScriptableObjectArchitecture;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Descending.Features
 {
@@ -16,7 +15,6 @@ namespace Descending.Features
         {
             SaveManager.Instance.SaveState();
             onSetDungeonButtonInteractable.Invoke(true);
-            //SceneManager.LoadScene((int)GameScenes.Combat_Indoor);
         }
     }
 }

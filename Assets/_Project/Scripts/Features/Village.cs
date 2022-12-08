@@ -14,6 +14,8 @@ namespace Descending.Features
         [SerializeField] private BoolEvent onSetVillageButtonInteractable = null;
         [SerializeField] private VillageEvent onSetCurrentVillage = null;
 
+        public MarketData MarketData => _marketData;
+
         public override void Interact()
         {
             Debug.Log("Interacting with Village");

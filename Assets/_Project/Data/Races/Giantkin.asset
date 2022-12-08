@@ -83,6 +83,7 @@ MonoBehaviour:
     - Stamina
     - Armor
     - Actions
+    - Luck
     valueData:
     - _vital: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
       _minimumValue: 10
@@ -99,17 +100,25 @@ MonoBehaviour:
     - _vital: {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
       _minimumValue: 2
       _maximumValue: 2
+    - _vital: {fileID: 11400000, guid: 27d332bb7fb63b140b49d3c274f47b48, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
   _startingStatistics:
     keyData:
-    - Finesse Damage
-    - Might Damage
+    - Finesse Modifier
+    - Might Modifier
     - Block
     - Dodge
-    - Magic Damage
+    - Magic Modifier
     - Willpower
     - Critical Damage
     - Movement
     - Perception
+    - Aim
+    - Attack
+    - Critical Hit
+    - Focus
+    - Fumble
     valueData:
     - _derived: {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
       _minimumValue: 0
@@ -136,6 +145,21 @@ MonoBehaviour:
       _minimumValue: 3
       _maximumValue: 3
     - _derived: {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 87a10bd272f6ce34a926fbdd2deaad03, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: f65dc07989b8ce64d8d4f271352aad0a, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 45429c19ba0d2cf46a652eb0bdd22c14, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 3cb8cc87716487b449b07b2f723a26c6, type: 2}
       _minimumValue: 0
       _maximumValue: 0
   _startingSkills:

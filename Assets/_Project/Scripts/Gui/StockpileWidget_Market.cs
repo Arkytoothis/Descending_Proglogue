@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class StockpileWidget_Market : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+    public class StockpileWidget_Market : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _stackSizeLabel = null;
@@ -67,19 +67,41 @@ namespace Descending.Gui
             onDisplayItemTooltip.Invoke(null);
         }
 
-        public void OnDrag(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData eventData)
         {
+            if (_item == null || _item.Key == "") return;
+            
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                TrySellItem();
+            }
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        private void TrySellItem()
+        {
+            ResourcesManager.Instance.AddCoins((int)(_item.GoldValue * 0.5f));
+            ResourcesManager.Instance.AddGems((int)(_item.GemValue * 0.5f));
+            StockpileManager.Instance.ClearItem(_index);
+            StockpileManager.Instance.SyncStockpile();
+        }
+        
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right) return;
+        }
+
+        public void OnBeginDrag(PointerEventData eventData) 
         {
             if (_item == null || _item.ItemDefinition.Key == "") return;
+            if (eventData.button == PointerEventData.InputButton.Right) return;
             
             DragCursor.Instance.BeginDrag(eventData, this);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right) return;
+            
             if (DragCursor.Instance.IsDragging == true)
             {
             }
@@ -87,6 +109,8 @@ namespace Descending.Gui
 
         public void OnDrop(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right) return;
+            
             if (DragCursor.Instance.IsDragging == true)
             {
                 // if (_item != null &&_item.ItemDefinition.Key != "")

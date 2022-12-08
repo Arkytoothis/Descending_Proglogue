@@ -1,8 +1,8 @@
 {
     "$id": 0,
     "$type": "0|Descending.Core.ResourcesSaveData, Reclamation",
-    "_coins": 223,
-    "_gems": 9,
+    "_coins": 100,
+    "_gems": 0,
     "_materials": 0,
     "_supplies": 10
 }

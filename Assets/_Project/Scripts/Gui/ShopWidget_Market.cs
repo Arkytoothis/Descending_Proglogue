@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Features;
 using ScriptableObjectArchitecture;
 using TMPro;
 using UnityEngine;
@@ -11,15 +12,19 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class ShopWidget_Market : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+    public class ShopWidget_Market : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _stackSizeLabel = null;
 
         [SerializeField] private ItemEvent onDisplayItemTooltip = null;
+        [SerializeField] private IntEvent onRemoveItemFromShop = null;
 
-        public void Setup(int index)
+        private MarketData _marketData = null;
+        
+        public void Setup(Village village, int index)
         {
+            _marketData = village.MarketData;
             _item = null;
             _index = index;
             _stackSizeLabel.SetText(_index.ToString());
@@ -55,7 +60,6 @@ namespace Descending.Gui
             _stackSizeLabel.SetText("");
         }
 
-
         public void OnPointerEnter(PointerEventData eventData)
         {
             onDisplayItemTooltip.Invoke(_item);
@@ -66,7 +70,32 @@ namespace Descending.Gui
         {
             onDisplayItemTooltip.Invoke(null);
         }
+        
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_item == null) return;
+            
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                TryBuyItem();
+            }
+        }
+
+        private void TryBuyItem()
+        {
+            if (ResourcesManager.Instance.Coins >= _item.GoldValue && ResourcesManager.Instance.Gems >= _item.GemValue)
+            {
+                ResourcesManager.Instance.SpendCoins(_item.GoldValue);
+                ResourcesManager.Instance.SPendGems(_item.GemValue);
+                
+                onRemoveItemFromShop.Invoke(_index);
+                
+                StockpileManager.Instance.AddItem(_item);
+                StockpileManager.Instance.SyncStockpile();
+            }
+        }
+        
         public void OnDrag(PointerEventData eventData)
         {
         }
@@ -74,12 +103,15 @@ namespace Descending.Gui
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (_item == null || _item.ItemDefinition.Key == "") return;
+            if (eventData.button == PointerEventData.InputButton.Right) return;
             
             DragCursor.Instance.BeginDrag(eventData, this);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right) return;
+            
             if (DragCursor.Instance.IsDragging == true)
             {
             }
@@ -87,6 +119,8 @@ namespace Descending.Gui
 
         public void OnDrop(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right) return;
+            
             if (DragCursor.Instance.IsDragging == true)
             {
                 // if (_item != null &&_item.ItemDefinition.Key != "")

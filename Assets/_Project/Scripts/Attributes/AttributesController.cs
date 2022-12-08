@@ -122,6 +122,7 @@ namespace Descending.Attributes
             
             _vitals["Actions"].Setup(Random.Range(_raceDefinition.StartingVitals["Actions"].MinimumValue, _raceDefinition.StartingVitals["Actions"].MinimumValue + 1));
             _vitals["Armor"].Setup(Random.Range(_raceDefinition.StartingVitals["Armor"].MinimumValue, _raceDefinition.StartingVitals["Armor"].MinimumValue + 1));
+            _vitals["Luck"].Setup(Random.Range(_raceDefinition.StartingVitals["Luck"].MinimumValue, _raceDefinition.StartingVitals["Luck"].MinimumValue + 1));
 
             CalculateVitalModifiers();
             
@@ -129,9 +130,13 @@ namespace Descending.Attributes
             int finesseDamage = (_characteristics["Finesse"].Maximum - 10) / 10;
             int magicDamage = ((_characteristics["Intellect"].Maximum - 10) + (_characteristics["Spirit"].Maximum - 10)) / 10;
             
-            _statistics["Might Damage"].Setup(mightDamage + Random.Range(_raceDefinition.StartingStatistics["Might Damage"].MinimumValue, _raceDefinition.StartingStatistics["Might Damage"].MinimumValue + 1));
-            _statistics["Finesse Damage"].Setup(finesseDamage + Random.Range(_raceDefinition.StartingStatistics["Finesse Damage"].MinimumValue, _raceDefinition.StartingStatistics["Finesse Damage"].MinimumValue + 1));
-            _statistics["Magic Damage"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Magic Damage"].MinimumValue, _raceDefinition.StartingStatistics["Magic Damage"].MinimumValue + 1));
+            _statistics["Aim"].Setup(mightDamage + Random.Range(_raceDefinition.StartingStatistics["Aim"].MinimumValue, _raceDefinition.StartingStatistics["Aim"].MinimumValue + 1));
+            _statistics["Attack"].Setup(mightDamage + Random.Range(_raceDefinition.StartingStatistics["Attack"].MinimumValue, _raceDefinition.StartingStatistics["Attack"].MinimumValue + 1));
+            _statistics["Focus"].Setup(mightDamage + Random.Range(_raceDefinition.StartingStatistics["Focus"].MinimumValue, _raceDefinition.StartingStatistics["Focus"].MinimumValue + 1));
+            
+            _statistics["Might Modifier"].Setup(mightDamage + Random.Range(_raceDefinition.StartingStatistics["Might Modifier"].MinimumValue, _raceDefinition.StartingStatistics["Might Modifier"].MinimumValue + 1));
+            _statistics["Finesse Modifier"].Setup(finesseDamage + Random.Range(_raceDefinition.StartingStatistics["Finesse Modifier"].MinimumValue, _raceDefinition.StartingStatistics["Finesse Modifier"].MinimumValue + 1));
+            _statistics["Magic Modifier"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Magic Modifier"].MinimumValue, _raceDefinition.StartingStatistics["Magic Modifier"].MinimumValue + 1));
             
             _statistics["Block"].Setup(Random.Range(_raceDefinition.StartingStatistics["Block"].MinimumValue, _raceDefinition.StartingStatistics["Block"].MinimumValue + 1) + 
                                      (_characteristics["Might"].Maximum + _characteristics["Endurance"].Maximum) / 2);
@@ -144,6 +149,8 @@ namespace Descending.Attributes
                                             _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
             _statistics["Movement"].Setup(_raceDefinition.StartingStatistics["Movement"].MinimumValue);
             _statistics["Critical Damage"].Setup(_raceDefinition.StartingStatistics["Critical Damage"].MinimumValue);
+            _statistics["Critical Hit"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Critical Hit"].MinimumValue, _raceDefinition.StartingStatistics["Critical Hit"].MinimumValue + 1));
+            _statistics["Fumble"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Fumble"].MinimumValue, _raceDefinition.StartingStatistics["Fumble"].MinimumValue + 1));
             
             CalculateStatisticModifiers();
 

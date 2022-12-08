@@ -3,82 +3,8 @@
     "$type": "0|System.Collections.Generic.List`1[[Descending.Equipment.Item, Reclamation]], mscorlib",
     "$rlength": 96,
     "$rcontent": [
-        {
-            "$id": 1,
-            "$type": "1|Descending.Equipment.Item, Reclamation",
-            "_name": "Simple Robe",
-            "_definitionKey": "Simple Robe",
-            "_description": "",
-            "_modelIndex": -1,
-            "_itemType": 3,
-            "_nameFormat": 1,
-            "_renderSlots": {
-                "$id": 2,
-                "$type": "2|System.Collections.Generic.List`1[[Descending.Equipment.RenderSlot, Reclamation]], mscorlib",
-                "$rlength": 3,
-                "$rcontent": [
-                    {
-                        "$id": 3,
-                        "$type": "3|Descending.Equipment.RenderSlot, Reclamation",
-                        "_bodyPart": 18,
-                        "_index": 6
-                    },
-                    {
-                        "$id": 4,
-                        "$type": 3,
-                        "_bodyPart": 19,
-                        "_index": 20
-                    },
-                    {
-                        "$id": 5,
-                        "$type": 3,
-                        "_bodyPart": 20,
-                        "_index": 20
-                    }
-                ]
-            },
-            "_materialAllowed": 6,
-            "_stackSize": 1,
-            "_itemPower": 252,
-            "_encumbrance": 3,
-            "_goldValue": 510,
-            "_gemValue": 0,
-            "_usesLeft": 0,
-            "_rarityKey": "Rare",
-            "_materialKey": "Linen",
-            "_qualityKey": "Masterwork",
-            "_prefixEnchantKey": "",
-            "_suffixEnchantKey": ""
-        },
-        {
-            "$id": 6,
-            "$type": 1,
-            "_name": "Small Bomb",
-            "_definitionKey": "Small Bomb",
-            "_description": "",
-            "_modelIndex": -1,
-            "_itemType": 24,
-            "_nameFormat": 0,
-            "_renderSlots": {
-                "$id": 7,
-                "$type": 2,
-                "$rlength": 0,
-                "$rcontent": [
-                ]
-            },
-            "_materialAllowed": 5,
-            "_stackSize": 1,
-            "_itemPower": 301,
-            "_encumbrance": 1,
-            "_goldValue": 605,
-            "_gemValue": 4,
-            "_usesLeft": 1,
-            "_rarityKey": "Rare",
-            "_materialKey": "Steel",
-            "_qualityKey": "+4",
-            "_prefixEnchantKey": "",
-            "_suffixEnchantKey": ""
-        },
+        null,
+        null,
         null,
         null,
         null,

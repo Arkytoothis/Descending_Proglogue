@@ -11,13 +11,14 @@ namespace Descending.Gui
         [SerializeField] private GameObject _container = null;
         [SerializeField] private StockpileWidget_Market[] _stockpileWidgets = null;
         [SerializeField] private GameObject _shopWidgetPrefab = null;
-        [SerializeField] private Transform __shopWidgetsParent = null;
+        [SerializeField] private Transform _shopWidgetsParent = null;
 
+        private Village _village = null;
         private List<ShopWidget_Market> _shopWidgets = null;
 
         public void Setup()
         {
-            
+            _shopWidgets = new List<ShopWidget_Market>();
         }
         
         public void Show()
@@ -42,9 +43,37 @@ namespace Descending.Gui
             }
         }
 
+        public void OnSyncStockpile(bool b)
+        {
+            SyncStockpile();
+        }
+
         public void DisplayVillage(Village village)
         {
-            Debug.Log("Displaying Village");
+            _village = village;
+            SyncShopItems();
+        }
+
+        private void SyncShopItems()
+        {
+            _shopWidgetsParent.ClearTransform();
+            _shopWidgets.Clear();
+
+            if (_village == null) return;
+            
+            for (int i = 0; i < _village.MarketData.ShopItems.Count; i++)
+            {
+                GameObject clone = Instantiate(_shopWidgetPrefab, _shopWidgetsParent);
+                ShopWidget_Market widget = clone.GetComponent<ShopWidget_Market>();
+                widget.Setup(_village, i);
+                widget.SetItem(_village.MarketData.ShopItems[i]);
+            }
+        }
+
+        public void OnRemoveShopItem(int index)
+        {
+            _village.MarketData.ShopItems.RemoveAt(index);
+            SyncShopItems();
         }
     }
 }
