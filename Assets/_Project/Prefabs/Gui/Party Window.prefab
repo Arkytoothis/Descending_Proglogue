@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 4980817722237642088}
   - component: {fileID: 4597734427133313899}
   m_Layer: 5
-  m_Name: Vitala Panel
+  m_Name: Vitals Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   _lifeWidget: {fileID: 5698953075140460293}
   _staminaWidget: {fileID: 3915341879154884647}
   _magicWidget: {fileID: 3346789945430742301}
+  _luckWidget: {fileID: 6771348189830708307}
 --- !u!1 &113451005316102482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,20 +1325,20 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1094850235185147262}
   - {fileID: 1371594266469232757}
-  - {fileID: 4711416545463463395}
   - {fileID: 4623076694911133187}
+  - {fileID: 1094850235185147262}
   - {fileID: 1831096766286346328}
+  - {fileID: 4711416545463463395}
   - {fileID: 812339698145519869}
   - {fileID: 4340076558868912395}
   - {fileID: 2992413889182400080}
   - {fileID: 2782660500126623596}
   - {fileID: 2210239551309863820}
   - {fileID: 6069261736825748159}
+  - {fileID: 7279371262811239288}
   - {fileID: 4494862955056923621}
   - {fileID: 146193954317148920}
-  - {fileID: 7279371262811239288}
   m_Father: {fileID: 70830983274051409}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6325,9 +6326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0fe867407eb674d8b502e9eb3e35ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimWidget: {fileID: 77446604533248052}
-  _attackWidget: {fileID: 2101620328733699391}
-  _focusWidget: {fileID: 5710781313331130537}
+  _finesseAttackWidget: {fileID: 77446604533248052}
+  _mightAttackWidget: {fileID: 2101620328733699391}
+  _magicAttackWidget: {fileID: 5710781313331130537}
   _mightModifierWidget: {fileID: 5623556642586344265}
   _finesseModifierWidget: {fileID: 1678657338382755090}
   _magicModifierWidget: {fileID: 388602168273040823}
@@ -7484,7 +7485,7 @@ PrefabInstance:
     - target: {fileID: 2026393508235086895, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_Name
-      value: Might Damage Widget
+      value: Might Modifier Widget
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -7499,7 +7500,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -7594,7 +7595,7 @@ PrefabInstance:
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_text
-      value: Might Damage
+      value: Might Modifier
       objectReference: {fileID: 0}
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -7646,7 +7647,7 @@ PrefabInstance:
     - target: {fileID: 2026393508235086895, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_Name
-      value: Focus Widget
+      value: Magic Attack Widget
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -7661,7 +7662,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -7756,7 +7757,7 @@ PrefabInstance:
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_text
-      value: Focus
+      value: Magic Attack
       objectReference: {fileID: 0}
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -9303,7 +9304,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -10610,6 +10611,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3596826e9946ac45b9b55a9059cbbd4, type: 3}
+--- !u!114 &6771348189830708307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7266133203921255463, guid: b3596826e9946ac45b9b55a9059cbbd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4120464818349162612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2678af4da74404a419cc75920c5551a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8432698492134242740 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5487674020693309888, guid: b3596826e9946ac45b9b55a9059cbbd4,
@@ -11513,7 +11526,7 @@ PrefabInstance:
     - target: {fileID: 2026393508235086895, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_Name
-      value: Aim Widget
+      value: Finesse Attack Widget
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -11528,7 +11541,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -11623,7 +11636,7 @@ PrefabInstance:
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_text
-      value: Aim
+      value: Finesse Attack
       objectReference: {fileID: 0}
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -11974,7 +11987,7 @@ PrefabInstance:
     - target: {fileID: 2026393508235086895, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_Name
-      value: Magic Damage WIdget
+      value: Magic Modifier WIdget
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -12084,7 +12097,7 @@ PrefabInstance:
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_text
-      value: Magic Damage
+      value: Magic Modifier
       objectReference: {fileID: 0}
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -12724,7 +12737,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -13661,7 +13674,7 @@ PrefabInstance:
     - target: {fileID: 2026393508235086895, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_Name
-      value: Finesse Damage WIdget
+      value: Finesse Modifier WIdget
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -13676,7 +13689,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -13771,7 +13784,7 @@ PrefabInstance:
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_text
-      value: Finesse Damage
+      value: Finesse Modifier
       objectReference: {fileID: 0}
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -13823,7 +13836,7 @@ PrefabInstance:
     - target: {fileID: 2026393508235086895, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_Name
-      value: Attack Widget
+      value: Might Attack Widget
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -13838,7 +13851,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -13933,7 +13946,7 @@ PrefabInstance:
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_text
-      value: Attack
+      value: Might Attack
       objectReference: {fileID: 0}
     - target: {fileID: 7246584795855512667, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
@@ -15249,7 +15262,7 @@ PrefabInstance:
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5487674020693309888, guid: 7398bc5c80430754a95c0d2fa2d58973,
         type: 3}

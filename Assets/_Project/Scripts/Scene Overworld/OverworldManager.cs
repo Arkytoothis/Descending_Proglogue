@@ -28,8 +28,8 @@ namespace Descending.Overworld
         {
             _database.Setup();
             ItemGenerator.Setup();
-            _worldGenerator.Setup();
             UnitManager.Instance.SpawnHeroes_Overworld();
+            _worldGenerator.Setup();
             
             SpawnGui();
             

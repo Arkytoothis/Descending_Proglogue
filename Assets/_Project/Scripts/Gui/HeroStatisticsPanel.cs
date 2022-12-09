@@ -8,9 +8,9 @@ namespace Descending.Gui
 {
     public class HeroStatisticsPanel : MonoBehaviour
     {
-        [SerializeField] private StatisticWidget _aimWidget = null;
-        [SerializeField] private StatisticWidget _attackWidget = null;
-        [SerializeField] private StatisticWidget _focusWidget = null;
+        [SerializeField] private StatisticWidget _finesseAttackWidget = null;
+        [SerializeField] private StatisticWidget _mightAttackWidget = null;
+        [SerializeField] private StatisticWidget _magicAttackWidget = null;
         [SerializeField] private StatisticWidget _mightModifierWidget = null;
         [SerializeField] private StatisticWidget _finesseModifierWidget = null;
         [SerializeField] private StatisticWidget _magicModifierWidget = null;
@@ -30,14 +30,24 @@ namespace Descending.Gui
         
         public void DisplayHero(HeroUnit hero)
         {
-            _mightModifierWidget.SetAttribute(hero.Attributes.GetStatistic("Might Modifier"));
-            _finesseModifierWidget.SetAttribute(hero.Attributes.GetStatistic("Finesse Modifier"));
-            _magicModifierWidget.SetAttribute(hero.Attributes.GetStatistic("Magic Modifier"));
+            _mightAttackWidget.SetAttributePercent(hero.Attributes.GetStatistic("Might Attack"));
+            _finesseAttackWidget.SetAttributePercent(hero.Attributes.GetStatistic("Finesse Attack"));
+            _magicAttackWidget.SetAttributePercent(hero.Attributes.GetStatistic("Magic Attack"));
+            
+            _mightModifierWidget.SetAttributeModifier(hero.Attributes.GetStatistic("Might Modifier"));
+            _finesseModifierWidget.SetAttributeModifier(hero.Attributes.GetStatistic("Finesse Modifier"));
+            _magicModifierWidget.SetAttributeModifier(hero.Attributes.GetStatistic("Magic Modifier"));
+            
             _blockWidget.SetAttributePercent(hero.Attributes.GetStatistic("Block"));
             _dodgeWidget.SetAttributePercent(hero.Attributes.GetStatistic("Dodge"));
             _willpowerWidget.SetAttributePercent(hero.Attributes.GetStatistic("Willpower"));
+            
             _perceptionWidget.SetAttributePercent(hero.Attributes.GetStatistic("Perception"));
             _movementWidget.SetAttribute(hero.Attributes.GetStatistic("Movement"));
+            
+            _criticalHitWidget.SetAttributePercent(hero.Attributes.GetStatistic("Critical Hit"));
+            _criticalDamageWidget.SetAttribute(hero.Attributes.GetStatistic("Critical Damage"));
+            _fumbleWidget.SetAttributePercent(hero.Attributes.GetStatistic("Fumble"));
         }
     }
 }

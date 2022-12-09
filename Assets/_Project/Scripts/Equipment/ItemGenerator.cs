@@ -87,6 +87,26 @@ namespace Descending.Equipment
 
             return item;
         }
+        
+        
+        public static Item GenerateRandomItem(RarityDefinition bestMaterial, ItemDefinition itemDefinition, int plusChance, int prefixChance, int suffixChance)
+        {
+            string itemKey = itemDefinition.Key;
+            Item item = new Item(Database.instance.Items.GetItem(itemKey));
+            MaterialDefinition material = GetItemMaterial(item, bestMaterial);
+            item.SetMaterial(material);
+            RandomizeQuality(ref item, plusChance);
+
+            if (item.ItemDefinition.Category != ItemCategory.Accessories)
+            {
+                RandomizePrefix(ref item, prefixChance);
+                RandomizeSuffix(ref item, suffixChance);
+            }
+
+            item.CalculateValue();
+
+            return item;
+        }
 
         public static Item GenerateItem(RarityDefinition bestMaterial, string itemKey, int plusChance, int prefixChance, int suffixChance)
         {

@@ -8,6 +8,8 @@ using UnityEngine;
 
 namespace Descending.Scene_Overworld
 {
+    public enum SaveManagerLoadStates { Generating, Loading, Number, None }
+    
     public class SaveManager_Overworld : SaveManager
     {
         [SerializeField] private UnitManager _unitManager = null;
@@ -15,6 +17,8 @@ namespace Descending.Scene_Overworld
         [SerializeField] private ResourcesManager _resourcesManager = null;
         [SerializeField] private WorldGenerator _worldGenerator = null;
         
+        [SerializeField] private SaveManagerLoadStates _loadState = SaveManagerLoadStates.None;
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F5))
@@ -41,11 +45,14 @@ namespace Descending.Scene_Overworld
             _stockpileManager.LoadState();
             _unitManager.LoadState_Overworld();
             _worldGenerator.LoadState();
+            
+            SaveState();
         }
 
         [Button("Generate Data")]
         public void SetGenerateData()
         {
+            _loadState = SaveManagerLoadStates.Generating;
             _unitManager.SetLoadData(false);
             _resourcesManager.SetLoadData(false);
             _stockpileManager.SetLoadData(false);
@@ -55,6 +62,7 @@ namespace Descending.Scene_Overworld
         [Button("Load Data")]
         public void SetLoadData()
         {
+            _loadState = SaveManagerLoadStates.Loading;
             _unitManager.SetLoadData(true);
             _resourcesManager.SetLoadData(true);
             _stockpileManager.SetLoadData(true);

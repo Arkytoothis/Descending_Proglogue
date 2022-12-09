@@ -12,9 +12,7 @@ namespace Descending.Features
     {
         [SerializeField] private List<Item> _shopItems = null;
 
-        public List<Item> ShopItems => _shopItems;   
-         
-        
+        public List<Item> ShopItems => _shopItems;
 
         private void Start()
         {
@@ -47,14 +45,38 @@ namespace Descending.Features
                 Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), GenerateItemType.Any_Shield, 0, 0, 0);
                 _shopItems.Add(item);
             }
-            
-            int numAccessoriesToGenerate = 5;
 
-            for (int i = 0; i < numAccessoriesToGenerate; i++)
+            int numHealingPotionsToGenerate = 3;
+
+            for (int i = 0; i < numHealingPotionsToGenerate; i++)
             {
-                Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), GenerateItemType.Any_Accessory, 0, 0, 0);
+                Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), Database.instance.Items.GetItem("Small Healing Potion"), 0, 0, 0);
                 _shopItems.Add(item);
             }
+
+            int numEssencePotionsToGenerate = 3;
+
+            for (int i = 0; i < numEssencePotionsToGenerate; i++)
+            {
+                Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), Database.instance.Items.GetItem("Small Essence Potion"), 0, 0, 0);
+                _shopItems.Add(item);
+            }
+
+            int numBombsToGenerate = 3;
+
+            for (int i = 0; i < numBombsToGenerate; i++)
+            {
+                Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), Database.instance.Items.GetItem("Small Bomb"), 0, 0, 0);
+                _shopItems.Add(item);
+            }
+
+            // int numScrollsToGenerate = 3;
+            //
+            // for (int i = 0; i < numScrollsToGenerate; i++)
+            // {
+            //     Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), Database.instance.Items.GetItem("Small Bomb"), 0, 0, 0);
+            //     _shopItems.Add(item);
+            // }
         }
     }
 }

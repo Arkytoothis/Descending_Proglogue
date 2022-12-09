@@ -446,6 +446,8 @@ namespace Descending.Scene_Overworld
             SpawnVillages();
             SpawnDungeons();
             SpawnParty();
+            
+            SaveManager.Instance.SaveState();
         }
         
         private IEnumerator FinalizeLoad()
@@ -484,6 +486,8 @@ namespace Descending.Scene_Overworld
             }
 
             ScanAstar();
+            
+            SaveManager.Instance.SaveState();
         }
 
         private void SpawnStartingVillage()

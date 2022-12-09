@@ -116,10 +116,10 @@ MonoBehaviour:
     - Critical Damage
     - Movement
     - Perception
-    - Aim
-    - Attack
+    - Finesse Attack
+    - Might Attack
     - Critical Hit
-    - Focus
+    - Magic Attack
     - Fumble
     valueData:
     - _derived: {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}

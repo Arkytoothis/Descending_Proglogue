@@ -45,6 +45,11 @@ namespace Descending.Party
                         onSetDungeonButtonInteractable.Invoke(true);
                     }
                 }
+
+                if (_lastTile == null)
+                {
+                    _lastTile = _currentTile;
+                }
             }
         }
         

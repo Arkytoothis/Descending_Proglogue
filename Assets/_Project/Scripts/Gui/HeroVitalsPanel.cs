@@ -12,6 +12,7 @@ namespace Descending.Gui
         [SerializeField] private VitalWidget _lifeWidget = null;
         [SerializeField] private VitalWidget _staminaWidget = null;
         [SerializeField] private VitalWidget _magicWidget = null;
+        [SerializeField] private VitalWidget _luckWidget = null;
 
         public void Setup()
         {
@@ -25,6 +26,7 @@ namespace Descending.Gui
             _lifeWidget.SetAttribute(hero.Attributes.GetVital("Life"));
             _staminaWidget.SetAttribute(hero.Attributes.GetVital("Stamina"));
             _magicWidget.SetAttribute(hero.Attributes.GetVital("Magic"));
+            _luckWidget.SetAttribute(hero.Attributes.GetVital("Luck"));
         }
     }
 }
