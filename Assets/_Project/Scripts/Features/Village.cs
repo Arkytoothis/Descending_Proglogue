@@ -13,12 +13,13 @@ namespace Descending.Features
         
         [SerializeField] private BoolEvent onSetVillageButtonInteractable = null;
         [SerializeField] private VillageEvent onSetCurrentVillage = null;
+        [SerializeField] private WorldFeatureEvent onRegisterFeature = null;
 
         public MarketData MarketData => _marketData;
 
-        public override void RegisterFeature(WorldFeature feature)
+        private void Awake()
         {
-            
+            onRegisterFeature.Invoke(this);
         }
 
         public override void Interact()
@@ -34,6 +35,11 @@ namespace Descending.Features
             Debug.Log("Leaving Village");
             onSetVillageButtonInteractable.Invoke(false);
             onSetCurrentVillage.Invoke(null);
+        }
+
+        public override void Setup()
+        {
+            _marketData.GenerateShopItems();
         }
     }
 }

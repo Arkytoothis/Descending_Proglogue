@@ -10,10 +10,11 @@ namespace Descending.Features
     public class Dungeon : WorldFeature
     {
         [SerializeField] private BoolEvent onSetDungeonButtonInteractable = null;
+        [SerializeField] private WorldFeatureEvent onRegisterFeature = null;
 
-        public override void RegisterFeature(WorldFeature feature)
+        private void Awake()
         {
-            throw new NotImplementedException();
+            onRegisterFeature.Invoke(this);
         }
 
         public override void Interact()
@@ -25,6 +26,11 @@ namespace Descending.Features
         public override void Leave()
         {
             Debug.Log("Leaving Dungeon");
+        }
+
+        public override void Setup()
+        {
+            
         }
     }
 }

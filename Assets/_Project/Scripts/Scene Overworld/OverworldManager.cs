@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Features;
 using Descending.Scene_Overworld;
 using Descending.Units;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Descending.Overworld
 {
@@ -22,12 +21,12 @@ namespace Descending.Overworld
         
         private void Awake()
         {
+            _database.Setup();
+            ItemGenerator.Setup();
         }
 
         private void Start()
         {
-            _database.Setup();
-            ItemGenerator.Setup();
             UnitManager.Instance.SpawnHeroes_Overworld();
             //_worldGenerator.Setup();
             
@@ -35,6 +34,7 @@ namespace Descending.Overworld
             
             ResourcesManager.Instance.Setup();
             StockpileManager.Instance.Setup();
+            FeatureManager.Instance.Setup();
             UnitManager.Instance.SelectDefaultHeroOverworld();
             UnitManager.Instance.SyncHeroes();
         }

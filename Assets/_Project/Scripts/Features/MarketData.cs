@@ -14,14 +14,9 @@ namespace Descending.Features
 
         public List<Item> ShopItems => _shopItems;
 
-        private void Start()
+        public void GenerateShopItems()
         {
             _shopItems = new List<Item>();
-            GenerateShopItems();
-        }
-        
-        private void GenerateShopItems()
-        {
             int numWeaponsToGenerate = 5;
 
             for (int i = 0; i < numWeaponsToGenerate; i++)
@@ -29,7 +24,7 @@ namespace Descending.Features
                 Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), GenerateItemType.Any_Weapon, 0, 0, 0);
                 _shopItems.Add(item);
             }
-            
+
             int numArmorToGenerate = 5;
 
             for (int i = 0; i < numArmorToGenerate; i++)
@@ -37,7 +32,7 @@ namespace Descending.Features
                 Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), GenerateItemType.Any_Armor, 0, 0, 0);
                 _shopItems.Add(item);
             }
-            
+
             int numShieldsToGenerate = 2;
 
             for (int i = 0; i < numShieldsToGenerate; i++)
@@ -62,21 +57,13 @@ namespace Descending.Features
                 _shopItems.Add(item);
             }
 
-            int numBombsToGenerate = 3;
+            int numBombsToGenerate = 2;
 
             for (int i = 0; i < numBombsToGenerate; i++)
             {
                 Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), Database.instance.Items.GetItem("Small Bomb"), 0, 0, 0);
                 _shopItems.Add(item);
             }
-
-            // int numScrollsToGenerate = 3;
-            //
-            // for (int i = 0; i < numScrollsToGenerate; i++)
-            // {
-            //     Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Uncommon"), Database.instance.Items.GetItem("Small Bomb"), 0, 0, 0);
-            //     _shopItems.Add(item);
-            // }
         }
     }
 }

@@ -29,5 +29,13 @@ namespace Descending.Features
             
             _features.Add(feature);
         }
+
+        public void Setup()
+        {
+            foreach (WorldFeature worldFeature in _features)
+            {
+                worldFeature.Setup();
+            }
+        }
     }
 }
