@@ -20,7 +20,7 @@ MonoBehaviour:
   _itemDrop: {fileID: 8384081800384720211, guid: 146e34c33337c6c41b51a79d51ae4612,
     type: 3}
   _category: 5
-  _itemType: 3
+  _itemType: 7
   _nameFormat: 1
   _equipmentSlot: 10
   _renderSlots:

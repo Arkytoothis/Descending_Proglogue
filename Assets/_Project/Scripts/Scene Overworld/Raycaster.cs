@@ -12,7 +12,7 @@ namespace Descending.Overworld
     {
         [SerializeField] private PartyMover _partyMover = null;
         [SerializeField] private WorldCursor _worldCursor = null;
-        [SerializeField] private LayerMask _tileMask;
+        [SerializeField] private LayerMask _groundMask;
 
         private void Update()
         {
@@ -20,26 +20,13 @@ namespace Descending.Overworld
             
             Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMousePosition());
             
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f, _tileMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, _groundMask))
             {
-                WorldTile tile = hit.collider.gameObject.GetComponentInParent<WorldTile>();
-
-                if (tile == null) return;
-                
-                _worldCursor.SetTile(tile);
-                
                 if (Input.GetMouseButtonDown(1))
                 {
-                    if (tile.IsMovable)
-                    {
-                        _partyMover.MoveTo(tile.transform.position);
-                        return;
-                    }
+                    _worldCursor.MoveTo(hit.point);
+                    _partyMover.MoveTo(hit.point);
                 }
-            }
-            else
-            {
-                _worldCursor.SetTile(null);
             }
         }
     }

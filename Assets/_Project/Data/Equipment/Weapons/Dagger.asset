@@ -21,7 +21,7 @@ MonoBehaviour:
   _itemDrop: {fileID: 8384081800384720211, guid: 66872fdab1399704dac7a9ad257a8847,
     type: 3}
   _category: 4
-  _itemType: 12
+  _itemType: 14
   _nameFormat: 0
   _equipmentSlot: 0
   _renderSlots: []

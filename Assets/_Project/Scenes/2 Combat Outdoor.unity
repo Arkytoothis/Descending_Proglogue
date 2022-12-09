@@ -163,7 +163,7 @@ MonoBehaviour:
   _heroUnits: []
   _enemyUnits: []
   _enemySpawners: []
-  _loadData: 1
+  _loadData: 0
   onSyncParty:
     m_PersistentCalls:
       m_Calls:
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   _supplies: 0
   _materials: 0
   _gems: 0
-  _loadData: 1
+  _loadData: 0
   onUpdateCoins:
     m_PersistentCalls:
       m_Calls:
@@ -2033,7 +2033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numItemToGenerate: 0
-  _loadData: 1
+  _loadData: 0
   onSyncStockpile:
     m_PersistentCalls:
       m_Calls:

@@ -27,37 +27,37 @@ namespace Descending.Gui
         public void ResumeButton_OnClick()
         {
             Debug.Log("Resuming");
-            _manager.CLoseAll();
+            _manager.CloseAll();
         }
 
         public void SaveButton_OnClick()
         {
             Debug.Log("Saving");
-            _manager.CLoseAll();
+            _manager.CloseAll();
         }
 
         public void LoadButton_OnClick()
         {
             Debug.Log("Loading");
-            _manager.CLoseAll();
+            _manager.CloseAll();
         }
 
         public void OptionsButton_OnClick()
         {
             Debug.Log("Options");
-            _manager.CLoseAll();
+            _manager.CloseAll();
         }
 
         public void ExitToMenuButton_OnClick()
         {
             Debug.Log("Exiting To Menu");
-            _manager.CLoseAll();
+            _manager.CloseAll();
         }
 
         public void ExitButton_OnClick()
         {
             Debug.Log("Exiting");
-            _manager.CLoseAll();
+            _manager.CloseAll();
         }
     }
 }

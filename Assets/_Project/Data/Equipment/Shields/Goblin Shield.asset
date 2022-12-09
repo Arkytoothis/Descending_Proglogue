@@ -21,7 +21,7 @@ MonoBehaviour:
   _itemDrop: {fileID: 8384081800384720211, guid: bc83dd49ecdc68e4087afe8108eacf7f,
     type: 3}
   _category: 3
-  _itemType: 8
+  _itemType: 10
   _nameFormat: 0
   _equipmentSlot: 1
   _renderSlots: []
@@ -89,5 +89,6 @@ MonoBehaviour:
         _damageType: {fileID: 11400000, guid: 9c8ea95288e20f04391438ce1fcfc3e2, type: 2}
         _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
         _damageClass: 0
+        _attackType: 4
         _minimumValue: 1
         _maximumValue: 4

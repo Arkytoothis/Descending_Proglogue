@@ -24,13 +24,25 @@ namespace Descending.Core
 
     public enum ItemType
     {
-        Head_Armor, Backpack, Cloak, Armor, Hand_Armor, Foot_Armor, 
+        Head_Armor, Backpack, Cloak, Armor, Leg_Armor, Wrist_Armor, Hand_Armor, Foot_Armor, 
         Finger, Necklace,
         Shield,
         Ammo,
         Sword, Axe, Dagger, Hammer, Mace, Staff, Scepter, Polearm, Firearm, Instrument, Bow,
         Potion, Drink, Food, Bomb, Scroll, Spellbook,
         Ingredient, 
+        Number, None
+    }
+    public enum GenerateItemType
+    {
+        Head_Armor, Backpack, Cloak, Armor, Leg_Armor, Wrist_Armor, Hand_Armor, Foot_Armor, 
+        Finger, Necklace,
+        Shield,
+        Ammo,
+        Sword, Axe, Dagger, Hammer, Mace, Staff, Scepter, Polearm, Firearm, Instrument, Bow,
+        Potion, Drink, Food, Bomb, Scroll, Spellbook,
+        Ingredient,
+        Any, Any_Weapon, Any_Armor, Any_Shield, Any_Accessory,
         Number, None
     }
 
@@ -60,16 +72,6 @@ namespace Descending.Core
     
     public enum ItemCategory { Accessories, Ammo, Ingredient, Shields, Weapons, Wearable, Number, None }
 
-    public enum GenerateItemType
-    {
-        Head_Armor, Backpack, Cloak, Ammo, Armor, Hand_Armor, Foot_Armor, Finger, Necklace,
-        Shield,
-        Arrow,
-        Axe, Bow, Dagger, Firearm, Hammer, Instrument, Mace, Polearm, Scepter, Staff, Sword,
-        Potion, Drink, Food, Bomb, Scroll, Spellbook,
-        Any, Any_Weapon, Any_Armor, Any_Shield, Any_Accessory,
-        Number, None
-    }
 
     public enum ItemMaterialType
     {

@@ -9,7 +9,6 @@ using Descending.Equipment;
 using Descending.Gui;
 using Descending.Tiles;
 using Descending.Units;
-using DG.Tweening;
 using DunGen;
 using UnityEngine;
 using UnityEngine.SceneManagement;

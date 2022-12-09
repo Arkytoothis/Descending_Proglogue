@@ -20,5 +20,18 @@ namespace Descending.Party
                 }
             }
         }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("World Feature"))
+            {
+                WorldFeature feature = other.GetComponent<WorldFeature>();
+
+                if (feature != null)
+                {
+                    feature.Leave();
+                }
+            }
+        }
     }
 }

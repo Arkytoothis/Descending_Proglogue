@@ -33,7 +33,7 @@ namespace Descending.Gui
                 _windows.Add(window);
             }
             
-            CLoseAll();
+            CloseAll();
         }
 
         private void Update()
@@ -42,7 +42,7 @@ namespace Descending.Gui
             {
                 if (IsAnyWindowOpen())
                 {
-                    CLoseAll();
+                    CloseAll();
                 }
                 else
                 {
@@ -54,7 +54,7 @@ namespace Descending.Gui
             {
                 if (IsAnyWindowOpen())
                 {
-                    CLoseAll();
+                    CloseAll();
                 }
                 else
                 {
@@ -65,7 +65,7 @@ namespace Descending.Gui
 
         public void OpenWindow(int windowIndex)
         {
-            CLoseAll();
+            CloseAll();
             _windows[windowIndex].Open();
             onSetCameraControlsActive.Invoke(false);
         }
@@ -75,7 +75,7 @@ namespace Descending.Gui
             _windows[windowIndex].Close();
         }
 
-        public void CLoseAll()
+        public void CloseAll()
         {
             for (int i = 0; i < _windows.Count; i++)
             {

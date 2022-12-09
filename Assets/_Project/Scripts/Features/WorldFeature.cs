@@ -12,6 +12,8 @@ namespace Descending.Features
         public FeatureDefinition Definition => _definition;
         public Transform InteractionTransform => _interactionTransform;
 
+        public abstract void RegisterFeature(WorldFeature feature);
         public abstract void Interact();
+        public abstract void Leave();
     }
 }

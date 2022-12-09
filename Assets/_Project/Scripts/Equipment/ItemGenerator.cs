@@ -69,6 +69,7 @@ namespace Descending.Equipment
         
         public static Item GenerateRandomItem(RarityDefinition bestMaterial, GenerateItemType itemType, int plusChance, int prefixChance, int suffixChance)
         {
+            Debug.Log("Item Type: " + itemType);
             if (_itemsByType[(int)itemType].Count == 0) { return null; }
 
             string itemKey = _itemsByType[(int)itemType][UnityEngine.Random.Range(0, _itemsByType[(int)itemType].Count)];
