@@ -15,7 +15,7 @@ MonoBehaviour:
   _features:
     keyData:
     - Village
-    - Dungeon
+    - Crypt
     valueData:
     - {fileID: 11400000, guid: 8543e1775bf953f4abc243dd153541a0, type: 2}
     - {fileID: 11400000, guid: 963bf4c6ad127274fb4efd40afe737b7, type: 2}

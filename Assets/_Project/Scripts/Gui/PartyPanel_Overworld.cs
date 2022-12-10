@@ -15,10 +15,8 @@ namespace Descending.Gui
         [SerializeField] private Button _dungeonButton = null;
         [SerializeField] private List<PartyMemberWidget_Overworld> _partyMemberWidgets = null;
 
-        [SerializeField] private VillageEvent onOpenVillageWindow = null;
+        [SerializeField] private BoolEvent onOpenVillageWindow = null;
         [SerializeField] private BoolEvent onOpenDungeonWindow = null;
-
-        private WorldFeature _currentFeature = null;
         
         public void Setup()
         {
@@ -69,14 +67,9 @@ namespace Descending.Gui
             _dungeonButton.interactable = interactable;
         }
 
-        public void OnSetVillage(Village village)
-        {
-            _currentFeature = village;
-        }
-
         public void VillageButtonClick()
         {
-            onOpenVillageWindow.Invoke(_currentFeature as Village);
+            onOpenVillageWindow.Invoke(true);
         }
 
         public void DungeonButtonClick()

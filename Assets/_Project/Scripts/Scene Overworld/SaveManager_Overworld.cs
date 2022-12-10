@@ -8,8 +8,6 @@ using UnityEngine;
 
 namespace Descending.Scene_Overworld
 {
-    public enum SaveManagerLoadStates { Generating, Loading, Number, None }
-    
     public class SaveManager_Overworld : SaveManager
     {
         [SerializeField] private UnitManager _unitManager = null;

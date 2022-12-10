@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5911972831128690064}
   - component: {fileID: 2744048734846600391}
-  - component: {fileID: 2456498331679442031}
-  - component: {fileID: 3848745021361551563}
+  - component: {fileID: 3970932000925958807}
+  - component: {fileID: 6033783848296688907}
+  - component: {fileID: 8857003551379876093}
   m_Layer: 5
   m_Name: Window Manager
   m_TagString: Untagged
@@ -72,7 +73,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2456498331679442031
+--- !u!114 &3970932000925958807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032540285926485091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc6218bae06ced498b64da7d7555be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: a28c058aefeb5d24487e0de69bc2cb12, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2744048734846600391}
+        m_TargetAssemblyTypeName: Descending.Gui.WindowManager, Reclamation
+        m_MethodName: OnSetCurrentFeature
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: {fileID: 0}
+--- !u!114 &6033783848296688907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,13 +122,13 @@ MonoBehaviour:
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
   _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: e1d957d2f771e134c892678b6a483f2d, type: 2}
+  _event: {fileID: 11400000, guid: 660f4942a1ac65f4daed0e99a37d849d, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2744048734846600391}
         m_TargetAssemblyTypeName: Descending.Gui.WindowManager, Reclamation
-        m_MethodName: OnToggleVillageWindow
+        m_MethodName: OnOpenVillageWindow
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -105,7 +139,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: 0
---- !u!114 &3848745021361551563
+--- !u!114 &8857003551379876093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,14 +155,14 @@ MonoBehaviour:
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
   _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 11f170fe84f45ec43838890e42a647b6, type: 2}
+  _event: {fileID: 11400000, guid: 2d44b1b1de449904da8a94a581ba1ae4, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2744048734846600391}
         m_TargetAssemblyTypeName: Descending.Gui.WindowManager, Reclamation
-        m_MethodName: OnToggleDungeonWindow
-        m_Mode: 6
+        m_MethodName: OnOpenDungeonWindow
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

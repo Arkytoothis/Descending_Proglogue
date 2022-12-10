@@ -293,19 +293,7 @@ namespace Descending.Units
 
         public void SavePartyPosition()
         {
-            PartyMover partyMover = _partyController.GetComponent<PartyMover>();
-            PartyPositionSaveData positionSaveData = new PartyPositionSaveData();
-
-            if (partyMover.LastTile != null)
-            {
-                positionSaveData = new PartyPositionSaveData(partyMover.LastTile.transform.position);
-            }
-            else if (partyMover.CurrentTile != null)
-            {
-                positionSaveData = new PartyPositionSaveData(partyMover.CurrentTile.transform.position);
-            }
-            
-            byte[] positionBytes = SerializationUtility.SerializeValue(positionSaveData, DataFormat.JSON);
+            byte[] positionBytes = SerializationUtility.SerializeValue(new PartyPositionSaveData(_partyController.transform.position), DataFormat.JSON);
             File.WriteAllBytes(Database.instance.OverworldSpawnFilePath, positionBytes);
         }
         

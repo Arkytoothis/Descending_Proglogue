@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d7a1a99703bf44f8497cf9a092f6f4, type: 3}
-  m_Name: Dungeon
+  m_Script: {fileID: 11500000, guid: ad71f5452ad0fe64e863ebe085e3b2a4, type: 3}
+  m_Name: ovr_SetCurrentWorldFeature
   m_EditorClassIdentifier: 
-  Name: Dungeon
-  Key: Dungeon
-  Prefab: {fileID: 5060875217264684859, guid: cb18215745b4873468a061f47d86e4a7, type: 3}
+  _debugValue: {fileID: 0}

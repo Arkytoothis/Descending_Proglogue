@@ -192,4 +192,12 @@ namespace Descending.Core
         Characteristic, Vital, Statistic, Resistance,
         Number, None
     }
+    
+    public enum SaveManagerLoadStates { Generating, Loading, Number, None }
+
+    public enum DungeonTypes
+    {
+        Crypt, Forest,
+        Number, None
+    }
 }

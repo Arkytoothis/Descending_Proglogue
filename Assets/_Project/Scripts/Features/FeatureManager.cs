@@ -8,7 +8,7 @@ namespace Descending.Features
     {
         public static FeatureManager Instance { get; private set; }
 
-        private List<WorldFeature> _features = null;
+        [SerializeField] private List<WorldFeature> _features = new List<WorldFeature>();
         
         private void Awake()
         {
@@ -20,22 +20,19 @@ namespace Descending.Features
             }
             
             Instance = this;
-            _features = new List<WorldFeature>();
+        }
+        
+        public void Setup()
+        {
         }
 
-        public void OnRegisterFeature(WorldFeature feature)
+        public void RegisterFeature(WorldFeature feature)
         {
             if (feature == null) return;
             
+            Debug.Log("Registering Feature: " + feature);
             _features.Add(feature);
-        }
-
-        public void Setup()
-        {
-            foreach (WorldFeature worldFeature in _features)
-            {
-                worldFeature.Setup();
-            }
+            feature.Setup();
         }
     }
 }

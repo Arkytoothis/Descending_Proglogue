@@ -14,6 +14,8 @@ namespace Descending.Combat
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private ResourcesManager _resourcesManager = null;
         
+        [SerializeField] private SaveManagerLoadStates _loadState = SaveManagerLoadStates.None;
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F5))
@@ -43,6 +45,7 @@ namespace Descending.Combat
         [Button("Generate Data")]
         public void SetGenerateData()
         {
+            _loadState = SaveManagerLoadStates.Generating;
             _unitManager.SetLoadData(false);
             _resourcesManager.SetLoadData(false);
             _stockpileManager.SetLoadData(false);
@@ -51,6 +54,7 @@ namespace Descending.Combat
         [Button("Load Data")]
         public void SetLoadData()
         {
+            _loadState = SaveManagerLoadStates.Loading;
             _unitManager.SetLoadData(true);
             _resourcesManager.SetLoadData(true);
             _stockpileManager.SetLoadData(true);

@@ -16,7 +16,7 @@ namespace Descending.Party
 
                 if (feature != null)
                 {
-                    feature.Interact();
+                    feature.Approach();
                 }
             }
         }

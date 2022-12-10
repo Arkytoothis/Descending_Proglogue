@@ -12,7 +12,7 @@ namespace Descending.Features
         public FeatureDefinition Definition => _definition;
         public Transform InteractionTransform => _interactionTransform;
 
-        public abstract void Interact();
+        public abstract void Approach();
         public abstract void Leave();
         public abstract void Setup();
     }

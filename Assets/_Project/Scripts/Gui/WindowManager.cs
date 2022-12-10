@@ -16,6 +16,7 @@ namespace Descending.Gui
         [SerializeField] private BoolEvent onSetCameraControlsActive = null;
         
         private List<GameWindow> _windows = null;
+        private WorldFeature _currentFeature = null;
 
         public void Setup()
         {
@@ -103,15 +104,21 @@ namespace Descending.Gui
             return false;
         }
 
-        public void OnToggleVillageWindow(Village village)
+        public void OnOpenVillageWindow(bool b)
         {
-            ((VillageWindow)_windows[(int)GameWindows.Village]).SetVillage(village);
+            ((VillageWindow)_windows[(int)GameWindows.Village]).SetVillage(_currentFeature as Village);
             OpenWindow((int)GameWindows.Village);
         }
 
-        public void OnToggleDungeonWindow(bool b)
+        public void OnOpenDungeonWindow(bool b)
         {
+            ((DungeonWindow)_windows[(int)GameWindows.Dungeon]).SetDungeon(_currentFeature as Dungeon);
             OpenWindow((int)GameWindows.Dungeon);
+        }
+
+        public void OnSetCurrentFeature(WorldFeature feature)
+        {
+            _currentFeature = feature;
         }
     }
 }

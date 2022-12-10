@@ -2282,8 +2282,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 660f4942a1ac65f4daed0e99a37d849d, type: 2}
-        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[Descending.Features.Village,
-          Reclamation
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[System.Boolean,
+          mscorlib
         m_MethodName: Raise
         m_Mode: 0
         m_Arguments:
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   onOpenDungeonWindow:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 11f170fe84f45ec43838890e42a647b6, type: 2}
+      - m_Target: {fileID: 11400000, guid: 2d44b1b1de449904da8a94a581ba1ae4, type: 2}
         m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[System.Boolean,
           mscorlib
         m_MethodName: Raise
@@ -2924,7 +2924,7 @@ MonoBehaviour:
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
   _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 660f4942a1ac65f4daed0e99a37d849d, type: 2}
+  _event: {fileID: 0}
   _response:
     m_PersistentCalls:
       m_Calls:

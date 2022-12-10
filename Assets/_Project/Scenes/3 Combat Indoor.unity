@@ -2932,6 +2932,7 @@ MonoBehaviour:
   _unitManager: {fileID: 38158957}
   _stockpileManager: {fileID: 851853082}
   _resourcesManager: {fileID: 620801367}
+  _loadState: 1
 --- !u!850595691 &1125565679
 LightingSettings:
   m_ObjectHideFlags: 0

@@ -12,29 +12,28 @@ namespace Descending.Features
         [SerializeField] private MarketData _marketData = null;
         
         [SerializeField] private BoolEvent onSetVillageButtonInteractable = null;
-        [SerializeField] private VillageEvent onSetCurrentVillage = null;
-        [SerializeField] private WorldFeatureEvent onRegisterFeature = null;
+        [SerializeField] private WorldFeatureEvent onSetCurrentFeature = null;
 
         public MarketData MarketData => _marketData;
 
-        private void Awake()
+        private void Start()
         {
-            onRegisterFeature.Invoke(this);
+            FeatureManager.Instance.RegisterFeature(this);
         }
 
-        public override void Interact()
+        public override void Approach()
         {
-            Debug.Log("Interacting with Village");
+            Debug.Log("Approaching Village");
             UnitManager.Instance.SavePartyPosition();
             onSetVillageButtonInteractable.Invoke(true);
-            onSetCurrentVillage.Invoke(this);
+            onSetCurrentFeature.Invoke(this);
         }
 
         public override void Leave()
         {
             Debug.Log("Leaving Village");
             onSetVillageButtonInteractable.Invoke(false);
-            onSetCurrentVillage.Invoke(null);
+            onSetCurrentFeature.Invoke(null);
         }
 
         public override void Setup()
