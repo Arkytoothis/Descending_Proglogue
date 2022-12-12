@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
-using Descending.Equipment;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,12 +24,10 @@ namespace Descending.Features
 
         public void GenerateData(int threatLevel)
         {
-            Debug.Log("Generating Dungeon Data");
+            //Debug.Log("Generating Dungeon Data");
             _threatLevel = threatLevel;
             _levels = Random.Range(1, 4);
             _difficulty = EncounterDifficulties.Easy;
-            _group = EnemyGroups.Goblinoid;
-            _dungeonType = DungeonTypes.Crypt;
         }
     }
 }

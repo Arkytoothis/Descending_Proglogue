@@ -11,6 +11,7 @@ TagManager:
   - World Tile
   - Item Pickup Sphere
   - World Feature
+  - Encounter
   layers:
   - Default
   - TransparentFX

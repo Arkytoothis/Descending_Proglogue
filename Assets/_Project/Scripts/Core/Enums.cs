@@ -197,7 +197,7 @@ namespace Descending.Core
 
     public enum DungeonTypes
     {
-        Crypt, Forest,
+        Crypt, Forest, Goblin_Village,
         Number, None
     }
 }

@@ -163,7 +163,7 @@ MonoBehaviour:
   _heroUnits: []
   _enemyUnits: []
   _enemySpawners: []
-  _loadData: 0
+  _loadData: 1
   onSyncParty:
     m_PersistentCalls:
       m_Calls:
@@ -855,6 +855,7 @@ MonoBehaviour:
   _unitManager: {fileID: 38158957}
   _stockpileManager: {fileID: 819211525}
   _resourcesManager: {fileID: 620801367}
+  _loadState: 1
 --- !u!1 &350358853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1592,7 @@ MonoBehaviour:
   _supplies: 0
   _materials: 0
   _gems: 0
-  _loadData: 0
+  _loadData: 1
   onUpdateCoins:
     m_PersistentCalls:
       m_Calls:
@@ -2033,7 +2034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numItemToGenerate: 0
-  _loadData: 0
+  _loadData: 1
   onSyncStockpile:
     m_PersistentCalls:
       m_Calls:

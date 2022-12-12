@@ -30,7 +30,7 @@ namespace Descending.Features
         {
             if (feature == null) return;
             
-            Debug.Log("Registering Feature: " + feature);
+            //Debug.Log("Registering Feature: " + feature);
             _features.Add(feature);
             feature.Setup();
         }

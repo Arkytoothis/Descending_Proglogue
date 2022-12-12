@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
+using Descending.Gui;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -10,11 +12,13 @@ namespace Descending.Features
     public class Dungeon : WorldFeature
     {
         [SerializeField] private DungeonData _dungeonData = null;
+        [SerializeField] private GameScenes _sceneToLoad = GameScenes.None;
+        [SerializeField] private DungeonPanel _dungeonPanel = null;
         
-        [SerializeField] private BoolEvent onSetDungeonButtonInteractable = null;
-        [SerializeField] private WorldFeatureEvent onSetCurrentFeature = null;
+        [SerializeField] private DungeonEvent onOpenDungeonWindow = null;
 
         public DungeonData DungeonData => _dungeonData;
+        public GameScenes SceneToLoad => _sceneToLoad;
 
         private void Start()
         {
@@ -23,22 +27,26 @@ namespace Descending.Features
 
         public override void Approach()
         {
-            Debug.Log("Approaching Dungeon");
+            //Debug.Log("Approaching Dungeon");
             UnitManager.Instance.SavePartyPosition();
-            onSetDungeonButtonInteractable.Invoke(true);
-            onSetCurrentFeature.Invoke(this);
+            _dungeonPanel.ShowInteractButton();
         }
 
         public override void Leave()
         {
-            Debug.Log("Leaving Dungeon");
-            onSetDungeonButtonInteractable.Invoke(false);
-            onSetCurrentFeature.Invoke(null);
+            //Debug.Log("Leaving Dungeon");
+            _dungeonPanel.HideInteractButton();
         }
 
         public override void Setup()
         {
             _dungeonData.GenerateData(0);
+        }
+
+        public override void Interact()
+        {
+            //Debug.Log("Interacting with Village");
+            onOpenDungeonWindow.Invoke(this);
         }
     }
 }

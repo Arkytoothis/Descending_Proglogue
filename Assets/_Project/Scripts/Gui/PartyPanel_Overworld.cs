@@ -11,17 +11,12 @@ namespace Descending.Gui
 {
     public class PartyPanel_Overworld : MonoBehaviour
     {
-        [SerializeField] private Button _villageButton = null;
-        [SerializeField] private Button _dungeonButton = null;
         [SerializeField] private List<PartyMemberWidget_Overworld> _partyMemberWidgets = null;
 
-        [SerializeField] private BoolEvent onOpenVillageWindow = null;
         [SerializeField] private BoolEvent onOpenDungeonWindow = null;
         
         public void Setup()
         {
-            _villageButton.interactable = false;
-            _dungeonButton.interactable = false;
         }
         
         public void SyncParty(bool b)
@@ -55,21 +50,6 @@ namespace Descending.Gui
                     _partyMemberWidgets[i].Deselect();
                 }
             }
-        }
-
-        public void OnSetVillageButtonInteractable(bool interactable)
-        {
-            _villageButton.interactable = interactable;
-        }
-
-        public void OnSetDungeonButtonInteractable(bool interactable)
-        {
-            _dungeonButton.interactable = interactable;
-        }
-
-        public void VillageButtonClick()
-        {
-            onOpenVillageWindow.Invoke(true);
         }
 
         public void DungeonButtonClick()

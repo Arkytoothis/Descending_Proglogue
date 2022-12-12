@@ -15,5 +15,6 @@ namespace Descending.Features
         public abstract void Approach();
         public abstract void Leave();
         public abstract void Setup();
+        public abstract void Interact();
     }
 }

@@ -1,18 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Gui;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Descending.Features
 {
     public class Village : WorldFeature
     {
         [SerializeField] private MarketData _marketData = null;
+        [SerializeField] private VillagePanel _villagePanel = null;
         
-        [SerializeField] private BoolEvent onSetVillageButtonInteractable = null;
-        [SerializeField] private WorldFeatureEvent onSetCurrentFeature = null;
+        [SerializeField] private VillageEvent onOpenVillageWindow = null;
 
         public MarketData MarketData => _marketData;
 
@@ -21,24 +23,28 @@ namespace Descending.Features
             FeatureManager.Instance.RegisterFeature(this);
         }
 
+        public override void Setup()
+        {
+            _marketData.GenerateShopItems();
+        }
+
         public override void Approach()
         {
-            Debug.Log("Approaching Village");
+            //Debug.Log("Approaching Village");
             UnitManager.Instance.SavePartyPosition();
-            onSetVillageButtonInteractable.Invoke(true);
-            onSetCurrentFeature.Invoke(this);
+            _villagePanel.ShowInteractButton();
         }
 
         public override void Leave()
         {
-            Debug.Log("Leaving Village");
-            onSetVillageButtonInteractable.Invoke(false);
-            onSetCurrentFeature.Invoke(null);
+            //Debug.Log("Leaving Village");
+            _villagePanel.HideInteractButton();
         }
 
-        public override void Setup()
+        public override void Interact()
         {
-            _marketData.GenerateShopItems();
+            //Debug.Log("Interacting with Village");
+            onOpenVillageWindow.Invoke(this);
         }
     }
 }

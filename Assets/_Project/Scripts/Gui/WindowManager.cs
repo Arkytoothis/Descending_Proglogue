@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Encounters;
 using Descending.Features;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -16,7 +17,6 @@ namespace Descending.Gui
         [SerializeField] private BoolEvent onSetCameraControlsActive = null;
         
         private List<GameWindow> _windows = null;
-        private WorldFeature _currentFeature = null;
 
         public void Setup()
         {
@@ -104,21 +104,16 @@ namespace Descending.Gui
             return false;
         }
 
-        public void OnOpenVillageWindow(bool b)
+        public void OnOpenVillageWindow(Village village)
         {
-            ((VillageWindow)_windows[(int)GameWindows.Village]).SetVillage(_currentFeature as Village);
+            ((VillageWindow)_windows[(int)GameWindows.Village]).SetVillage(village);
             OpenWindow((int)GameWindows.Village);
         }
 
-        public void OnOpenDungeonWindow(bool b)
+        public void OnOpenDungeonWindow(Dungeon dungeon)
         {
-            ((DungeonWindow)_windows[(int)GameWindows.Dungeon]).SetDungeon(_currentFeature as Dungeon);
+            ((DungeonWindow)_windows[(int)GameWindows.Dungeon]).SetDungeon(dungeon);
             OpenWindow((int)GameWindows.Dungeon);
-        }
-
-        public void OnSetCurrentFeature(WorldFeature feature)
-        {
-            _currentFeature = feature;
         }
     }
 }
