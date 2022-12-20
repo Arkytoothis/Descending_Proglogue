@@ -1,16 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Descending.Core
+namespace Descending.Combat
 {
-    public class WorldRaycaster : MonoBehaviour
+    public class CombatRaycaster : MonoBehaviour
     {
-        private static WorldRaycaster instance;
+        private static CombatRaycaster instance;
 
         [SerializeField] private GameObject _cursor;
         [SerializeField] private LayerMask _groundMask;
@@ -29,11 +30,12 @@ namespace Descending.Core
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
             
+            _currentMapPosition = MapManager.Instance.GetGridPosition(GetMouseWorldPosition());
+            _cursor.transform.position = MapManager.Instance.GetWorldPosition(_currentMapPosition);
+            
             if (MapManager.Instance.GetGridPosition(GetMouseWorldPosition()) != _lastMapPosition)
             {
-                _currentMapPosition = MapManager.Instance.GetGridPosition(GetMouseWorldPosition());
                 onDisplayCurrentTile.Invoke(_currentMapPosition);
-                _cursor.transform.position = MapManager.Instance.GetWorldPosition(_currentMapPosition);
                 _lastMapPosition = _currentMapPosition;
             }
         }

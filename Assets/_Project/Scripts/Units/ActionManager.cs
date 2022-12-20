@@ -60,7 +60,7 @@ namespace Descending.Units
             
             if (InputManager.Instance.GetRightMouseDown())
             {
-                MapPosition mouseMapPosition = MapManager.Instance.GetGridPosition(WorldRaycaster.GetMouseWorldPosition());
+                MapPosition mouseMapPosition = MapManager.Instance.GetGridPosition(CombatRaycaster.GetMouseWorldPosition());
                 if (_selectedAction.IsValidActionGridPosition(mouseMapPosition))
                 {
                     if (UnitManager.Instance.SelectedHero.TryPerformAction(_selectedAction))

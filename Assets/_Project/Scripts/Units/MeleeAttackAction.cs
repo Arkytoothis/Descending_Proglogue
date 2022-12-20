@@ -5,6 +5,7 @@ using Descending.Combat;
 using Descending.Equipment;
 using Descending.Tiles;
 using UnityEngine;
+using MapManager = Descending.Tiles.MapManager;
 using Random = UnityEngine.Random;
 
 namespace Descending.Units

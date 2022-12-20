@@ -147,8 +147,8 @@ MonoBehaviour:
       _minimumValue: 1
       _maximumValue: 1
     - _derived: {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
-      _minimumValue: 5
-      _maximumValue: 5
+      _minimumValue: 4
+      _maximumValue: 4
     - _derived: {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
       _minimumValue: 10
       _maximumValue: 10

@@ -12,6 +12,7 @@ using Descending.Units;
 using DunGen;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MapManager = Descending.Tiles.MapManager;
 
 namespace Descending.Scene_Outdoor
 {
