@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DarkTonic.MasterAudio;
 using UnityEngine;
 
 namespace Descending.Gui
@@ -9,8 +8,8 @@ namespace Descending.Gui
     
     public abstract class GameWindow : MonoBehaviour
     {
-        [SerializeField, SoundGroup] protected string _openSound = "";
-        [SerializeField, SoundGroup] protected string _closeSound = "";
+        //[SerializeField, SoundGroup] protected string _openSound = "";
+        //[SerializeField, SoundGroup] protected string _closeSound = "";
 
         protected WindowManager _manager = null;
         protected bool _isOpen = false;

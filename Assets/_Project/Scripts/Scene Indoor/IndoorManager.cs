@@ -41,7 +41,7 @@ namespace Descending.Scene_Indoor
             ItemGenerator.Setup();
             InputManager.Instance.Setup();
             TurnManager.Instance.Setup();
-            Tiles.MapManager.Instance.Setup();
+            MapManager.Instance.Setup();
             CombatEventManager.Instance.Setup();
             _dungeon.Generate();
             UnitManager.Instance.Setup();

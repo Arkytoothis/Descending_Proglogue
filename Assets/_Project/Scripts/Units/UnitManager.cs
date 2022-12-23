@@ -312,7 +312,6 @@ namespace Descending.Units
         
         public void GenerateHeroes_Combat()
         {
-            Debug.Log("GenerateHeroes");
             MapPosition spawnerPosition = MapManager.Instance.GetGridPosition(_playerSpawner.transform.position);
             
             SpawnHero(new MapPosition(spawnerPosition.X, spawnerPosition.Y), 0, Database.instance.Races.GetRace("Godkin"), Database.instance.Profession.GetProfession("Soldier"));

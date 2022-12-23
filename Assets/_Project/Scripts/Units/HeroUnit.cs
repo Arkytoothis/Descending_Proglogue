@@ -182,6 +182,10 @@ namespace Descending.Units
             _worldPanel.UpdateActionPoints();
             onSyncParty.Invoke(true);
         }
+
+        public void SetWorldPanelAActive(bool active)
+        {
+            _worldPanel.gameObject.SetActive(active);
+        }
     }
-    
 }

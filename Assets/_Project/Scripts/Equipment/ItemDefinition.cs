@@ -130,28 +130,28 @@ namespace Descending.Equipment
             return sb.ToString();
         }
 
-        public string GetHitSound()
-        {
-            if (_weaponData != null && _weaponData.HasData)
-            {
-                return _weaponData.HitSounds[Random.Range(0, _weaponData.HitSounds.Count)];
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public string GetMissSound()
-        {
-            if (_weaponData != null && _weaponData.HasData)
-            {
-                return _weaponData.MissSounds[Random.Range(0, _weaponData.MissSounds.Count)];
-            }
-            else
-            {
-                return "";
-            }
-        }
+        // public string GetHitSound()
+        // {
+        //     if (_weaponData != null && _weaponData.HasData)
+        //     {
+        //         return _weaponData.HitSounds[Random.Range(0, _weaponData.HitSounds.Count)];
+        //     }
+        //     else
+        //     {
+        //         return "";
+        //     }
+        // }
+        //
+        // public string GetMissSound()
+        // {
+        //     if (_weaponData != null && _weaponData.HasData)
+        //     {
+        //         return _weaponData.MissSounds[Random.Range(0, _weaponData.MissSounds.Count)];
+        //     }
+        //     else
+        //     {
+        //         return "";
+        //     }
+        // }
     }
 }

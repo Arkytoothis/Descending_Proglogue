@@ -20,7 +20,7 @@ namespace Descending.Scene_Overworld
     {
         public const int MAX_THREAT_LEVEL = 10;
         [SerializeField] private PartyController _partyController = null;
-        [SerializeField] private PortraitRoom _portraitRoom = null;
+       // [SerializeField] private PortraitRoom _portraitRoom = null;
         [SerializeField] private int _sampleSize = 10;
         [SerializeField] private int _seed = 0;
         [SerializeField] private bool _randomizeSeed = true;

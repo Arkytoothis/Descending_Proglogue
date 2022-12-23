@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Descending.Gui
 {
@@ -52,12 +54,19 @@ namespace Descending.Gui
         {
             Debug.Log("Exiting To Menu");
             _manager.CloseAll();
+            SceneManager.LoadScene((int)GameScenes.Main_Menu);
         }
 
         public void ExitButton_OnClick()
         {
             Debug.Log("Exiting");
             _manager.CloseAll();
+            
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }

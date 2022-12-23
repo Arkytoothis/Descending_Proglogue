@@ -13,7 +13,6 @@ namespace Descending.Overworld
     public class OverworldManager : MonoBehaviour
     {
         [SerializeField] private Database _database = null;
-        [SerializeField] private WorldGenerator _worldGenerator = null;
         [SerializeField] private GameObject _guiPrefab = null;
         [SerializeField] private Transform _guiParent = null;
 

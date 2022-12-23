@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
-using Descending.Gui;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Descending.Scene_Main_Menu
 {
@@ -28,6 +28,20 @@ namespace Descending.Scene_Main_Menu
         public void LoadButtonClick()
         {
             PartyBuilder.Instance.LoadState(Database.instance.PartyDataFilePath);
+        }
+        
+        public void StartGameButton()
+        {
+            SceneManager.LoadScene((int)GameScenes.Overworld);
+        }
+        
+        public void ExitGameButton()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
         }
     }
 }

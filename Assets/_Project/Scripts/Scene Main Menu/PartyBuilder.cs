@@ -50,6 +50,7 @@ namespace Descending.Scene_Main_Menu
             
             HeroUnit hero = clone.GetComponent<HeroUnit>();
             hero.SetupHero(Genders.Male, race, profession, listIndex);
+            hero.SetWorldPanelAActive(false);
             hero.PortraitModel.SetActive(false);
             clone.name = "Hero: " + hero.GetFullName();
             

@@ -4,9 +4,9 @@ using Descending.Abilities;
 using UnityEngine;
 using TMPro;
 using Descending.Equipment;
-using DG.Tweening;
 using UnityEngine.UI;
 using Descending.Core;
+using DG.Tweening;
 
 namespace Descending.Gui
 {
@@ -202,32 +202,33 @@ namespace Descending.Gui
         private void Show()
         {
             //_isShown = true;
-            //Invoke("DelayedOpen", _openDelay);
-            DelayedOpen();
+            StartCoroutine(DelayedOpen());
         }
 
-        public void DelayedOpen()
+        private IEnumerator DelayedOpen()
         {
+            yield return new WaitForSeconds(_openDelay);
+
             //_isShown = true;
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
-            _canvasGroup.alpha = 1f;
-            //_canvasGroup.DOFade(1f, _openSpeed);
+            //_canvasGroup.alpha = 1f;
+            _canvasGroup.DOFade(1f, _openSpeed);
         }
 
         public void Hide()
         {
             //_isShown = false;
-            //CancelInvoke("DelayedOpen");
-            _canvasGroup.alpha = 0f;
-            //_canvasGroup.DOFade(0f, _closeSpeed);
+            StopCoroutine(DelayedOpen());
+            //_canvasGroup.alpha = 0f;
+            _canvasGroup.DOFade(0f, _closeSpeed);
         }
 
         public void Close()
         {
             //_isShown = false;
-            //CancelInvoke("DelayedOpen");
-            //_canvasGroup.DOFade(0f, 0f);
-            _canvasGroup.alpha = 0f;
+            StopCoroutine(DelayedOpen());
+            _canvasGroup.DOFade(0f, 0f);
+            //_canvasGroup.alpha = 0f;
         }
 
         public void ShowHeader()

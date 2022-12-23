@@ -7,10 +7,6 @@ namespace Descending.Gui
 {
     public class LookAtCameraLocked : MonoBehaviour
     {
-        [SerializeField] private bool _lockX = false;
-        [SerializeField] private bool _lockY = false;
-        [SerializeField] private bool _lockZ = false;
-        
         private Transform _cameraTransform;
 
         private void Awake()
@@ -18,7 +14,7 @@ namespace Descending.Gui
             _cameraTransform = Camera.main.transform;
         }
 
-        private void LateUpdate( )
+        private void LateUpdate()
         {
             transform.LookAt(transform.position + _cameraTransform.rotation * Vector3.forward, _cameraTransform.rotation * Vector3.up);
         }

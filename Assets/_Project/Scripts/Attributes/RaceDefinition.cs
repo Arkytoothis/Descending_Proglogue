@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DarkTonic.MasterAudio;
 using Descending.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -42,8 +41,8 @@ namespace Descending.Attributes
         //[SoundGroupAttribute] public List<string> AttackSoundsFemale;
         //[SoundGroupAttribute] public List<string> HitSoundsMale;
         //[SoundGroupAttribute] public List<string> HitSoundsFemale;
-        [SoundGroup] public List<string> WoundSoundsMale;
-        [SoundGroup] public List<string> WoundSoundsFemale;
+        //[SoundGroup] public List<string> WoundSoundsMale;
+        //[SoundGroup] public List<string> WoundSoundsFemale;
         public StartingCharacteristicDictionary StartingCharacteristics => _startingCharacteristics;
         public StartingVitalDictionary StartingVitals => _startingVitals;
         public StartingStatisticDictionary StartingStatistics => _startingStatistics;
@@ -88,12 +87,12 @@ namespace Descending.Attributes
         //         return AttackSoundsFemale[Random.Range(0, AttackSoundsFemale.Count)];
         // }
 
-        public string GetWoundSound(Genders gender)
-        {
-            if(gender == Genders.Male)
-                return WoundSoundsMale[Random.Range(0, WoundSoundsMale.Count)];
-            else
-                return WoundSoundsFemale[Random.Range(0, WoundSoundsFemale.Count)];
-        }
+        // public string GetWoundSound(Genders gender)
+        // {
+        //     if(gender == Genders.Male)
+        //         return WoundSoundsMale[Random.Range(0, WoundSoundsMale.Count)];
+        //     else
+        //         return WoundSoundsFemale[Random.Range(0, WoundSoundsFemale.Count)];
+        // }
     }
 }
