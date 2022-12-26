@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Tiles;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Descending.Units
         public static event EventHandler OnActionCompleted;
         
         [SerializeField] protected Sprite _icon = null;
+        [SoundGroup, SerializeField] protected string _performActionSound;
         
         protected Unit _unit = null;
         protected bool _isActive = false;

@@ -173,6 +173,7 @@ MonoBehaviour:
   _iconImage: {fileID: 1194302029392659202}
   _hotkeyLabel: {fileID: 159568926685877454}
   _border: {fileID: 5520697019156253945}
+  _clickSound: ui_button_simple_click_01
   onDisplayAbilityTooltip:
     m_PersistentCalls:
       m_Calls:

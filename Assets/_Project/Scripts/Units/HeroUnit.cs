@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
@@ -186,6 +187,12 @@ namespace Descending.Units
         public void SetWorldPanelAActive(bool active)
         {
             _worldPanel.gameObject.SetActive(active);
+        }
+
+        public override void Select()
+        {
+            _selectionIndicator.SetActive(true);
+            MasterAudio.PlaySound(_heroData.RaceDefinition.GetSelectSound(_heroData.Gender));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -37,7 +38,8 @@ namespace Descending.Attributes
         [SerializeField] private StartingSkillDictionary _startingSkills = null;
         [SerializeField] private List<Resistance> _resistances = null;
 
-        //[SoundGroupAttribute] public List<string> AttackSoundsMale;
+        [SoundGroup, SerializeField] private List<string> SelectSoundsFemale;
+        [SoundGroup, SerializeField] private List<string> SelectSoundsMale;
         //[SoundGroupAttribute] public List<string> AttackSoundsFemale;
         //[SoundGroupAttribute] public List<string> HitSoundsMale;
         //[SoundGroupAttribute] public List<string> HitSoundsFemale;
@@ -79,13 +81,13 @@ namespace Descending.Attributes
         public Sprite Icon => _icon;
         public float ExpModifier => _expModifier;
 
-        // public string GetAttackSound(Genders gender)
-        // {
-        //     if(gender == Genders.Male)
-        //         return AttackSoundsMale[Random.Range(0, AttackSoundsMale.Count)];
-        //     else
-        //         return AttackSoundsFemale[Random.Range(0, AttackSoundsFemale.Count)];
-        // }
+        public string GetSelectSound(Genders gender)
+        {
+            if(gender == Genders.Male)
+                return SelectSoundsMale[Random.Range(0, SelectSoundsMale.Count)];
+            else
+                return SelectSoundsFemale[Random.Range(0, SelectSoundsFemale.Count)];
+        }
 
         // public string GetWoundSound(Genders gender)
         // {

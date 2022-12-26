@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Abilities;
 using Descending.Attributes;
 using Descending.Combat;
@@ -154,7 +155,7 @@ namespace Descending.Units
             return _attributes.GetVital("Life").Current;
         }
 
-        public void Select()
+        public virtual void Select()
         {
             _selectionIndicator.SetActive(true);
         }

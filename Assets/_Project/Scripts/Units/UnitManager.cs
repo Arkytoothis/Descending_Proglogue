@@ -386,7 +386,7 @@ namespace Descending.Units
             clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
+            heroUnit.SetupHero(Utilities.GetRandomGender(), race, profession, listIndex);
             clone.name = "Hero: " + heroUnit.GetFullName();
             
             UnitSpawned(heroUnit);

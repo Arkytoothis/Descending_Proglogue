@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Tiles;
 using UnityEngine;
 
@@ -32,7 +33,6 @@ namespace Descending.Units
         {
             if (_isActive == false) return;
 
-            
             Vector3 targetPosition = _pathList[_currentPositionIndex];
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
             
@@ -56,7 +56,8 @@ namespace Descending.Units
 
         public override void PerformAction(MapPosition targetMapPosition, Action onMoveComplete)
         {
-            //Path path = _unit.Pathfinder.FindPath(_unit.transform.position, MapManager.Instance.GetWorldPosition(targetMapPosition));
+            MasterAudio.PlaySound("Bag 08");
+            
             List<MapPosition> mapPositions = PathfindingManager.Instance.FindPath(_unit.CurrentMapPosition, targetMapPosition, out int pathLength);
             
             _currentPositionIndex = 0;

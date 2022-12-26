@@ -228,24 +228,20 @@ namespace Descending.Core
             }
         }
 
-        // public static Genders GetRandomGender()
-        // {
-        //     if (Random.Range(0, 100) > 50)
-        //     {
-        //         return Genders.Male;
-        //     }
-        //     else
-        //     {
-        //         return Genders.Female;
-        //     }
-        // }
-        //
-        // public static RaceDefinition GetRandomRace()
-        // {
-        //     return RandomValues(Database.instance.Races.Races);
-        // }
+        public static Genders GetRandomGender()
+        {
+            if (Random.Range(0, 100) > 50)
+            {
+                return Genders.Male;
+            }
+            else
+            {
+                return Genders.Female;
+            }
+        }
 
         private static System.Random rng = new System.Random();
+        
         public static void Shuffle<T>(this IList<T> list)
         {
             int n = list.Count;
@@ -254,9 +250,7 @@ namespace Descending.Core
             {
                 n--;
                 int k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                (list[k], list[n]) = (list[n], list[k]);
             }
         }
         

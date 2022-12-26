@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Abilities;
 using Descending.Core;
 using Descending.Equipment;
@@ -13,12 +14,14 @@ using UnityEngine.UI;
 
 namespace Descending
 {
-    public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ActionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField] private Button _button = null;
         [SerializeField] private Image _iconImage = null;
-        [FormerlySerializedAs("_actionLabel")] [SerializeField] private TMP_Text _hotkeyLabel = null;
+        [SerializeField] private TMP_Text _hotkeyLabel = null;
         [SerializeField] private GameObject _border = null;
+        
+        [SoundGroup, SerializeField] private string _clickSound;
 
         [SerializeField] private AbilityEvent onDisplayAbilityTooltip = null;
         [SerializeField] private ItemEvent onDisplayItemTooltip = null;
@@ -86,6 +89,11 @@ namespace Descending
         public void OnPointerExit(PointerEventData eventData)
         {
             onDisplayAbilityTooltip.Invoke(null);
+        }
+        
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            MasterAudio.PlaySound(_clickSound);
         }
     }
 }
