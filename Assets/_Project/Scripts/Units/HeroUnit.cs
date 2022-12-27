@@ -191,8 +191,12 @@ namespace Descending.Units
 
         public override void Select()
         {
-            _selectionIndicator.SetActive(true);
-            MasterAudio.PlaySound(_heroData.RaceDefinition.GetSelectSound(_heroData.Gender));
+            if (_isSelected == false)
+            {
+                _selectionIndicator.SetActive(true);
+                MasterAudio.PlaySound(_heroData.RaceDefinition.GetSelectSound(_heroData.Gender));
+                _isSelected = true;
+            }
         }
     }
 }

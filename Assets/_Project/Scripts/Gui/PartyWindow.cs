@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Units;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ namespace Descending.Gui
         [SerializeField] private HeroEquipmentPanel _equipmentPanel = null;
         [SerializeField] private HeroAbilitiesPanel _abilitiesPanel = null;
         [SerializeField] private StockpilePanel _stockpilePanel = null;
+        
+        [SoundGroup, SerializeField] private string _openSound;
+        [SoundGroup, SerializeField] private string _closeSound;
         
         public override void Setup(WindowManager manager)
         {
@@ -38,6 +42,7 @@ namespace Descending.Gui
         public override void Open()
         {
             gameObject.SetActive(true);
+            MasterAudio.PlaySound(_openSound);
             _stockpilePanel.UpdateStockpile();
             _listPanel.Setup(this);
             _isOpen = true;
@@ -47,6 +52,7 @@ namespace Descending.Gui
         public override void Close()
         {
             gameObject.SetActive(false);
+            MasterAudio.PlaySound(_closeSound);
             _isOpen = false;
         }
 

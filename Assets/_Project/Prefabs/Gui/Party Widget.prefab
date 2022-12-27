@@ -171,6 +171,7 @@ MonoBehaviour:
   _unitEffectPrefab: {fileID: 2481178158669137480, guid: 044bb65133aca5945a6017f813815a1c,
     type: 3}
   _unitEffectsParent: {fileID: 3660748030285478373}
+  _clickSound: ui_button_simple_click_03
 --- !u!1 &1790915700482914642
 GameObject:
   m_ObjectHideFlags: 0

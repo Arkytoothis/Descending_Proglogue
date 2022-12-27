@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Core;
 using Descending.Units;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class PartyMemberWidget : MonoBehaviour
+    public class PartyMemberWidget : MonoBehaviour,IPointerClickHandler
     {
         [SerializeField] private Button _button = null;
         [SerializeField] private TMP_Text _nameLabel = null;
@@ -21,9 +23,10 @@ namespace Descending.Gui
         [SerializeField] private Color _deselectedColor = Color.white;
         [SerializeField] private List<VitalBar> _vitalBars = null;
         [SerializeField] private VitalBar _experienceBar = null;
-        
         [SerializeField] private GameObject _unitEffectPrefab = null;
         [SerializeField] private Transform _unitEffectsParent = null;
+        
+        [SerializeField, SoundGroup] private string _clickSound;
 
         private HeroUnit _hero = null;
         private List<UnitEffectWidget> _unitEffectWidgets = null;
@@ -100,6 +103,11 @@ namespace Descending.Gui
                 widget.Setup(unitEffect);
                 _unitEffectWidgets.Add(widget);
             }
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            MasterAudio.PlaySound(_clickSound);
         }
     }
 }

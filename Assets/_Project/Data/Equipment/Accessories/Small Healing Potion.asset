@@ -37,6 +37,8 @@ MonoBehaviour:
   _minimumMight: 0
   _minimumFinesse: 0
   _minimumMind: 0
+  _equipSound: Potion and Alchemy 02
+  _unequipSound: Potion and Alchemy 02
   _weaponData:
     _hasData: 0
     _weaponType: 4
@@ -46,8 +48,8 @@ MonoBehaviour:
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
     damageEffects: []
-    HitSounds: []
-    MissSounds: []
+    _hitSounds: []
+    _attackSounds: []
   _wearableData:
     _hasData: 0
     _armor: 0

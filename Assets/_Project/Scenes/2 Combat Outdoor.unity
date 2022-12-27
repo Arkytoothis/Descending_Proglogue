@@ -163,7 +163,7 @@ MonoBehaviour:
   _heroUnits: []
   _enemyUnits: []
   _enemySpawners: []
-  _loadData: 1
+  _loadData: 0
   onSyncParty:
     m_PersistentCalls:
       m_Calls:
@@ -855,7 +855,7 @@ MonoBehaviour:
   _unitManager: {fileID: 38158957}
   _stockpileManager: {fileID: 819211525}
   _resourcesManager: {fileID: 620801367}
-  _loadState: 1
+  _loadState: 0
 --- !u!1 &350358853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1101,75 @@ Transform:
   m_Father: {fileID: 1870405473}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &481764536
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063913, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783362277245063917, guid: 1ed096095b7f86a4d925203e613ac392,
+        type: 3}
+      propertyPath: m_Name
+      value: PlaylistController - Combat
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ed096095b7f86a4d925203e613ac392, type: 3}
 --- !u!1 &485641926
 GameObject:
   m_ObjectHideFlags: 3
@@ -1592,7 +1661,7 @@ MonoBehaviour:
   _supplies: 0
   _materials: 0
   _gems: 0
-  _loadData: 1
+  _loadData: 0
   onUpdateCoins:
     m_PersistentCalls:
       m_Calls:
@@ -2034,7 +2103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numItemToGenerate: 0
-  _loadData: 1
+  _loadData: 0
   onSyncStockpile:
     m_PersistentCalls:
       m_Calls:
@@ -2539,6 +2608,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389202690}
   m_Mesh: {fileID: 4300000, guid: 9a70db0102eed3c468687c669df871fb, type: 3}
+--- !u!1001 &1018546576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7253634585974927, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_Name
+      value: MasterAudio - Combat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253634586002607, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2cd9fb9c151879444825a2ed464dd49c, type: 3}
 --- !u!1 &1024254302
 GameObject:
   m_ObjectHideFlags: 0

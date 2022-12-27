@@ -3,8 +3,8 @@
     "$type": "0|Descending.Party.PartyPositionSaveData, Reclamation",
     "_worldPosition": {
         "$type": "1|UnityEngine.Vector3, UnityEngine.CoreModule",
-        668.345764,
-        96.39848,
-        301.561
+        633.121,
+        92.32894,
+        333.5634
     }
 }

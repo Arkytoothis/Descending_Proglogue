@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Units;
@@ -185,6 +186,8 @@ namespace Descending.Equipment
 
         public void EquipItem(Item item, int slot)
         {
+            MasterAudio.PlaySound(item.ItemDefinition.EquipSound);
+            
             _equipment[slot] = new Item(item);
             
             if (_portraitBody != null)
@@ -202,6 +205,8 @@ namespace Descending.Equipment
 
         public void EquipAccessory(Item item)
         {
+            MasterAudio.PlaySound(item.ItemDefinition.EquipSound);
+            
             int index = -1;
             for (int i = 0; i < _accessories.Length; i++)
             {
@@ -217,11 +222,14 @@ namespace Descending.Equipment
         
         public void EquipAccessory(Item item, int slot)
         {
+            MasterAudio.PlaySound(item.ItemDefinition.EquipSound);
             _accessories[slot] = new Item(item);
         }
 
         public void UnequipItem(int slot, bool addToStockpile)
         {
+            MasterAudio.PlaySound(_equipment[slot].ItemDefinition.UnequipSound);
+            
             if (_portraitBody != null)
             {
                 _portraitBody.UnequipItem(_equipment[slot], slot);
@@ -244,6 +252,7 @@ namespace Descending.Equipment
         
         public void UnequipAccessory(int slot)
         {
+            MasterAudio.PlaySound(_equipment[slot].ItemDefinition.UnequipSound);
             StockpileManager.Instance.AddItem(_accessories[slot]);
             _accessories[slot] = null;
         }

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class AccessoryWidget : DragableItemWidget, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+    public class AccessoryWidget : DragableItemWidget, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
     {
         [SerializeField] private Image _iconImage = null;
         [SerializeField] private TMP_Text _stackSizeLabel = null;
@@ -59,6 +59,20 @@ namespace Descending.Gui
         {
             onDisplayItemTooltip.Invoke(null);
         }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_item == null || _item.ItemDefinition.Key == "") return;
+            
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                UnitManager.Instance.SelectedHero.Inventory.UnequipAccessory(_index);
+                Clear();
+                StockpileManager.Instance.SyncStockpile();
+                UnitManager.Instance.SyncHeroes();
+                UnitManager.Instance.RefreshSelectedHero();
+            }
+        }
         
         public void OnDrag(PointerEventData eventData)
         {
@@ -88,28 +102,11 @@ namespace Descending.Gui
                 
                 if (_item != null &&_item.ItemDefinition.Key != "")
                 {
-                    Item tempItem = new Item(_item);
-                    hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
-                    SetItem(DragCursor.Instance.DragItem);
-                    
-                    if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
-                    {
-                        StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
-                    }
-                    
-                    DragCursor.Instance.StartDragWidget.SetItem(tempItem);
+                    SwapItem(hero);
                 }
                 else
                 {
-                    hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
-                    SetItem(DragCursor.Instance.DragItem);
-
-                    if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
-                    {
-                        StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
-                    }
-                    
-                    DragCursor.Instance.StartDragWidget.Clear();
+                    SetItem(hero);
                 }
                 
                 DragCursor.Instance.EndDrag(eventData);
@@ -118,6 +115,33 @@ namespace Descending.Gui
                 UnitManager.Instance.SyncHeroes();
                 UnitManager.Instance.RefreshSelectedHero();
             }
+        }
+
+        private void SetItem(HeroUnit hero)
+        {
+            hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
+            SetItem(DragCursor.Instance.DragItem);
+
+            if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
+            {
+                StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+            }
+
+            DragCursor.Instance.StartDragWidget.Clear();
+        }
+
+        private void SwapItem(HeroUnit hero)
+        {
+            Item tempItem = new Item(_item);
+            hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
+            SetItem(DragCursor.Instance.DragItem);
+
+            if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
+            {
+                StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+            }
+
+            DragCursor.Instance.StartDragWidget.SetItem(tempItem);
         }
     }
 }

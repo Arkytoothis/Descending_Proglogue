@@ -61,8 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d103e67bafdc185478bce27c646c1d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _openSound: '[None]'
-  _closeSound: '[None]'
   _listPanel: {fileID: 2796165016640029604}
   _detailsPanel: {fileID: 3082233143477279219}
   _characteristicsPanel: {fileID: 1109898288523971571}
@@ -73,6 +71,8 @@ MonoBehaviour:
   _equipmentPanel: {fileID: 3650984075017509344}
   _abilitiesPanel: {fileID: 440381967436144154}
   _stockpilePanel: {fileID: 6403093920985071554}
+  _openSound: Book 01
+  _closeSound: Book 04
 --- !u!114 &6039033044340124703
 MonoBehaviour:
   m_ObjectHideFlags: 0

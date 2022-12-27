@@ -21,8 +21,8 @@ namespace Descending.Equipment
         [SerializeField] private AnimatorOverrideController _animatorOverride = null;
         [SerializeReference] private List<DamageEffect> damageEffects = null;
 
-        [SoundGroup] public List<string> HitSounds;
-        [SoundGroup] public List<string> MissSounds;
+        [SerializeField, SoundGroup] private List<string> _hitSounds;
+        [SerializeField, SoundGroup] private List<string> _attackSounds;
         
         public bool HasData => _hasData;
         public ProjectileDefinition Projectile => _projectile;
@@ -32,7 +32,8 @@ namespace Descending.Equipment
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
         public GameObject AttackEffectPrefab => _attackEffectPrefab;
         public List<DamageEffect> DamageEffects => damageEffects;
-
+        public List<string> HitSounds => _hitSounds;
+        public List<string> AttackSounds => _attackSounds;
 
         public WeaponData(WeaponData weaponData)
         {

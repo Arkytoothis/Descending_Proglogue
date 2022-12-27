@@ -40,6 +40,7 @@ namespace Descending.Units
         protected MapPosition currentMapPosition;
         protected bool _isActive = false;
         protected bool _isAlive = false;
+        protected bool _isSelected = false;
         
         public MapPosition CurrentMapPosition => currentMapPosition;
         public bool IsEnemy => _isEnemy;
@@ -59,6 +60,7 @@ namespace Descending.Units
 
         public bool IsActive => _isActive;
         public bool IsAlive => _isAlive;
+        public bool IsSelected => _isSelected;
 
         public abstract string GetFullName();
         public abstract string GetShortName();
@@ -157,11 +159,16 @@ namespace Descending.Units
 
         public virtual void Select()
         {
-            _selectionIndicator.SetActive(true);
+            if (_isSelected == false)
+            {
+                _selectionIndicator.SetActive(true);
+                _isSelected = true;
+            }
         }
 
         public void Deselect()
         {
+            _isSelected = false;
             if (_selectionIndicator != null)
             {
                 _selectionIndicator.SetActive(false);

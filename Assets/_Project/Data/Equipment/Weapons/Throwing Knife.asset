@@ -38,6 +38,8 @@ MonoBehaviour:
   _minimumMight: 0
   _minimumFinesse: 0
   _minimumMind: 0
+  _equipSound: Weapon Draw Metal 4
+  _unequipSound: foley_soldier_gear_equipment_rattle_movement_light_01
   _weaponData:
     _hasData: 1
     _weaponType: 1
@@ -48,11 +50,8 @@ MonoBehaviour:
     _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
       type: 2}
     damageEffects: []
-    HitSounds: []
-    MissSounds:
-    - sword_swing_1
-    - sword_swing_2
-    - sword_swing_3
+    _hitSounds: []
+    _attackSounds: []
   _wearableData:
     _hasData: 0
     _armor: 0

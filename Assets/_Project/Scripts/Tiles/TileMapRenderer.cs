@@ -162,8 +162,8 @@ namespace Descending.Tiles
                     ShowGridPositionRange(selectedUnit.CurrentMapPosition, rangedAttackAction.MaxShootDistance, TileColors.Black, TileColors.Black);
                     break;
                 case MeleeAttackAction meleeAttackAction:
-                    borderColor = TileColors.Green;
-                    backgroundColor = TileColors.Green;
+                    borderColor = TileColors.Yellow;
+                    backgroundColor = TileColors.Yellow;
                     meleeAttackAction.SetupData();
                     int range = selectedUnit.GetMeleeWeapon().GetWeaponData().Range;
                     if (range == 1)

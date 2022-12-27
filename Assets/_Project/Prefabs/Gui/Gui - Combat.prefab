@@ -1622,6 +1622,7 @@ GameObject:
   - component: {fileID: 330663319183828037}
   - component: {fileID: 330663319183828038}
   - component: {fileID: 330663319183828039}
+  - component: {fileID: 3710081463569354228}
   m_Layer: 5
   m_Name: End Turn Button
   m_TagString: Untagged
@@ -1744,6 +1745,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3710081463569354228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330663319183828033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec2c394ffa2eea4fa8f9c7bc7dd71f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clickSound: ui_button_simple_click_02
 --- !u!1 &538055887125564073
 GameObject:
   m_ObjectHideFlags: 0

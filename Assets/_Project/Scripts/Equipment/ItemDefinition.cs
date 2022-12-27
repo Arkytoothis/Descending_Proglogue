@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using DarkTonic.MasterAudio;
 using Descending.Core;
 using UnityEngine;
 
@@ -37,6 +38,9 @@ namespace Descending.Equipment
         [SerializeField] private int _minimumMight = 0;
         [SerializeField] private int _minimumFinesse = 0;
         [SerializeField] private int _minimumMind = 0;
+        
+        [SerializeField, SoundGroup] private string _equipSound;
+        [SerializeField, SoundGroup] private string _unequipSound;
         
         [SerializeField] WeaponData _weaponData = null;
         [SerializeField] WearableData _wearableData = null;
@@ -74,6 +78,8 @@ namespace Descending.Equipment
         public AccessoryData AccessoryData => _accessoryData;
         public UsableData UsableData => _usableData;
         public IngredientData IngredientData => _ingredientData;
+        public string EquipSound => _equipSound;
+        public string UnequipSound => _unequipSound;
 
         public void SetName(string name)
         {

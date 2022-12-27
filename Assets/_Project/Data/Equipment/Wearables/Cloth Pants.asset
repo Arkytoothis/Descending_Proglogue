@@ -39,6 +39,8 @@ MonoBehaviour:
   _minimumMight: 0
   _minimumFinesse: 0
   _minimumMind: 0
+  _equipSound: foley_soldier_gear_equipment_metal_cloth_heavy_movement_light_01
+  _unequipSound: foley_soldier_gear_equipment_rattle_movement_light_01
   _weaponData:
     _hasData: 0
     _weaponType: 0
@@ -48,8 +50,8 @@ MonoBehaviour:
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
     damageEffects: []
-    HitSounds: []
-    MissSounds: []
+    _hitSounds: []
+    _attackSounds: []
   _wearableData:
     _hasData: 1
     _armor: 0
