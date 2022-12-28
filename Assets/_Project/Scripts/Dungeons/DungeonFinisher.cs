@@ -17,8 +17,7 @@ namespace Descending.Dungeons
         protected override void Run(DungeonGenerator generator)
         {
             //Debug.Log("Finishing Dungeon");
-            UnitManager.Instance.SpawnHeroes_Combat();
-            UnitManager.Instance.SpawnEnemies();
+            HeroManager_Combat.Instance.SpawnHeroes();
             
             StartCoroutine(Finish_Coroutine());
         }
@@ -27,11 +26,11 @@ namespace Descending.Dungeons
         {
             yield return 0;
             
-            _cameraController.transform.position = UnitManager.Instance.HeroUnits[0].transform.position;
+            _cameraController.transform.position = HeroManager_Combat.Instance.HeroUnits[0].transform.position;
             PathfindingManager.Instance.Scan();
             InteractableManager.Instance.Setup();
-            UnitManager.Instance.SyncHeroes();
-            UnitManager.Instance.SelectHeroDefault();
+            HeroManager_Combat.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.SelectHeroDefault();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Descending.Combat_Events
         
         public override void TriggerEvent(MapPosition mapPosition)
         {
-            UnitManager.Instance.SpawnEnemy(mapPosition, _enemyDefinition);
+            EnemyManager.Instance.SpawnEnemy(mapPosition, _enemyDefinition);
         }
     }
 }

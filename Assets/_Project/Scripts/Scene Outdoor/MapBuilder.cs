@@ -45,8 +45,7 @@ namespace Descending.Scene_Outdoor
                 }
             }
             
-            UnitManager.Instance.GenerateHeroes_Combat();
-            UnitManager.Instance.SpawnEnemies();
+            HeroManager_Combat.Instance.GenerateHeroes();
             
             StartCoroutine(Finish_Coroutine());
         }
@@ -55,10 +54,10 @@ namespace Descending.Scene_Outdoor
         {
             yield return 0;
             
-            _cameraController.transform.position = UnitManager.Instance.HeroUnits[0].transform.position;
+            _cameraController.transform.position = HeroManager_Combat.Instance.HeroUnits[0].transform.position;
             PathfindingManager.Instance.Scan();
             InteractableManager.Instance.Setup();
-            UnitManager.Instance.SelectHeroDefault();
+            HeroManager_Combat.Instance.SelectHeroDefault();
         }
     }
 }

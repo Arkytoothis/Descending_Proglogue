@@ -103,11 +103,11 @@ namespace Descending.Gui
                     }
                     else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(EquippedItemWidget))
                     {
-                        UnitManager.Instance.SelectedHero.Inventory.EquipItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
+                        HeroManager_Combat.Instance.SelectedHero.Inventory.EquipItem(tempItem, DragCursor.Instance.StartDragWidget.Index);
                     }
                     else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(AccessoryWidget))
                     {
-                        UnitManager.Instance.SelectedHero.Inventory.EquipAccessory(tempItem, DragCursor.Instance.StartDragWidget.Index);
+                        HeroManager_Combat.Instance.SelectedHero.Inventory.EquipAccessory(tempItem, DragCursor.Instance.StartDragWidget.Index);
                     }
 
                     DragCursor.Instance.StartDragWidget.SetItem(tempItem);
@@ -123,19 +123,19 @@ namespace Descending.Gui
                     }
                     else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(EquippedItemWidget))
                     {
-                        UnitManager.Instance.SelectedHero.Inventory.UnequipItem(DragCursor.Instance.StartDragWidget.Index, false);
+                        HeroManager_Combat.Instance.SelectedHero.Inventory.UnequipItem(DragCursor.Instance.StartDragWidget.Index, false);
                     }
                     else if (DragCursor.Instance.StartDragWidget.GetType() == typeof(AccessoryWidget))
                     {
-                        UnitManager.Instance.SelectedHero.Inventory.ClearAccessory(DragCursor.Instance.StartDragWidget.Index);
+                        HeroManager_Combat.Instance.SelectedHero.Inventory.ClearAccessory(DragCursor.Instance.StartDragWidget.Index);
                     }
                 }
 
                 DragCursor.Instance.StartDragWidget.Clear();
                 DragCursor.Instance.EndDrag(eventData);
                 StockpileManager.Instance.SyncStockpile();
-                UnitManager.Instance.SyncHeroes();
-                UnitManager.Instance.RefreshSelectedHero();
+                HeroManager_Combat.Instance.SyncHeroes();
+                HeroManager_Combat.Instance.RefreshSelectedHero();
             }
         }
     }

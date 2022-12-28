@@ -50,8 +50,8 @@ namespace Descending.Units
             _damageSystem.Setup(this);
             _unitEffects.Setup();
             _worldPanel.Setup(this);
-
-            UnitManager.Instance.UnitSpawned(this);
+            
+            EnemyManager.Instance.UnitSpawned(this);
             Deactivate();
         } 
         
@@ -172,9 +172,9 @@ namespace Descending.Units
         {
             _isAlive = false;
             MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
-            UnitManager.Instance.UnitDead(this);
+            HeroManager_Combat.Instance.UnitDead(this);
             _ragdollSpawner.Activate(_damageSystem);
-            UnitManager.Instance.AwardExperience(_definition.ExpValue);
+            HeroManager_Combat.Instance.AwardExperience(_definition.ExpValue);
             Destroy(gameObject);
         }
 

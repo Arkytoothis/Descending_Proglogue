@@ -78,7 +78,7 @@ namespace Descending.Gui
 
         public void OnClick()
         {
-            UnitManager.Instance.SelectHeroOverworld(_hero);
+            HeroManager_Combat.Instance.SelectHero(_hero);
         }
 
         public void UpdateUnitEffects()

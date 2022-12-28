@@ -12,7 +12,7 @@ namespace Descending.Units
         
         private void Start()
         {
-            UnitManager.Instance.RegisterEnemySpawner(gameObject);
+            EnemyManager.Instance.RegisterEnemySpawner(gameObject);
         }
 
         public void Spawn(Transform parent)

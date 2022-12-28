@@ -23,9 +23,9 @@ namespace Descending.Gui
             }
 
             //Debug.Log("Syncing Party Data");
-            for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
+            for (int i = 0; i < HeroManager_Combat.Instance.HeroUnits.Count; i++)
             {
-                _partyMemberWidgets[i].Setup(UnitManager.Instance.GetHero(i));
+                _partyMemberWidgets[i].Setup(HeroManager_Combat.Instance.GetHero(i));
             }
         }
 

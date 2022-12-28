@@ -5,12 +5,13 @@ using Descending.Core;
 using Descending.Units;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Descending.Combat
 {
     public class SaveManager_Combat : SaveManager
     {
-        [SerializeField] private UnitManager _unitManager = null;
+        [FormerlySerializedAs("_heroManager")] [FormerlySerializedAs("_unitManager")] [SerializeField] private HeroManager_Combat _heroManagerCombat = null;
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private ResourcesManager _resourcesManager = null;
         
@@ -32,21 +33,21 @@ namespace Descending.Combat
         {
             _resourcesManager.SaveState();
             _stockpileManager.SaveState();
-            _unitManager.SaveState_Combat();
+            _heroManagerCombat.SaveState();
         }
 
         public override void LoadState()
         {
             _resourcesManager.LoadState();
             _stockpileManager.LoadState();
-            _unitManager.LoadState_Combat();
+            _heroManagerCombat.LoadState();
         }
 
         [Button("Generate Data")]
         public void SetGenerateData()
         {
             _loadState = SaveManagerLoadStates.Generating;
-            _unitManager.SetLoadData(false);
+            _heroManagerCombat.SetLoadData(false);
             _resourcesManager.SetLoadData(false);
             _stockpileManager.SetLoadData(false);
         }
@@ -55,7 +56,7 @@ namespace Descending.Combat
         public void SetLoadData()
         {
             _loadState = SaveManagerLoadStates.Loading;
-            _unitManager.SetLoadData(true);
+            _heroManagerCombat.SetLoadData(true);
             _resourcesManager.SetLoadData(true);
             _stockpileManager.SetLoadData(true);
         }

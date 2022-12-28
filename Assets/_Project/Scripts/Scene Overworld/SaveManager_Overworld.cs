@@ -5,12 +5,13 @@ using Descending.Core;
 using Descending.Units;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Descending.Scene_Overworld
 {
     public class SaveManager_Overworld : SaveManager
     {
-        [SerializeField] private UnitManager _unitManager = null;
+        [FormerlySerializedAs("_heroManager")] [FormerlySerializedAs("_unitManager")] [SerializeField] private HeroManager_Combat _heroManagerCombat = null;
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private ResourcesManager _resourcesManager = null;
         [SerializeField] private WorldGenerator _worldGenerator = null;
@@ -33,7 +34,7 @@ namespace Descending.Scene_Overworld
         {
             _resourcesManager.SaveState();
             _stockpileManager.SaveState();
-            _unitManager.SaveState_Overworld();
+            _heroManagerCombat.SaveState();
             _worldGenerator.SaveState();
         }
 
@@ -41,7 +42,7 @@ namespace Descending.Scene_Overworld
         {
             _resourcesManager.LoadState();
             _stockpileManager.LoadState();
-            _unitManager.LoadState_Overworld();
+            _heroManagerCombat.LoadState();
             _worldGenerator.LoadState();
             
             SaveState();
@@ -51,7 +52,7 @@ namespace Descending.Scene_Overworld
         public void SetGenerateData()
         {
             _loadState = SaveManagerLoadStates.Generating;
-            _unitManager.SetLoadData(false);
+            _heroManagerCombat.SetLoadData(false);
             _resourcesManager.SetLoadData(false);
             _stockpileManager.SetLoadData(false);
             _worldGenerator.SetLoadData(false);
@@ -61,7 +62,7 @@ namespace Descending.Scene_Overworld
         public void SetLoadData()
         {
             _loadState = SaveManagerLoadStates.Loading;
-            _unitManager.SetLoadData(true);
+            _heroManagerCombat.SetLoadData(true);
             _resourcesManager.SetLoadData(true);
             _stockpileManager.SetLoadData(true);
             _worldGenerator.SetLoadData(true);

@@ -48,7 +48,7 @@ MonoBehaviour:
     _projectile: {fileID: 0}
     _attackEffectPrefab: {fileID: 8792079695798041162, guid: dda8190cc7e43bf49b13394dc4ef22b4,
       type: 3}
-    _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
+    _animatorOverride: {fileID: 22100000, guid: e1718a34bbc18fa4b9aa95091b4810e1,
       type: 2}
     damageEffects:
     - rid: 6849115757289406484

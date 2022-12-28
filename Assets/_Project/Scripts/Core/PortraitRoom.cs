@@ -36,14 +36,14 @@ namespace Descending.Core
              {
                  _portraits[i].ClearMount();
              }
-             
-             for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
+
+             for (int i = 0; i < Utilities.GetHeroManager().HeroUnits.Count; i++)
              {
                  GameObject clone = Instantiate(_portraitMountPrefab, _portraitMountsParent);
                  clone.transform.localPosition = new Vector3(i * 10f, 0, 0);
 
                  PortraitMount mount = clone.GetComponent<PortraitMount>();
-                 mount.Setup(UnitManager.Instance.HeroUnits[i]);
+                 mount.Setup(Utilities.GetHeroManager().HeroUnits[i]);
                  _portraits.Add(mount);
              }
          }
@@ -51,10 +51,10 @@ namespace Descending.Core
          public void SyncParty()
          {
              if (_portraits == null) return;
-             
+
              for (int i = 0; i < _portraits.Count; i++)
              {
-                 _portraits[i].SetModel(UnitManager.Instance.HeroUnits[i]);
+                 _portraits[i].SetModel(Utilities.GetHeroManager().HeroUnits[i]);
                  _portraits[i].Refresh();
              }
          }

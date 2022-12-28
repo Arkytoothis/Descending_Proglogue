@@ -137,7 +137,7 @@ namespace Descending.Tiles
         private void UpdateGridVisuals()
         {
             HideAllGridPositions();
-            Unit selectedUnit = UnitManager.Instance.SelectedHero;
+            Unit selectedUnit = HeroManager_Combat.Instance.SelectedHero;
             BaseAction selectedAction = ActionManager.Instance.SelectedAction;
             TileColors borderColor = TileColors.Black;
             TileColors backgroundColor = TileColors.Black;

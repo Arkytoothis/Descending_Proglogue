@@ -32025,6 +32025,7 @@ GameObject:
   - component: {fileID: 4571756472629890}
   - component: {fileID: 1030587377051710393}
   - component: {fileID: 2013510976381411390}
+  - component: {fileID: 8602613077340723195}
   m_Layer: 0
   m_Name: Base Female
   m_TagString: Hero
@@ -32094,6 +32095,18 @@ MonoBehaviour:
   _farCameraMount: {fileID: 4165114602402723020}
   _rightHandMount: {fileID: 2231834635366321356}
   _leftHandMount: {fileID: 8518593658091998126}
+--- !u!114 &8602613077340723195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752634011024786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987f7d66cb2ab384b8eeb6f8747af748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1753536587832080
 GameObject:
   m_ObjectHideFlags: 0

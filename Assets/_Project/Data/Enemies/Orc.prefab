@@ -1102,6 +1102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6219583782511740648}
   - component: {fileID: 6275084747044977540}
+  - component: {fileID: 3283394167400300457}
   m_Layer: 0
   m_Name: Character_BR_BigOrk_01
   m_TagString: Untagged
@@ -1136,16 +1137,28 @@ Animator:
   m_GameObject: {fileID: 6216484265755771202}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a50cd06a0668d1a418d586a2944e3ed5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 126e48dbbd5d39d43a42b11c47c4c07f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 89c7682aea3ad2547a42b64fca289933, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3283394167400300457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216484265755771202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987f7d66cb2ab384b8eeb6f8747af748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6216500540265362618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1856,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6275084747044977540}
     - target: {fileID: 2001456721065693323, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
       propertyPath: _projectilePrefab

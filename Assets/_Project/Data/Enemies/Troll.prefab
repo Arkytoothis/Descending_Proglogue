@@ -745,6 +745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2980515983204287030}
   - component: {fileID: 7189080301611293691}
+  - component: {fileID: 1608781576596304250}
   m_Layer: 0
   m_Name: Character_BR_Troll_01
   m_TagString: Untagged
@@ -779,7 +780,7 @@ Animator:
   m_GameObject: {fileID: 2978666939563364140}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: be73df03abf02284486d1afabcf5d4fe, type: 3}
-  m_Controller: {fileID: 9100000, guid: 126e48dbbd5d39d43a42b11c47c4c07f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 89c7682aea3ad2547a42b64fca289933, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -789,6 +790,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1608781576596304250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2978666939563364140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987f7d66cb2ab384b8eeb6f8747af748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2978673774484129068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +1971,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7189080301611293691}
     - target: {fileID: 2001456721065693323, guid: 9973de32681c5ed45aeaf86622f1c2c1,
         type: 3}
       propertyPath: _projectilePrefab

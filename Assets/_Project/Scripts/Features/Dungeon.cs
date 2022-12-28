@@ -28,7 +28,7 @@ namespace Descending.Features
         public override void Approach()
         {
             //Debug.Log("Approaching Dungeon");
-            UnitManager.Instance.SavePartyPosition();
+            HeroManager_Overworld.Instance.SavePartyPosition();
             _dungeonPanel.ShowInteractButton();
         }
 

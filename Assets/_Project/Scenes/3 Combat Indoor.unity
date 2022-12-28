@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 38158958}
   - component: {fileID: 38158957}
   m_Layer: 0
-  m_Name: Unit Manager
+  m_Name: Hero Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,13 +156,7 @@ MonoBehaviour:
   _heroPrefab: {fileID: 3898514663855011102, guid: 410b4a1ffe3193349a446547d5a86e7c,
     type: 3}
   _heroesParent: {fileID: 1747828202}
-  _enemiesParent: {fileID: 931143875}
-  _unitScaleFactor: 5
-  _partyController: {fileID: 0}
-  _units: []
   _heroUnits: []
-  _enemyUnits: []
-  _enemySpawners: []
   _loadData: 0
   onSyncParty:
     m_PersistentCalls:
@@ -209,7 +203,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1747828202}
-  - {fileID: 931143875}
   m_Father: {fileID: 1870405473}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1174,7 +1167,7 @@ Transform:
   - {fileID: 1700475134}
   - {fileID: 551010415}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519078150
 GameObject:
@@ -1569,7 +1562,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &751969057
 MonoBehaviour:
@@ -1658,7 +1651,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &817553692
 MonoBehaviour:
@@ -1722,7 +1715,7 @@ Transform:
   - {fileID: 885418931}
   - {fileID: 1184980615}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
@@ -1978,13 +1971,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931143874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 38158958}
-  m_RootOrder: 1
+  m_Father: {fileID: 2101567618}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &934812360
 GameObject:
@@ -2050,7 +2043,7 @@ Transform:
   m_Children:
   - {fileID: 726909279}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &989588346
 MonoBehaviour:
@@ -2228,7 +2221,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1102330459
 MonoBehaviour:
@@ -2242,7 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0446a8708510ae84aab461c3949c8915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitManager: {fileID: 38158957}
+  _heroManagerCombat: {fileID: 38158957}
   _stockpileManager: {fileID: 851853082}
   _resourcesManager: {fileID: 620801367}
   _loadState: 0
@@ -3083,7 +3076,7 @@ Transform:
   m_Children:
   - {fileID: 934812361}
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400221299
 GameObject:
@@ -3133,7 +3126,7 @@ PrefabInstance:
     - target: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5255539705970433755, guid: 9f622a1d2abaf1644b0c7f090b2fa5f4,
         type: 3}
@@ -3437,7 +3430,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1796296954
 MonoBehaviour:
@@ -3508,6 +3501,7 @@ Transform:
   - {fileID: 851853081}
   - {fileID: 140844161}
   - {fileID: 38158958}
+  - {fileID: 2101567618}
   - {fileID: 818686410}
   - {fileID: 496261784}
   - {fileID: 1295761804}
@@ -3551,7 +3545,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870405473}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1876699240
 MonoBehaviour:
@@ -3640,6 +3634,54 @@ Transform:
   m_Father: {fileID: 140844161}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2101567617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2101567618}
+  - component: {fileID: 2101567619}
+  m_Layer: 0
+  m_Name: Enemy Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2101567618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101567617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 931143875}
+  m_Father: {fileID: 1870405473}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2101567619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101567617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d225f8a73639d4a864a4b589c667d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyUnits: []
+  _enemiesParent: {fileID: 931143875}
+  _enemySpawners: []
 --- !u!1001 &2783362278283848644
 PrefabInstance:
   m_ObjectHideFlags: 0

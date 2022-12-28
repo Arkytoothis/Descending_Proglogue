@@ -39,7 +39,7 @@ namespace Descending.Units
                 }
             }
             
-            UnitManager.Instance.RecalculateHeroAttributes();
+            HeroManager_Combat.Instance.RecalculateHeroAttributes();
         }
     }
 }

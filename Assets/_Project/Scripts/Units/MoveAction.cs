@@ -56,8 +56,6 @@ namespace Descending.Units
 
         public override void PerformAction(MapPosition targetMapPosition, Action onMoveComplete)
         {
-            MasterAudio.PlaySound("Bag 08");
-            
             List<MapPosition> mapPositions = PathfindingManager.Instance.FindPath(_unit.CurrentMapPosition, targetMapPosition, out int pathLength);
             
             _currentPositionIndex = 0;

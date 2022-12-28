@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending.Units
@@ -18,19 +19,6 @@ namespace Descending.Units
         public void Setup(Animator animator)
         {
             _animator = animator;
-            
-            if (TryGetComponent<MoveAction>(out MoveAction moveAction))
-            {
-                
-            }
-            
-            if (TryGetComponent<RangedAttackAction>(out RangedAttackAction shootAction))
-            {
-            }
-            
-            if (TryGetComponent<MeleeAttackAction>(out MeleeAttackAction meleeAction))
-            {
-            }
         }
         
         public void MeleeStarted()
@@ -63,9 +51,9 @@ namespace Descending.Units
             _animator.SetTrigger("Cast");
         }
 
-        public void SetAnimatorOverride(AnimatorOverrideController overrideController)
+        public void SetAnimatorOverride(WeaponData weaponData)
         {
-            _animator.runtimeAnimatorController = overrideController;
+            _animator.runtimeAnimatorController = weaponData.AnimatorOverride;
         }
     }
 }

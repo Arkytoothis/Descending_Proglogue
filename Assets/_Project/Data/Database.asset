@@ -41,3 +41,10 @@ MonoBehaviour:
     type: 3}
   _searchActionIcon: {fileID: 21300000, guid: f3254b3bef33e6b44bcaa7023da597fc, type: 3}
   _blankSprite: {fileID: 21300000, guid: 672d62704098abf409b522c28d025530, type: 3}
+  _playerPortraitAnimator: {fileID: 9100000, guid: eb33e67dc4c24cd46a123e91a7d84996,
+    type: 2}
+  _playerCombatAnimator: {fileID: 9100000, guid: 79f20d799ea8efa4795f53b2901cc186,
+    type: 2}
+  _playerOverworldAnimator: {fileID: 9100000, guid: b3041ce6853344d409b9815b302c06d8,
+    type: 2}
+  _enemyAnimator: {fileID: 9100000, guid: 89c7682aea3ad2547a42b64fca289933, type: 2}

@@ -56,14 +56,14 @@ namespace Descending.Units
 
         private void HandleSelectedAction()
         {
-            if (UnitManager.Instance.SelectedHero == null || _selectedAction == null) return;
+            if (HeroManager_Combat.Instance.SelectedHero == null || _selectedAction == null) return;
             
             if (InputManager.Instance.GetRightMouseDown())
             {
                 MapPosition mouseMapPosition = MapManager.Instance.GetGridPosition(CombatRaycaster.GetMouseWorldPosition());
                 if (_selectedAction.IsValidActionGridPosition(mouseMapPosition))
                 {
-                    if (UnitManager.Instance.SelectedHero.TryPerformAction(_selectedAction))
+                    if (HeroManager_Combat.Instance.SelectedHero.TryPerformAction(_selectedAction))
                     {
                         SetBusy();
                         _selectedAction.PerformAction(mouseMapPosition, ClearBusy);
@@ -83,7 +83,7 @@ namespace Descending.Units
                 {
                     if (hit.transform.TryGetComponent<Unit>(out Unit unit))
                     {
-                        if (unit == UnitManager.Instance.SelectedHero)
+                        if (unit == HeroManager_Combat.Instance.SelectedHero)
                         {
                             return false;
                         }
@@ -93,7 +93,7 @@ namespace Descending.Units
                             return false;
                         }
                         
-                        UnitManager.Instance.SelectHero(unit as HeroUnit);
+                        HeroManager_Combat.Instance.SelectHero(unit as HeroUnit);
                         return true;
                     }
                 }

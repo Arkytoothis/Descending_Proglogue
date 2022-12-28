@@ -148,7 +148,7 @@ namespace Descending.Units
             if (item != null)
             {
                 WeaponData weaponData = item.GetWeaponData();
-                _unitAnimator.SetAnimatorOverride(weaponData.AnimatorOverride);
+                _unitAnimator.SetAnimatorOverride(weaponData);
                 _spawnProjectileDelay = weaponData.ProjectileDelay;
                 _maxShootDistance = (int)weaponData.Range;
             }

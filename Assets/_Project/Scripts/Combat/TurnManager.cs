@@ -42,7 +42,7 @@ namespace Descending.Combat
             _isPlayerTurn = !_isPlayerTurn;
             
             onTurnChanged.Invoke(true);
-            UnitManager.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.SyncHeroes();
         }
     }
 }

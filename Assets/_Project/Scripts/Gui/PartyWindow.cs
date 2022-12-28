@@ -46,7 +46,7 @@ namespace Descending.Gui
             _stockpilePanel.UpdateStockpile();
             _listPanel.Setup(this);
             _isOpen = true;
-            SelectHero(UnitManager.Instance.GetHero(0));
+            SelectHero(HeroManager_Combat.Instance.GetHero(0));
         }
 
         public override void Close()
@@ -58,7 +58,7 @@ namespace Descending.Gui
 
         public void SelectHero(HeroUnit hero)
         {
-            UnitManager.Instance.SelectHero(hero);
+            HeroManager_Combat.Instance.SelectHero(hero);
             
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);
@@ -73,7 +73,7 @@ namespace Descending.Gui
         public void OnDisplaySelectedHero(bool b)
         {
             //Debug.Log("OnDisplaySelectedHero");
-            HeroUnit hero = UnitManager.Instance.SelectedHero;
+            HeroUnit hero = HeroManager_Combat.Instance.SelectedHero;
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);
             _vitalsPanel.DisplayHero(hero);

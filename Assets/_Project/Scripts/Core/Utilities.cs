@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Descending.Tiles;
+using Descending.Units;
 using UnityEngine;
 using UnityEditor;
 
@@ -270,6 +271,16 @@ namespace Descending.Core
             ParticleSystem ps = GameObject.Instantiate(prefab, position, prefab.transform.rotation).GetComponent<ParticleSystem>();
             ps.Play();
             GameObject.Destroy(ps.gameObject, ps.main.duration);
+        }
+
+        public static HeroManager GetHeroManager()
+        {
+            if (HeroManager_Overworld.Instance != null)
+                return HeroManager_Overworld.Instance;
+            else if (HeroManager_Combat.Instance != null)
+                return HeroManager_Combat.Instance;
+            else 
+                return null;
         }
     }
 }

@@ -200,4 +200,9 @@ namespace Descending.Core
         Crypt, Forest, Goblin_Village,
         Number, None
     }
+
+    public enum AnimatorControllerTypes
+    {
+        Overworld, Combat, Portrait, Main_Menu, Number, None
+    }
 }

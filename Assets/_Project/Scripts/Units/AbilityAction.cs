@@ -96,7 +96,7 @@ namespace Descending.Units
                     break;
                 case State.Cooldown:
                     ActionComplete();
-                    UnitManager.Instance.RecalculateHeroAttributes();
+                    HeroManager_Combat.Instance.RecalculateHeroAttributes();
                     break;
             }
         }
@@ -188,11 +188,11 @@ namespace Descending.Units
             else if (_ability.Definition.TargetType == TargetTypes.Party)
             {
                 List<Unit> targets = new List<Unit>();
-                for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
+                for (int i = 0; i < HeroManager_Combat.Instance.HeroUnits.Count; i++)
                 {
-                    if (Vector3.Distance(_unit.transform.position, UnitManager.Instance.HeroUnits[i].transform.position) <= _ability.Definition.Area)
+                    if (Vector3.Distance(_unit.transform.position, HeroManager_Combat.Instance.HeroUnits[i].transform.position) <= _ability.Definition.Area)
                     {
-                        targets.Add(UnitManager.Instance.HeroUnits[i]);
+                        targets.Add(HeroManager_Combat.Instance.HeroUnits[i]);
                     }
                 }
                 

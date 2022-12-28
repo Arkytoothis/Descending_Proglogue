@@ -66,9 +66,9 @@ namespace Descending.Units
                 _unit.Inventory.ClearAccessory(_itemIndex);
             }
             
-            UnitManager.Instance.SelectedHero.ActionController.SetupActions();
-            UnitManager.Instance.SyncHeroes();
-            UnitManager.Instance.RefreshSelectedHero();
+            HeroManager_Combat.Instance.SelectedHero.ActionController.SetupActions();
+            HeroManager_Combat.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.RefreshSelectedHero();
         }
 
         public override List<MapPosition> GetValidActionGridPositions()

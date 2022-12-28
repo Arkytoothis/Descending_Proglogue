@@ -33,7 +33,7 @@ namespace Descending
             _actionButtons.Clear();
             _abilityButtons.Clear();
             
-            Unit selectedUnit = UnitManager.Instance.SelectedHero;
+            Unit selectedUnit = HeroManager_Combat.Instance.SelectedHero;
             if (selectedUnit == null || selectedUnit.IsEnemy == true) return;
             
             int abilityHotkey = 1;

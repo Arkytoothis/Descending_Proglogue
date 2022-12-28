@@ -31,7 +31,7 @@ namespace Descending.Features
         public override void Approach()
         {
             //Debug.Log("Approaching Village");
-            UnitManager.Instance.SavePartyPosition();
+            HeroManager_Overworld.Instance.SavePartyPosition();
             _villagePanel.ShowInteractButton();
         }
 

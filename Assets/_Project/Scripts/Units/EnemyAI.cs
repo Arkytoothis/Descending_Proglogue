@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Combat;
-using Descending.Scene_Overworld;
 using Descending.Units;
 using Descending.Tiles;
 using UnityEngine;
@@ -70,14 +69,14 @@ namespace Descending.Enemies
 
         private void DeselectAll()
         {
-            foreach (Unit enemyUnit in UnitManager.Instance.EnemyUnits)
+            foreach (Unit enemyUnit in EnemyManager.Instance.EnemyUnits)
             {
                 enemyUnit.Deselect();
             } 
         }
         private void SelectEnemy(Unit enemy)
         {
-            foreach (Unit enemyUnit in UnitManager.Instance.EnemyUnits)
+            foreach (Unit enemyUnit in EnemyManager.Instance.EnemyUnits)
             {
                 if (enemy == enemyUnit)
                 {
@@ -91,7 +90,7 @@ namespace Descending.Enemies
         }
         private bool TryPerformAction(Action onActionComplete)
         {
-            foreach (EnemyUnit enemyUnit in UnitManager.Instance.EnemyUnits)
+            foreach (EnemyUnit enemyUnit in EnemyManager.Instance.EnemyUnits)
             {
                 SelectEnemy(enemyUnit);
                 

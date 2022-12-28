@@ -26,11 +26,11 @@ namespace Descending.Gui
             _heroWidgetsParent.ClearTransform();
             _heroWidgets.Clear();
             
-            for (int i = 0; i < UnitManager.Instance.HeroUnits.Count; i++)
+            for (int i = 0; i < Utilities.GetHeroManager().HeroUnits.Count; i++)
             {
                 GameObject clone = Instantiate(_heroWidgetPrefab, _heroWidgetsParent);
                 HeroListWidget widget = clone.GetComponent<HeroListWidget>();
-                widget.Setup(_partyWindow, UnitManager.Instance.HeroUnits[i]);
+                widget.Setup(_partyWindow, Utilities.GetHeroManager().HeroUnits[i]);
                 
                 _heroWidgets.Add(widget);
             }

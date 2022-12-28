@@ -44,18 +44,18 @@ namespace Descending.Scene_Indoor
             MapManager.Instance.Setup();
             CombatEventManager.Instance.Setup();
             _dungeon.Generate();
-            UnitManager.Instance.Setup();
+            HeroManager_Combat.Instance.Setup();
             _enemyAI.Setup();
             SpawnGui();
             ResourcesManager.Instance.Setup();
             StockpileManager.Instance.Setup();
-            UnitManager.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.SyncHeroes();
         }
 
         public void OnRegisterPlayerSpawner(GameObject spawnerObject)
         {
             PlayerSpawner spawner = spawnerObject.GetComponent<PlayerSpawner>();
-            UnitManager.Instance.RegisterPlayerSpawner(spawner);
+            HeroManager_Combat.Instance.RegisterPlayerSpawner(spawner);
             ActionManager.Instance.Setup();
             TileMapRenderer.Instance.Setup();
         }

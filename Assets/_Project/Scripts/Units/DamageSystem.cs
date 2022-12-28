@@ -43,7 +43,7 @@ namespace Descending.Units
             }
 
             _worldPanel.Sync();
-            UnitManager.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.SyncHeroes();
             //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
         }
 
@@ -51,14 +51,14 @@ namespace Descending.Units
         {
             _unit.Attributes.GetVital(vital).Damage(amount, true);
             _worldPanel.Sync();
-            UnitManager.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.SyncHeroes();
         }
 
         public void RestoreVital(string vital, int amount)
         {
             _unit.Attributes.GetVital(vital).Restore(amount);
             _worldPanel.Sync();
-            UnitManager.Instance.SyncHeroes();
+            HeroManager_Combat.Instance.SyncHeroes();
         }
 
         public float GetVitalNormalized(string vitalKey)

@@ -58,6 +58,8 @@ namespace Descending.Units
             _unitEffects.Setup();
             _worldPanel.Setup(this);
 
+            _unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
+            
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)
             {
@@ -95,6 +97,8 @@ namespace Descending.Units
             _unitEffects.Setup();
             _worldPanel.Setup(this);
 
+            _unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
+            
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)
             {
@@ -162,7 +166,7 @@ namespace Descending.Units
         {
             _isAlive = false;
             MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
-            UnitManager.Instance.UnitDead(this);
+            HeroManager_Combat.Instance.UnitDead(this);
             Destroy(gameObject);
         }
 

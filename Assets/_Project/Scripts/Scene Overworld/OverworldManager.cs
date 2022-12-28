@@ -26,16 +26,16 @@ namespace Descending.Overworld
 
         private void Start()
         {
-            UnitManager.Instance.SpawnHeroes_Overworld();
             //_worldGenerator.Setup();
+            HeroManager_Overworld.Instance.SpawnHeroes();
             
             SpawnGui();
             
             ResourcesManager.Instance.Setup();
             StockpileManager.Instance.Setup();
             FeatureManager.Instance.Setup();
-            UnitManager.Instance.SelectDefaultHeroOverworld();
-            UnitManager.Instance.SyncHeroes();
+            HeroManager_Overworld.Instance.SelectHeroDefault();
+            HeroManager_Overworld.Instance.SyncHeroes();
         }
 
         private void SpawnGui()

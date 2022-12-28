@@ -14,7 +14,7 @@ namespace Descending.Encounters
         public void Trigger()
         {
             Debug.Log("Encounter Triggered");
-            UnitManager.Instance.SavePartyPosition();
+            HeroManager_Overworld.Instance.SavePartyPosition();
             onTriggerEncounter.Invoke(this);
         }
     }

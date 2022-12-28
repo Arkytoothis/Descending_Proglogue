@@ -6,10 +6,15 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Staff Animator Override
+  m_Name: Staff Override
   m_Controller: {fileID: 9100000, guid: 126e48dbbd5d39d43a42b11c47c4c07f, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 9642968e7add6c144962b1c23981dae1, type: 3}
     m_OverrideClip: {fileID: 7400000, guid: f1613afb92638e743bace9a9392b5ee7, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: 872ce46a1facd3848854067c95bf09b9, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: 872ce46a1facd3848854067c95bf09b9, type: 3}
+    m_OverrideClip: {fileID: 7400010, guid: 9688da412999a20429a8c3d11c5ed493, type: 3}
+  - m_OriginalClip: {fileID: 1695192892109923712, guid: b3f3ac3565beb18429901d070f0eec02,
+      type: 3}
+    m_OverrideClip: {fileID: 7400016, guid: ccab6b0d7ec6fea419d1d1081484516e, type: 3}
+  - m_OriginalClip: {fileID: 7400004, guid: 4accf136b05606f46a0657e3c51271ff, type: 3}
+    m_OverrideClip: {fileID: 7400004, guid: 4accf136b05606f46a0657e3c51271ff, type: 3}

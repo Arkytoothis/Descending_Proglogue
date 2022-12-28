@@ -66,11 +66,11 @@ namespace Descending.Gui
             
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                UnitManager.Instance.SelectedHero.Inventory.UnequipAccessory(_index);
+                HeroManager_Combat.Instance.SelectedHero.Inventory.UnequipAccessory(_index);
                 Clear();
                 StockpileManager.Instance.SyncStockpile();
-                UnitManager.Instance.SyncHeroes();
-                UnitManager.Instance.RefreshSelectedHero();
+                HeroManager_Combat.Instance.SyncHeroes();
+                HeroManager_Combat.Instance.RefreshSelectedHero();
             }
         }
         
@@ -98,7 +98,7 @@ namespace Descending.Gui
             {
                 if (DragCursor.Instance.DragItem.ItemDefinition.Category != ItemCategory.Accessories) return;
                 
-                HeroUnit hero = UnitManager.Instance.SelectedHero;
+                HeroUnit hero = HeroManager_Combat.Instance.SelectedHero;
                 
                 if (_item != null &&_item.ItemDefinition.Key != "")
                 {
@@ -112,8 +112,8 @@ namespace Descending.Gui
                 DragCursor.Instance.EndDrag(eventData);
                 
                 hero.ActionController.SetupActions();
-                UnitManager.Instance.SyncHeroes();
-                UnitManager.Instance.RefreshSelectedHero();
+                HeroManager_Combat.Instance.SyncHeroes();
+                HeroManager_Combat.Instance.RefreshSelectedHero();
             }
         }
 
