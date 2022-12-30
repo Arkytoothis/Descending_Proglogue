@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e563312429bd61f4587aa486bf12bb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroPrefab: {fileID: 3898514663855011102, guid: 410b4a1ffe3193349a446547d5a86e7c,
+  _heroPrefab: {fileID: 3898514663855011102, guid: c5882cfc999f0174fba243d0f350e867,
     type: 3}
   _heroesParent: {fileID: 1747828202}
   _heroUnits: []

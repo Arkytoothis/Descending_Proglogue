@@ -176,7 +176,7 @@ namespace Descending.Units
             clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Utilities.GetRandomGender(), race, profession, listIndex);
+            heroUnit.SetupHero(Utilities.GetRandomGender(), race, profession, listIndex, Database.instance.CombatHeroAnimator);
             clone.name = "Hero: " + heroUnit.GetFullName();
             
             UnitSpawned(heroUnit);
@@ -189,7 +189,7 @@ namespace Descending.Units
             clone.transform.position = MapManager.Instance.GetWorldPosition(mapPosition);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.LoadHero(saveData);
+            heroUnit.LoadHero(saveData, Database.instance.CombatHeroAnimator);
             clone.name = "Hero: " + heroUnit.GetFullName();
             
             _heroUnits.Add(heroUnit);

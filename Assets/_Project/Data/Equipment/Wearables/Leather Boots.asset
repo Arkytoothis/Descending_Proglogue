@@ -62,6 +62,17 @@ MonoBehaviour:
     _perceptionModifier: 0
     _wearableType: 3
     _headCoverType: 5
+    _stepSounds:
+    - Light Armour Grass 1_01
+    - Light Armour Grass 1_02
+    - Light Armour Grass 1_03
+    - Light Armour Grass 1_04
+    - Light Armour Grass 1_05
+    - Light Armour Grass 1_06
+    - Light Armour Grass 1_07
+    - Light Armour Grass 1_08
+    - Light Armour Grass 1_09
+    - Light Armour Grass 1_10
   _accessoryData:
     _hasData: 0
     _accessoryType: 0

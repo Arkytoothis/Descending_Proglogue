@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using DarkTonic.MasterAudio;
 using Descending.Combat;
 using Descending.Enemies;
+using Descending.Equipment;
 using UnityEngine;
 
 namespace Descending.Units
 {
     public class AnimationEvents : MonoBehaviour
     {
+        private InventoryController _inventory = null;
+
+        public void Setup(InventoryController inventory)
+        {
+            _inventory = inventory;
+        }
         
         public void Shoot()
         {
@@ -16,14 +23,12 @@ namespace Descending.Units
 
         public void FootR()
         {
-            //string sound = _hero.Inventory.GetRandomWalkSound();
-            //MasterAudio.PlaySound3DAtTransform(sound, transform, 0.5f, 1f);
+            _inventory.PlayStepSound();
         }
 
         public void FootL()
         {
-            //string sound = _hero.Inventory.GetRandomWalkSound();
-            //MasterAudio.PlaySound3DAtTransform(sound, transform, 0.5f, 1f);
+            _inventory.PlayStepSound();
         }
 
         public void Land()

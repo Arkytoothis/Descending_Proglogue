@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Equipment;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ namespace Descending.Units
     public class UnitAnimator : MonoBehaviour
     {
         [SerializeField] private Animator _animator = null;
+        [SerializeField] private Rigidbody _rigidbody = null;
+        [SerializeField] private bool _applyMotion = false;
+        
         private Unit _unit;
         
         private void Awake()
@@ -16,9 +20,17 @@ namespace Descending.Units
             _unit = GetComponent<Unit>();
         }
 
-        public void Setup(Animator animator)
+        private void Update()
+        {
+            if (_applyMotion == false) return;
+            
+            _animator.SetFloat("Blend", _rigidbody.velocity.magnitude);
+        }
+
+        public void Setup(Animator animator, RuntimeAnimatorController animatorController)
         {
             _animator = animator;
+            _animator.runtimeAnimatorController = animatorController;
         }
         
         public void MeleeStarted()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using DarkTonic.MasterAudio;
 using Descending.Core;
 using UnityEngine;
 
@@ -14,9 +15,9 @@ namespace Descending.Equipment
         [SerializeField] private int _block = 0;
         [SerializeField] private int _dodge = 0;
         [SerializeField] private int _perceptionModifier = 0;
-
         [SerializeField] private WearableType _wearableType = WearableType.None;
         [SerializeField] private HeadCoverType _headCoverType = HeadCoverType.None;
+        [SerializeField, SoundGroup] private List<string> _stepSounds = null;
 
         public bool HasData => _hasData;
         public int Armor => _armor;
@@ -74,6 +75,18 @@ namespace Descending.Equipment
             sb.Append(_perceptionModifier);
 
             return sb.ToString();
+        }
+
+        public string GetStepSound()
+        {
+            if (_stepSounds == null || _stepSounds.Count == 0)
+            {
+                return "";
+            }
+            else
+            {
+                return _stepSounds[Random.Range(0, _stepSounds.Count)];
+            }
         }
     }
 }

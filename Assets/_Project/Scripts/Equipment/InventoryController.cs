@@ -286,6 +286,16 @@ namespace Descending.Equipment
         {
             return _equipment[(int) EquipmentSlots.Ammo];
         }
+
+        public void PlayStepSound()
+        {
+            string sound = _equipment[(int)EquipmentSlots.Feet].GetWearableData().GetStepSound();
+            
+            if (sound != "")
+            {
+                MasterAudio.PlaySound3DAtVector3(sound, _worldBody.transform.position, 0.1f);
+            }
+        }
     }
 
     [System.Serializable]

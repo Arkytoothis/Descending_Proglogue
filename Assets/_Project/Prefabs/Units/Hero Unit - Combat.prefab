@@ -308,6 +308,7 @@ MonoBehaviour:
   _skinColorIndex: -1
   _hairColorIndex: -1
   _eyeColorIndex: -1
+  _tattooColorIndex: -1
 --- !u!1 &3898291277329297716
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +688,7 @@ GameObject:
   - component: {fileID: 3932504198747709498}
   - component: {fileID: 8817563182959167238}
   m_Layer: 7
-  m_Name: Unit - Hero
+  m_Name: Hero Unit - Combat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2722,7 +2723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _memorizedPowers: []
   _memorizedSpells: []
-  _actionConfigs: []
 --- !u!1 &4337020165909533996
 GameObject:
   m_ObjectHideFlags: 0

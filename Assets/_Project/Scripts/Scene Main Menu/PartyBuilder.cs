@@ -49,7 +49,7 @@ namespace Descending.Scene_Main_Menu
             GameObject clone = Instantiate(_heroPrefab, _heroMounts[listIndex]);
             
             HeroUnit hero = clone.GetComponent<HeroUnit>();
-            hero.SetupHero(Genders.Male, race, profession, listIndex);
+            hero.SetupHero(Genders.Male, race, profession, listIndex, Database.instance.OverworldHeroAnimator);
             hero.SetWorldPanelAActive(false);
             hero.PortraitModel.SetActive(false);
             clone.name = "Hero: " + hero.GetFullName();
@@ -73,7 +73,7 @@ namespace Descending.Scene_Main_Menu
             GameObject clone = Instantiate(_heroPrefab, _heroMounts[saveData.ListIndex]);
             
             HeroUnit hero = clone.GetComponent<HeroUnit>();
-            hero.LoadHero(saveData);
+            hero.LoadHero(saveData, Database.instance.OverworldHeroAnimator);
             clone.name = "Hero: " + hero.GetFullName();
             
             Destroy(hero.PortraitModel);

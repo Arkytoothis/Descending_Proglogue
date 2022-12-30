@@ -106,7 +106,7 @@ namespace Descending.Enemies
         private bool TryPerformAction(EnemyUnit enemyUnit, Action onActionComplete)
         {
             if (enemyUnit.IsActive == false || enemyUnit.IsAlive == false || enemyUnit.Behavior == null) return false;
-            
+
             BaseAction bestAction = null;
             MapPosition targetPosition = new MapPosition();
             bestAction = enemyUnit.Behavior.ProcessAction(enemyUnit, ref targetPosition);

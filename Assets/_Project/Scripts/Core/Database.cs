@@ -43,6 +43,11 @@ namespace Descending.Core
         [SerializeField] private Sprite _searchActionIcon = null;
 
         [SerializeField] private Sprite _blankSprite = null;
+        
+        [SerializeField] private RuntimeAnimatorController _overworldHeroAnimator = null;
+        [SerializeField] private RuntimeAnimatorController _combatHeroAnimator = null;
+        [SerializeField] private RuntimeAnimatorController _enemyAnimator = null;
+
 
         private bool _initialized = false;
 
@@ -72,6 +77,9 @@ namespace Descending.Core
         public string WorldDataFilePath => _worldDataFilePath;
         public string OverworldSpawnFilePath => _overworldSpawnFilePath;
         public string StockpileFilePath => _stockpileFilePath;
+        public RuntimeAnimatorController OverworldHeroAnimator => _overworldHeroAnimator;
+        public RuntimeAnimatorController CombatHeroAnimator => _combatHeroAnimator;
+        public RuntimeAnimatorController EnemyAnimator => _enemyAnimator;
 
         public void Setup()
         {

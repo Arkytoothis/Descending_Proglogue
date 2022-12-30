@@ -5,7 +5,6 @@ using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
 using Descending.Gui;
-using Descending.Scene_Overworld;
 using Descending.Tiles;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -31,7 +30,7 @@ namespace Descending.Units
         public GameObject WorldModel => _worldModel;
         public BodyRenderer WorldRenderer => _worldRenderer;
 
-        public void SetupHero(Genders gender, RaceDefinition race, ProfessionDefinition profession, int listIndex)
+        public void SetupHero(Genders gender, RaceDefinition race, ProfessionDefinition profession, int listIndex, RuntimeAnimatorController animatorController)
         {
             _isEnemy = false;
             _modelParent.ClearTransform();
@@ -44,12 +43,15 @@ namespace Descending.Units
             _portraitRenderer.SetupBody(_worldRenderer, race, profession);
 
             _unitAnimator = GetComponent<UnitAnimator>();
-            _unitAnimator.Setup(_worldModel.GetComponent<Animator>());
+            _unitAnimator.Setup(_worldModel.GetComponent<Animator>(), animatorController);
 
             _heroData.Setup(gender, race, profession, _worldRenderer, listIndex);
             _attributes.Setup(race, profession);
             _skills.Setup(_attributes, race, profession);
             _inventory.Setup(_portraitRenderer, _worldRenderer, gender, race, profession);
+            
+            _animationEvents = GetComponentInChildren<AnimationEvents>();
+            _animationEvents.Setup(_inventory);
             
             _attributes.CalculateAttributes();
             _abilities.Setup(race, profession, _skills);
@@ -58,7 +60,7 @@ namespace Descending.Units
             _unitEffects.Setup();
             _worldPanel.Setup(this);
 
-            _unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
+            //_unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
             
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)
@@ -67,7 +69,7 @@ namespace Descending.Units
             }
         }
 
-        public void LoadHero(HeroSaveData saveData)
+        public void LoadHero(HeroSaveData saveData, RuntimeAnimatorController animatorController)
         {
             RaceDefinition race = Database.instance.Races.GetRace(saveData.RaceKey);
             ProfessionDefinition profession = Database.instance.Profession.GetProfession(saveData.ProfessionKey);
@@ -83,7 +85,7 @@ namespace Descending.Units
             _portraitRenderer.LoadBody(saveData);
 
             _unitAnimator = GetComponent<UnitAnimator>();
-            _unitAnimator.Setup(_worldModel.GetComponent<Animator>());
+            _unitAnimator.Setup(_worldModel.GetComponent<Animator>(), animatorController);
 
             _heroData.LoadData(saveData, _worldRenderer);
             _attributes.Setup(race, profession);
@@ -97,7 +99,7 @@ namespace Descending.Units
             _unitEffects.Setup();
             _worldPanel.Setup(this);
 
-            _unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
+            //_unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
             
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)

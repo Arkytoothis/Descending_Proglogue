@@ -191,7 +191,7 @@ namespace Descending.Units
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
+            heroUnit.SetupHero(Genders.Male, race, profession, listIndex, Database.instance.OverworldHeroAnimator);
             heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
             clone.name = "Hero: " + heroUnit.GetFullName();
             
@@ -204,7 +204,7 @@ namespace Descending.Units
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);
             
             HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.LoadHero(saveData);
+            heroUnit.LoadHero(saveData, Database.instance.OverworldHeroAnimator);
             heroUnit.WorldModel.transform.localScale = new Vector3(_unitScaleFactor, _unitScaleFactor, _unitScaleFactor);
             clone.name = "Hero: " + heroUnit.GetFullName();
             

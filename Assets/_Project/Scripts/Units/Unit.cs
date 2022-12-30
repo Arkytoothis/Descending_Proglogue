@@ -32,6 +32,7 @@ namespace Descending.Units
         [SerializeField] protected ActionController _actionController = null;
         [SerializeField] protected UnitWorldPanel _worldPanel = null;
         [SerializeField] protected UnitEffects _unitEffects = null;
+        [SerializeField] protected AnimationEvents _animationEvents = null;
         
         public abstract void SpendActionPoints(int actionPointCost);
         
@@ -57,6 +58,7 @@ namespace Descending.Units
         public UnitAnimator UnitAnimator => _unitAnimator;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
         public UnitEffects UnitEffects => _unitEffects;
+        public AnimationEvents AnimationEvents => _animationEvents;
 
         public bool IsActive => _isActive;
         public bool IsAlive => _isAlive;

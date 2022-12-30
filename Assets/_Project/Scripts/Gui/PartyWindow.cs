@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DarkTonic.MasterAudio;
+using Descending.Core;
 using Descending.Units;
 using UnityEngine;
 
@@ -46,7 +47,7 @@ namespace Descending.Gui
             _stockpilePanel.UpdateStockpile();
             _listPanel.Setup(this);
             _isOpen = true;
-            SelectHero(HeroManager_Combat.Instance.GetHero(0));
+            SelectHero(Utilities.GetHeroManager().GetHero(0));
         }
 
         public override void Close()
@@ -58,7 +59,7 @@ namespace Descending.Gui
 
         public void SelectHero(HeroUnit hero)
         {
-            HeroManager_Combat.Instance.SelectHero(hero);
+            Utilities.GetHeroManager().SelectHero(hero);
             
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);
@@ -73,7 +74,7 @@ namespace Descending.Gui
         public void OnDisplaySelectedHero(bool b)
         {
             //Debug.Log("OnDisplaySelectedHero");
-            HeroUnit hero = HeroManager_Combat.Instance.SelectedHero;
+            HeroUnit hero = Utilities.GetHeroManager().SelectedHero;
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);
             _vitalsPanel.DisplayHero(hero);
